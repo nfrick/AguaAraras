@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AguaAraras", "AguaAraras\AguaAraras.csproj", "{9FA6DB46-3DFA-4E2D-9A79-E6CF043CA3C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{14CE5ABF-3535-4317-9B3F-772930C1CAF5}"
+	ProjectSection(SolutionItems) = preProject
+		AguaAraras\Images\Actions-dialog-ok-icon.png = AguaAraras\Images\Actions-dialog-ok-icon.png
+		AguaAraras\Images\Actions-document-new-icon.png = AguaAraras\Images\Actions-document-new-icon.png
+		AguaAraras\Images\Actions-document-save-icon.png = AguaAraras\Images\Actions-document-save-icon.png
+		AguaAraras\Images\Actions-edit-find-user-icon.png = AguaAraras\Images\Actions-edit-find-user-icon.png
+		AguaAraras\Images\Actions-flag-green-icon (16).png = AguaAraras\Images\Actions-flag-green-icon (16).png
+		AguaAraras\Images\Actions-flag-green-icon.png = AguaAraras\Images\Actions-flag-green-icon.png
+		AguaAraras\Images\Actions-flag-red-icon (16).png = AguaAraras\Images\Actions-flag-red-icon (16).png
+		AguaAraras\Images\Actions-flag-red-icon.png = AguaAraras\Images\Actions-flag-red-icon.png
+		AguaAraras\Images\Actions-flag-yellow-icon (16).png = AguaAraras\Images\Actions-flag-yellow-icon (16).png
+		AguaAraras\Images\Actions-flag-yellow-icon.png = AguaAraras\Images\Actions-flag-yellow-icon.png
+		AguaAraras\Images\Actions-go-first-view-icon.png = AguaAraras\Images\Actions-go-first-view-icon.png
+		AguaAraras\Images\Actions-go-home-icon (16).png = AguaAraras\Images\Actions-go-home-icon (16).png
+		AguaAraras\Images\Actions-go-home-icon.png = AguaAraras\Images\Actions-go-home-icon.png
+		AguaAraras\Images\Actions-go-last-view-icon.png = AguaAraras\Images\Actions-go-last-view-icon.png
+		AguaAraras\Images\Actions-go-next-view-icon.png = AguaAraras\Images\Actions-go-next-view-icon.png
+		AguaAraras\Images\Actions-go-previous-view-icon.png = AguaAraras\Images\Actions-go-previous-view-icon.png
+		AguaAraras\Images\Actions-office-chart-area-icon.png = AguaAraras\Images\Actions-office-chart-area-icon.png
+		AguaAraras\Images\Actions-trash-empty-icon.png = AguaAraras\Images\Actions-trash-empty-icon.png
+		AguaAraras\Images\Apps-accessories-calculator-icon.png = AguaAraras\Images\Apps-accessories-calculator-icon.png
+		AguaAraras\Images\Apps-kmymoney-icon.png = AguaAraras\Images\Apps-kmymoney-icon.png
+		AguaAraras\Images\Apps-preferences-desktop-printer-icon (16).png = AguaAraras\Images\Apps-preferences-desktop-printer-icon (16).png
+		AguaAraras\Images\Apps-preferences-desktop-printer-icon.png = AguaAraras\Images\Apps-preferences-desktop-printer-icon.png
+		AguaAraras\Images\Apps-system-users-icon.png = AguaAraras\Images\Apps-system-users-icon.png
+		AguaAraras\Images\Categories-applications-development-icon (16).png = AguaAraras\Images\Categories-applications-development-icon (16).png
+		AguaAraras\Images\Categories-applications-development-icon.png = AguaAraras\Images\Categories-applications-development-icon.png
+		AguaAraras\Images\Mimetypes-application-pdf-icon.png = AguaAraras\Images\Mimetypes-application-pdf-icon.png
+		AguaAraras\Images\Mimetypes-application-vnd-ms-excel-icon.png = AguaAraras\Images\Mimetypes-application-vnd-ms-excel-icon.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FA6DB46-3DFA-4E2D-9A79-E6CF043CA3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA6DB46-3DFA-4E2D-9A79-E6CF043CA3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA6DB46-3DFA-4E2D-9A79-E6CF043CA3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA6DB46-3DFA-4E2D-9A79-E6CF043CA3C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

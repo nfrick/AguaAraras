@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9FA6DB46-3DFA-4E2D-9A79-E6CF043CA3C9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AguaAraras</RootNamespace>
+    <AssemblyName>AguaAraras</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\water_droplet_iconX.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Rhetos.Utilities">
+      <HintPath>..\..\FastReplacer\Rhetos.Utilities\bin\Debug\Rhetos.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\clsBalanceItem.cs" />
+    <Compile Include="Classes\clsBalanco.cs" />
+    <Compile Include="Classes\clsBaseData.cs" />
+    <Compile Include="Classes\clsBaseMov.cs" />
+    <Compile Include="Classes\clsCota.cs" />
+    <Compile Include="Classes\clsDatabase.cs" />
+    <Compile Include="Classes\clsEndereco.cs" />
+    <Compile Include="Classes\clsExtenso.cs" />
+    <Compile Include="Classes\clsExtrato.cs" />
+    <Compile Include="Forms\frmCalculadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCalculadora.Designer.cs">
+      <DependentUpon>frmCalculadora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCobrancaEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCobrancaEmail.Designer.cs">
+      <DependentUpon>frmCobrancaEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBalanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBalanco.Designer.cs">
+      <DependentUpon>frmBalanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMovimentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMovimentos.Designer.cs">
+      <DependentUpon>frmMovimentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPessoas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPessoas.Designer.cs">
+      <DependentUpon>frmPessoas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRecibos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRecibos.Designer.cs">
+      <DependentUpon>frmRecibos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRelatorio.Designer.cs">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\clsMovimento.cs" />
+    <Compile Include="Classes\clsPessoa.cs" />
+    <Compile Include="Forms\frmProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmProgressBar.Designer.cs">
+      <DependentUpon>frmProgressBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\clsRecibo.cs" />
+    <Compile Include="Classes\clsReciboItem.cs" />
+    <Compile Include="Classes\clsSortableBindingList.cs" />
+    <Compile Include="Classes\clsTelefone.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="UserFileAccessRights.cs" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Reports\rptExtratoCronologico.rdlc" />
+    <Content Include="Reports\rptExtratoCategorizado.rdlc" />
+    <Content Include="Images\water_droplet.ico" />
+    <Content Include="Images\water_droplet_icon.ico" />
+    <Content Include="Images\water_droplet_icon2.ico" />
+    <Content Include="Images\water_droplet_icon3.ico" />
+    <Content Include="Images\water_droplet_iconX.ico" />
+    <None Include="packages.config" />
+    <None Include="Resources\FlagGreeen.png" />
+    <None Include="Images\Actions-flag-green-icon.png" />
+    <None Include="Images\Actions-flag-red-icon.png" />
+    <None Include="Images\Actions-flag-yellow-icon.png" />
+    <None Include="Images\Apps-system-users-icon.png" />
+    <None Include="Images\Apps-kmymoney-icon.png" />
+    <None Include="Images\Actions-go-first-view-icon.png" />
+    <None Include="Images\Actions-go-previous-view-icon.png" />
+    <None Include="Images\Actions-go-next-view-icon.png" />
+    <None Include="Images\Actions-go-last-view-icon.png" />
+    <None Include="Images\Actions-list-add-icon.png" />
+    <None Include="Images\Actions-document-save-icon.png" />
+    <None Include="Images\Actions-edit-delete-icon.png" />
+    <None Include="Images\Actions-edit-find-user-icon.png" />
+    <None Include="Images\Mimetypes-application-pdf-icon.png" />
+    <None Include="Images\Apps-accessories-calculator-icon.png" />
+    <None Include="Images\Actions-document-preview-archive-icon.png" />
+    <None Include="Images\Actions-mail-mark-task-icon.png" />
+    <None Include="Images\Places-document-multiple-icon.png" />
+    <None Include="Images\Apps-kmail-2-icon.png" />
+    <None Include="Images\Actions-dialog-ok-icon.png" />
+    <None Include="Images\Mimetypes-x-office-spreadsheet-icon.png" />
+    <None Include="Images\Mimetypes-application-x-kplato-icon.png" />
+    <None Include="Images\Actions-edit-find-icon.png" />
+    <None Include="Images\Actions-games-difficult-icon.png" />
+    <None Include="Images\Actions-rating-icon.png" />
+    <Content Include="Images\Paomedia-Small-N-Flat-Drop.ico" />
+    <Content Include="Reports\rptCobranca.rdlc" />
+    <EmbeddedResource Include="Forms\frmCalculadora.resx">
+      <DependentUpon>frmCalculadora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCobrancaEmail.resx">
+      <DependentUpon>frmCobrancaEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBalanco.resx">
+      <DependentUpon>frmBalanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMovimentos.resx">
+      <DependentUpon>frmMovimentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPessoas.resx">
+      <DependentUpon>frmPessoas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRecibos.resx">
+      <DependentUpon>frmRecibos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRelatorio.resx">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmProgressBar.resx">
+      <DependentUpon>frmProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="Reports\rptFichaConferencia.rdlc" />
+    <Content Include="Reports\rptExtratoConsolidado.rdlc" />
+    <EmbeddedResource Include="Reports\rptRecibo.rdlc" />
+    <None Include="Properties\DataSources\Balanco.datasource" />
+    <None Include="Properties\DataSources\Cota.datasource" />
+    <None Include="Properties\DataSources\Endereco.datasource" />
+    <None Include="Properties\DataSources\Extrato.datasource" />
+    <None Include="Properties\DataSources\Movimento.datasource" />
+    <None Include="Properties\DataSources\Pessoa.datasource" />
+    <None Include="Properties\DataSources\Recibo.datasource" />
+    <None Include="Properties\DataSources\ReciboItem.datasource" />
+    <None Include="Properties\DataSources\Telefone.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
