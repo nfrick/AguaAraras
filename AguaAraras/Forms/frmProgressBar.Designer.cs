@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.labelEmailSendoEnviado = new System.Windows.Forms.Label();
+            this.labelProgressMessage = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -32,17 +32,17 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelEmailSendoEnviado
+            // labelProgressMessage
             // 
-            this.labelEmailSendoEnviado.AutoSize = true;
-            this.labelEmailSendoEnviado.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelEmailSendoEnviado.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmailSendoEnviado.Location = new System.Drawing.Point(4, 0);
-            this.labelEmailSendoEnviado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelEmailSendoEnviado.Name = "labelEmailSendoEnviado";
-            this.labelEmailSendoEnviado.Size = new System.Drawing.Size(320, 28);
-            this.labelEmailSendoEnviado.TabIndex = 0;
-            this.labelEmailSendoEnviado.Text = "xxx@email.com";
+            this.labelProgressMessage.AutoSize = true;
+            this.labelProgressMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelProgressMessage.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProgressMessage.Location = new System.Drawing.Point(4, 0);
+            this.labelProgressMessage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelProgressMessage.Name = "labelProgressMessage";
+            this.labelProgressMessage.Size = new System.Drawing.Size(320, 28);
+            this.labelProgressMessage.TabIndex = 0;
+            this.labelProgressMessage.Text = "xxx@email.com";
             // 
             // progressBar1
             // 
@@ -80,7 +80,7 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.labelEmailSendoEnviado, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelProgressMessage, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelProgresso, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(24, 25);
@@ -125,7 +125,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelEmailSendoEnviado;
+        private System.Windows.Forms.Label labelProgressMessage;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;

@@ -43,7 +43,7 @@ namespace AguaAraras {
         }
 
         private void UpdateLabel1(string label) {
-            labelEmailSendoEnviado.BeginInvoke( new Action(() => { labelEmailSendoEnviado.Text = label; } ));
+            labelProgressMessage.BeginInvoke( new Action(() => { labelProgressMessage.Text = label; } ));
         }
     }
 }

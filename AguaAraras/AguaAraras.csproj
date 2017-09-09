@@ -51,6 +51,9 @@
     <ApplicationIcon>Images\water_droplet_iconX.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.0\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -151,6 +154,7 @@
     <Compile Include="Classes\clsTelefone.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserFileAccessRights.cs" />
+    <None Include="Images\Excel-icon.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Reports\rptExtratoCronologico.rdlc" />
     <Content Include="Reports\rptExtratoCategorizado.rdlc" />
