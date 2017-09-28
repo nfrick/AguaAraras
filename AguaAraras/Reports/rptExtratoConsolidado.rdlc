@@ -53,10 +53,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.05624cm</Width>
+                  <Width>2.93852cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.80463cm</Width>
+                  <Width>2.67763cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -77,7 +77,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>12pt</FontSize>
                                     <Format>#,0.00</Format>
-                                    <Color>=iif(Fields!Valor.Value &gt; 0, "DarkBlue", "Red")</Color>
+                                    <Color>=iif(Sum(Fields!Valor.Value) &gt; 0, "White", "Red")</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -89,7 +89,7 @@
                               <Color>LightGrey</Color>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <BackgroundColor>Gray</BackgroundColor>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -110,6 +110,7 @@
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>12pt</FontSize>
                                     <Format>#,0.00</Format>
+                                    <Color>=iif(RunningValue(Fields!Valor.Value, Sum, "DataSetExtrato") &gt; 0, "White", "Red")</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -121,7 +122,8 @@
                               <Color>LightGrey</Color>
                               <Style>None</Style>
                             </Border>
-                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <BackgroundColor>Gray</BackgroundColor>
+                            <PaddingRight>4pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -192,6 +194,68 @@
                     </TablixCell>
                   </TablixCells>
                 </TablixRow>
+                <TablixRow>
+                  <Height>0.26133cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox26">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                    <Color>=iif(Fields!Valor.Value &gt; 0, "DarkBlue", "Red")</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox26</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox27">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Tahoma</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox27</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
               </TablixRows>
             </TablixBody>
             <TablixColumnHierarchy>
@@ -218,7 +282,7 @@
                       <TablixHeader>
                         <Size>2.36771cm</Size>
                         <CellContents>
-                          <Textbox Name="Data2">
+                          <Textbox Name="Data">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
@@ -229,20 +293,22 @@
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
                                       <FontSize>12pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
                                       <Format>MMMM' de 'yyyy</Format>
+                                      <Color>White</Color>
                                     </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Data1</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
                                 <Style>None</Style>
                               </Border>
-                              <BackgroundColor>WhiteSmoke</BackgroundColor>
+                              <BackgroundColor>Gray</BackgroundColor>
+                              <PaddingLeft>4pt</PaddingLeft>
                               <PaddingTop>2pt</PaddingTop>
                               <PaddingBottom>2pt</PaddingBottom>
                             </Style>
@@ -304,16 +370,52 @@
                           </TablixMembers>
                         </TablixMember>
                       </TablixMembers>
+                      <KeepTogether>true</KeepTogether>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>2.36771cm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox25">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value />
+                                    <Style>
+                                      <FontFamily>Tahoma</FontFamily>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style>
+                                  <TextAlign>Left</TextAlign>
+                                </Style>
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox25</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>None</Style>
+                              </Border>
+                              <PaddingLeft>10pt</PaddingLeft>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>Before</KeepWithGroup>
                     </TablixMember>
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSetExtrato</DataSetName>
-            <Top>0.07056cm</Top>
-            <Left>0.06359cm</Left>
-            <Height>1.10411cm</Height>
-            <Width>8.22858cm</Width>
+            <Top>0.21167cm</Top>
+            <Left>0.05292cm</Left>
+            <Height>1.36544cm</Height>
+            <Width>7.98386cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -322,10 +424,10 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.56897in</Height>
+        <Height>0.75424in</Height>
         <Style />
       </Body>
-      <Width>6.63408in</Width>
+      <Width>3.27341in</Width>
       <Page>
         <PageHeader>
           <Height>1.54781cm</Height>
@@ -523,7 +625,8 @@
         <RightMargin>1cm</RightMargin>
         <TopMargin>1cm</TopMargin>
         <BottomMargin>1cm</BottomMargin>
-        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Columns>2</Columns>
+        <ColumnSpacing>0.05cm</ColumnSpacing>
         <Style />
       </Page>
     </ReportSection>
