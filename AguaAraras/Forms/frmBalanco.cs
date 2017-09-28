@@ -72,10 +72,10 @@ namespace AguaAraras {
         }
 
         private void toolStripButtonExtrato_Click(object sender, EventArgs e) {
-            var extratoList = _extratos.OrderBy(t => t.Data).ThenBy(t => t.ID);
+            var extratoList = _extratos.OrderBy(t => t.Data).ThenBy(t => t.ID).ToList();
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
-            frm.SetReport(extratoList.ToList(), rpt, "DataSetExtrato");
+            frm.SetReport(extratoList, rpt, "DataSetExtrato");
         }
     }
 }

@@ -498,13 +498,13 @@ namespace AguaAraras {
             }
         }
 
-        public static List<BalanceItem> GetBalanceItems(DateTime Inicio) {
+        public static List<BalanceItem> GetBalanceItems(int ID) {
             try {
                 var items = new List<BalanceItem>();
 
                 using (var conn = GetConnectionMoneyBin()) {
                     var cmd = new SqlCommand("sp_BalanceItemsAgua", conn) {CommandType = CommandType.StoredProcedure};
-                    cmd.Parameters.Add(new SqlParameter("@Inicio", Inicio));
+                    cmd.Parameters.Add(new SqlParameter("@ID", ID));
                     var r = cmd.ExecuteReader();
                     while (r.Read())
                         items.Add(new BalanceItem(r));

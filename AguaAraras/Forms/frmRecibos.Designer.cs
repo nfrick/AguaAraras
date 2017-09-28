@@ -70,11 +70,11 @@
             this.numeroNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelPendente = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelRecebido = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cotaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumnPessoaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -214,7 +214,7 @@
             this.bindingNavigatorRecibos.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorRecibos.Name = "bindingNavigatorRecibos";
             this.bindingNavigatorRecibos.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorRecibos.Size = new System.Drawing.Size(429, 31);
+            this.bindingNavigatorRecibos.Size = new System.Drawing.Size(468, 31);
             this.bindingNavigatorRecibos.TabIndex = 0;
             this.bindingNavigatorRecibos.Text = "bindingNavigator1";
             // 
@@ -582,11 +582,11 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel3.Controls.Add(this.label6, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.labelPendente, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.label5, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label4, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.labelRecebido, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.label3, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelTotal, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(112, 370);
@@ -598,18 +598,18 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(370, 78);
             this.tableLayoutPanel3.TabIndex = 26;
             // 
-            // label6
+            // labelPendente
             // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(188, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 26);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "label6";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelPendente.AutoSize = true;
+            this.labelPendente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPendente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPendente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelPendente.Location = new System.Drawing.Point(188, 52);
+            this.labelPendente.Name = "labelPendente";
+            this.labelPendente.Size = new System.Drawing.Size(89, 26);
+            this.labelPendente.TabIndex = 5;
+            this.labelPendente.Text = "label6";
+            this.labelPendente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
@@ -624,18 +624,18 @@
             this.label5.Text = "Pendente:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
+            // labelRecebido
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Green;
-            this.label4.Location = new System.Drawing.Point(188, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 26);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelRecebido.AutoSize = true;
+            this.labelRecebido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelRecebido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRecebido.ForeColor = System.Drawing.Color.Green;
+            this.labelRecebido.Location = new System.Drawing.Point(188, 26);
+            this.labelRecebido.Name = "labelRecebido";
+            this.labelRecebido.Size = new System.Drawing.Size(89, 26);
+            this.labelRecebido.TabIndex = 3;
+            this.labelRecebido.Text = "label4";
+            this.labelRecebido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label3
             // 
@@ -650,18 +650,18 @@
             this.label3.Text = "Recebido:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label2
+            // labelTotal
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(188, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelTotal.AutoSize = true;
+            this.labelTotal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.ForeColor = System.Drawing.Color.Blue;
+            this.labelTotal.Location = new System.Drawing.Point(188, 0);
+            this.labelTotal.Name = "labelTotal";
+            this.labelTotal.Size = new System.Drawing.Size(89, 26);
+            this.labelTotal.TabIndex = 1;
+            this.labelTotal.Text = "label2";
+            this.labelTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
@@ -882,10 +882,10 @@
         private System.Windows.Forms.ToolStripMenuItem fichaConferênciaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selecionadasToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelPendente;
+        private System.Windows.Forms.Label labelRecebido;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnPessoaID;

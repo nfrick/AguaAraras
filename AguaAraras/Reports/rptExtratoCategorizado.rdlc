@@ -389,7 +389,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox30">
+                    <Textbox Name="Textbox4">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -406,7 +406,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox30</rd:DefaultName>
+                      <rd:DefaultName>Textbox4</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -541,14 +541,14 @@
                       <TablixHeader>
                         <Size>2.5cm</Size>
                         <CellContents>
-                          <Textbox Name="Data">
+                          <Textbox Name="Descricao1">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!Data.Value</Value>
+                                    <Value>=Fields!Descricao.Value</Value>
                                     <Style>
                                       <FontFamily>Tahoma</FontFamily>
                                       <Format>dd</Format>
@@ -560,7 +560,7 @@
                                 </Style>
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>Data</rd:DefaultName>
+                            <rd:DefaultName>Descricao1</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -568,6 +568,7 @@
                               </Border>
                             </Style>
                           </Textbox>
+                          <rd:Selected>true</rd:Selected>
                         </CellContents>
                       </TablixHeader>
                       <TablixMembers>

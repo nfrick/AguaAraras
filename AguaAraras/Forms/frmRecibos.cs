@@ -120,13 +120,13 @@ namespace AguaAraras {
         }
 
         private void SetTotals() {
-            label2.Text = Cotas.Sum(c => c.Valor).ToString("N2");
-            label4.Text = Cotas.Where(c => c.Data != null).Sum(c => c.Valor).ToString("N2");
-            label6.Text = Cotas.Where(c => c.Data == null).Sum(c => c.Valor).ToString("N2");
+            labelTotal.Text = Cotas.Sum(c => c.Valor).ToString("N2");
+            labelRecebido.Text = Cotas.Where(c => c.Data != null).Sum(c => c.Valor).ToString("N2");
+            labelPendente.Text = Cotas.Where(c => c.Data == null).Sum(c => c.Valor).ToString("N2");
         }
 
         private void toolStripButtonPagamentos_Click(object sender, EventArgs e) {
-            var itens = Database.GetBalanceItems(ReciboAtual.Emissao);
+            var itens = Database.GetBalanceItems(ReciboAtual.ID);
             var naoPagos = Cotas.Where(c => c.Data == null).ToList();
             var counter = 0;
             foreach (var np in naoPagos) {
