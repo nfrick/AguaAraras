@@ -9,10 +9,10 @@
               <Width>0.86019cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.56072cm</Width>
+              <Width>1.75639cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>8.34733cm</Width>
+              <Width>9.09297cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.34706cm</Width>
@@ -50,17 +50,24 @@
                       <rd:DefaultName>Data1</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
                         <BackgroundColor>Gray</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingLeft>4pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -85,9 +92,12 @@
                       <rd:DefaultName>Textbox6</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BackgroundColor>Gray</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -120,15 +130,17 @@
                       </Paragraphs>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <BackgroundColor>Gray</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -152,9 +164,15 @@
                       <rd:DefaultName>Textbox8</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
                         <BackgroundColor>Gray</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -194,9 +212,12 @@
                       <rd:DefaultName>Data</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
+                        <LeftBorder>
+                          <Style>Solid</Style>
+                        </LeftBorder>
                         <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
@@ -321,11 +342,15 @@
                       <rd:DefaultName>Saldo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
+                        <RightBorder>
+                          <Style>Solid</Style>
+                        </RightBorder>
                         <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>4pt</PaddingRight>
                         <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
@@ -334,11 +359,11 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.24017cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox4">
+                    <Textbox Name="Textbox36">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -356,13 +381,15 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <rd:DefaultName>Textbox36</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                     </Textbox>
@@ -370,7 +397,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox5">
+                    <Textbox Name="Textbox37">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -386,13 +413,15 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox37</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                     </Textbox>
@@ -400,7 +429,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox9">
+                    <Textbox Name="Textbox38">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -416,13 +445,15 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox38</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                     </Textbox>
@@ -430,7 +461,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox16">
+                    <Textbox Name="Textbox41">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -447,13 +478,15 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox16</rd:DefaultName>
+                      <rd:DefaultName>Textbox41</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                     </Textbox>
@@ -461,7 +494,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox12">
+                    <Textbox Name="Textbox42">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -478,14 +511,17 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox12</rd:DefaultName>
+                      <rd:DefaultName>Textbox42</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
+                          <Color>Gray</Color>
                           <Style>None</Style>
                         </Border>
-                        <BackgroundColor>=IIF(ROWNUMBER(NOTHING) MOD 2, "Transparent", "LightGrey")</BackgroundColor>
+                        <TopBorder>
+                          <Style>Solid</Style>
+                        </TopBorder>
                         <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingRight>4pt</PaddingRight>
                       </Style>
                     </Textbox>
                   </CellContents>
@@ -527,19 +563,22 @@
                       <Value>=Fields!Data.Value</Value>
                     </SortExpression>
                   </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
                 </TablixMember>
               </TablixMembers>
-            </TablixMember>
-            <TablixMember>
-              <KeepWithGroup>Before</KeepWithGroup>
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSetExtrato</DataSetName>
         <Top>0.07056cm</Top>
         <Left>0.06359cm</Left>
-        <Height>1.70824cm</Height>
-        <Width>16.6153cm</Width>
+        <Height>1.34841cm</Height>
+        <Width>16.55661cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -548,7 +587,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>0.70031in</Height>
+    <Height>0.67276in</Height>
     <Style />
   </Body>
   <Width>6.5665in</Width>
@@ -684,6 +723,8 @@
                   <Style>
                     <FontFamily>Tahoma</FontFamily>
                     <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <Color>White</Color>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -693,7 +734,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>0.37788cm</Top>
+          <Top>0.37787cm</Top>
           <Left>7.78056cm</Left>
           <Height>0.46499cm</Height>
           <Width>1.55869cm</Width>
@@ -701,10 +742,12 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <BackgroundColor>Black</BackgroundColor>
+            <VerticalAlign>Middle</VerticalAlign>
           </Style>
         </Textbox>
         <Line Name="Line2">
-          <Top>0.20149cm</Top>
+          <Top>0.20148cm</Top>
           <Left>0.05088cm</Left>
           <Height>0cm</Height>
           <Width>16.62802cm</Width>
