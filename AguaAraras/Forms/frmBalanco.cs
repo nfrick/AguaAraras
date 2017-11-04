@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
+using OfficeOpenXml.Style.XmlAccess;
 
 namespace AguaAraras {
     public partial class FrmBalanco : Form {
@@ -23,51 +25,36 @@ namespace AguaAraras {
 
         private void FrmBalanco_Load(object sender, EventArgs e) {
             _balancoAno = Database.BalancoGet("YEAR");
-            _sourceBalancoAno = new BindingSource {DataSource = _balancoAno};
+            _sourceBalancoAno = new BindingSource { DataSource = _balancoAno };
             bindingSourceBalancoAno.DataSource = _sourceBalancoAno;
 
             _balancoTrimestre = Database.BalancoGet("QUARTER");
-            _sourceBalancoTrimestre = new BindingSource {DataSource = _balancoTrimestre};
+            _sourceBalancoTrimestre = new BindingSource { DataSource = _balancoTrimestre };
             bindingSourceBalancoTrimestre.DataSource = _sourceBalancoTrimestre;
 
             _balancoMes = Database.BalancoGet("MONTH");
-            _sourceBalancoMes = new BindingSource {DataSource = _balancoMes};
+            _sourceBalancoMes = new BindingSource { DataSource = _balancoMes };
             bindingSourceBalancoMes.DataSource = _sourceBalancoMes;
 
             _extratos = Database.ExtratoGet();
-            _sourceExtratos = new BindingSource {DataSource = _extratos};
+            _sourceExtratos = new BindingSource { DataSource = _extratos };
             bindingSourceExtratos.DataSource = _sourceExtratos;
+
+            dgvAno.Tag = dgvExtrato.Tag = 3;
+            dgvMes.Tag = dgvTrimestre.Tag = 4;
+            foreach (var ctrl in Controls) {
+                if (!(ctrl is DataGridView)) continue;
+                var dgv = (DataGridView)ctrl;
+                for (var col = (int)dgv.Tag; col < dgv.Columns.Count; col++)
+                    dgv.Columns[col].DefaultCellStyle.Format = "N2";
+            }
         }
 
-        private void extratoDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!_extratos.Any() || _extratos.Count <= e.RowIndex)
-                return;
-            var extrato = _extratos[e.RowIndex];
-            if (extratoDataGridView.Columns[e.ColumnIndex].HeaderText == @"Valor" && extrato.Valor < 0)
-                e.CellStyle.ForeColor = Color.Red;
-        }
-
-        private void balancoMesDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!_balancoMes.Any() || _balancoMes.Count <= e.RowIndex)
-                return;
-            var balanco = _balancoMes[e.RowIndex];
-            if (balancoMesDataGridView.Columns[e.ColumnIndex].HeaderText == @"Saldo" && balanco.Saldo < 0)
-                e.CellStyle.ForeColor = Color.Red;
-        }
-
-        private void balancoTrimestreDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!_balancoTrimestre.Any() || _balancoTrimestre.Count <= e.RowIndex)
-                return;
-            var balanco = _balancoTrimestre[e.RowIndex];
-            if (balancoTrimestreDataGridView.Columns[e.ColumnIndex].HeaderText == @"Saldo" && balanco.Saldo < 0)
-                e.CellStyle.ForeColor = Color.Red;
-        }
-
-        private void balancoAnoDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!_balancoAno.Any() || _balancoAno.Count <= e.RowIndex)
-                return;
-            var balanco = _balancoAno[e.RowIndex];
-            if (balancoAnoDataGridView.Columns[e.ColumnIndex].HeaderText == "Saldo" && balanco.Saldo < 0)
+        private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            var dgv = (DataGridView)sender;
+            if (dgv.Rows.Count == 0) return;
+            if (e.ColumnIndex < (int)dgv.Tag) return;
+            if ((decimal)dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value < 0)
                 e.CellStyle.ForeColor = Color.Red;
         }
 

@@ -144,9 +144,9 @@ namespace AguaAraras {
 
         private void toolStripButtonColeta_Click(object sender, EventArgs e) {
             var data = DateTime.Now;
-            if (InputDate("Pagamento de Distribuição e coleta", "Data", ref data) == DialogResult.OK) {
-                Database.ColetaAdd(ReciboAtual.ID, data);
-            }
+            if (InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) return;
+            Database.ColetaAdd(ReciboAtual.ID, data);
+            toolStripButtonColeta.Enabled = false;
         }
 
         public static DialogResult InputDate(string title, string promptText, ref DateTime value) {

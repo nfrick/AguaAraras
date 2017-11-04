@@ -40,7 +40,6 @@
                                 <FontSize>12pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>MMMM' de 'yyyy</Format>
-                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -59,7 +58,7 @@
                         <LeftBorder>
                           <Style>Solid</Style>
                         </LeftBorder>
-                        <BackgroundColor>Gray</BackgroundColor>
+                        <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
                         <PaddingLeft>4pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -67,7 +66,6 @@
                       </Style>
                     </Textbox>
                     <ColSpan>2</ColSpan>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell />
@@ -98,7 +96,7 @@
                         <TopBorder>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BackgroundColor>Gray</BackgroundColor>
+                        <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -121,7 +119,7 @@
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontWeight>Bold</FontWeight>
                                 <Format>'R$' #,0.00</Format>
-                                <Color>=iif(Sum(Fields!Valor.Value) &gt; 0, "White", "Red")</Color>
+                                <Color>=iif(Sum(Fields!Valor.Value) &gt; 0, "Navy", "Maroon")</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -136,11 +134,12 @@
                         <TopBorder>
                           <Style>Solid</Style>
                         </TopBorder>
-                        <BackgroundColor>Gray</BackgroundColor>
+                        <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -173,7 +172,7 @@
                         <RightBorder>
                           <Style>Solid</Style>
                         </RightBorder>
-                        <BackgroundColor>Gray</BackgroundColor>
+                        <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>

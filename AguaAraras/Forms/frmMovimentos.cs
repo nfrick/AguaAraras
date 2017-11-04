@@ -15,64 +15,101 @@ namespace AguaAraras {
 
         public FrmMovimentos() {
             InitializeComponent();
-        }
 
-        private void frmMovimentos_Load(object sender, EventArgs e) {
-            LoadData();
+            toolStripComboBoxErros.ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            toolStripComboBoxErros.SelectedIndex = 0;
 
             var tipos = _movimentos.GroupBy(p => p.Tipo)
-                                    .Select(g => g.Key.ToString())
-                                    .OrderBy(x => x)
-                                    .ToArray();
+                .Select(g => g.Key.ToString())
+                .OrderBy(x => x)
+                .ToArray();
             dataGridViewComboBoxColumnTipo.Items.AddRange(tipos);
             toolStripComboBoxTipo.Items.Add("Todos");
             toolStripComboBoxTipo.Items.AddRange(tipos);
             toolStripComboBoxTipo.SelectedIndex = 0;
 
             var nomes = _movimentos.Where(p => p.Tipo == "cota")
-                                    .GroupBy(p => p.Nome)
-                                    .Select(g => g.Key.ToString())
-                                    .OrderBy(x => x)
-                                    .ToArray();
+                .GroupBy(p => p.Nome)
+                .Select(g => g.Key.ToString())
+                .OrderBy(x => x)
+                .ToArray();
             toolStripComboBoxNome.Items.Add("Todos");
             toolStripComboBoxNome.Items.AddRange(nomes);
             toolStripComboBoxNome.SelectedIndex = 0;
 
-            saveFileDialog1.DefaultExt = "xlsx";
-            saveFileDialog1.Filter = @"Excel Files|*.xlsx";
+            SFD.DefaultExt = "xlsx";
+            SFD.Filter = @"Excel Files|*.xlsx";
+        }
+
+        private void frmMovimentos_Load(object sender, EventArgs e) {
+            Width = movimentoBindingNavigator.Items.Cast<ToolStripItem>().Sum(i => i.Width + 2);
         }
 
         private void LoadData() {
-            _movimentos = Database.MovimentosGet();
+            var positivos = new[] { "cota", "receita" };
+            var source = new List<Movimento>();
+            switch (toolStripComboBoxErros.SelectedIndex) {
+                case 0:
+                    _movimentos = Database.MovimentosGet();
+                    _sourceMovimentos = new BindingSource { DataSource = _movimentos };
+                    bindingSourceMovimentos.DataSource = _sourceMovimentos;
+                    return;
+                case 1:
+                    source = Database.MovimentosGet().Where(m => positivos.Contains(m.Tipo) && m.Valor < 0).ToList();
+                    break;
+                case 2:
+                    source = Database.MovimentosGet().Where(m => !positivos.Contains(m.Tipo) && m.Valor > 0).ToList();
+                    break;
+                case 3:
+                    source = Database.MovimentosGet().Where(m => m.Tipo == "vergilio" && m.Historico.StartsWith("salário")).GroupBy(m => $"{m.Data:yyyy-MM}", m => m).Where(v => v.Count() != 1).SelectMany(v => v).ToList();
+                    break;
+                case 4:
+                    source = Database.MovimentosGet().Where(m => m.Tipo == "vergilio").GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v).ToList();
+                    break;
+                case 5:
+                    source = Database.MovimentosGet().Where(m => m.Tipo == "carlos").GroupBy(m => m.Recibo, m => m).Where(v => v.Count() != 1).SelectMany(v => v).ToList();
+                    break;
+                case 6:
+                    source = Database.MovimentosGet().Where(m => m.Tipo == "carlos").GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v).ToList();
+                    break;
+                default:
+                    break;
+            }
+            if (!source.Any()) {
+                MessageBox.Show("Nenhum registro com erro foi encontrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            _movimentos = new SortableBindingList<Movimento>();
+            foreach (var m in source)
+                _movimentos.Add(m);
             _sourceMovimentos = new BindingSource { DataSource = _movimentos };
             bindingSourceMovimentos.DataSource = _sourceMovimentos;
         }
 
-        private void movimentoDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+        private void dgvMovimentos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             if (!_movimentos.Any() || _movimentos.Count <= e.RowIndex)
                 return;
             var mov = _movimentos[e.RowIndex];
             if (mov.Updated)
                 e.CellStyle.BackColor = Color.Bisque;
-            if (movimentoDataGridView.Columns[e.ColumnIndex].HeaderText == @"Valor" && mov.Valor < 0)
+            if (dgvMovimentos.Columns[e.ColumnIndex].HeaderText == @"Valor" && mov.Valor < 0)
                 e.CellStyle.ForeColor = Color.Red;
 
         }
 
-        private void movimentoDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e) {
-            bool flag = _movimentos[e.RowIndex].Tipo == "cota";
-            movimentoDataGridView.Rows[e.RowIndex].ReadOnly = flag;
+        private void dgvMovimentos_RowEnter(object sender, DataGridViewCellEventArgs e) {
+            var flag = _movimentos[e.RowIndex].Tipo == "cota";
+            dgvMovimentos.Rows[e.RowIndex].ReadOnly = flag;
             bindingNavigatorDeleteItem.Enabled = !flag;
         }
 
-        private void movimentoDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            if (_movimentos[e.Row.Index].Tipo == "cota")
-                e.Cancel = true;
-            else
+        private void dgvMovimentos_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
+            e.Cancel = _movimentos[e.Row.Index].Tipo == "cota";
+            if (!e.Cancel)
                 _deleted.Add(_movimentos[e.Row.Index]);
         }
 
-        private void movimentoDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
+        private void dgvMovimentos_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
             if (e.RowIndex == -1) return;
             _movimentos[e.RowIndex].Updated = true;
             _sourceMovimentos.ResetBindings(false);
@@ -91,27 +128,17 @@ namespace AguaAraras {
             bindingSourceMovimentos.Filter = toolStripTextBoxHistorico.Text == string.Empty ? "" : $@"Historico = '{toolStripTextBoxHistorico.Text}'";
         }
 
-        private void bindingNavigatorSaveItem_Click(object sender, EventArgs e) {
-            var updated = _movimentos.Where(m => m.Updated).ToList();
-            if (!Database.MovimentosUpdate(updated, _deleted)) return;
-            foreach (var mov in updated)
-                mov.Updated = false;
-            _deleted.Clear();
-            bindingNavigatorSaveItem.Enabled = false;
-            bindingSourceMovimentos.ResetBindings(false);
-        }
-
         private void toolStripButtonVergilio_Click(object sender, EventArgs e) {
             Database.VergilioAdd();
             LoadData();
         }
 
         private void toolStripButtonExcel_Click(object sender, EventArgs e) {
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            if (SFD.ShowDialog() == DialogResult.Cancel)
                 return;
 
             var items = _movimentos.OriginalList;
-            var pck = new ExcelPackage(new FileInfo(saveFileDialog1.FileName));
+            var pck = new ExcelPackage(new FileInfo(SFD.FileName));
             var ws = pck.Workbook.Worksheets.Add("Movimentos");
             ws.View.ShowGridLines = false;
 
@@ -152,6 +179,20 @@ namespace AguaAraras {
             pck.Save();
 
             MessageBox.Show(@"Data exported.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void toolStripComboBoxErros_SelectedIndexChanged(object sender, EventArgs e) {
+            LoadData();
+        }
+
+        private void bindingNavigatorSaveItem_Click(object sender, EventArgs e) {
+            var updated = _movimentos.Where(m => m.Updated).ToList();
+            if (!Database.MovimentosUpdate(updated, _deleted)) return;
+            foreach (var mov in updated)
+                mov.Updated = false;
+            _deleted.Clear();
+            bindingNavigatorSaveItem.Enabled = false;
+            bindingSourceMovimentos.ResetBindings(false);
         }
     }
 }

@@ -31,21 +31,20 @@ namespace AguaAraras {
 
         private void CalcularMensalidade() {
             var mensalidade = Constante * numericUpDownSalario.Value;
-            label2.Text = $@"{mensalidade:C2}";
+            labelCalculado.Text = $@"{mensalidade:C2}";
             numericUpDownMensalidade.Value = (decimal)Math.Ceiling(mensalidade / 5) * 5;
             CalcularDetalhes();
         }
 
         private void CalcularDetalhes() {
-            decimal mensalidade;
-            mensalidade = radioButtonCalculado.Checked
+            var mensalidade = radioButtonCalculado.Checked
                 ? Constante * numericUpDownSalario.Value
                 : numericUpDownMensalidade.Value;
 
-            decimal arrecadacao = 12 * numericUpDownTomadas.Value * mensalidade;
-            decimal vergilio = 13 * numericUpDownSalario.Value;
-            decimal cobranca = 8 * mensalidade;
-            decimal reserva = arrecadacao - (vergilio + cobranca);
+            var arrecadacao = 12 * numericUpDownTomadas.Value * mensalidade;
+            var vergilio = 13 * numericUpDownSalario.Value;
+            var cobranca = 8 * mensalidade;
+            var reserva = arrecadacao - (vergilio + cobranca);
             labelTotalDesc.Text = $@"12 * {numericUpDownTomadas.Value} * {mensalidade:C2} =";
             labelTotalValor.Text = $@"{arrecadacao:C2}";
 

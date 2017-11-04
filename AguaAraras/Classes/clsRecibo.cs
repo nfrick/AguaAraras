@@ -27,6 +27,7 @@ namespace AguaAraras {
         public string Descricao { get => _descricao; set => SetField(ref _descricao, value); }
         public string Observacoes { get => _observacoes; set => SetField(ref _observacoes, value); }
         public int Ano => Emissao.Year;
+        public string AnoNumero => $"{Ano:0000}-{Numero:0}";
 
         public Recibo() {
             var hoje = DateTime.Now;

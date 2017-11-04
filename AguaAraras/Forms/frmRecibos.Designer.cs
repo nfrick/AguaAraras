@@ -36,7 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingNavigatorRecibos = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingSourceRecibos = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -78,6 +77,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cotaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumnPessoaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewTextBoxColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnData = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,8 +87,7 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bindingSourceCotas = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.bindingSourceRecibos = new System.Windows.Forms.BindingSource(this.components);
             cotaLabel = new System.Windows.Forms.Label();
             descricaoLabel = new System.Windows.Forms.Label();
             emissaoLabel = new System.Windows.Forms.Label();
@@ -97,18 +97,18 @@
             numeroLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorRecibos)).BeginInit();
             this.bindingNavigatorRecibos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotanumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mesesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cotaDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).BeginInit();
             this.SuspendLayout();
             // 
             // cotaLabel
@@ -214,7 +214,7 @@
             this.bindingNavigatorRecibos.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorRecibos.Name = "bindingNavigatorRecibos";
             this.bindingNavigatorRecibos.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorRecibos.Size = new System.Drawing.Size(468, 31);
+            this.bindingNavigatorRecibos.Size = new System.Drawing.Size(429, 31);
             this.bindingNavigatorRecibos.TabIndex = 0;
             this.bindingNavigatorRecibos.Text = "bindingNavigator1";
             // 
@@ -227,12 +227,6 @@
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(28, 28);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
-            // 
-            // bindingSourceRecibos
-            // 
-            this.bindingSourceRecibos.AllowNew = true;
-            this.bindingSourceRecibos.DataSource = typeof(AguaAraras.Recibo);
-            this.bindingSourceRecibos.PositionChanged += new System.EventHandler(this.bindingSourceRecibos_PositionChanged);
             // 
             // bindingNavigatorCountItem
             // 
@@ -716,6 +710,40 @@
             this.dataGridViewTextBoxColumnPessoaID.ReadOnly = true;
             this.dataGridViewTextBoxColumnPessoaID.Width = 30;
             // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel2);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1178, 457);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(1178, 488);
+            this.toolStripContainer1.TabIndex = 27;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.bindingNavigatorRecibos);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.cotaDataGridView, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 457F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 457);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
             // dataGridViewTextBoxColumnNome
             // 
             this.dataGridViewTextBoxColumnNome.DataPropertyName = "Nome";
@@ -774,39 +802,11 @@
             // 
             this.bindingSourceCotas.DataSource = typeof(AguaAraras.Cota);
             // 
-            // toolStripContainer1
+            // bindingSourceRecibos
             // 
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel2);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1178, 457);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1178, 488);
-            this.toolStripContainer1.TabIndex = 27;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.bindingNavigatorRecibos);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.cotaDataGridView, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 457F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 457);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.bindingSourceRecibos.AllowNew = true;
+            this.bindingSourceRecibos.DataSource = typeof(AguaAraras.Recibo);
+            this.bindingSourceRecibos.PositionChanged += new System.EventHandler(this.bindingSourceRecibos_PositionChanged);
             // 
             // frmRecibos
             // 
@@ -823,7 +823,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorRecibos)).EndInit();
             this.bindingNavigatorRecibos.ResumeLayout(false);
             this.bindingNavigatorRecibos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotanumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mesesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).EndInit();
@@ -832,13 +831,14 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cotaDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).EndInit();
             this.ResumeLayout(false);
 
         }

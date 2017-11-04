@@ -30,32 +30,28 @@ namespace AguaAraras {
             Pessoas = Database.PessoasGet();
             foreach (var p in Pessoas)
                 listBoxPessoas.Items.Add(p.Nome);
-            _sourcePessoas = new BindingSource {DataSource = Pessoas};
+            _sourcePessoas = new BindingSource { DataSource = Pessoas };
             bindingSourcePessoas.DataSource = _sourcePessoas;
 
             EnderecosAll = Database.EnderecosGet();
-            _sourceEnderecos = new BindingSource {DataSource = Enderecos};
+            _sourceEnderecos = new BindingSource { DataSource = Enderecos };
             bindingSourceEnderecos.DataSource = _sourceEnderecos;
 
             TelefonesAll = Database.TelefonesGet();
-            _sourceTelefones = new BindingSource {DataSource = TelefonesAll};
+            _sourceTelefones = new BindingSource { DataSource = TelefonesAll };
             bindingSourceTelefones.DataSource = _sourceTelefones;
 
-            //myCurrencyManager = (CurrencyManager)this.BindingContext[bindingSourcePessoas];
-            //myCurrencyManager.ItemChanged += new ItemChangedEventHandler(CurrencyManager_ItemChanged);
-            //bindingSourcePessoas.CurrentChanged += new EventHandler(CheckChanged);
-
-            var cobrancaTipos = new Dictionary<byte, string> {{0, "Não enviar"}, {1, "Impressa"}, {2, "E-Mail"}};
-            cobrancaComboBox.ValueMember = "Key";
-            cobrancaComboBox.DisplayMember = "Value";
+            Tuple<byte, string>[] cobrancaTipos = { Tuple.Create((byte)1, "Impressa"), Tuple.Create((byte)2, "E-Mail") };
+            cobrancaComboBox.ValueMember = "Item1";
+            cobrancaComboBox.DisplayMember = "Item2";
             cobrancaComboBox.DataSource = new BindingSource(cobrancaTipos, null);
+            
+            Tuple<byte, string>[] telefoneTipos =
+        { Tuple.Create((byte)1, "Residência"), Tuple.Create((byte)2, "Araras"), Tuple.Create((byte)3, "Trabalho"), Tuple.Create((byte)4, "Celular")};
 
-            var telefoneTipos =
-                new Dictionary<byte, string> {{1, "Residência"}, {2, "Araras"}, {3, "Trabalho"}, {4, "Celular"}};
-
-            var theColumn = (DataGridViewComboBoxColumn)this.dataGridViewTelefones.Columns["dataGridViewTextBoxColumnTipo"];
-            theColumn.ValueMember = "Key";
-            theColumn.DisplayMember = "Value";
+            var theColumn = (DataGridViewComboBoxColumn)this.dgvTelefones.Columns["dataGridViewTextBoxColumnTipo"];
+            theColumn.ValueMember = "Item1";
+            theColumn.DisplayMember = "Item2";
             theColumn.DataSource = new BindingSource(telefoneTipos, null);
 
             _loading = false;
@@ -72,11 +68,6 @@ namespace AguaAraras {
                 listBoxPessoas.SelectedIndex = bindingSourcePessoas.Position;
         }
 
-        //private void CurrencyManager_ItemChanged(object sender, System.Windows.Forms.ItemChangedEventArgs e) {
-        //    CurrencyManager myCurrencyManager = (CurrencyManager)sender;
-        //    MessageBox.Show("Item Changed " + myCurrencyManager.Position);
-        //}
-
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
             var pessoa = (Pessoa)bindingSourcePessoas.Current;
             var endUpdated = Enderecos.Where(end => end.Updated).ToList();
@@ -88,22 +79,19 @@ namespace AguaAraras {
                     if (EnderecosAll.All(endAll => endAll.ID != end.ID))
                         EnderecosAll.Add(end);
                 }
-                EnderecosDeleted.Clear(); // = EnderecosDeleted.Except(End_Deleted).ToList();
+                EnderecosDeleted.Clear();
 
                 foreach (var tel in telUpdated) {
                     tel.Updated = false;
                     if (TelefonesAll.All(telAll => telAll.ID != tel.ID))
                         TelefonesAll.Add(tel);
                 }
-                TelefonesDeleted.Clear(); // = TelefonesDeleted.Except(Tel_Deleted).ToList();
+                TelefonesDeleted.Clear();
             }
 
             listBoxPessoas.Items[listBoxPessoas.SelectedIndex] = pessoa.Nome;
             _sourceEnderecos.ResetBindings(false);
             _sourceTelefones.ResetBindings(false);
-            //RaiseUpdated();
-            //RaiseDeleted();
-
         }
 
         private void bindingSourcePessoas_CurrentChanged(object sender, EventArgs e) {
@@ -112,15 +100,17 @@ namespace AguaAraras {
         }
 
         private void SetChildren() {
-            int pessoaID = ((Pessoa)bindingSourcePessoas.Current).ID;
+            var pessoaID = ((Pessoa)bindingSourcePessoas.Current).ID;
 
             Enderecos?.Clear();
             Enderecos = EnderecosAll.Where(end => end.PessoaID == pessoaID).ToList();
             _sourceEnderecos.DataSource = Enderecos;
+            dgvEnderecos.Columns[0].Visible = false;
 
             Telefones?.Clear();
             Telefones = TelefonesAll.Where(tel => tel.PessoaID == pessoaID).ToList();
             _sourceTelefones.DataSource = Telefones;
+            dgvTelefones.Columns[0].Visible = false;
         }
 
         private void frmPessoas_FormClosing(object sender, FormClosingEventArgs e) {
@@ -190,7 +180,7 @@ namespace AguaAraras {
         }
 
         private void dataGridViewTelefones_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            int row = e.Row.Index;
+            var row = e.Row.Index;
             if (!Telefones[row].IsNew)
                 TelefonesDeleted.Add(Telefones[row]);
         }
