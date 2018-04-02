@@ -77,7 +77,7 @@ namespace AguaAraras {
         private string CreatePDF(List<ReciboItem> itens) {
             //string rptPath = ConfigurationManager.AppSettings["reportpath"].ToString() + @"{0}.rdlc";
             var x = AppDomain.CurrentDomain.BaseDirectory;
-            var rptPath = string.Join(@"\", x.Split('\\'), 0, x.Count(c => c == '\\') - 2) + @"\{0}.rdlc";
+            var rptPath = string.Join(@"\", x.Split('\\'), 0, x.Count(c => c == '\\') - 2) + @"\Reports\{0}.rdlc";
             string v_mimetype;
             string v_encoding;
             string v_filename_extension;

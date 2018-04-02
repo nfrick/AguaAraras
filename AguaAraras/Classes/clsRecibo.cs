@@ -41,11 +41,13 @@ namespace AguaAraras {
                 Cota = last.Cota;
             }
             Extra = false;
-            Emissao = DateTime.Now;
-            Vencimento = new DateTime(hoje.Year, 3 * (Numero - 1) + 2, 10);
+            Emissao = hoje;
+            var Ano = hoje.Year + (Numero == 1 ? 1 : 0);
+            Vencimento = new DateTime(Ano, 3 * (Numero - 1) + 2, 10);
             Meses = 3;
             Descricao =
-                $@"{CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(3 * (Numero - 1) + 1)}, {CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(3 * (Numero - 1) + 2)} e {CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(3 * (Numero - 1) + 3)} de {hoje.Year}";
+                $@"{CultureInfo.CurrentCulture.DateTimeFormat
+                .GetMonthName(3 * (Numero - 1) + 1)}, {CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(3 * (Numero - 1) + 2)} e {CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(3 * (Numero - 1) + 3)} de {Ano}";
             Observacoes = string.Empty;
         }
 

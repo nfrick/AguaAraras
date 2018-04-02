@@ -22,11 +22,13 @@ namespace AguaAraras {
             reportViewer1.RefreshReport();
         }
 
-        public void SetReport<T>(List<T> items, string reportName, string reportDataSet) {
+        public void SetReport<T>(List<T> items, 
+            string reportName, string reportDataSet, string displayName) {
             var reportEngine = reportViewer1.LocalReport;
             reportEngine.ReportPath = string.Format(_rptPath, reportName);
             reportEngine.DataSources.Clear();
             reportEngine.DataSources.Add(new ReportDataSource(reportDataSet, items));
+            reportEngine.DisplayName = displayName;
             this.Show();
         }
     }

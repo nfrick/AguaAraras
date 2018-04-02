@@ -62,7 +62,7 @@ namespace AguaAraras {
             var extratoList = _extratos.OrderBy(t => t.Data).ThenBy(t => t.ID).ToList();
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
-            frm.SetReport(extratoList, rpt, "DataSetExtrato");
+            frm.SetReport(extratoList, rpt, "DataSetExtrato", "Extrato");
         }
     }
 }

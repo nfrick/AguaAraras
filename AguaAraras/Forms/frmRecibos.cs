@@ -78,7 +78,7 @@ namespace AguaAraras {
         private void cobrancasImpressasToolStripMenuItem_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             frm.SetReport(Database.ReciboItensGet(ReciboAtual.ID).Where(i => i.Cobranca == 1).ToList(),
-                "rptCobranca", "DataSetReciboItens");
+                "rptCobranca", "DataSetReciboItens", "Cobranças");
         }
 
         private void cobrancasEMailToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -100,7 +100,7 @@ namespace AguaAraras {
             var selecionados =
             (from DataGridViewRow n in cotaDataGridView.SelectedRows
                 select itens[n.Index]).ToList();
-            frm.SetReport(selecionados, "rptCobranca", "DataSetReciboItens");
+            frm.SetReport(selecionados, "rptCobranca", "DataSetReciboItens", "Cobranças");
         }
 
         private void cotaDataGridView_SelectionChanged(object sender, EventArgs e) {
@@ -110,13 +110,13 @@ namespace AguaAraras {
         private void recibosToolStripMenuItem_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             frm.SetReport(Database.ReciboItensGet(ReciboAtual.ID).Where(i => i.GerarRecibo).ToList(),
-                "rptRecibo", "DataSetReciboItens");
+                "rptRecibo", "DataSetReciboItens", "Recibos");
         }
 
         private void fichaConferênciaToolStripMenuItem_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             frm.SetReport(Database.ReciboItensGet(ReciboAtual.ID).Where(i => i.Cobranca == 1).ToList(),
-                "rptFichaConferencia", "DataSetReciboItens");
+                "rptFichaConferencia", "DataSetReciboItens", "Ficha Conferência");
         }
 
         private void SetTotals() {

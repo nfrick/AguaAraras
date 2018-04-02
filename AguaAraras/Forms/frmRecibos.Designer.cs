@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bindingNavigatorRecibos = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingSourceRecibos = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -77,8 +78,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cotaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumnPessoaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewTextBoxColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnData = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,7 +86,8 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bindingSourceCotas = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSourceRecibos = new System.Windows.Forms.BindingSource(this.components);
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             cotaLabel = new System.Windows.Forms.Label();
             descricaoLabel = new System.Windows.Forms.Label();
             emissaoLabel = new System.Windows.Forms.Label();
@@ -97,27 +97,27 @@
             numeroLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorRecibos)).BeginInit();
             this.bindingNavigatorRecibos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotanumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mesesNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cotaDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).BeginInit();
             this.SuspendLayout();
             // 
             // cotaLabel
             // 
             cotaLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             cotaLabel.AutoSize = true;
-            cotaLabel.Location = new System.Drawing.Point(3, 121);
+            cotaLabel.Location = new System.Drawing.Point(3, 124);
             cotaLabel.Name = "cotaLabel";
-            cotaLabel.Size = new System.Drawing.Size(57, 28);
+            cotaLabel.Size = new System.Drawing.Size(45, 21);
             cotaLabel.TabIndex = 1;
             cotaLabel.Text = "Cota:";
             // 
@@ -125,9 +125,9 @@
             // 
             descricaoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             descricaoLabel.AutoSize = true;
-            descricaoLabel.Location = new System.Drawing.Point(3, 91);
+            descricaoLabel.Location = new System.Drawing.Point(3, 94);
             descricaoLabel.Name = "descricaoLabel";
-            descricaoLabel.Size = new System.Drawing.Size(100, 28);
+            descricaoLabel.Size = new System.Drawing.Size(80, 21);
             descricaoLabel.TabIndex = 3;
             descricaoLabel.Text = "Descrição:";
             // 
@@ -135,9 +135,9 @@
             // 
             emissaoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             emissaoLabel.AutoSize = true;
-            emissaoLabel.Location = new System.Drawing.Point(3, 151);
+            emissaoLabel.Location = new System.Drawing.Point(3, 154);
             emissaoLabel.Name = "emissaoLabel";
-            emissaoLabel.Size = new System.Drawing.Size(86, 28);
+            emissaoLabel.Size = new System.Drawing.Size(70, 21);
             emissaoLabel.TabIndex = 5;
             emissaoLabel.Text = "Emissão:";
             // 
@@ -145,9 +145,9 @@
             // 
             observacoesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             observacoesLabel.AutoSize = true;
-            observacoesLabel.Location = new System.Drawing.Point(3, 210);
+            observacoesLabel.Location = new System.Drawing.Point(3, 214);
             observacoesLabel.Name = "observacoesLabel";
-            observacoesLabel.Size = new System.Drawing.Size(93, 29);
+            observacoesLabel.Size = new System.Drawing.Size(102, 21);
             observacoesLabel.TabIndex = 17;
             observacoesLabel.Text = "Observações:";
             // 
@@ -155,9 +155,9 @@
             // 
             vencimentoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             vencimentoLabel.AutoSize = true;
-            vencimentoLabel.Location = new System.Drawing.Point(3, 180);
+            vencimentoLabel.Location = new System.Drawing.Point(3, 184);
             vencimentoLabel.Name = "vencimentoLabel";
-            vencimentoLabel.Size = new System.Drawing.Size(103, 30);
+            vencimentoLabel.Size = new System.Drawing.Size(95, 21);
             vencimentoLabel.TabIndex = 21;
             vencimentoLabel.Text = "Vencimento:";
             // 
@@ -165,9 +165,9 @@
             // 
             mesesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             mesesLabel.AutoSize = true;
-            mesesLabel.Location = new System.Drawing.Point(3, 61);
+            mesesLabel.Location = new System.Drawing.Point(3, 64);
             mesesLabel.Name = "mesesLabel";
-            mesesLabel.Size = new System.Drawing.Size(70, 28);
+            mesesLabel.Size = new System.Drawing.Size(57, 21);
             mesesLabel.TabIndex = 23;
             mesesLabel.Text = "Meses:";
             // 
@@ -175,9 +175,9 @@
             // 
             numeroLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             numeroLabel.AutoSize = true;
-            numeroLabel.Location = new System.Drawing.Point(3, 31);
+            numeroLabel.Location = new System.Drawing.Point(3, 34);
             numeroLabel.Name = "numeroLabel";
-            numeroLabel.Size = new System.Drawing.Size(88, 28);
+            numeroLabel.Size = new System.Drawing.Size(71, 21);
             numeroLabel.TabIndex = 24;
             numeroLabel.Text = "Número:";
             // 
@@ -214,7 +214,7 @@
             this.bindingNavigatorRecibos.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorRecibos.Name = "bindingNavigatorRecibos";
             this.bindingNavigatorRecibos.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorRecibos.Size = new System.Drawing.Size(429, 31);
+            this.bindingNavigatorRecibos.Size = new System.Drawing.Size(449, 31);
             this.bindingNavigatorRecibos.TabIndex = 0;
             this.bindingNavigatorRecibos.Text = "bindingNavigator1";
             // 
@@ -228,10 +228,16 @@
             this.bindingNavigatorAddNewItem.Text = "Add new";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
+            // bindingSourceRecibos
+            // 
+            this.bindingSourceRecibos.AllowNew = true;
+            this.bindingSourceRecibos.DataSource = typeof(AguaAraras.Recibo);
+            this.bindingSourceRecibos.PositionChanged += new System.EventHandler(this.bindingSourceRecibos_PositionChanged);
+            // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(45, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 28);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -329,7 +335,7 @@
             this.toolStripDropDownButtonImpressos.Image = global::AguaAraras.Properties.Resources.Places_document_multiple_icon;
             this.toolStripDropDownButtonImpressos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonImpressos.Name = "toolStripDropDownButtonImpressos";
-            this.toolStripDropDownButtonImpressos.Size = new System.Drawing.Size(38, 28);
+            this.toolStripDropDownButtonImpressos.Size = new System.Drawing.Size(37, 28);
             this.toolStripDropDownButtonImpressos.Text = "Impressos";
             // 
             // cobrançasToolStripMenuItem
@@ -339,14 +345,14 @@
             this.cobrancasEMailToolStripMenuItem,
             this.selecionadasToolStripMenuItem});
             this.cobrançasToolStripMenuItem.Name = "cobrançasToolStripMenuItem";
-            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cobrançasToolStripMenuItem.Text = "Cobranças";
             // 
             // cobrancasImpressasToolStripMenuItem
             // 
             this.cobrancasImpressasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Mimetypes_application_pdf_icon;
             this.cobrancasImpressasToolStripMenuItem.Name = "cobrancasImpressasToolStripMenuItem";
-            this.cobrancasImpressasToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.cobrancasImpressasToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
             this.cobrancasImpressasToolStripMenuItem.Text = "Impressas";
             this.cobrancasImpressasToolStripMenuItem.Click += new System.EventHandler(this.cobrancasImpressasToolStripMenuItem_Click);
             // 
@@ -354,7 +360,7 @@
             // 
             this.cobrancasEMailToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Apps_kmail_2_icon;
             this.cobrancasEMailToolStripMenuItem.Name = "cobrancasEMailToolStripMenuItem";
-            this.cobrancasEMailToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.cobrancasEMailToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
             this.cobrancasEMailToolStripMenuItem.Text = "E-Mail";
             this.cobrancasEMailToolStripMenuItem.Click += new System.EventHandler(this.cobrancasEMailToolStripMenuItem_Click);
             // 
@@ -362,21 +368,21 @@
             // 
             this.selecionadasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Actions_dialog_ok_icon;
             this.selecionadasToolStripMenuItem.Name = "selecionadasToolStripMenuItem";
-            this.selecionadasToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
+            this.selecionadasToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
             this.selecionadasToolStripMenuItem.Text = "Selecionadas";
             this.selecionadasToolStripMenuItem.Click += new System.EventHandler(this.selecionadasToolStripMenuItem_Click);
             // 
             // recibosToolStripMenuItem
             // 
             this.recibosToolStripMenuItem.Name = "recibosToolStripMenuItem";
-            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.recibosToolStripMenuItem.Text = "Recibos";
             this.recibosToolStripMenuItem.Click += new System.EventHandler(this.recibosToolStripMenuItem_Click);
             // 
             // fichaConferênciaToolStripMenuItem
             // 
             this.fichaConferênciaToolStripMenuItem.Name = "fichaConferênciaToolStripMenuItem";
-            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.fichaConferênciaToolStripMenuItem.Text = "Ficha conferência";
             this.fichaConferênciaToolStripMenuItem.Click += new System.EventHandler(this.fichaConferênciaToolStripMenuItem_Click);
             // 
@@ -411,7 +417,7 @@
             this.descricaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceRecibos, "Descricao", true));
             this.descricaoTextBox.Location = new System.Drawing.Point(112, 93);
             this.descricaoTextBox.Name = "descricaoTextBox";
-            this.descricaoTextBox.Size = new System.Drawing.Size(370, 34);
+            this.descricaoTextBox.Size = new System.Drawing.Size(370, 29);
             this.descricaoTextBox.TabIndex = 4;
             // 
             // emissaoDateTimePicker
@@ -420,7 +426,7 @@
             this.emissaoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.emissaoDateTimePicker.Location = new System.Drawing.Point(112, 153);
             this.emissaoDateTimePicker.Name = "emissaoDateTimePicker";
-            this.emissaoDateTimePicker.Size = new System.Drawing.Size(121, 34);
+            this.emissaoDateTimePicker.Size = new System.Drawing.Size(121, 29);
             this.emissaoDateTimePicker.TabIndex = 6;
             // 
             // extraCheckBox
@@ -464,7 +470,7 @@
             this.vencimentoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.vencimentoDateTimePicker.Location = new System.Drawing.Point(112, 183);
             this.vencimentoDateTimePicker.Name = "vencimentoDateTimePicker";
-            this.vencimentoDateTimePicker.Size = new System.Drawing.Size(121, 34);
+            this.vencimentoDateTimePicker.Size = new System.Drawing.Size(121, 29);
             this.vencimentoDateTimePicker.TabIndex = 22;
             // 
             // cotanumericUpDown
@@ -478,7 +484,7 @@
             0});
             this.cotanumericUpDown.Location = new System.Drawing.Point(112, 123);
             this.cotanumericUpDown.Name = "cotanumericUpDown";
-            this.cotanumericUpDown.Size = new System.Drawing.Size(72, 34);
+            this.cotanumericUpDown.Size = new System.Drawing.Size(72, 29);
             this.cotanumericUpDown.TabIndex = 23;
             this.cotanumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -497,7 +503,7 @@
             0,
             0});
             this.mesesNumericUpDown.Name = "mesesNumericUpDown";
-            this.mesesNumericUpDown.Size = new System.Drawing.Size(46, 34);
+            this.mesesNumericUpDown.Size = new System.Drawing.Size(46, 29);
             this.mesesNumericUpDown.TabIndex = 24;
             this.mesesNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mesesNumericUpDown.Value = new decimal(new int[] {
@@ -521,7 +527,7 @@
             0,
             0});
             this.numeroNumericUpDown.Name = "numeroNumericUpDown";
-            this.numeroNumericUpDown.Size = new System.Drawing.Size(46, 34);
+            this.numeroNumericUpDown.Size = new System.Drawing.Size(46, 29);
             this.numeroNumericUpDown.TabIndex = 25;
             this.numeroNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numeroNumericUpDown.Value = new decimal(new int[] {
@@ -710,40 +716,6 @@
             this.dataGridViewTextBoxColumnPessoaID.ReadOnly = true;
             this.dataGridViewTextBoxColumnPessoaID.Width = 30;
             // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel2);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1178, 457);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1178, 488);
-            this.toolStripContainer1.TabIndex = 27;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.bindingNavigatorRecibos);
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.cotaDataGridView, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 457F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 457);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
             // dataGridViewTextBoxColumnNome
             // 
             this.dataGridViewTextBoxColumnNome.DataPropertyName = "Nome";
@@ -802,15 +774,43 @@
             // 
             this.bindingSourceCotas.DataSource = typeof(AguaAraras.Cota);
             // 
-            // bindingSourceRecibos
+            // toolStripContainer1
             // 
-            this.bindingSourceRecibos.AllowNew = true;
-            this.bindingSourceRecibos.DataSource = typeof(AguaAraras.Recibo);
-            this.bindingSourceRecibos.PositionChanged += new System.EventHandler(this.bindingSourceRecibos_PositionChanged);
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.tableLayoutPanel2);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1178, 457);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(1178, 488);
+            this.toolStripContainer1.TabIndex = 27;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.bindingNavigatorRecibos);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.cotaDataGridView, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 457F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1178, 457);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // frmRecibos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 488);
             this.Controls.Add(this.toolStripContainer1);
@@ -823,6 +823,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorRecibos)).EndInit();
             this.bindingNavigatorRecibos.ResumeLayout(false);
             this.bindingNavigatorRecibos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cotanumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mesesNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).EndInit();
@@ -831,14 +832,13 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cotaDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCotas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceRecibos)).EndInit();
             this.ResumeLayout(false);
 
         }
