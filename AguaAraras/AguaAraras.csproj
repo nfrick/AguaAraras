@@ -90,6 +90,7 @@
     <Compile Include="Classes\clsEndereco.cs" />
     <Compile Include="Classes\clsExtenso.cs" />
     <Compile Include="Classes\clsExtrato.cs" />
+    <Compile Include="Classes\clsPromptDialog.cs" />
     <Compile Include="Forms\frmCalculadora.cs">
       <SubType>Form</SubType>
     </Compile>

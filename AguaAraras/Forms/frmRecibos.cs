@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using AguaAraras.Classes;
 
 namespace AguaAraras {
     public partial class frmRecibos : Form {
@@ -144,56 +145,9 @@ namespace AguaAraras {
 
         private void toolStripButtonColeta_Click(object sender, EventArgs e) {
             var data = DateTime.Now;
-            if (InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) return;
+            if (clsPromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) return;
             Database.ColetaAdd(ReciboAtual.ID, data);
             toolStripButtonColeta.Enabled = false;
         }
-
-        public static DialogResult InputDate(string title, string promptText, ref DateTime value) {
-            // http://www.csharp-examples.net/inputbox/
-            var font = new Font("Segoe UI", 12);
-            var form = new Form();
-            var label = new Label();
-            var dateBox = new DateTimePicker();
-            var buttonOk = new Button();
-            var buttonCancel = new Button();
-
-            form.Text = title;
-            label.Text = promptText;
-            dateBox.Value = value;
-            dateBox.Format = DateTimePickerFormat.Short;
-            dateBox.Font = font;
-
-            buttonOk.Text = @"OK";
-            buttonCancel.Text = @"Cancel";
-            buttonOk.DialogResult = DialogResult.OK;
-            buttonCancel.DialogResult = DialogResult.Cancel;
-
-            label.SetBounds(9, 12, 372, 13);
-            dateBox.SetBounds(12, 40, 372, 24);
-            buttonOk.SetBounds(228, 86, 75, 30);
-            buttonCancel.SetBounds(309, 86, 75, 30);
-
-            label.AutoSize = true;
-            dateBox.Anchor = dateBox.Anchor | AnchorStyles.Right;
-            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-            form.ClientSize = new Size(396, 120);
-            form.Font = font;
-            form.Controls.AddRange(new Control[] { label, dateBox, buttonOk, buttonCancel });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-            form.FormBorderStyle = FormBorderStyle.FixedDialog;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.MinimizeBox = false;
-            form.MaximizeBox = false;
-            form.AcceptButton = buttonOk;
-            form.CancelButton = buttonCancel;
-
-            var dialogResult = form.ShowDialog();
-            value = dateBox.Value;
-            return dialogResult;
-        }
-
     }
 }
