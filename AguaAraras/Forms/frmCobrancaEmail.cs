@@ -150,6 +150,12 @@ namespace AguaAraras {
                 fastRep.Replace("[Descricao]", descricao);
                 fastRep.Replace("[s]", itens.Count == 1 ? "" : "s");
                 fastRep.Replace("[Nome]", itens[0].Nome);
+                var valores = itens.Select(i => i.Valor.ToString("C")).Distinct().ToArray();
+                fastRep.Replace("[Valor]",
+                    valores.Length == 1 ? valores[0] :
+                        valores.Take(valores.Length - 1)
+                        .Aggregate((current, next) => $@"{current}, {next}") +
+                    " e " + valores.Last());
                 var mail = new MailMessage {
                     From = new MailAddress("ararasrede78@gmail.com", "Rede de 78"),
                     Subject = textBoxAssunto.Text.Trim(),
