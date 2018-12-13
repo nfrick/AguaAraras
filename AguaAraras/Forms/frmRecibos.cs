@@ -83,11 +83,7 @@ namespace AguaAraras {
         }
 
         private void cobrancasEMailToolStripMenuItem_Click(object sender, EventArgs e) {
-            var frm = new frmCobrancaEmail {
-                MdiParent = this.ParentForm,
-                Items = Database.ReciboItensGet(ReciboAtual.ID)
-                    .Where(i => i.Cobranca == 2).ToList()
-            };
+            var frm = new frmCobrancaEmail(this.ParentForm, ReciboAtual.ID);
             frm.Show();
         }
 

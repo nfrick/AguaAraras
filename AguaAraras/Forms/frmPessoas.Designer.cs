@@ -62,9 +62,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bindingSourcePessoas = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSourceEnderecos = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSourceTelefones = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,10 +72,12 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bindingSourceEnderecos = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnTipo = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bindingSourceTelefones = new System.Windows.Forms.BindingSource(this.components);
             eMailLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
             observacoesLabel = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePessoas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEnderecos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTelefones)).BeginInit();
@@ -99,7 +101,7 @@
             eMailLabel.AutoSize = true;
             eMailLabel.Location = new System.Drawing.Point(14, 85);
             eMailLabel.Name = "eMailLabel";
-            eMailLabel.Size = new System.Drawing.Size(72, 28);
+            eMailLabel.Size = new System.Drawing.Size(57, 21);
             eMailLabel.TabIndex = 5;
             eMailLabel.Text = "E-Mail:";
             // 
@@ -108,7 +110,7 @@
             nomeLabel.AutoSize = true;
             nomeLabel.Location = new System.Drawing.Point(14, 15);
             nomeLabel.Name = "nomeLabel";
-            nomeLabel.Size = new System.Drawing.Size(70, 28);
+            nomeLabel.Size = new System.Drawing.Size(56, 21);
             nomeLabel.TabIndex = 11;
             nomeLabel.Text = "Nome:";
             // 
@@ -117,7 +119,7 @@
             observacoesLabel.AutoSize = true;
             observacoesLabel.Location = new System.Drawing.Point(14, 174);
             observacoesLabel.Name = "observacoesLabel";
-            observacoesLabel.Size = new System.Drawing.Size(127, 28);
+            observacoesLabel.Size = new System.Drawing.Size(102, 21);
             observacoesLabel.TabIndex = 15;
             observacoesLabel.Text = "Observações:";
             // 
@@ -126,7 +128,7 @@
             cobrancaLabel.AutoSize = true;
             cobrancaLabel.Location = new System.Drawing.Point(14, 50);
             cobrancaLabel.Name = "cobrancaLabel";
-            cobrancaLabel.Size = new System.Drawing.Size(99, 28);
+            cobrancaLabel.Size = new System.Drawing.Size(79, 21);
             cobrancaLabel.TabIndex = 33;
             cobrancaLabel.Text = "Cobrança:";
             // 
@@ -135,14 +137,14 @@
             tomadasLabel.AutoSize = true;
             tomadasLabel.Location = new System.Drawing.Point(707, 15);
             tomadasLabel.Name = "tomadasLabel";
-            tomadasLabel.Size = new System.Drawing.Size(93, 28);
+            tomadasLabel.Size = new System.Drawing.Size(74, 21);
             tomadasLabel.TabIndex = 37;
             tomadasLabel.Text = "Tomadas:";
             // 
             // listBoxPessoas
             // 
             this.listBoxPessoas.FormattingEnabled = true;
-            this.listBoxPessoas.ItemHeight = 28;
+            this.listBoxPessoas.ItemHeight = 21;
             this.listBoxPessoas.Location = new System.Drawing.Point(13, 31);
             this.listBoxPessoas.Margin = new System.Windows.Forms.Padding(4);
             this.listBoxPessoas.Name = "listBoxPessoas";
@@ -153,7 +155,7 @@
             // atualizarCheckBox
             // 
             this.atualizarCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bindingSourcePessoas, "Atualizar", true));
-            this.atualizarCheckBox.Location = new System.Drawing.Point(518, 90);
+            this.atualizarCheckBox.Location = new System.Drawing.Point(556, 90);
             this.atualizarCheckBox.Name = "atualizarCheckBox";
             this.atualizarCheckBox.Size = new System.Drawing.Size(104, 24);
             this.atualizarCheckBox.TabIndex = 8;
@@ -169,13 +171,14 @@
             this.eMailTextBox.Name = "eMailTextBox";
             this.eMailTextBox.Size = new System.Drawing.Size(371, 86);
             this.eMailTextBox.TabIndex = 6;
+            this.eMailTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.eMailTextBox_Validating);
             // 
             // nomeTextBox
             // 
             this.nomeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePessoas, "Nome", true));
             this.nomeTextBox.Location = new System.Drawing.Point(171, 12);
             this.nomeTextBox.Name = "nomeTextBox";
-            this.nomeTextBox.Size = new System.Drawing.Size(164, 34);
+            this.nomeTextBox.Size = new System.Drawing.Size(164, 29);
             this.nomeTextBox.TabIndex = 1;
             // 
             // observacoesTextBox
@@ -184,13 +187,13 @@
             this.observacoesTextBox.Location = new System.Drawing.Point(125, 174);
             this.observacoesTextBox.Multiline = true;
             this.observacoesTextBox.Name = "observacoesTextBox";
-            this.observacoesTextBox.Size = new System.Drawing.Size(515, 103);
+            this.observacoesTextBox.Size = new System.Drawing.Size(553, 103);
             this.observacoesTextBox.TabIndex = 7;
             // 
             // reciboCheckBox
             // 
             this.reciboCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bindingSourcePessoas, "Recibo", true));
-            this.reciboCheckBox.Location = new System.Drawing.Point(518, 126);
+            this.reciboCheckBox.Location = new System.Drawing.Point(556, 126);
             this.reciboCheckBox.Name = "reciboCheckBox";
             this.reciboCheckBox.Size = new System.Drawing.Size(122, 24);
             this.reciboCheckBox.TabIndex = 9;
@@ -202,7 +205,7 @@
             this.sobrenomeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePessoas, "Sobrenome", true));
             this.sobrenomeTextBox.Location = new System.Drawing.Point(341, 12);
             this.sobrenomeTextBox.Name = "sobrenomeTextBox";
-            this.sobrenomeTextBox.Size = new System.Drawing.Size(299, 34);
+            this.sobrenomeTextBox.Size = new System.Drawing.Size(337, 29);
             this.sobrenomeTextBox.TabIndex = 2;
             // 
             // bindingNavigatorPessoas
@@ -240,7 +243,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(58, 28);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(47, 28);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -330,7 +333,7 @@
             this.cobrancaComboBox.FormattingEnabled = true;
             this.cobrancaComboBox.Location = new System.Drawing.Point(125, 47);
             this.cobrancaComboBox.Name = "cobrancaComboBox";
-            this.cobrancaComboBox.Size = new System.Drawing.Size(121, 36);
+            this.cobrancaComboBox.Size = new System.Drawing.Size(121, 29);
             this.cobrancaComboBox.TabIndex = 5;
             // 
             // tratamentoComboBox
@@ -343,7 +346,7 @@
             "x"});
             this.tratamentoComboBox.Location = new System.Drawing.Point(125, 12);
             this.tratamentoComboBox.Name = "tratamentoComboBox";
-            this.tratamentoComboBox.Size = new System.Drawing.Size(39, 36);
+            this.tratamentoComboBox.Size = new System.Drawing.Size(39, 29);
             this.tratamentoComboBox.TabIndex = 3;
             // 
             // iDLabel
@@ -475,10 +478,10 @@
             this.tabPage1.Controls.Add(eMailLabel);
             this.tabPage1.Controls.Add(this.cobrancaComboBox);
             this.tabPage1.Controls.Add(this.atualizarCheckBox);
-            this.tabPage1.Location = new System.Drawing.Point(4, 37);
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(906, 276);
+            this.tabPage1.Size = new System.Drawing.Size(906, 283);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dados";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -486,7 +489,7 @@
             // ativoCheckBox
             // 
             this.ativoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bindingSourcePessoas, "Ativo", true));
-            this.ativoCheckBox.Location = new System.Drawing.Point(518, 52);
+            this.ativoCheckBox.Location = new System.Drawing.Point(556, 52);
             this.ativoCheckBox.Name = "ativoCheckBox";
             this.ativoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.ativoCheckBox.TabIndex = 39;
@@ -497,29 +500,23 @@
             // 
             this.tabPage2.Controls.Add(this.dgvEnderecos);
             this.tabPage2.Controls.Add(this.dgvTelefones);
-            this.tabPage2.Location = new System.Drawing.Point(4, 37);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(906, 276);
+            this.tabPage2.Size = new System.Drawing.Size(906, 283);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereços e Telefones";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // bindingSourcePessoas
             // 
             this.bindingSourcePessoas.AllowNew = false;
             this.bindingSourcePessoas.DataSource = typeof(AguaAraras.Pessoa);
             this.bindingSourcePessoas.CurrentChanged += new System.EventHandler(this.bindingSourcePessoas_CurrentChanged);
-            // 
-            // bindingSourceEnderecos
-            // 
-            this.bindingSourceEnderecos.AllowNew = true;
-            this.bindingSourceEnderecos.DataSource = typeof(AguaAraras.Endereco);
-            // 
-            // bindingSourceTelefones
-            // 
-            this.bindingSourceTelefones.AllowNew = true;
-            this.bindingSourceTelefones.DataSource = typeof(AguaAraras.Telefone);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -578,6 +575,11 @@
             this.dataGridViewCheckBoxColumn2.ToolTipText = "Correspondência";
             this.dataGridViewCheckBoxColumn2.Width = 35;
             // 
+            // bindingSourceEnderecos
+            // 
+            this.bindingSourceEnderecos.AllowNew = true;
+            this.bindingSourceEnderecos.DataSource = typeof(AguaAraras.Endereco);
+            // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.DataPropertyName = "PessoaID";
@@ -609,9 +611,14 @@
             this.dataGridViewTextBoxColumnTipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewTextBoxColumnTipo.Width = 120;
             // 
+            // bindingSourceTelefones
+            // 
+            this.bindingSourceTelefones.AllowNew = true;
+            this.bindingSourceTelefones.DataSource = typeof(AguaAraras.Telefone);
+            // 
             // frmPessoas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1123, 468);
@@ -639,6 +646,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePessoas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEnderecos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTelefones)).EndInit();
@@ -695,5 +703,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

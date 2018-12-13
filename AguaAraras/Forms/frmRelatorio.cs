@@ -12,9 +12,11 @@ namespace AguaAraras {
 
         public frmRelatorio() {
             InitializeComponent();
-            var p = Application.StartupPath;
-            _rptPath = string.Join(@"\", p.Split('\\'), 0, p.Count(c => c == '\\') - 1) + @"\Reports\{0}.rdlc";
+            //var p = Application.StartupPath;
+            //_rptPath = string.Join(@"\", p.Split('\\'), 0, p.Count(c => c == '\\') - 1) + @"\Reports\{0}.rdlc";
             //_rptPath = ConfigurationManager.AppSettings["reportpath"].ToString() + @"{0}.rdlc";
+
+            _rptPath = AppDomain.CurrentDomain.BaseDirectory + @"Reports\{0}.rdlc";
 
         }
 

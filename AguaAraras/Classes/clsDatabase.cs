@@ -314,12 +314,13 @@ namespace AguaAraras {
             }
         }
 
-        public static List<ReciboItem> ReciboItensGet(int ReciboID) {
+        public static List<ReciboItem> ReciboItensGet(int ReciboID, bool GetOld = false) {
             try {
                 var itens = new List<ReciboItem>();
                 using (var conn = GetConnectionAgua()) {
                     var cmd = new SqlCommand("sp_ReciboItens", conn);
                     cmd.Parameters.Add(new SqlParameter("@ReciboID", ReciboID));
+                    cmd.Parameters.Add(new SqlParameter("@GetOld", GetOld));
                     cmd.CommandType = CommandType.StoredProcedure;
                     var r = cmd.ExecuteReader();
                     while (r.Read())

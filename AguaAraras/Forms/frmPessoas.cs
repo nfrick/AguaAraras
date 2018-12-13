@@ -41,11 +41,12 @@ namespace AguaAraras {
             _sourceTelefones = new BindingSource { DataSource = TelefonesAll };
             bindingSourceTelefones.DataSource = _sourceTelefones;
 
-            Tuple<byte, string>[] cobrancaTipos = { Tuple.Create((byte)1, "Impressa"), Tuple.Create((byte)2, "E-Mail") };
+            Tuple<byte, string>[] cobrancaTipos = { Tuple.Create((byte)0, "Nenhuma"),
+                Tuple.Create((byte)1, "Impressa"), Tuple.Create((byte)2, "E-Mail") };
             cobrancaComboBox.ValueMember = "Item1";
             cobrancaComboBox.DisplayMember = "Item2";
             cobrancaComboBox.DataSource = new BindingSource(cobrancaTipos, null);
-            
+
             Tuple<byte, string>[] telefoneTipos =
         { Tuple.Create((byte)1, "Residência"), Tuple.Create((byte)2, "Araras"), Tuple.Create((byte)3, "Trabalho"), Tuple.Create((byte)4, "Celular")};
 
@@ -187,6 +188,29 @@ namespace AguaAraras {
 
         private void dataGridViewTelefones_DataError(object sender, DataGridViewDataErrorEventArgs e) {
             MessageBox.Show($@"Telefone: Data error in row {e.RowIndex} column {e.ColumnIndex}");
+        }
+
+        private void eMailTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            var arr = eMailTextBox.Text.Replace(Environment.NewLine, "#").Split('#')
+                .Where(i => !string.IsNullOrEmpty(i));
+            e.Cancel = arr.Any(i => !IsValidEmail(i));
+            if (e.Cancel) {
+                errorProvider1.SetError(eMailTextBox, "E-mail inválido!");
+            }
+            else {
+                errorProvider1.Clear();
+            }
+            eMailTextBox.Text = string.Join(Environment.NewLine, arr);
+        }
+
+        private static bool IsValidEmail(string email) {
+            try {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch {
+                return false;
+            }
         }
     }
 }

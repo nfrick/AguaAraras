@@ -39,10 +39,11 @@ namespace AguaAraras {
         public string EnderecoNumero { get; set; }
         public byte Cobranca { get; set; }
         public bool GerarRecibo { get; set; }
-        public string DepositoIdentificado => $@"Depósito identificado: {Valor + ((decimal) PessoaID) / 100:C}";
+        public string DepositoIdentificado => $@"Depósito identificado: {Valor + ((decimal)PessoaID) / 100:C}";
         public override string ToString() {
             return $@"{Nome} - {ReciboNumeroAno}";
         }
+        public string PdfFile { get; set; }
 
         public ReciboItem(SqlDataReader r) {
             ReciboID = (int)r["ReciboID"];

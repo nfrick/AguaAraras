@@ -432,7 +432,6 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox21</rd:DefaultName>
-        <Top>0cm</Top>
         <Left>14.42176cm</Left>
         <Height>0.78929cm</Height>
         <Width>3.96947cm</Width>
@@ -465,9 +464,9 @@
         </Paragraphs>
         <rd:DefaultName>Descricao</rd:DefaultName>
         <Top>0.78929cm</Top>
-        <Left>11.50342cm</Left>
+        <Left>8.66709cm</Left>
         <Height>0.6cm</Height>
-        <Width>6.88781cm</Width>
+        <Width>9.72414cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -493,48 +492,16 @@
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Vencimento</rd:DefaultName>
         <Top>0.78929cm</Top>
-        <Left>4.97888cm</Left>
+        <Left>0.31163cm</Left>
         <Height>0.6cm</Height>
         <Width>6.12479cm</Width>
         <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Textbox>
-      <Textbox Name="Emissao">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>="Emissão: " + Format(First(Fields!Emissao.Value, "DataSetReciboItens"), "dd MMM yyyy")</Value>
-                <Style>
-                  <FontStyle>Italic</FontStyle>
-                  <FontSize>11pt</FontSize>
-                  <Format>D</Format>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Emissao</rd:DefaultName>
-        <Top>0.78929cm</Top>
-        <Left>0.30693cm</Left>
-        <Height>0.6cm</Height>
-        <Width>4.25948cm</Width>
-        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -546,7 +513,7 @@
         <Left>0.30693cm</Left>
         <Height>0cm</Height>
         <Width>18.0843cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>

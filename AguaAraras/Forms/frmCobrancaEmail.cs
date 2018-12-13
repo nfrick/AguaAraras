@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using Rhetos.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,181 +8,83 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
-using Rhetos.Utilities;
-using GCAWeb.Utils;
 
 namespace AguaAraras {
     public partial class frmCobrancaEmail : Form {
-        public List<ReciboItem> Items { get; set; }
-        private string _textoOriginal;
         private readonly string _desktopFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        private readonly string _exeFolder = Application.StartupPath;
-        public frmCobrancaEmail() {
+        private readonly string _rptPath =
+            AppDomain.CurrentDomain.BaseDirectory + @"Reports\rptCobrancaAttachment.rdlc";
+        private readonly string _bodyTextPath = AppDomain.CurrentDomain.BaseDirectory + @"\Body.txt";
+        private readonly int _ReciboID;
+
+        private ReciboItem[] _Cobrancas;
+        private string _textoOriginal;
+
+        public frmCobrancaEmail(Form parent, int ReciboID) {
+            MdiParent = parent;
+            _ReciboID = ReciboID;
             InitializeComponent();
         }
 
+        private void GetData() {
+            _Cobrancas = Database.ReciboItensGet(_ReciboID, checkBoxIncluirCobrancasAnteriores.Checked)
+                .Where(i => i.Cobranca == 2).OrderBy(i=>i.ToString()).ToArray();
+            listBoxNomes.Items.Clear();
+            listBoxNomes.Items.AddRange(_Cobrancas);
+        }
+
         private void frmCobrancaEmail_Load(object sender, EventArgs e) {
-            listBoxNomes.Items.AddRange(Items.ToArray());
+            GetData();
             labelFolder.Text = _desktopFolder;
-            textBoxAssunto.Text = $@"Água Araras {Items[0].ReciboNumeroAno}";
-            _textoOriginal = File.ReadAllText(_exeFolder + @"\Body.txt");
-            textBoxBody.Text = _textoOriginal;
+            textBoxAssunto.Text = $@"Água Araras {_Cobrancas[0].ReciboNumeroAno}";
+
+            if (File.Exists(_bodyTextPath)) {
+                _textoOriginal = File.ReadAllText(_bodyTextPath);
+                textBoxBody.Text = _textoOriginal;
+            }
+
+            if (File.Exists(_rptPath)) return;
+
+            MessageBox.Show($@"Arquivo {_rptPath} não encontrado.");
+            buttonGerar.Enabled = false;
         }
 
         private void buttonGerar_Click(object sender, EventArgs e) {
-            var progressDialog = new frmProgressBar();
-            var itemsToSend = radioButtonTodos.Checked ?
-                Items :
-                listBoxNomes.SelectedItems.Cast<ReciboItem>().ToList();
+            var itemsToSend = radioButtonTodos.Checked
+                ? _Cobrancas
+                : listBoxNomes.SelectedItems.Cast<ReciboItem>().ToArray();
 
-            var backgroundThread = new Thread(
-                () => {
-                    var files = new List<string>();
-                    char[] sep = { '#' };
-                    var eMails =
-                     (from p in itemsToSend
-                      group p by p.EMail into g
-                      select new {
-                          KeyEMail = g.Key.Replace("\r\n", "#").Split(sep)[0],
-                          AllEMails = g.Key
-                      }).ToArray();
-                    progressDialog.Maximum = eMails.Count();
+            var ItemsByEMail = from p in itemsToSend
+                               group p by p.EMail
+                into g
+                               select new EMailDeCobranca { EMail = g.Key, Cobrancas = g.ToList() };
 
-                    foreach (var email in eMails) {
-                        progressDialog.UpdateProgress(email.KeyEMail);
-                        files.Add(CreatePDF(itemsToSend.Where(i => i.EMail == email.AllEMails).ToList()));
+            foreach (var email in ItemsByEMail) {
+                email.CreatePDF(labelFolder.Text, _rptPath);
+                if (radioButtonSalvar.Checked) continue;
+                email.Send(textBoxAssunto.Text, textBoxBody.Text);
+            }
+            MessageBox.Show("Cobranças geradas.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (!radioButtonEnviarDeletar.Checked) {
+                return;
+            }
+
+            foreach (var email in ItemsByEMail) {
+                var notDeleted = true;
+                for (var i = 0; i < 10 && notDeleted; i++) {
+                    try {
+                        File.Delete(email.PdfName);
+                        notDeleted = false;
                     }
-                    progressDialog.BeginInvoke(new Action(() => progressDialog.Close()));
-                    if (!radioButtonEnviarDeletar.Checked) return;
-                    foreach (var file in files) {
-                        var notDeleted = true;
-                        for (var i = 0; i < 10 && notDeleted; i++) {
-                            try {
-                                File.Delete(file);
-                                notDeleted = false;
-                            }
-                            catch (Exception) {
-                                Thread.Sleep(2000);
-                            }
-                            if (!notDeleted)
-                                MessageBox.Show($@"Arquivo {file} não pode ser deletado.", @"Cobranças",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
+                    catch (Exception) {
+                        Thread.Sleep(2000);
+                    }
+                    if (!notDeleted) {
+                        MessageBox.Show($@"Arquivo {email.PdfName} não pode ser deletado.", @"Cobranças",
+                            MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-            );
-            backgroundThread.Start();
-            progressDialog.ShowDialog();
-        }
-
-        private string CreatePDF(List<ReciboItem> itens) {
-            //string rptPath = ConfigurationManager.AppSettings["reportpath"].ToString() + @"{0}.rdlc";
-            var x = AppDomain.CurrentDomain.BaseDirectory;
-            var rptPath = string.Join(@"\", x.Split('\\'), 0, x.Count(c => c == '\\') - 2) + @"\Reports\{0}.rdlc";
-            string v_mimetype;
-            string v_encoding;
-            string v_filename_extension;
-            string[] v_streamids;
-            Microsoft.Reporting.WinForms.Warning[] warnings;
-
-            var nomes = itens.Select(i => i.Nome).Distinct().ToArray();
-            var filename = new StringBuilder(labelFolder.Text + @"\Cobrança" + (nomes.Count() == 1 ? @"" : @"s") + " - ");
-
-            if (nomes.Length == 1) {
-                filename.AppendFormat($@"{nomes[0]} - ");
-                if (itens.Count == 1)
-                    filename.AppendFormat($"{itens[0].ReciboNumeroAno}.pdf");
-                else {
-                    var recibos = itens.Select(i => i.ReciboNumeroAno).ToArray();
-                    filename.Append(
-                            recibos.Take(recibos.Length - 1)
-                                .Aggregate((current, next) => $@"{current}, {next}"))
-                                .Append(" e ").Append(recibos.Last()).Append(".pdf");
-                }
-            }
-            else {
-                var recibos = itens.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
-                if (recibos.Length == 1) {
-                    filename.Append(nomes.Take(nomes.Length - 1)
-                                        .Aggregate((current, next) => $@"{current}, {next}") +
-                                        " e " + nomes.Last()).Append(" ")
-                        .Append(itens[0].ReciboNumeroAno).Append(".pdf");
-                }
-                else {
-                    recibos = itens.Select(i => $"{i.Nome} {i.ReciboNumeroAno}").ToArray();
-                    filename.Append(
-                            recibos.Take(recibos.Length - 1)
-                                .Aggregate((current, next) => $@"{current}, {next}"))
-                        .Append(" e ").Append(recibos.Last()).Append(".pdf");
-
-                }
-            }
-
-            var reportViewer1 = new ReportViewer();
-            var reportEngine = reportViewer1.LocalReport;
-            reportEngine.ReportPath = string.Format(rptPath, "rptCobranca");
-
-            reportEngine.DataSources.Clear();
-            reportEngine.DataSources.Add(new ReportDataSource("DataSetReciboItens", itens));
-            byte[] byteViewer = reportViewer1.LocalReport.Render("PDF", null, out v_mimetype, out v_encoding, out v_filename_extension, out v_streamids, out warnings);
-
-            var newFile = new FileStream(filename.ToString(), FileMode.Create);
-            newFile.Write(byteViewer, 0, byteViewer.Length);
-            newFile.Close();
-            if (radioButtonEnviar.Checked || radioButtonEnviarDeletar.Checked)
-                SendMail(itens, filename.ToString());
-            return filename.ToString();
-        }
-
-        private void SendMail(IReadOnlyList<ReciboItem> itens, string filename) {
-            try {
-                char[] sep = { '#' };
-                var eMails = itens[0].EMail.Replace("\r\n", "#").Split(sep);
-                var recibos = itens.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
-                var descricao = recibos.Length == 1 ? "ao trimestre " + recibos[0] :
-                                "aos trimestres " + recibos.Take(recibos.Length - 1)
-                                .Aggregate((current, next) => $@"{current}, {next}") +
-                                " e " + recibos.Last();
-                // https://www.codeproject.com/Articles/298519/Fast-Token-Replacement-in-Csharp
-                var fastRep = new FastReplacer("[", "]");
-                fastRep.Append(textBoxBody.Text);
-                fastRep.Replace("[Saudacao]", DateTime.Now.Hour < 12 ? "Bom dia" :
-                            (DateTime.Now.Hour < 18 ? "Boa tarde" : "Boa noite"));
-                fastRep.Replace("[Descricao]", descricao);
-                fastRep.Replace("[s]", itens.Count == 1 ? "" : "s");
-                fastRep.Replace("[Nome]", itens[0].Nome);
-                var valores = itens.Select(i => i.Valor.ToString("C")).Distinct().ToArray();
-                fastRep.Replace("[Valor]",
-                    valores.Length == 1 ? valores[0] :
-                        valores.Take(valores.Length - 1)
-                        .Aggregate((current, next) => $@"{current}, {next}") +
-                    " e " + valores.Last());
-                var mail = new MailMessage {
-                    From = new MailAddress("ararasrede78@gmail.com", "Rede de 78"),
-                    Subject = textBoxAssunto.Text.Trim(),
-                    Body = fastRep.ToString(),
-                    IsBodyHtml = false
-                };
-                //mail.To.Add("nfrick@gmail.com");
-                foreach (var email in eMails)
-                    mail.To.Add(email);
-
-                mail.Attachments.Add(new Attachment(filename));
-
-                var smtp = new SmtpClient("smtp.gmail.com") {
-                    Port = 587,
-                    UseDefaultCredentials = true,
-                    Credentials = new System.Net.NetworkCredential("ararasrede78@gmail.com", "qmlyswxmpfvlvwta"),
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Timeout = 20000
-                };
-                smtp.Send(mail);
-            }
-            catch (Exception ex) {
-                MessageBox.Show(ex.Message);
-                throw;
             }
         }
 
@@ -191,16 +95,149 @@ namespace AguaAraras {
 
         private void buttonFolder_Click(object sender, EventArgs e) {
             folderBrowserDialog1.Description = @"Salvar arquivos em:";
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
                 labelFolder.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
 
         private void frmCobrancaEmail_FormClosing(object sender, FormClosingEventArgs e) {
-            if (textBoxBody.Text.Equals(_textoOriginal)) return;
-            switch (MessageBox.Show(@"Texto base foi alterado. Salvar?", this.Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
-                case DialogResult.Yes: File.WriteAllText(_exeFolder + @"\Body.txt", textBoxBody.Text); break;
+            if (textBoxBody.Text.Equals(_textoOriginal)) {
+                return;
+            }
+
+            switch (MessageBox.Show(@"Texto base foi alterado. Salvar?", this.Text, MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question)) {
+                case DialogResult.Yes:
+                    File.WriteAllText(_bodyTextPath, textBoxBody.Text);
+                    break;
                 case DialogResult.No: break;
-                case DialogResult.Cancel: e.Cancel = true; break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
+        }
+
+        private void textBoxAssunto_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            textBoxAssunto.Text = textBoxAssunto.Text.Trim();
+        }
+
+        private void checkBoxIncluirCobrancasAnteriores_CheckedChanged(object sender, EventArgs e) {
+            GetData();
+        }
+    }
+
+    public class EMailDeCobranca {
+        public string EMail { get; set; }
+        public string PdfName { get; set; }
+        public List<ReciboItem> Cobrancas { get; set; }
+        public int Count => Cobrancas.Count;
+        // public string[] EMailArray => EMail.Replace("\r\n", "#").Split('#');
+        public string EMailCSV => EMail.Replace("\r\n", ",");
+        public string[] Recibos => Cobrancas.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
+        public string Descricao => Recibos.Length == 1
+            ? "ao trimestre " + Recibos[0]
+            : "aos trimestres " + Recibos.Take(Recibos.Length - 1)
+                  .Aggregate((current, next) => $@"{current}, {next}") +
+              " e " + Recibos.Last();
+
+        public string[] Valores => Cobrancas.Select(i => i.Valor.ToString("C")).Distinct().ToArray();
+        public string ValoresExtenso => Valores.Length == 1
+        ? Valores[0]
+        : Valores.Take(Valores.Length - 1)
+        .Aggregate((current, next) => $@"{current}, {next}") +
+        " e " + Valores.Last();
+
+
+        private void SetPDFName(string tmpPath) {
+            var nomes = Cobrancas.Select(i => i.Nome).Distinct().ToArray();
+            var filename =
+                new StringBuilder(tmpPath + @"\Cobrança" + (nomes.Count() == 1 ? @"" : @"s") + " - ");
+
+            if (nomes.Length == 1) {
+                filename.AppendFormat($@"{nomes[0]} - ");
+                if (Cobrancas.Count == 1) {
+                    filename.AppendFormat($"{Cobrancas[0].ReciboNumeroAno}.pdf");
+                }
+                else {
+                    var numeros = Cobrancas.Select(i => i.ReciboNumeroAno).ToArray();
+                    filename.Append(
+                            numeros.Take(numeros.Length - 1)
+                                .Aggregate((current, next) => $@"{current}, {next}"))
+                        .Append(" e ").Append(numeros.Last()).Append(".pdf");
+                }
+            }
+            else {
+                var numeros = Cobrancas.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
+                if (numeros.Length == 1) {
+                    filename.Append(nomes.Take(nomes.Length - 1)
+                                        .Aggregate((current, next) => $@"{current}, {next}") +
+                                    " e " + nomes.Last()).Append(" ")
+                        .Append(Cobrancas[0].ReciboNumeroAno).Append(".pdf");
+                }
+                else {
+                    numeros = Cobrancas.Select(i => $"{i.Nome} {i.ReciboNumeroAno}").ToArray();
+                    filename.Append(
+                            numeros.Take(numeros.Length - 1)
+                                .Aggregate((current, next) => $@"{current}, {next}"))
+                        .Append(" e ").Append(numeros.Last()).Append(".pdf");
+                }
+            }
+            PdfName = filename.ToString();
+        }
+
+        public void CreatePDF(string tmpPath, string rptPath) {
+            SetPDFName(tmpPath);
+
+            var rptViewer = new ReportViewer();
+            var reportEngine = rptViewer.LocalReport;
+            reportEngine.ReportPath = rptPath;
+
+            reportEngine.DataSources.Clear();
+            reportEngine.DataSources.Add(new ReportDataSource("DataSetReciboItens", Cobrancas));
+            var byteViewer = rptViewer.LocalReport.Render("PDF", null, out string v_mimetype, out string v_encoding,
+                out string v_filename_extension, out string[] v_streamids, out Warning[] warnings);
+
+            var newFile = new FileStream(PdfName, FileMode.Create);
+            newFile.Write(byteViewer, 0, byteViewer.Length);
+            newFile.Close();
+        }
+
+        public bool Send(string subject, string bodyText) {
+            try {
+                // https://www.codeproject.com/Articles/298519/Fast-Token-Replacement-in-Csharp
+                var fastRep = new FastReplacer("[", "]");
+                fastRep.Append(bodyText);
+                fastRep.Replace("[Saudacao]",
+                    DateTime.Now.Hour < 12 ? "Bom dia" : (DateTime.Now.Hour < 18 ? "Boa tarde" : "Boa noite"));
+                fastRep.Replace("[Descricao]", Descricao);
+                fastRep.Replace("[s]", Count == 1 ? "" : "s");
+                fastRep.Replace("[Nome]", Cobrancas.First().Nome);
+                fastRep.Replace("[Valor]", ValoresExtenso);
+
+                var mail = new MailMessage {
+                    From = new MailAddress("ararasrede78@gmail.com", "Rede de 78"),
+                    Subject = subject,
+                    Body = fastRep.ToString(),
+                    IsBodyHtml = false
+                };
+                //mail.To.Add("nfrick@gmail.com");
+                mail.To.Add(EMailCSV);
+
+                mail.Attachments.Add(new Attachment(PdfName));
+
+                var smtp = new SmtpClient("smtp.gmail.com") {
+                    Port = 587,
+                    UseDefaultCredentials = true,
+                    Credentials = new System.Net.NetworkCredential("ararasrede78@gmail.com", "qmlyswxmpfvlvwta"),
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Timeout = 20000
+                };
+                smtp.Send(mail);
+                return true;
+            }
+            catch (Exception) {
+                return false;
             }
         }
     }
