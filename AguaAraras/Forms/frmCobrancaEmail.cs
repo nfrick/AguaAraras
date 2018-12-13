@@ -28,7 +28,7 @@ namespace AguaAraras {
 
         private void GetData() {
             _Cobrancas = Database.ReciboItensGet(_ReciboID, checkBoxIncluirCobrancasAnteriores.Checked)
-                .Where(i => i.Cobranca == 2).OrderBy(i=>i.ToString()).ToArray();
+                .Where(i => i.Cobranca == 2).OrderBy(i=>i.Nome).ThenByDescending(i=>i.ReciboAnoNumero).ToArray();
             listBoxNomes.Items.Clear();
             listBoxNomes.Items.AddRange(_Cobrancas);
         }

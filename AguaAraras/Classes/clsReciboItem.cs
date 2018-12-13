@@ -6,6 +6,7 @@ namespace AguaAraras {
         public int ReciboID { get; set; }
         public byte ReciboNumero { get; set; }
         public string ReciboNumeroAno => $@"{ReciboNumero:00}-{Emissao:yyyy}";
+        public string ReciboAnoNumero => $@"{Emissao:yyyy}-{ReciboNumero:00}";
         public DateTime Emissao { get; set; }
         public DateTime Vencimento { get; set; }
         public decimal CotaValor { get; set; }
