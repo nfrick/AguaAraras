@@ -272,6 +272,7 @@
     <Content Include="Reports\rptExtratoConsolidado.rdlc" />
     <Content Include="Reports\rptCobrancaAttachment.rdlc" />
     <Content Include="Reports\rptCobrancaAttachment - Copy.rdlc" />
+    <Content Include="Reports\rptCobrancaAttachment - Copy %282%29.rdlc" />
     <EmbeddedResource Include="Reports\rptRecibo.rdlc" />
     <None Include="Properties\DataSources\Balanco.datasource" />
     <None Include="Properties\DataSources\Cota.datasource" />
