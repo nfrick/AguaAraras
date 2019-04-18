@@ -291,6 +291,25 @@ namespace AguaAraras {
             } ((Pessoa)bindingSourcePessoas.Current).Updated = true;
             toolStripButtonSave.Enabled = true;
         }
+
+        private void ativoCheckBox_CheckedChanged(object sender, EventArgs e) {
+            var x = (CheckBox)sender;
+            var p = (Pessoa)bindingSourcePessoas.Current;
+            p.Ativo = x.Checked;
+        }
+
+        private void atualizarCheckBox_CheckedChanged(object sender, EventArgs e) {
+            var x = (CheckBox)sender;
+            var p = (Pessoa)bindingSourcePessoas.Current;
+            p.Atualizar = x.Checked;
+        }
+
+        private void reciboCheckBox_CheckedChanged(object sender, EventArgs e) {
+            var x = (CheckBox)sender;
+            var p = (Pessoa)bindingSourcePessoas.Current;
+            p.Recibo = x.Checked;
+        }
         #endregion ----------------------------------------------
+
     }
 }

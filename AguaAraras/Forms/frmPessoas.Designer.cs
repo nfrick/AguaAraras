@@ -63,7 +63,6 @@
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bindingSourcePessoas = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +91,6 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePessoas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEnderecos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTelefones)).BeginInit();
@@ -136,12 +134,15 @@
             // 
             // tomadasLabel
             // 
-            tomadasLabel.AutoSize = true;
-            tomadasLabel.Location = new System.Drawing.Point(707, 15);
+            tomadasLabel.BackColor = System.Drawing.Color.Maroon;
+            tomadasLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tomadasLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            tomadasLabel.Location = new System.Drawing.Point(750, 50);
             tomadasLabel.Name = "tomadasLabel";
-            tomadasLabel.Size = new System.Drawing.Size(74, 21);
+            tomadasLabel.Size = new System.Drawing.Size(114, 38);
             tomadasLabel.TabIndex = 37;
-            tomadasLabel.Text = "Tomadas:";
+            tomadasLabel.Text = "Tomadas";
+            tomadasLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listBoxPessoas
             // 
@@ -157,12 +158,13 @@
             // atualizarCheckBox
             // 
             this.atualizarCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bindingSourcePessoas, "Atualizar", true));
-            this.atualizarCheckBox.Location = new System.Drawing.Point(556, 90);
+            this.atualizarCheckBox.Location = new System.Drawing.Point(556, 112);
             this.atualizarCheckBox.Name = "atualizarCheckBox";
             this.atualizarCheckBox.Size = new System.Drawing.Size(104, 24);
             this.atualizarCheckBox.TabIndex = 8;
             this.atualizarCheckBox.Text = "Atualizar";
             this.atualizarCheckBox.UseVisualStyleBackColor = true;
+            this.atualizarCheckBox.CheckedChanged += new System.EventHandler(this.atualizarCheckBox_CheckedChanged);
             // 
             // eMailTextBox
             // 
@@ -198,12 +200,13 @@
             // reciboCheckBox
             // 
             this.reciboCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bindingSourcePessoas, "Recibo", true));
-            this.reciboCheckBox.Location = new System.Drawing.Point(556, 126);
+            this.reciboCheckBox.Location = new System.Drawing.Point(556, 142);
             this.reciboCheckBox.Name = "reciboCheckBox";
             this.reciboCheckBox.Size = new System.Drawing.Size(122, 24);
             this.reciboCheckBox.TabIndex = 9;
             this.reciboCheckBox.Text = "Emitir Recibo";
             this.reciboCheckBox.UseVisualStyleBackColor = true;
+            this.reciboCheckBox.CheckedChanged += new System.EventHandler(this.reciboCheckBox_CheckedChanged);
             // 
             // sobrenomeTextBox
             // 
@@ -449,12 +452,16 @@
             // 
             // tomadasLabelNumero
             // 
+            this.tomadasLabelNumero.BackColor = System.Drawing.Color.Black;
             this.tomadasLabelNumero.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePessoas, "Tomadas", true));
-            this.tomadasLabelNumero.Location = new System.Drawing.Point(789, 15);
+            this.tomadasLabelNumero.Font = new System.Drawing.Font("Segoe WP Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tomadasLabelNumero.ForeColor = System.Drawing.SystemColors.Control;
+            this.tomadasLabelNumero.Location = new System.Drawing.Point(750, 88);
             this.tomadasLabelNumero.Name = "tomadasLabelNumero";
-            this.tomadasLabelNumero.Size = new System.Drawing.Size(54, 23);
+            this.tomadasLabelNumero.Size = new System.Drawing.Size(114, 83);
             this.tomadasLabelNumero.TabIndex = 38;
             this.tomadasLabelNumero.Text = "X";
+            this.tomadasLabelNumero.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tabControl1
             // 
@@ -463,12 +470,12 @@
             this.tabControl1.Location = new System.Drawing.Point(200, 141);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(914, 317);
+            this.tabControl1.Size = new System.Drawing.Size(914, 324);
             this.tabControl1.TabIndex = 39;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.BackColor = System.Drawing.Color.LightGray;
             this.tabPage1.Controls.Add(this.ativoCheckBox);
             this.tabPage1.Controls.Add(this.observacoesTextBox);
             this.tabPage1.Controls.Add(this.tomadasLabelNumero);
@@ -487,47 +494,36 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(906, 283);
+            this.tabPage1.Size = new System.Drawing.Size(906, 290);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dados";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // ativoCheckBox
             // 
             this.ativoCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bindingSourcePessoas, "Ativo", true));
-            this.ativoCheckBox.Location = new System.Drawing.Point(556, 52);
+            this.ativoCheckBox.Location = new System.Drawing.Point(556, 82);
             this.ativoCheckBox.Name = "ativoCheckBox";
             this.ativoCheckBox.Size = new System.Drawing.Size(104, 24);
             this.ativoCheckBox.TabIndex = 39;
             this.ativoCheckBox.Text = "Ativo";
             this.ativoCheckBox.UseVisualStyleBackColor = true;
+            this.ativoCheckBox.CheckedChanged += new System.EventHandler(this.ativoCheckBox_CheckedChanged);
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.LightGray;
             this.tabPage2.Controls.Add(this.dgvEnderecos);
             this.tabPage2.Controls.Add(this.dgvTelefones);
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(906, 283);
+            this.tabPage2.Size = new System.Drawing.Size(906, 290);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereços e Telefones";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.bindingSourcePessoas, "Updated", true));
-            this.pictureBox1.Image = global::AguaAraras.Properties.Resources.Actions_document_save_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(758, 126);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 86);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
             // 
             // bindingSourcePessoas
             // 
@@ -638,7 +634,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1123, 468);
+            this.ClientSize = new System.Drawing.Size(1123, 473);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.enderecoArarasLabel1);
             this.Controls.Add(this.nomeCompletoLabel1);
@@ -664,7 +660,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePessoas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEnderecos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTelefones)).EndInit();
@@ -722,6 +717,5 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

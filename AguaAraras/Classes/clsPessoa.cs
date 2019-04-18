@@ -12,8 +12,8 @@ namespace AguaAraras {
         public string EMail { get; set; }
         public byte Tomadas { get; set; }
         public byte RuaAraras { get; set; }
-        public string RuaArarasExtenso => RuaAraras == 1 ? "Mata Cavalo" : "Cascata";
-        public string EnderecoAraras => $@"Estrada {RuaArarasExtenso} nº {Numero}";
+        public string RuaArarasExtenso => RuaAraras == 1 ? "Estrada Mata Cavalo" : "Rua da Serra Negra";
+        public string EnderecoAraras => $@"{RuaArarasExtenso} nº {Numero}";
         public string Numero { get; set; }
         public byte Cobranca { get; set; }
         public bool Recibo { get; set; }
