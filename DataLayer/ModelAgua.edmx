@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AguaArarasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblEnderecos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PessoaID" Type="int" Nullable="false" />
+          <Property Name="Logradouro" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Bairro" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="CEP" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="Residencia" Type="bit" Nullable="false" />
+          <Property Name="Correspondencia" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMovimentos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReciboID" Type="int" />
+          <Property Name="PessoaID" Type="int" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Data" Type="smalldatetime" />
+          <Property Name="Historico" Type="nvarchar" MaxLength="60" />
+          <Property Name="Valor" Type="money" Nullable="false" />
+          <Property Name="Observacoes" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblPessoas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Ativo" Type="bit" />
+          <Property Name="Tratamento" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sobrenome" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tomadas" Type="tinyint" Nullable="false" />
+          <Property Name="RuaAraras" Type="tinyint" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Cobranca" Type="tinyint" />
+          <Property Name="Recibo" Type="bit" Nullable="false" />
+          <Property Name="Atualizar" Type="bit" Nullable="false" />
+          <Property Name="Observacoes" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tblRecibos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Extra" Type="bit" Nullable="false" />
+          <Property Name="Numero" Type="tinyint" Nullable="false" />
+          <Property Name="Emissao" Type="smalldatetime" Nullable="false" />
+          <Property Name="Vencimento" Type="smalldatetime" Nullable="false" />
+          <Property Name="Cota" Type="money" Nullable="false" />
+          <Property Name="Meses" Type="tinyint" Nullable="false" />
+          <Property Name="Descricao" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Observacoes" Type="nvarchar" MaxLength="225" />
+        </EntityType>
+        <EntityType Name="tblTelefones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PessoaID" Type="int" Nullable="false" />
+          <Property Name="DDD" Type="nchar" MaxLength="2" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Tipo" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblEnderecos_tblPessoas">
+          <End Role="tblPessoas" Type="Self.tblPessoas" Multiplicity="1" />
+          <End Role="tblEnderecos" Type="Self.tblEnderecos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPessoas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblEnderecos">
+              <PropertyRef Name="PessoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTelefones_tblPessoas">
+          <End Role="tblPessoas" Type="Self.tblPessoas" Multiplicity="1" />
+          <End Role="tblTelefones" Type="Self.tblTelefones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPessoas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblTelefones">
+              <PropertyRef Name="PessoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AguaArarasModelStoreContainer">
+          <EntitySet Name="tblEnderecos" EntityType="Self.tblEnderecos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMovimentos" EntityType="Self.tblMovimentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPessoas" EntityType="Self.tblPessoas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRecibos" EntityType="Self.tblRecibos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTelefones" EntityType="Self.tblTelefones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblEnderecos_tblPessoas" Association="Self.FK_tblEnderecos_tblPessoas">
+            <End Role="tblPessoas" EntitySet="tblPessoas" />
+            <End Role="tblEnderecos" EntitySet="tblEnderecos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTelefones_tblPessoas" Association="Self.FK_tblTelefones_tblPessoas">
+            <End Role="tblPessoas" EntitySet="tblPessoas" />
+            <End Role="tblTelefones" EntitySet="tblTelefones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AguaArarasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AguaArarasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Enderecos" EntityType="AguaArarasModel.Endereco" />
+          <EntitySet Name="Movimentos" EntityType="AguaArarasModel.Movimento" />
+          <EntitySet Name="Pessoas" EntityType="AguaArarasModel.Pessoa" />
+          <EntitySet Name="Recibos" EntityType="AguaArarasModel.Recibo" />
+          <EntitySet Name="Telefones" EntityType="AguaArarasModel.Telefone" />
+          <AssociationSet Name="FK_tblEnderecos_tblPessoas" Association="AguaArarasModel.FK_tblEnderecos_tblPessoas">
+            <End Role="tblPessoa" EntitySet="Pessoas" />
+            <End Role="tblEndereco" EntitySet="Enderecos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTelefones_tblPessoas" Association="AguaArarasModel.FK_tblTelefones_tblPessoas">
+            <End Role="tblPessoa" EntitySet="Pessoas" />
+            <End Role="tblTelefone" EntitySet="Telefones" />
+          </AssociationSet>
+          <AssociationSet Name="tblPessoatblMovimento" Association="AguaArarasModel.tblPessoatblMovimento">
+            <End Role="tblPessoa" EntitySet="Pessoas" />
+            <End Role="tblMovimento" EntitySet="Movimentos" />
+          </AssociationSet>
+          <AssociationSet Name="tblRecibotblMovimento" Association="AguaArarasModel.tblRecibotblMovimento">
+            <End Role="tblRecibo" EntitySet="Recibos" />
+            <End Role="tblMovimento" EntitySet="Movimentos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Endereco">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PessoaID" Type="Int32" Nullable="false" />
+          <Property Name="Logradouro" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Bairro" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Cidade" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="CEP" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="Residencia" Type="Boolean" Nullable="false" />
+          <Property Name="Correspondencia" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pessoa" Relationship="AguaArarasModel.FK_tblEnderecos_tblPessoas" FromRole="tblEndereco" ToRole="tblPessoa" />
+        </EntityType>
+        <EntityType Name="Movimento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReciboID" Type="Int32" />
+          <Property Name="PessoaID" Type="Int32" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+          <Property Name="Historico" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Observacoes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pessoa" Relationship="AguaArarasModel.tblPessoatblMovimento" FromRole="tblMovimento" ToRole="tblPessoa" />
+          <NavigationProperty Name="Recibo" Relationship="AguaArarasModel.tblRecibotblMovimento" FromRole="tblMovimento" ToRole="tblRecibo" />
+        </EntityType>
+        <EntityType Name="Pessoa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Ativo" Type="Boolean" />
+          <Property Name="Tratamento" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Sobrenome" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tomadas" Type="Byte" Nullable="false" />
+          <Property Name="RuaAraras" Type="Byte" Nullable="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Cobranca" Type="Byte" />
+          <Property Name="Recibo" Type="Boolean" Nullable="false" />
+          <Property Name="Atualizar" Type="Boolean" Nullable="false" />
+          <Property Name="Observacoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Enderecos" Relationship="AguaArarasModel.FK_tblEnderecos_tblPessoas" FromRole="tblPessoa" ToRole="tblEndereco" />
+          <NavigationProperty Name="Telefones" Relationship="AguaArarasModel.FK_tblTelefones_tblPessoas" FromRole="tblPessoa" ToRole="tblTelefone" />
+          <NavigationProperty Name="Movimentos" Relationship="AguaArarasModel.tblPessoatblMovimento" FromRole="tblPessoa" ToRole="tblMovimento" />
+        </EntityType>
+        <EntityType Name="Recibo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Extra" Type="Boolean" Nullable="false" />
+          <Property Name="Numero" Type="Byte" Nullable="false" />
+          <Property Name="Emissao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vencimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cota" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Meses" Type="Byte" Nullable="false" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Observacoes" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Movimentos" Relationship="AguaArarasModel.tblRecibotblMovimento" FromRole="tblRecibo" ToRole="tblMovimento" />
+        </EntityType>
+        <EntityType Name="Telefone">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PessoaID" Type="Int32" Nullable="false" />
+          <Property Name="DDD" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Pessoa" Relationship="AguaArarasModel.FK_tblTelefones_tblPessoas" FromRole="tblTelefone" ToRole="tblPessoa" />
+        </EntityType>
+        <Association Name="FK_tblEnderecos_tblPessoas">
+          <End Type="AguaArarasModel.Pessoa" Role="tblPessoa" Multiplicity="1" />
+          <End Type="AguaArarasModel.Endereco" Role="tblEndereco" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPessoa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblEndereco">
+              <PropertyRef Name="PessoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTelefones_tblPessoas">
+          <End Type="AguaArarasModel.Pessoa" Role="tblPessoa" Multiplicity="1" />
+          <End Type="AguaArarasModel.Telefone" Role="tblTelefone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPessoa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblTelefone">
+              <PropertyRef Name="PessoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblPessoatblMovimento">
+          <End Type="AguaArarasModel.Pessoa" Role="tblPessoa" Multiplicity="1" />
+          <End Type="AguaArarasModel.Movimento" Role="tblMovimento" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblPessoa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblMovimento">
+              <PropertyRef Name="PessoaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblRecibotblMovimento">
+          <End Type="AguaArarasModel.Recibo" Role="tblRecibo" Multiplicity="1" />
+          <End Type="AguaArarasModel.Movimento" Role="tblMovimento" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblRecibo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblMovimento">
+              <PropertyRef Name="ReciboID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AguaArarasModelStoreContainer" CdmEntityContainer="AguaArarasEntities">
+          <EntitySetMapping Name="Enderecos">
+            <EntityTypeMapping TypeName="AguaArarasModel.Endereco">
+              <MappingFragment StoreEntitySet="tblEnderecos">
+                <ScalarProperty Name="Correspondencia" ColumnName="Correspondencia" />
+                <ScalarProperty Name="Residencia" ColumnName="Residencia" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="PessoaID" ColumnName="PessoaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimentos">
+            <EntityTypeMapping TypeName="AguaArarasModel.Movimento">
+              <MappingFragment StoreEntitySet="tblMovimentos">
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Historico" ColumnName="Historico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="PessoaID" ColumnName="PessoaID" />
+                <ScalarProperty Name="ReciboID" ColumnName="ReciboID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pessoas">
+            <EntityTypeMapping TypeName="AguaArarasModel.Pessoa">
+              <MappingFragment StoreEntitySet="tblPessoas">
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="Atualizar" ColumnName="Atualizar" />
+                <ScalarProperty Name="Recibo" ColumnName="Recibo" />
+                <ScalarProperty Name="Cobranca" ColumnName="Cobranca" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="RuaAraras" ColumnName="RuaAraras" />
+                <ScalarProperty Name="Tomadas" ColumnName="Tomadas" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Sobrenome" ColumnName="Sobrenome" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Tratamento" ColumnName="Tratamento" />
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recibos">
+            <EntityTypeMapping TypeName="AguaArarasModel.Recibo">
+              <MappingFragment StoreEntitySet="tblRecibos">
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Meses" ColumnName="Meses" />
+                <ScalarProperty Name="Cota" ColumnName="Cota" />
+                <ScalarProperty Name="Vencimento" ColumnName="Vencimento" />
+                <ScalarProperty Name="Emissao" ColumnName="Emissao" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telefones">
+            <EntityTypeMapping TypeName="AguaArarasModel.Telefone">
+              <MappingFragment StoreEntitySet="tblTelefones">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="DDD" ColumnName="DDD" />
+                <ScalarProperty Name="PessoaID" ColumnName="PessoaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

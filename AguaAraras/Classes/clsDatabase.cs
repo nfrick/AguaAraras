@@ -40,11 +40,13 @@ namespace AguaAraras {
                 var pessoas = new List<Pessoa>();
                 using (var conn = GetConnectionAgua()) {
                     var cmd = new SqlCommand("sp_Pessoas", conn) {
-                        CommandType = System.Data.CommandType.StoredProcedure
+                        CommandType = CommandType.StoredProcedure
                     };
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         pessoas.Add(new Pessoa(r));
+                    }
+
                     r.Close();
                     return pessoas;
                 }
@@ -55,9 +57,9 @@ namespace AguaAraras {
             }
         }
 
-        public static bool PessoaUpdate(Pessoa p,
-            List<Endereco> endUpdate, List<Endereco> endDelete,
-            List<Telefone> telUpdate, List<Telefone> telDelete) {
+        public static bool PessoaUpdate(IEnumerable<Pessoa> pessoas,
+            IEnumerable<Endereco> endUpdate, List<Endereco> endDelete,
+            IEnumerable<Telefone> telUpdate, List<Telefone> telDelete) {
             try {
                 using (var conn = GetConnectionAgua()) {
                     var transaction = conn.BeginTransaction("Transaction");
@@ -66,22 +68,23 @@ namespace AguaAraras {
                         Transaction = transaction
                     };
                     try {
-                        cmd.Parameters.Add(new SqlParameter("@ID", p.ID));
-                        cmd.Parameters.Add(new SqlParameter("@Ativo", p.Ativo));
-                        cmd.Parameters.Add(new SqlParameter("@Tratamento", p.Tratamento));
-                        cmd.Parameters.Add(new SqlParameter("@Nome", p.Nome));
-                        cmd.Parameters.Add(new SqlParameter("@Sobrenome", p.Sobrenome));
-                        cmd.Parameters.Add(new SqlParameter("@EMail", p.EMail));
-                        cmd.Parameters.Add(new SqlParameter("@Cobranca", p.Cobranca));
-                        cmd.Parameters.Add(new SqlParameter("@Recibo", p.Recibo));
-                        cmd.Parameters.Add(new SqlParameter("@Atualizar", p.Atualizar));
-                        cmd.Parameters.Add(new SqlParameter("@Observacoes", p.Observacoes));
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
+                        foreach (var p in pessoas) {
+                            cmd.Parameters.Add(new SqlParameter("@ID", p.ID));
+                            cmd.Parameters.Add(new SqlParameter("@Ativo", p.Ativo));
+                            cmd.Parameters.Add(new SqlParameter("@Tratamento", p.Tratamento));
+                            cmd.Parameters.Add(new SqlParameter("@Nome", p.Nome));
+                            cmd.Parameters.Add(new SqlParameter("@Sobrenome", p.Sobrenome));
+                            cmd.Parameters.Add(new SqlParameter("@EMail", p.EMail));
+                            cmd.Parameters.Add(new SqlParameter("@Cobranca", p.Cobranca));
+                            cmd.Parameters.Add(new SqlParameter("@Recibo", p.Recibo));
+                            cmd.Parameters.Add(new SqlParameter("@Atualizar", p.Atualizar));
+                            cmd.Parameters.Add(new SqlParameter("@Observacoes", p.Observacoes));
+                            cmd.ExecuteNonQuery();
+                            cmd.Parameters.Clear();
+                        }
 
                         cmd.CommandText = "sp_EnderecoUpsert";
-                        foreach (Endereco end in endUpdate) {
-                            end.PessoaID = p.ID;
+                        foreach (var end in endUpdate) {
                             cmd.Parameters.Add(new SqlParameter("@ID", end.ID));
                             cmd.Parameters.Add(new SqlParameter("@PessoaID", end.PessoaID));
                             cmd.Parameters.Add(new SqlParameter("@Logradouro", end.Logradouro));
@@ -108,7 +111,6 @@ namespace AguaAraras {
 
                         cmd.CommandText = "sp_TelefoneUpsert";
                         foreach (var tel in telUpdate) {
-                            tel.PessoaID = p.ID;
                             cmd.Parameters.Add(new SqlParameter("@ID", tel.ID));
                             cmd.Parameters.Add(new SqlParameter("@PessoaID", tel.PessoaID));
                             cmd.Parameters.Add(new SqlParameter("@DDD", tel.DDD));
@@ -163,8 +165,10 @@ namespace AguaAraras {
                         CommandType = CommandType.StoredProcedure
                     };
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         Enderecos.Add(new Endereco(r));
+                    }
+
                     r.Close();
                     return Enderecos;
                 }
@@ -183,8 +187,10 @@ namespace AguaAraras {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         Telefones.Add(new Telefone(r));
+                    }
+
                     r.Close();
                     return Telefones;
                 }
@@ -203,8 +209,10 @@ namespace AguaAraras {
                         CommandType = System.Data.CommandType.StoredProcedure
                     };
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         Recibos.Add(new Recibo(r));
+                    }
+
                     r.Close();
                     return Recibos;
                 }
@@ -219,10 +227,12 @@ namespace AguaAraras {
             try {
                 Recibo ultimoRecibo = null;
                 using (var conn = GetConnectionAgua()) {
-                    var cmd = new SqlCommand("sp_ReciboLast", conn) {CommandType = CommandType.StoredProcedure};
+                    var cmd = new SqlCommand("sp_ReciboLast", conn) { CommandType = CommandType.StoredProcedure };
                     var r = cmd.ExecuteReader();
-                    if (r.Read())
+                    if (r.Read()) {
                         ultimoRecibo = new Recibo(r);
+                    }
+
                     r.Close();
                     return ultimoRecibo;
                 }
@@ -299,11 +309,13 @@ namespace AguaAraras {
             try {
                 var cotas = new SortableBindingList<Cota>();
                 using (var conn = GetConnectionAgua()) {
-                    var cmd = new SqlCommand("sp_Cotas", conn) {CommandType = CommandType.StoredProcedure};
+                    var cmd = new SqlCommand("sp_Cotas", conn) { CommandType = CommandType.StoredProcedure };
                     cmd.Parameters.Add(new SqlParameter("@ID", ReciboID));
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         cotas.Add(new Cota(r));
+                    }
+
                     r.Close();
                     return cotas;
                 }
@@ -323,8 +335,10 @@ namespace AguaAraras {
                     cmd.Parameters.Add(new SqlParameter("@GetOld", GetOld));
                     cmd.CommandType = CommandType.StoredProcedure;
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         itens.Add(new ReciboItem(r));
+                    }
+
                     r.Close();
                     return itens;
                 }
@@ -343,8 +357,10 @@ namespace AguaAraras {
                         CommandType = CommandType.StoredProcedure
                     };
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         Movimentos.Add(new Movimento(r));
+                    }
+
                     r.Close();
                     return Movimentos;
                 }
@@ -448,11 +464,12 @@ namespace AguaAraras {
             try {
                 var Extratos = new SortableBindingList<Extrato>();
                 using (var conn = GetConnectionAgua()) {
-                    var cmd = new SqlCommand("sp_Extrato", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    var cmd = new SqlCommand("sp_Extrato", conn) { CommandType = CommandType.StoredProcedure };
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         Extratos.Add(new Extrato(r));
+                    }
+
                     r.Close();
                     return Extratos;
                 }
@@ -472,8 +489,10 @@ namespace AguaAraras {
                     };
                     cmd.Parameters.Add(new SqlParameter("@part", periodo));
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         balanco.Add(new Balanco(r));
+                    }
+
                     r.Close();
                     return balanco;
                 }
@@ -504,11 +523,13 @@ namespace AguaAraras {
                 var items = new List<BalanceItem>();
 
                 using (var conn = GetConnectionMoneyBin()) {
-                    var cmd = new SqlCommand("sp_BalanceItemsAgua", conn) {CommandType = CommandType.StoredProcedure};
+                    var cmd = new SqlCommand("sp_BalanceItemsAgua", conn) { CommandType = CommandType.StoredProcedure };
                     cmd.Parameters.Add(new SqlParameter("@ID", ID));
                     var r = cmd.ExecuteReader();
-                    while (r.Read())
+                    while (r.Read()) {
                         items.Add(new BalanceItem(r));
+                    }
+
                     r.Close();
                     return items;
                 }
@@ -522,7 +543,7 @@ namespace AguaAraras {
         public static int Tomadas() {
             try {
                 using (var conn = GetConnectionAgua()) {
-                    var cmd = new SqlCommand("sp_Tomadas", conn) {CommandType = CommandType.StoredProcedure};
+                    var cmd = new SqlCommand("sp_Tomadas", conn) { CommandType = CommandType.StoredProcedure };
                     return (int)cmd.ExecuteScalar();
                 }
             }
@@ -543,6 +564,28 @@ namespace AguaAraras {
             }
             catch (Exception ex) {
                 MessageBox.Show($@"Error in Database.VergilioAdd(): {ex.Message}.");
+            }
+        }
+
+        public static List<XTabData> XTabDataGet(string xtab) {
+            try {
+                var data = new List<XTabData>();
+                using (var conn = GetConnectionAgua()) {
+                    var cmd = new SqlCommand(xtab, conn) {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    var r = cmd.ExecuteReader();
+                    while (r.Read()) {
+                        data.Add(new XTabData(r));
+                    }
+
+                    r.Close();
+                    return data;
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show($@"Error in Database.XTabDataGet(): {ex.Message}.");
+                return null;
             }
         }
     }

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AguaAraras</RootNamespace>
     <AssemblyName>AguaAraras</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -64,8 +64,8 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -114,6 +114,7 @@
     <Compile Include="Classes\clsExtenso.cs" />
     <Compile Include="Classes\clsExtrato.cs" />
     <Compile Include="Classes\clsPromptDialog.cs" />
+    <Compile Include="Classes\clsXTabData.cs" />
     <Compile Include="Forms\frmCalculadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +205,7 @@
     <Content Include="Images\water_droplet_icon3.ico" />
     <Content Include="Images\water_droplet_iconX.ico" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\XTabData.datasource" />
     <None Include="Resources\FlagGreeen.png" />
     <None Include="Images\Actions-flag-green-icon.png" />
     <None Include="Images\Actions-flag-red-icon.png" />

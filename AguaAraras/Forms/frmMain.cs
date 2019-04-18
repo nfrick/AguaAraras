@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Configuration;
 
 namespace AguaAraras {
     public partial class FrmMain : Form {

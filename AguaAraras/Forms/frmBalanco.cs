@@ -1,65 +1,68 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Windows.Forms;
-using OfficeOpenXml.Style.XmlAccess;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 
 namespace AguaAraras {
     public partial class FrmBalanco : Form {
-        SortableBindingList<Extrato> _extratos;
-        private BindingSource _sourceExtratos;
-
-        SortableBindingList<Balanco> _balancoMes;
-        private BindingSource _sourceBalancoMes;
-
-        SortableBindingList<Balanco> _balancoTrimestre;
-        private BindingSource _sourceBalancoTrimestre;
-
-        SortableBindingList<Balanco> _balancoAno;
-        private BindingSource _sourceBalancoAno;
+        SortableBindingList<Extrato> _extrato;
 
         public FrmBalanco() {
             InitializeComponent();
         }
 
         private void FrmBalanco_Load(object sender, EventArgs e) {
-            _balancoAno = Database.BalancoGet("YEAR");
-            _sourceBalancoAno = new BindingSource { DataSource = _balancoAno };
-            bindingSourceBalancoAno.DataSource = _sourceBalancoAno;
+            _extrato = Database.ExtratoGet();
 
-            _balancoTrimestre = Database.BalancoGet("QUARTER");
-            _sourceBalancoTrimestre = new BindingSource { DataSource = _balancoTrimestre };
-            bindingSourceBalancoTrimestre.DataSource = _sourceBalancoTrimestre;
+            bs_BalancoAno.DataSource = new BindingSource { DataSource = Database.BalancoGet("YEAR") };
+            bs_BalancoTrimestre.DataSource = new BindingSource { DataSource = Database.BalancoGet("QUARTER") };
+            bs_BalancoMes.DataSource = new BindingSource { DataSource = Database.BalancoGet("MONTH") };
+            bs_Extratos.DataSource = new BindingSource { DataSource = _extrato };
 
-            _balancoMes = Database.BalancoGet("MONTH");
-            _sourceBalancoMes = new BindingSource { DataSource = _balancoMes };
-            bindingSourceBalancoMes.DataSource = _sourceBalancoMes;
+            bs_xTabDataAnoReal.DataSource = new BindingSource { DataSource = Database.XTabDataGet("sp_XtabAnoReal") };
+            bs_xTabDataAnoRecibo.DataSource = new BindingSource { DataSource = Database.XTabDataGet("sp_XtabAnoRecibo") };
+            bs_xTabDataTrimReal.DataSource = new BindingSource { DataSource = Database.XTabDataGet("sp_XtabTrimestreReal") };
+            bs_xTabDataTrimRecibo.DataSource = new BindingSource { DataSource = Database.XTabDataGet("sp_XtabTrimestreRecibo") };
 
-            _extratos = Database.ExtratoGet();
-            _sourceExtratos = new BindingSource { DataSource = _extratos };
-            bindingSourceExtratos.DataSource = _sourceExtratos;
+            dgvAno.Tag = 1;
+            dgvExtrato.Tag = 3;
+            dgvMes.Tag = 2;
+            dgvTrimestre.Tag = 2;
 
-            dgvAno.Tag = dgvExtrato.Tag = 3;
-            dgvMes.Tag = dgvTrimestre.Tag = 4;
-            foreach (var ctrl in Controls) {
-                if (!(ctrl is DataGridView)) continue;
-                var dgv = (DataGridView)ctrl;
-                for (var col = (int)dgv.Tag; col < dgv.Columns.Count; col++)
-                    dgv.Columns[col].DefaultCellStyle.Format = "N2";
+            foreach (var dgv in tableLayoutPanel3.Controls.OfType<DataGridView>()) {
+                dgv.Tag = 2;
+                dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgv.Columns[0].Width = 60;
+                for (var i = 1; i < dgv.ColumnCount; i++) {
+                    dgv.Columns[i].Width = 73;
+                    dgv.Columns[i].DefaultCellStyle.Format = "N2";
+                    dgv.Columns[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
             }
+        }
+
+        public IEnumerable<Control> GetAll(Control control, Type type) {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                .Concat(controls)
+                .Where(c => c.GetType() == type);
         }
 
         private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var dgv = (DataGridView)sender;
-            if (dgv.Rows.Count == 0) return;
-            if (e.ColumnIndex < (int)dgv.Tag) return;
-            if ((decimal)dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value < 0)
+            if (dgv.Rows.Count == 0 || e.ColumnIndex < dgv.ColumnCount-1) //(e.ColumnIndex < (int)dgv.Tag)) {
+                return;
+
+            if ((decimal)dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value < 0) {
                 e.CellStyle.ForeColor = Color.Red;
+            }
         }
 
         private void toolStripButtonExtrato_Click(object sender, EventArgs e) {
-            var extratoList = _extratos.OrderBy(t => t.Data).ThenBy(t => t.ID).ToList();
+            var extratoList = _extrato.OrderBy(t => t.Data).ThenBy(t => t.ID).ToList();
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
             frm.SetReport(extratoList, rpt, "DataSetExtrato", "Extrato");

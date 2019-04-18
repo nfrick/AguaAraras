@@ -57,12 +57,13 @@
             this.enderecoArarasLabel1 = new System.Windows.Forms.Label();
             this.dgvTelefones = new System.Windows.Forms.DataGridView();
             this.dgvEnderecos = new System.Windows.Forms.DataGridView();
-            this.tomadasLabel1 = new System.Windows.Forms.Label();
+            this.tomadasLabelNumero = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bindingSourcePessoas = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +92,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePessoas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEnderecos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTelefones)).BeginInit();
@@ -171,6 +173,7 @@
             this.eMailTextBox.Name = "eMailTextBox";
             this.eMailTextBox.Size = new System.Drawing.Size(371, 86);
             this.eMailTextBox.TabIndex = 6;
+            this.eMailTextBox.TextChanged += new System.EventHandler(this.pessoa_TextChanged);
             this.eMailTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.eMailTextBox_Validating);
             // 
             // nomeTextBox
@@ -180,6 +183,7 @@
             this.nomeTextBox.Name = "nomeTextBox";
             this.nomeTextBox.Size = new System.Drawing.Size(164, 29);
             this.nomeTextBox.TabIndex = 1;
+            this.nomeTextBox.TextChanged += new System.EventHandler(this.pessoa_TextChanged);
             // 
             // observacoesTextBox
             // 
@@ -189,6 +193,7 @@
             this.observacoesTextBox.Name = "observacoesTextBox";
             this.observacoesTextBox.Size = new System.Drawing.Size(553, 103);
             this.observacoesTextBox.TabIndex = 7;
+            this.observacoesTextBox.TextChanged += new System.EventHandler(this.pessoa_TextChanged);
             // 
             // reciboCheckBox
             // 
@@ -207,6 +212,7 @@
             this.sobrenomeTextBox.Name = "sobrenomeTextBox";
             this.sobrenomeTextBox.Size = new System.Drawing.Size(337, 29);
             this.sobrenomeTextBox.TabIndex = 2;
+            this.sobrenomeTextBox.TextChanged += new System.EventHandler(this.pessoa_TextChanged);
             // 
             // bindingNavigatorPessoas
             // 
@@ -314,6 +320,7 @@
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSave.Enabled = false;
             this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Actions_document_save_icon;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
@@ -409,7 +416,6 @@
             this.dgvTelefones.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewTelefones_CellFormatting);
             this.dgvTelefones.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTelefones_CellValueChanged);
             this.dgvTelefones.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewTelefones_DataError);
-            this.dgvTelefones.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridViewTelefones_UserAddedRow);
             this.dgvTelefones.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridViewTelefones_UserDeletedRow);
             this.dgvTelefones.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewTelefones_UserDeletingRow);
             // 
@@ -438,18 +444,17 @@
             this.dgvEnderecos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewEnderecos_CellFormatting);
             this.dgvEnderecos.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEnderecos_CellValueChanged);
             this.dgvEnderecos.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewEnderecos_DataError);
-            this.dgvEnderecos.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridViewEnderecos_UserAddedRow);
             this.dgvEnderecos.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridViewEnderecos_UserDeletedRow);
             this.dgvEnderecos.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridViewEnderecos_UserDeletingRow);
             // 
-            // tomadasLabel1
+            // tomadasLabelNumero
             // 
-            this.tomadasLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePessoas, "Tomadas", true));
-            this.tomadasLabel1.Location = new System.Drawing.Point(789, 15);
-            this.tomadasLabel1.Name = "tomadasLabel1";
-            this.tomadasLabel1.Size = new System.Drawing.Size(54, 23);
-            this.tomadasLabel1.TabIndex = 38;
-            this.tomadasLabel1.Text = "label1";
+            this.tomadasLabelNumero.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourcePessoas, "Tomadas", true));
+            this.tomadasLabelNumero.Location = new System.Drawing.Point(789, 15);
+            this.tomadasLabelNumero.Name = "tomadasLabelNumero";
+            this.tomadasLabelNumero.Size = new System.Drawing.Size(54, 23);
+            this.tomadasLabelNumero.TabIndex = 38;
+            this.tomadasLabelNumero.Text = "X";
             // 
             // tabControl1
             // 
@@ -463,9 +468,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.ativoCheckBox);
             this.tabPage1.Controls.Add(this.observacoesTextBox);
-            this.tabPage1.Controls.Add(this.tomadasLabel1);
+            this.tabPage1.Controls.Add(this.tomadasLabelNumero);
             this.tabPage1.Controls.Add(tomadasLabel);
             this.tabPage1.Controls.Add(this.sobrenomeTextBox);
             this.tabPage1.Controls.Add(this.reciboCheckBox);
@@ -511,6 +517,17 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("Visible", this.bindingSourcePessoas, "Updated", true));
+            this.pictureBox1.Image = global::AguaAraras.Properties.Resources.Actions_document_save_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(758, 126);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(85, 86);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
             // 
             // bindingSourcePessoas
             // 
@@ -647,6 +664,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePessoas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceEnderecos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTelefones)).EndInit();
@@ -686,7 +704,7 @@
         private System.Windows.Forms.DataGridView dgvTelefones;
         private System.Windows.Forms.BindingSource bindingSourceEnderecos;
         private System.Windows.Forms.DataGridView dgvEnderecos;
-        private System.Windows.Forms.Label tomadasLabel1;
+        private System.Windows.Forms.Label tomadasLabelNumero;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -704,5 +722,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
