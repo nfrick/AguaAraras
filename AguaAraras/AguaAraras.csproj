@@ -67,6 +67,15 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\Bunifu\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="EFWinforms">
+      <HintPath>..\..\EF6Winforms\EF6WinForms\bin\Debug\EFWinforms.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=4.5.3.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.3.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
@@ -94,6 +103,7 @@
       <HintPath>..\..\FastReplacer\Rhetos.Utilities\bin\Debug\Rhetos.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
@@ -109,17 +119,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\clsBalanceItem.cs" />
-    <Compile Include="Classes\clsBalanco.cs" />
-    <Compile Include="Classes\clsBaseData.cs" />
-    <Compile Include="Classes\clsBaseMov.cs" />
-    <Compile Include="Classes\clsCota.cs" />
-    <Compile Include="Classes\clsDatabase.cs" />
-    <Compile Include="Classes\clsEndereco.cs" />
     <Compile Include="Classes\clsExtenso.cs" />
-    <Compile Include="Classes\clsExtrato.cs" />
     <Compile Include="Classes\clsPromptDialog.cs" />
-    <Compile Include="Classes\clsXTabData.cs" />
+    <Compile Include="Forms\frmBalanco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBalanco.designer.cs">
+      <DependentUpon>frmBalanco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmCalculadora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,17 +139,17 @@
     <Compile Include="Forms\frmCobrancaEmail.Designer.cs">
       <DependentUpon>frmCobrancaEmail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmBalanco.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmBalanco.Designer.cs">
-      <DependentUpon>frmBalanco.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRelatorio.Designer.cs">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMovimentos.cs">
       <SubType>Form</SubType>
@@ -162,26 +169,8 @@
     <Compile Include="Forms\frmRecibos.Designer.cs">
       <DependentUpon>frmRecibos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmRelatorio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmRelatorio.Designer.cs">
-      <DependentUpon>frmRelatorio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\clsMovimento.cs" />
-    <Compile Include="Classes\clsPessoa.cs" />
-    <Compile Include="Forms\frmProgressBar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmProgressBar.Designer.cs">
-      <DependentUpon>frmProgressBar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\clsRecibo.cs" />
-    <Compile Include="Classes\clsReciboItem.cs" />
-    <Compile Include="Classes\clsSortableBindingList.cs" />
-    <Compile Include="Classes\clsTelefone.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserFileAccessRights.cs" />
@@ -201,7 +190,6 @@
     <None Include="AguaAraras_TemporaryKey.pfx" />
     <None Include="Images\Excel-icon.png" />
     <Content Include="Images\favicon.ico" />
-    <Content Include="Reports\rptCobranca.rdlc" />
     <Content Include="Reports\rptExtratoCronologico.rdlc" />
     <Content Include="Reports\rptExtratoCategorizado.rdlc" />
     <Content Include="Images\water_droplet.ico" />
@@ -210,6 +198,10 @@
     <Content Include="Images\water_droplet_icon3.ico" />
     <Content Include="Images\water_droplet_iconX.ico" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataLayer.Pessoa.datasource" />
+    <None Include="Properties\DataSources\DataLayer.sp_Balanco_Result.datasource" />
+    <None Include="Properties\DataSources\DataLayer.sp_Extrato_Result.datasource" />
+    <None Include="Properties\DataSources\DataLayer.sp_Xtab_Result.datasource" />
     <None Include="Properties\DataSources\XTabData.datasource" />
     <None Include="Resources\FlagGreeen.png" />
     <None Include="Images\Actions-flag-green-icon.png" />
@@ -238,17 +230,20 @@
     <None Include="Images\Actions-games-difficult-icon.png" />
     <None Include="Images\Actions-rating-icon.png" />
     <Content Include="Images\Paomedia-Small-N-Flat-Drop.ico" />
+    <EmbeddedResource Include="Forms\frmBalanco.resx">
+      <DependentUpon>frmBalanco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCalculadora.resx">
       <DependentUpon>frmCalculadora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCobrancaEmail.resx">
       <DependentUpon>frmCobrancaEmail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmBalanco.resx">
-      <DependentUpon>frmBalanco.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRelatorio.resx">
+      <DependentUpon>frmRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMovimentos.resx">
       <DependentUpon>frmMovimentos.cs</DependentUpon>
@@ -258,12 +253,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRecibos.resx">
       <DependentUpon>frmRecibos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmRelatorio.resx">
-      <DependentUpon>frmRelatorio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmProgressBar.resx">
-      <DependentUpon>frmProgressBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -278,8 +267,7 @@
     <Content Include="Reports\rptFichaConferencia.rdlc" />
     <Content Include="Reports\rptExtratoConsolidado.rdlc" />
     <Content Include="Reports\rptCobrancaAttachment.rdlc" />
-    <Content Include="Reports\rptCobrancaAttachment - Copy.rdlc" />
-    <Content Include="Reports\rptCobrancaAttachment - Copy %282%29.rdlc" />
+    <Content Include="Reports\rptCobranca.rdlc" />
     <EmbeddedResource Include="Reports\rptRecibo.rdlc" />
     <None Include="Properties\DataSources\Balanco.datasource" />
     <None Include="Properties\DataSources\Cota.datasource" />
@@ -311,6 +299,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{45340f2a-5755-4614-8dcd-8d8d56022c7b}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

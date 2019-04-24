@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DataLayer;
+using System;
 using System.Drawing;
-using System.Linq.Expressions;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AguaAraras {
@@ -12,8 +13,9 @@ namespace AguaAraras {
         }
 
         private void frmCalculadora_Load(object sender, EventArgs e) {
-            numericUpDownSalario.Value = Database.VergilioGetLastPayment();
-            numericUpDownTomadas.Value = Database.Tomadas();
+            numericUpDownSalario.Value = GetLastManutencao();
+            numericUpDownTomadas.Value = GetTomadas();
+            labelAtual.Text = GetAtual().ToString("C2");
             CalcularMensalidade();
         }
 
@@ -32,14 +34,20 @@ namespace AguaAraras {
         private void CalcularMensalidade() {
             var mensalidade = Constante * numericUpDownSalario.Value;
             labelCalculado.Text = $@"{mensalidade:C2}";
-            numericUpDownMensalidade.Value = (decimal)Math.Ceiling(mensalidade / 5) * 5;
+            numericUpDownMensalidade.Value = Math.Ceiling(mensalidade / 5) * 5;
             CalcularDetalhes();
         }
 
         private void CalcularDetalhes() {
-            var mensalidade = radioButtonCalculado.Checked
-                ? Constante * numericUpDownSalario.Value
-                : numericUpDownMensalidade.Value;
+            decimal mensalidade;
+
+            if (radioButtonCalculado.Checked)
+                mensalidade = Constante * numericUpDownSalario.Value;
+            else if (radioButtonAtual.Checked)
+                mensalidade = GetAtual();
+            else {
+                mensalidade = numericUpDownMensalidade.Value;
+            }
 
             var arrecadacao = 12 * numericUpDownTomadas.Value * mensalidade;
             var vergilio = 13 * numericUpDownSalario.Value;
@@ -70,11 +78,32 @@ namespace AguaAraras {
         }
 
         private void labelTomadas_DoubleClick(object sender, EventArgs e) {
-            numericUpDownTomadas.Value = Database.Tomadas();
+            numericUpDownTomadas.Value = GetTomadas();
         }
 
         private void labelSalario_Click(object sender, EventArgs e) {
-            numericUpDownSalario.Value = Database.VergilioGetLastPayment();
+            numericUpDownSalario.Value = GetLastManutencao();
+        }
+
+        private decimal GetLastManutencao() {
+            using (var ctx = new AguaArarasEntities()) {
+                return Math.Abs(ctx.Movimentos.Where(m => m.Tipo == "vergilio")
+                    .OrderByDescending(m => m.Data).FirstOrDefault()?.Valor ?? 0);
+            }
+        }
+
+        private decimal GetTomadas() {
+            using (var ctx = new AguaArarasEntities()) {
+                return ctx.Pessoas.Where(p => p.Ativo)
+                           .Sum(p => p.Tomadas);
+            }
+        }
+
+        private decimal GetAtual() {
+            using (var ctx = new AguaArarasEntities()) {
+                return Math.Abs(ctx.Recibos
+                .OrderByDescending(r => r.Vencimento).FirstOrDefault()?.Cota ?? 0);
+            }
         }
     }
 }

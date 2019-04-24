@@ -24,7 +24,7 @@ namespace AguaAraras {
             reportViewer1.RefreshReport();
         }
 
-        public void SetReport<T>(List<T> items, 
+        public void SetReport<T>(IEnumerable<T> items, 
             string reportName, string reportDataSet, string displayName) {
             var reportEngine = reportViewer1.LocalReport;
             reportEngine.ReportPath = string.Format(_rptPath, reportName);

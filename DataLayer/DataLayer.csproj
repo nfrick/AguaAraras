@@ -50,6 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCota.cs" />
+    <Compile Include="clsEndereco.cs" />
+    <Compile Include="clsExtenso.cs" />
+    <Compile Include="clsMovimento.cs" />
+    <Compile Include="clsPessoa.cs" />
+    <Compile Include="clsRecibo.cs" />
+    <Compile Include="clsXtab.cs" />
+    <Compile Include="Cota.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Endereco.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelAgua.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,7 +78,49 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAgua.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ModelMoneyBin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelMoneyBin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMoneyBin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelMoneyBin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelMoneyBin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelMoneyBin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Movimento.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pessoa.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recibo.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_BalanceItemsAgua_Result.cs">
+      <DependentUpon>ModelMoneyBin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Balanco_Result.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Extrato_Result.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Movimentos_Result.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Xtab_Result.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Telefone.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModelAgua.edmx">
@@ -77,6 +132,13 @@
     <None Include="App.Config" />
     <None Include="ModelAgua.edmx.diagram">
       <DependentUpon>ModelAgua.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="ModelMoneyBin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelMoneyBin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelMoneyBin.edmx.diagram">
+      <DependentUpon>ModelMoneyBin.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -90,6 +152,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAgua.edmx</DependentUpon>
       <LastGenOutput>ModelAgua.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelMoneyBin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelMoneyBin.edmx</DependentUpon>
+      <LastGenOutput>ModelMoneyBin.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelMoneyBin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelMoneyBin.edmx</DependentUpon>
+      <LastGenOutput>ModelMoneyBin.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

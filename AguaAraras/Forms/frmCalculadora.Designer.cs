@@ -44,6 +44,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.numericUpDownTomadas = new System.Windows.Forms.NumericUpDown();
             this.labelTomadas = new System.Windows.Forms.Label();
+            this.radioButtonAtual = new System.Windows.Forms.RadioButton();
+            this.labelAtual = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMensalidade)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalario)).BeginInit();
@@ -56,7 +58,7 @@
             this.labelSalario.AutoSize = true;
             this.labelSalario.Location = new System.Drawing.Point(12, 13);
             this.labelSalario.Name = "labelSalario";
-            this.labelSalario.Size = new System.Drawing.Size(76, 28);
+            this.labelSalario.Size = new System.Drawing.Size(61, 21);
             this.labelSalario.TabIndex = 0;
             this.labelSalario.Text = "Salário:";
             this.labelSalario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -80,7 +82,7 @@
             this.labelVergilioValor.ForeColor = System.Drawing.Color.Red;
             this.labelVergilioValor.Location = new System.Drawing.Point(279, 34);
             this.labelVergilioValor.Name = "labelVergilioValor";
-            this.labelVergilioValor.Size = new System.Drawing.Size(137, 30);
+            this.labelVergilioValor.Size = new System.Drawing.Size(139, 30);
             this.labelVergilioValor.TabIndex = 5;
             this.labelVergilioValor.Text = "VergilioValor";
             this.labelVergilioValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -103,7 +105,7 @@
             this.labelCobrancaValor.ForeColor = System.Drawing.Color.Red;
             this.labelCobrancaValor.Location = new System.Drawing.Point(279, 66);
             this.labelCobrancaValor.Name = "labelCobrancaValor";
-            this.labelCobrancaValor.Size = new System.Drawing.Size(137, 30);
+            this.labelCobrancaValor.Size = new System.Drawing.Size(139, 30);
             this.labelCobrancaValor.TabIndex = 7;
             this.labelCobrancaValor.Text = "CobrancaValor";
             this.labelCobrancaValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -125,7 +127,7 @@
             this.labelTotalValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotalValor.Location = new System.Drawing.Point(279, 2);
             this.labelTotalValor.Name = "labelTotalValor";
-            this.labelTotalValor.Size = new System.Drawing.Size(137, 30);
+            this.labelTotalValor.Size = new System.Drawing.Size(139, 30);
             this.labelTotalValor.TabIndex = 9;
             this.labelTotalValor.Text = "TotalValor";
             this.labelTotalValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -148,7 +150,7 @@
             this.labelReservaValor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelReservaValor.Location = new System.Drawing.Point(279, 98);
             this.labelReservaValor.Name = "labelReservaValor";
-            this.labelReservaValor.Size = new System.Drawing.Size(137, 33);
+            this.labelReservaValor.Size = new System.Drawing.Size(139, 33);
             this.labelReservaValor.TabIndex = 11;
             this.labelReservaValor.Text = "ReservaValor";
             this.labelReservaValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -168,7 +170,7 @@
             0,
             0});
             this.numericUpDownMensalidade.Name = "numericUpDownMensalidade";
-            this.numericUpDownMensalidade.Size = new System.Drawing.Size(81, 34);
+            this.numericUpDownMensalidade.Size = new System.Drawing.Size(81, 29);
             this.numericUpDownMensalidade.TabIndex = 12;
             this.numericUpDownMensalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownMensalidade.ValueChanged += new System.EventHandler(this.numericUpDownMensalidade_ValueChanged);
@@ -178,7 +180,7 @@
             this.radioButtonCalculado.AutoSize = true;
             this.radioButtonCalculado.Location = new System.Drawing.Point(16, 28);
             this.radioButtonCalculado.Name = "radioButtonCalculado";
-            this.radioButtonCalculado.Size = new System.Drawing.Size(119, 32);
+            this.radioButtonCalculado.Size = new System.Drawing.Size(96, 25);
             this.radioButtonCalculado.TabIndex = 13;
             this.radioButtonCalculado.Text = "Calculado";
             this.radioButtonCalculado.UseVisualStyleBackColor = true;
@@ -190,7 +192,7 @@
             this.radioButtonArredondado.Checked = true;
             this.radioButtonArredondado.Location = new System.Drawing.Point(16, 59);
             this.radioButtonArredondado.Name = "radioButtonArredondado";
-            this.radioButtonArredondado.Size = new System.Drawing.Size(151, 32);
+            this.radioButtonArredondado.Size = new System.Drawing.Size(120, 25);
             this.radioButtonArredondado.TabIndex = 14;
             this.radioButtonArredondado.TabStop = true;
             this.radioButtonArredondado.Text = "Arredondado";
@@ -204,7 +206,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 143F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
             this.tableLayoutPanel1.Controls.Add(this.labelCobrancaDesc, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelVergilioDesc, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelTotalDesc, 1, 0);
@@ -216,7 +218,7 @@
             this.tableLayoutPanel1.Controls.Add(this.labelReservaValor, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelCobranca, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelCobrancaValor, 2, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(283, 56);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(283, 80);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -274,14 +276,14 @@
             0,
             0});
             this.numericUpDownSalario.Name = "numericUpDownSalario";
-            this.numericUpDownSalario.Size = new System.Drawing.Size(84, 34);
+            this.numericUpDownSalario.Size = new System.Drawing.Size(84, 29);
             this.numericUpDownSalario.TabIndex = 16;
             this.numericUpDownSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownSalario.ValueChanged += new System.EventHandler(this.numericUpDownSalario_ValueChanged);
             // 
             // labelCalculado
             // 
-            this.labelCalculado.Location = new System.Drawing.Point(142, 30);
+            this.labelCalculado.Location = new System.Drawing.Point(130, 30);
             this.labelCalculado.Name = "labelCalculado";
             this.labelCalculado.Size = new System.Drawing.Size(81, 21);
             this.labelCalculado.TabIndex = 2;
@@ -290,13 +292,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.labelAtual);
             this.groupBox1.Controls.Add(this.radioButtonCalculado);
+            this.groupBox1.Controls.Add(this.radioButtonAtual);
             this.groupBox1.Controls.Add(this.labelCalculado);
             this.groupBox1.Controls.Add(this.radioButtonArredondado);
             this.groupBox1.Controls.Add(this.numericUpDownMensalidade);
             this.groupBox1.Location = new System.Drawing.Point(18, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(243, 100);
+            this.groupBox1.Size = new System.Drawing.Size(243, 124);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mensalidade";
@@ -310,7 +314,7 @@
             0,
             0});
             this.numericUpDownTomadas.Name = "numericUpDownTomadas";
-            this.numericUpDownTomadas.Size = new System.Drawing.Size(84, 34);
+            this.numericUpDownTomadas.Size = new System.Drawing.Size(84, 29);
             this.numericUpDownTomadas.TabIndex = 19;
             this.numericUpDownTomadas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDownTomadas.ValueChanged += new System.EventHandler(this.numericUpDownMensalidade_ValueChanged);
@@ -320,17 +324,37 @@
             this.labelTomadas.AutoSize = true;
             this.labelTomadas.Location = new System.Drawing.Point(12, 48);
             this.labelTomadas.Name = "labelTomadas";
-            this.labelTomadas.Size = new System.Drawing.Size(93, 28);
+            this.labelTomadas.Size = new System.Drawing.Size(74, 21);
             this.labelTomadas.TabIndex = 18;
             this.labelTomadas.Text = "Tomadas:";
             this.labelTomadas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelTomadas.DoubleClick += new System.EventHandler(this.labelTomadas_DoubleClick);
             // 
+            // radioButtonAtual
+            // 
+            this.radioButtonAtual.AutoSize = true;
+            this.radioButtonAtual.Location = new System.Drawing.Point(16, 90);
+            this.radioButtonAtual.Name = "radioButtonAtual";
+            this.radioButtonAtual.Size = new System.Drawing.Size(64, 25);
+            this.radioButtonAtual.TabIndex = 15;
+            this.radioButtonAtual.Text = "Atual";
+            this.radioButtonAtual.UseVisualStyleBackColor = true;
+            this.radioButtonAtual.CheckedChanged += new System.EventHandler(this.radioButtonCalculado_CheckedChanged);
+            // 
+            // labelAtual
+            // 
+            this.labelAtual.Location = new System.Drawing.Point(130, 94);
+            this.labelAtual.Name = "labelAtual";
+            this.labelAtual.Size = new System.Drawing.Size(81, 21);
+            this.labelAtual.TabIndex = 15;
+            this.labelAtual.Text = "Atual";
+            this.labelAtual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmCalculadora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 197);
+            this.ClientSize = new System.Drawing.Size(712, 224);
             this.Controls.Add(this.numericUpDownTomadas);
             this.Controls.Add(this.labelTomadas);
             this.Controls.Add(this.groupBox1);
@@ -380,5 +404,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.NumericUpDown numericUpDownTomadas;
         private System.Windows.Forms.Label labelTomadas;
+        private System.Windows.Forms.RadioButton radioButtonAtual;
+        private System.Windows.Forms.Label labelAtual;
     }
 }

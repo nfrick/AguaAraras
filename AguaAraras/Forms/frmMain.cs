@@ -18,12 +18,12 @@ namespace AguaAraras {
         }
 
         private void toolStripButtonMovimentos_Click(object sender, EventArgs e) {
-            var frm = new FrmMovimentos {MdiParent = this};
+            var frm = new frmMovimentos {MdiParent = this};
             frm.Show();
         }
 
         private void toolStripButtonExtrato_Click(object sender, EventArgs e) {
-            var frm = new FrmBalanco {MdiParent = this};
+            var frm = new frmBalanco {MdiParent = this};
             frm.Show();
         }
 

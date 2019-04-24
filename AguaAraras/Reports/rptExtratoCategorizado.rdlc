@@ -779,6 +779,9 @@
                         <SortExpression>
                           <Value>=Fields!Data.Value</Value>
                         </SortExpression>
+                        <SortExpression>
+                          <Value>=Fields!RID.Value</Value>
+                        </SortExpression>
                       </SortExpressions>
                     </TablixMember>
                     <TablixMember>
@@ -1016,18 +1019,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AguaAraras">
+    <DataSource Name="DataLayer">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>bf044606-95e2-4975-bf67-4fc04d9cdbdd</rd:DataSourceID>
+      <rd:DataSourceID>1da927db-2790-4ce8-8de2-095d81413fad</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSetExtrato">
       <Query>
-        <DataSourceName>AguaAraras</DataSourceName>
+        <DataSourceName>DataLayer</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -1039,9 +1042,13 @@
           <DataField>Descricao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="RID">
+          <DataField>RID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="Saldo">
           <DataField>Saldo</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="Tipo">
           <DataField>Tipo</DataField>
@@ -1049,13 +1056,13 @@
         </Field>
         <Field Name="Valor">
           <DataField>Valor</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>AguaAraras</rd:DataSetName>
-        <rd:TableName>Extrato</rd:TableName>
-        <rd:ObjectDataSourceType>AguaAraras.Extrato, AguaAraras, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>DataLayer</rd:DataSetName>
+        <rd:TableName>sp_Extrato_Result</rd:TableName>
+        <rd:ObjectDataSourceType>DataLayer.sp_Extrato_Result, DataLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

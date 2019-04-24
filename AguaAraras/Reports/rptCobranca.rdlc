@@ -141,7 +141,7 @@
                             </Border>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Vencimento">
+                        <Textbox Name="ReciboVencimento">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -149,7 +149,7 @@
                               <TextRuns>
                                 <TextRun>
                                   <Label>Vencimento</Label>
-                                  <Value>=Fields!Vencimento.Value</Value>
+                                  <Value>=Fields!ReciboVencimento.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontSize>12pt</FontSize>
@@ -163,7 +163,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Vencimento</rd:DefaultName>
+                          <rd:DefaultName>ReciboVencimento</rd:DefaultName>
                           <Top>0.51865cm</Top>
                           <Left>7.565cm</Left>
                           <Height>0.61954cm</Height>
@@ -208,13 +208,13 @@
                             <PaddingBottom>0cm</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Descricao">
+                        <Textbox Name="ReciboDescricao">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Descricao.Value</Value>
+                                  <Value>=Fields!ReciboDescricao.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                   </Style>
@@ -223,7 +223,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Descricao</rd:DefaultName>
+                          <rd:DefaultName>ReciboDescricao</rd:DefaultName>
                           <Top>1.74797cm</Top>
                           <Left>2.43332cm</Left>
                           <Height>0.49417cm</Height>
@@ -239,7 +239,7 @@
                             <PaddingBottom>0cm</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Observacoes">
+                        <Textbox Name="ReciboObservacoes">
                           <CanGrow>true</CanGrow>
                           <CanShrink>true</CanShrink>
                           <KeepTogether>true</KeepTogether>
@@ -247,7 +247,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Observacoes.Value</Value>
+                                  <Value>=Fields!ReciboObservacoes.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                   </Style>
@@ -256,7 +256,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Observacoes</rd:DefaultName>
+                          <rd:DefaultName>ReciboObservacoes</rd:DefaultName>
                           <Top>3.40784cm</Top>
                           <Left>0.36823cm</Left>
                           <Height>0.6cm</Height>
@@ -649,18 +649,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AguaAraras">
+    <DataSource Name="DataLayer">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>c4d72670-d26b-4142-9791-7b390a50e6b1</rd:DataSourceID>
+      <rd:DataSourceID>543a5b41-f5a9-48eb-84fa-33ae386751f0</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSetReciboItens">
       <Query>
-        <DataSourceName>AguaAraras</DataSourceName>
+        <DataSourceName>DataLayer</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -668,45 +668,29 @@
           <DataField>Cobranca</DataField>
           <rd:TypeName>System.Byte</rd:TypeName>
         </Field>
-        <Field Name="CotaValor">
-          <DataField>CotaValor</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+        <Field Name="Data">
+          <DataField>Data</DataField>
+          <rd:TypeName>System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="DepositoIdentificado">
           <DataField>DepositoIdentificado</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Descricao">
-          <DataField>Descricao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="EMail">
           <DataField>EMail</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Emissao">
-          <DataField>Emissao</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
         <Field Name="EnderecoAraras">
           <DataField>EnderecoAraras</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="EnderecoNumero">
-          <DataField>EnderecoNumero</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="GerarRecibo">
           <DataField>GerarRecibo</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="Meses">
-          <DataField>Meses</DataField>
-          <rd:TypeName>System.Byte</rd:TypeName>
-        </Field>
-        <Field Name="MesesExtenso">
-          <DataField>MesesExtenso</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Nome">
           <DataField>Nome</DataField>
@@ -720,25 +704,61 @@
           <DataField>Observacoes</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Pessoa">
+          <DataField>Pessoa</DataField>
+          <rd:TypeName>DataLayer.Pessoa</rd:TypeName>
+        </Field>
         <Field Name="PessoaID">
           <DataField>PessoaID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Recibo">
+          <DataField>Recibo</DataField>
+          <rd:TypeName>DataLayer.Recibo</rd:TypeName>
+        </Field>
+        <Field Name="ReciboAnoNumero">
+          <DataField>ReciboAnoNumero</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReciboCotaValor">
+          <DataField>ReciboCotaValor</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ReciboDescricao">
+          <DataField>ReciboDescricao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReciboEmissao">
+          <DataField>ReciboEmissao</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="ReciboID">
           <DataField>ReciboID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="ReciboMeses">
+          <DataField>ReciboMeses</DataField>
+          <rd:TypeName>System.Byte</rd:TypeName>
+        </Field>
+        <Field Name="ReciboMesesExtenso">
+          <DataField>ReciboMesesExtenso</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ReciboNumero">
           <DataField>ReciboNumero</DataField>
           <rd:TypeName>System.Byte</rd:TypeName>
         </Field>
-        <Field Name="RuaAraras">
-          <DataField>RuaAraras</DataField>
-          <rd:TypeName>System.Byte</rd:TypeName>
-        </Field>
-        <Field Name="RuaArarasS">
-          <DataField>RuaArarasS</DataField>
+        <Field Name="ReciboNumeroAno">
+          <DataField>ReciboNumeroAno</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReciboObservacoes">
+          <DataField>ReciboObservacoes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ReciboVencimento">
+          <DataField>ReciboVencimento</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Sobrenome">
           <DataField>Sobrenome</DataField>
@@ -764,15 +784,16 @@
           <DataField>ValorDescricao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Vencimento">
-          <DataField>Vencimento</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="ValorExtenso">
+          <DataField>ValorExtenso</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>AguaAraras</rd:DataSetName>
-        <rd:TableName>ReciboItem</rd:TableName>
-        <rd:ObjectDataSourceType>AguaAraras.ReciboItem, AguaAraras, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>DataLayer</rd:DataSetName>
+        <rd:TableName>Pessoa</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Cotas</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>DataLayer.Pessoa, DataLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

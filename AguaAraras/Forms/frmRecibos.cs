@@ -1,149 +1,144 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AguaAraras.Classes;
+using DataLayer;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using AguaAraras.Classes;
 
 namespace AguaAraras {
     public partial class frmRecibos : Form {
-        public List<Recibo> Recibos;
-        private BindingSource _sourceRecibos;
 
-        public SortableBindingList<Cota> Cotas;
-        private BindingSource _sourceCotas;
-
-        private Recibo ReciboAtual => Recibos[bindingSourceRecibos.Position];
+        private DataLayer.Recibo ReciboAtual =>
+            (DataLayer.Recibo) dgvRecibos.CurrentRow?.DataBoundItem;
 
         public frmRecibos() {
             InitializeComponent();
         }
 
         private void frmRecibos_Load(object sender, EventArgs e) {
-            Recibos = Database.RecibosGet();
-            _sourceRecibos = new BindingSource { DataSource = Recibos };
-            bindingSourceRecibos.DataSource = _sourceRecibos;
-            reciboBindingNavigatorSaveItem.Enabled = false;
-            SetTotals();
+            dgvRecibos.Columns[0].Visible = false;
+            dgvRecibos.Sort(dgvRecibos.Columns[1], ListSortDirection.Descending);
         }
 
-        private void bindingSourceRecibos_PositionChanged(object sender, EventArgs e) {
-            ResetCotas();
-            ((INotifyPropertyChanged)ReciboAtual).PropertyChanged -= Recibo_OnPropertyChanged;
-            ((INotifyPropertyChanged)ReciboAtual).PropertyChanged += Recibo_OnPropertyChanged;
+        private void buttonRecalc_Click(object sender, EventArgs e) {
+            foreach (var cota in ReciboAtual.Cotas) {
+                cota.Valor = Math.Round(ReciboAtual.Meses * ReciboAtual
+                                            .Cota * cota.Pessoa.Tomadas, 0);
+            }
+            dgvCotas.Refresh();
         }
 
-        private void Recibo_OnPropertyChanged(object sender, EventArgs e) {
-            reciboBindingNavigatorSaveItem.Enabled = true;
+        #region TOOLSRIP ----------------------------------------------------------
+        private void toolStripButtonSave_Click(object sender, EventArgs e) {
+            entityDataSourceRecibos.SaveChanges();
         }
 
-        private void cotaDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex == -1) return;
-            Cotas[e.RowIndex].Updated = true;
-            _sourceCotas.ResetBindings(false);
-            reciboBindingNavigatorSaveItem.Enabled = true;
-            SetTotals();
+        private void toolStripButtonUndo_Click(object sender, EventArgs e) {
+            entityDataSourceRecibos.CancelChanges();
         }
 
-        private void cotaDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!Cotas.Any() || Cotas.Count <= e.RowIndex) return;
-            if (Cotas[e.RowIndex].Cobranca == 2)
-                e.CellStyle.ForeColor = Color.DarkGreen;
-            if (Cotas[e.RowIndex].Updated)
-                e.CellStyle.BackColor = Color.Bisque;
+        private void toolStripButtonNew_Click(object sender, EventArgs e) {
+            using (var ctx = new AguaArarasEntities()) {
+                var last = ctx.Recibos.OrderByDescending(r => r.Vencimento.Year).ThenByDescending(r => r.Numero).First();
+                var ativos = ctx.Pessoas.Where(p => p.Ativo);
+                var novo = new Recibo(last, ativos);
+                ctx.Recibos.Add(novo);
+                ctx.SaveChanges();
+                entityDataSourceRecibos.Refresh();
+            }
         }
-
-        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e) {
-            reciboBindingNavigatorSaveItem.Enabled = true;
-        }
-
-        private void reciboBindingNavigatorSaveItem_Click(object sender, EventArgs e) {
-            bindingSourceRecibos.EndEdit();
-            bindingSourceCotas.EndEdit();
-            Database.ReciboUpdate(ReciboAtual,
-                Cotas.Where(c => c.Updated).ToList());
-            ResetCotas();
-        }
-
-        private void ResetCotas() {
-            var reciboID = ReciboAtual.ID;
-            Cotas = Database.CotasGet(reciboID);
-            _sourceCotas = new BindingSource { DataSource = Cotas };
-            bindingSourceCotas.DataSource = _sourceCotas;
-            SetTotals();
-            toolStripButtonColeta.Enabled = !Database.ColetaPaga(reciboID);
-            reciboBindingNavigatorSaveItem.Enabled = false;
-        }
-
-        private void cobrancasImpressasToolStripMenuItem_Click(object sender, EventArgs e) {
+        
+        private void toolStripButtonCobrancasImpressas_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport(Database.ReciboItensGet(ReciboAtual.ID).Where(i => i.Cobranca == 1).ToList(),
-                "rptCobranca", "DataSetReciboItens", "Cobranças");
+            frm.SetReport(ReciboAtual.Cotas.Where(i => i.Cobranca == 1).ToList(), "rptCobranca", "DataSetReciboItens", "Cobranças");
         }
 
-        private void cobrancasEMailToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void toolStripButtonCobrancasEMail_Click(object sender, EventArgs e) {
             var frm = new frmCobrancaEmail(this.ParentForm, ReciboAtual.ID);
             frm.Show();
         }
 
-        private void selecionadasToolStripMenuItem_Click(object sender, EventArgs e) {
-            if (cotaDataGridView.SelectedRows.Count == 0) {
+        private void toolStripButtonCobrancasSelecionadas_Click(object sender, EventArgs e) {
+            if (dgvCotas.SelectedRows.Count == 0) {
                 MessageBox.Show(@"Nenhum nome foi selecionado.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            var itens = Database.ReciboItensGet(ReciboAtual.ID);
-            var selecionados =
-            (from DataGridViewRow n in cotaDataGridView.SelectedRows
-                select itens[n.Index]).ToList();
+            var selecionados = (from DataGridViewRow n in dgvCotas.SelectedRows
+                select (DataLayer.Cota)n.DataBoundItem).OrderBy(c => c.Pessoa.Nome).ToList();
             frm.SetReport(selecionados, "rptCobranca", "DataSetReciboItens", "Cobranças");
         }
 
-        private void cotaDataGridView_SelectionChanged(object sender, EventArgs e) {
-            selecionadasToolStripMenuItem.Enabled = cotaDataGridView.SelectedRows.Count > 0;
-        }
-
-        private void recibosToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void toolStripButtonRecibos_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport(Database.ReciboItensGet(ReciboAtual.ID).Where(i => i.GerarRecibo).ToList(),
+            frm.SetReport(ReciboAtual.Cotas.Where(c => c.GerarRecibo).ToList(),
                 "rptRecibo", "DataSetReciboItens", "Recibos");
         }
 
-        private void fichaConferênciaToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void toolStripButtonFichaConferência_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport(Database.ReciboItensGet(ReciboAtual.ID).Where(i => i.Cobranca == 1).ToList(),
+            frm.SetReport(ReciboAtual.Cotas.Where(c => c.GerarRecibo).ToList(),
                 "rptFichaConferencia", "DataSetReciboItens", "Ficha Conferência");
         }
 
-        private void SetTotals() {
-            labelTotal.Text = Cotas.Sum(c => c.Valor).ToString("N2");
-            labelRecebido.Text = Cotas.Where(c => c.Data != null).Sum(c => c.Valor).ToString("N2");
-            labelPendente.Text = Cotas.Where(c => c.Data == null).Sum(c => c.Valor).ToString("N2");
-        }
-
-        private void toolStripButtonPagamentos_Click(object sender, EventArgs e) {
-            var itens = Database.GetBalanceItems(ReciboAtual.ID);
-            var naoPagos = Cotas.Where(c => c.Data == null).ToList();
+        private void toolStripButtonFind_Click(object sender, EventArgs e) {
             var counter = 0;
-            foreach (var np in naoPagos) {
-                var item = itens.FirstOrDefault(i => i.Centavos == np.PessoaID || i.Nome == np.Nome);
-                if (item == null) continue;
-                np.Data = item.Data;
-                np.Updated = true;
-                counter++;
+            using (var ctx = new MoneyBinEntities()) {
+                var itens = ctx.BalanceItemsAgua(ReciboAtual.ID).ToList();
+                if (!itens.Any()) return;
+                foreach (DataGridViewRow row in dgvCotas.Rows) {
+                    if (row.Cells[2].Value != null) continue;
+                    var item = itens.FirstOrDefault(i => i.Centavos == (int)row.Cells[0].Value ||
+                                                         i.Nome == (string)row.Cells[1].Value);
+                    if (item == null) continue;
+                    row.Cells[2].Value = item.Data;
+                    counter++;
+                }
             }
             MessageBox.Show($@"{counter} atualizações.", @"Pagamentos",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-            _sourceCotas.ResetBindings(false);
-            reciboBindingNavigatorSaveItem.Enabled = naoPagos.Any(n => n.Updated);
         }
 
-        private void toolStripButtonColeta_Click(object sender, EventArgs e) {
-            var data = DateTime.Now;
-            if (clsPromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) return;
-            Database.ColetaAdd(ReciboAtual.ID, data);
-            toolStripButtonColeta.Enabled = false;
+        private void toolStripButtonColect_Click(object sender, EventArgs e) {
+            using (var ctx = new AguaArarasEntities()) {
+                if (ctx.Movimentos.Any(m => m.ReciboID == ReciboAtual.ID && m.Tipo == "carlos")) {
+                    MessageBox.Show("Movimento já foi criado.", "Recibos", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    return;
+                }
+                var data = DateTime.Now;
+                if (clsPromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) return;
+
+                ctx.Movimentos.Add(new DataLayer.Movimento() {
+                    Tipo = "carlos",
+                    Data = data,
+                    ReciboID = ReciboAtual.ID,
+                    Historico = ReciboAtual.DescricaoShort,
+                    Valor = (ReciboAtual.Cota * ReciboAtual.Meses * -2) / 3
+                });
+                ctx.SaveChanges();
+                MessageBox.Show("Movimento criado.", "Recibos", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
         }
+        #endregion ----------------------------------------------------------------
+
+        #region DATAGRIDVIEW ------------------------------------------------------
+        private void dgvCotas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            if ((byte)dgvCotas.Rows[e.RowIndex].Cells[5].Value == 2) {
+                e.CellStyle.ForeColor = Color.DarkGreen;
+            }
+        }
+
+        private void dgvRecibos_SelectionChanged(object sender, EventArgs e) {
+            if (dgvCotas.RowCount == 0) return;
+            dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
+        }
+
+        private void dgvCotas_SelectionChanged(object sender, EventArgs e) {
+            selecionadasToolStripMenuItem.Enabled = dgvCotas.SelectedRows.Count > 0;
+        }
+        #endregion ----------------------------------------------------------------
     }
 }

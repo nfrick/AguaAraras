@@ -2,18 +2,18 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AguaAraras">
+    <DataSource Name="DataLayer">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>bf044606-95e2-4975-bf67-4fc04d9cdbdd</rd:DataSourceID>
+      <rd:DataSourceID>f420f11b-9521-46cc-a663-17f437cf5713</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSetExtrato">
       <Query>
-        <DataSourceName>AguaAraras</DataSourceName>
+        <DataSourceName>DataLayer</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -25,9 +25,13 @@
           <DataField>Descricao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="RID">
+          <DataField>RID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="Saldo">
           <DataField>Saldo</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
         <Field Name="Tipo">
           <DataField>Tipo</DataField>
@@ -35,13 +39,13 @@
         </Field>
         <Field Name="Valor">
           <DataField>Valor</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>AguaAraras</rd:DataSetName>
-        <rd:TableName>Extrato</rd:TableName>
-        <rd:ObjectDataSourceType>AguaAraras.Extrato, AguaAraras, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>DataLayer</rd:DataSetName>
+        <rd:TableName>sp_Extrato_Result</rd:TableName>
+        <rd:ObjectDataSourceType>DataLayer.sp_Extrato_Result, DataLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -389,6 +393,7 @@
                                   <PaddingLeft>10pt</PaddingLeft>
                                 </Style>
                               </Textbox>
+                              <rd:Selected>true</rd:Selected>
                             </CellContents>
                           </TablixHeader>
                           <TablixMembers>

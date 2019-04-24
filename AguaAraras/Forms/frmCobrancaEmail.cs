@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using DataLayer;
+using Microsoft.Reporting.WinForms;
 using Rhetos.Utilities;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace AguaAraras {
         private readonly string _bodyTextPath = AppDomain.CurrentDomain.BaseDirectory + @"\Body.txt";
         private readonly int _ReciboID;
 
-        private ReciboItem[] _Cobrancas;
+        private DataLayer.Cota[] _Cobrancas;
         private string _textoOriginal;
 
         public frmCobrancaEmail(Form parent, int ReciboID) {
@@ -27,10 +28,24 @@ namespace AguaAraras {
         }
 
         private void GetData() {
-            _Cobrancas = Database.ReciboItensGet(_ReciboID, checkBoxIncluirCobrancasAnteriores.Checked)
-                .Where(i => i.Cobranca == 2).OrderBy(i=>i.Nome).ThenByDescending(i=>i.ReciboAnoNumero).ToArray();
-            listBoxNomes.Items.Clear();
-            listBoxNomes.Items.AddRange(_Cobrancas);
+            using (var ctx = new AguaArarasEntities()) {
+                if (checkBoxIncluirCobrancasAnteriores.Checked) {
+                    _Cobrancas =
+                        ctx.Cotas.Where(c => c.Data == null && c.Pessoa.Cobranca == 2)
+                            .OrderBy(c => c.Pessoa.Nome)
+                            .ThenByDescending(c => c.Recibo.Vencimento.Year)
+                            .ThenByDescending(c => c.Recibo.Numero).ToArray();
+                }
+                else {
+                    _Cobrancas =
+                        ctx.Cotas.Where(c => c.ReciboID == _ReciboID && c.Pessoa.Cobranca == 2)
+                            .OrderBy(c => c.Pessoa.Nome)
+                            .ThenByDescending(c => c.Recibo.Vencimento.Year)
+                            .ThenByDescending(c => c.Recibo.Numero).ToArray();
+                }
+                listBoxNomes.Items.Clear();
+                listBoxNomes.Items.AddRange(_Cobrancas);
+            }
         }
 
         private void frmCobrancaEmail_Load(object sender, EventArgs e) {
@@ -43,7 +58,9 @@ namespace AguaAraras {
                 textBoxBody.Text = _textoOriginal;
             }
 
-            if (File.Exists(_rptPath)) return;
+            if (File.Exists(_rptPath)) {
+                return;
+            }
 
             MessageBox.Show($@"Arquivo {_rptPath} não encontrado.");
             buttonGerar.Enabled = false;
@@ -52,7 +69,7 @@ namespace AguaAraras {
         private void buttonGerar_Click(object sender, EventArgs e) {
             var itemsToSend = radioButtonTodos.Checked
                 ? _Cobrancas
-                : listBoxNomes.SelectedItems.Cast<ReciboItem>().ToArray();
+                : listBoxNomes.SelectedItems.Cast<DataLayer.Cota>().ToArray();
 
             var ItemsByEMail = from p in itemsToSend
                                group p by p.EMail
@@ -61,7 +78,10 @@ namespace AguaAraras {
 
             foreach (var email in ItemsByEMail) {
                 email.CreatePDF(labelFolder.Text, _rptPath);
-                if (radioButtonSalvar.Checked) continue;
+                if (radioButtonSalvar.Checked) {
+                    continue;
+                }
+
                 email.Send(textBoxAssunto.Text, textBoxBody.Text);
             }
             MessageBox.Show("Cobranças geradas.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -129,7 +149,7 @@ namespace AguaAraras {
     public class EMailDeCobranca {
         public string EMail { get; set; }
         public string PdfName { get; set; }
-        public List<ReciboItem> Cobrancas { get; set; }
+        public List<DataLayer.Cota> Cobrancas { get; set; }
         public int Count => Cobrancas.Count;
         // public string[] EMailArray => EMail.Replace("\r\n", "#").Split('#');
         public string EMailCSV => EMail.Replace("\r\n", ",");

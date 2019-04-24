@@ -1,5 +1,5 @@
 ﻿namespace AguaAraras {
-    partial class FrmBalanco {
+    partial class frmBalanco {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,31 +24,31 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBalanco));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBalanco));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonExtratoCronologico = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonExtratoCategorizado = new System.Windows.Forms.ToolStripButton();
@@ -57,72 +57,36 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvExtrato = new System.Windows.Forms.DataGridView();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvMes = new System.Windows.Forms.DataGridView();
-            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvAno = new System.Windows.Forms.DataGridView();
-            this.dgvTrimestre = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.xTabDataDataGridView3 = new System.Windows.Forms.DataGridView();
-            this.xTabDataDataGridView2 = new System.Windows.Forms.DataGridView();
-            this.xTabDataDataGridView1 = new System.Windows.Forms.DataGridView();
-            this.xTabDataDataGridView = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_Extratos = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvMes = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Periodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_BalancoMes = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvAno = new System.Windows.Forms.DataGridView();
             this.anoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positivoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.negativoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_BalancoAno = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvTrimestre = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_BalancoTrimestre = new System.Windows.Forms.BindingSource(this.components);
-            this.bs_xTabDataTrimRecibo = new System.Windows.Forms.BindingSource(this.components);
-            this.bs_xTabDataTrimReal = new System.Windows.Forms.BindingSource(this.components);
-            this.bs_xTabDataAnoRecibo = new System.Windows.Forms.BindingSource(this.components);
-            this.bs_xTabDataAnoReal = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.xTabDataDataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,28 +96,64 @@
             this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bs_xTabDataTrimRecibo = new System.Windows.Forms.BindingSource(this.components);
+            this.xTabDataDataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bs_xTabDataTrimReal = new System.Windows.Forms.BindingSource(this.components);
+            this.xTabDataDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bs_xTabDataAnoRecibo = new System.Windows.Forms.BindingSource(this.components);
+            this.xTabDataDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bs_xTabDataAnoReal = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExtrato)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_Extratos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoMes)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAno)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoAno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrimestre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoTrimestre)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_Extratos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoMes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoAno)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoTrimestre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimRecibo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimReal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoRecibo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoReal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -267,6 +267,21 @@
             this.dgvExtrato.Tag = "1";
             this.dgvExtrato.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Data";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Data";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Tipo";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
             // Descricao
             // 
             this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -274,6 +289,33 @@
             this.Descricao.HeaderText = "Descrição";
             this.Descricao.Name = "Descricao";
             this.Descricao.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Valor";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Valor";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Saldo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 90;
+            // 
+            // bs_Extratos
+            // 
+            this.bs_Extratos.AllowNew = false;
+            this.bs_Extratos.DataSource = typeof(DataLayer.sp_Extrato_Result);
             // 
             // dgvMes
             // 
@@ -302,6 +344,17 @@
             this.dgvMes.Tag = "1";
             this.dgvMes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Ano";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = "null";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Ano";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 50;
+            // 
             // Periodo
             // 
             this.Periodo.DataPropertyName = "Periodo";
@@ -312,6 +365,43 @@
             this.Periodo.Name = "Periodo";
             this.Periodo.ReadOnly = true;
             this.Periodo.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Positivo";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
+            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGridViewTextBoxColumn10.HeaderText = "Positivo";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 89;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Negativo";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGridViewTextBoxColumn11.HeaderText = "Negativo";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Width = 89;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "Saldo";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewTextBoxColumn12.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // bs_BalancoMes
+            // 
+            this.bs_BalancoMes.DataSource = typeof(DataLayer.sp_Balanco_Result);
             // 
             // tableLayoutPanel2
             // 
@@ -354,6 +444,53 @@
             this.dgvAno.Tag = "";
             this.dgvAno.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
+            // anoDataGridViewTextBoxColumn
+            // 
+            this.anoDataGridViewTextBoxColumn.DataPropertyName = "Ano";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.anoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            this.anoDataGridViewTextBoxColumn.HeaderText = "Ano";
+            this.anoDataGridViewTextBoxColumn.Name = "anoDataGridViewTextBoxColumn";
+            this.anoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.anoDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // positivoDataGridViewTextBoxColumn
+            // 
+            this.positivoDataGridViewTextBoxColumn.DataPropertyName = "Positivo";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            this.positivoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            this.positivoDataGridViewTextBoxColumn.HeaderText = "Positivo";
+            this.positivoDataGridViewTextBoxColumn.Name = "positivoDataGridViewTextBoxColumn";
+            this.positivoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.positivoDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // negativoDataGridViewTextBoxColumn
+            // 
+            this.negativoDataGridViewTextBoxColumn.DataPropertyName = "Negativo";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            this.negativoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            this.negativoDataGridViewTextBoxColumn.HeaderText = "Negativo";
+            this.negativoDataGridViewTextBoxColumn.Name = "negativoDataGridViewTextBoxColumn";
+            this.negativoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.negativoDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // saldoDataGridViewTextBoxColumn
+            // 
+            this.saldoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.saldoDataGridViewTextBoxColumn.DataPropertyName = "Saldo";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            this.saldoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            this.saldoDataGridViewTextBoxColumn.HeaderText = "Saldo";
+            this.saldoDataGridViewTextBoxColumn.Name = "saldoDataGridViewTextBoxColumn";
+            this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bs_BalancoAno
+            // 
+            this.bs_BalancoAno.DataSource = typeof(DataLayer.sp_Balanco_Result);
+            // 
             // dgvTrimestre
             // 
             this.dgvTrimestre.AllowUserToAddRows = false;
@@ -379,6 +516,64 @@
             this.dgvTrimestre.TabIndex = 1;
             this.dgvTrimestre.Tag = "1";
             this.dgvTrimestre.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "Ano";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dataGridViewTextBoxColumn13.HeaderText = "Ano";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Periodo";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.Format = "00";
+            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dataGridViewTextBoxColumn14.HeaderText = "Trim";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Width = 30;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Positivo";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N2";
+            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dataGridViewTextBoxColumn15.HeaderText = "Positivo";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Negativo";
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N2";
+            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewTextBoxColumn16.HeaderText = "Negativo";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Saldo";
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N2";
+            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewTextBoxColumn17.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // bs_BalancoTrimestre
+            // 
+            this.bs_BalancoTrimestre.DataSource = typeof(DataLayer.sp_Balanco_Result);
             // 
             // tabPage2
             // 
@@ -441,519 +636,6 @@
             this.xTabDataDataGridView3.Size = new System.Drawing.Size(664, 315);
             this.xTabDataDataGridView3.TabIndex = 7;
             this.xTabDataDataGridView3.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
-            // 
-            // xTabDataDataGridView2
-            // 
-            this.xTabDataDataGridView2.AllowUserToAddRows = false;
-            this.xTabDataDataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.xTabDataDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
-            this.xTabDataDataGridView2.AutoGenerateColumns = false;
-            this.xTabDataDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn32,
-            this.dataGridViewTextBoxColumn33,
-            this.dataGridViewTextBoxColumn39,
-            this.dataGridViewTextBoxColumn34,
-            this.dataGridViewTextBoxColumn37,
-            this.dataGridViewTextBoxColumn35,
-            this.dataGridViewTextBoxColumn36,
-            this.dataGridViewTextBoxColumn38,
-            this.dataGridViewTextBoxColumn40});
-            this.xTabDataDataGridView2.DataSource = this.bs_xTabDataTrimReal;
-            this.xTabDataDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView2.Location = new System.Drawing.Point(3, 354);
-            this.xTabDataDataGridView2.Name = "xTabDataDataGridView2";
-            this.xTabDataDataGridView2.ReadOnly = true;
-            this.xTabDataDataGridView2.RowHeadersVisible = false;
-            this.xTabDataDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView2.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView2.TabIndex = 7;
-            this.xTabDataDataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
-            // 
-            // xTabDataDataGridView1
-            // 
-            this.xTabDataDataGridView1.AllowUserToAddRows = false;
-            this.xTabDataDataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.xTabDataDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
-            this.xTabDataDataGridView1.AutoGenerateColumns = false;
-            this.xTabDataDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn31});
-            this.xTabDataDataGridView1.DataSource = this.bs_xTabDataAnoRecibo;
-            this.xTabDataDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView1.Location = new System.Drawing.Point(673, 33);
-            this.xTabDataDataGridView1.Name = "xTabDataDataGridView1";
-            this.xTabDataDataGridView1.ReadOnly = true;
-            this.xTabDataDataGridView1.RowHeadersVisible = false;
-            this.xTabDataDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView1.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView1.TabIndex = 7;
-            this.xTabDataDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
-            // 
-            // xTabDataDataGridView
-            // 
-            this.xTabDataDataGridView.AllowUserToAddRows = false;
-            this.xTabDataDataGridView.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.xTabDataDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.xTabDataDataGridView.AutoGenerateColumns = false;
-            this.xTabDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn18,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn22});
-            this.xTabDataDataGridView.DataSource = this.bs_xTabDataAnoReal;
-            this.xTabDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView.Location = new System.Drawing.Point(3, 33);
-            this.xTabDataDataGridView.Name = "xTabDataDataGridView";
-            this.xTabDataDataGridView.ReadOnly = true;
-            this.xTabDataDataGridView.RowHeadersVisible = false;
-            this.xTabDataDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView.TabIndex = 7;
-            this.xTabDataDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(664, 30);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "PERÍODO REAL";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(673, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(664, 30);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "PERÍODO RECIBO";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Data";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Data";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Tipo";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Valor";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Saldo";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 90;
-            // 
-            // bs_Extratos
-            // 
-            this.bs_Extratos.AllowNew = false;
-            this.bs_Extratos.DataSource = typeof(AguaAraras.Extrato);
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Ano";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = "null";
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn8.HeaderText = "Ano";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Positivo";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            this.dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn10.HeaderText = "Positivo";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 89;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "Negativo";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            this.dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTextBoxColumn11.HeaderText = "Negativo";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Width = 89;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "Saldo";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            this.dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dataGridViewTextBoxColumn12.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // bs_BalancoMes
-            // 
-            this.bs_BalancoMes.DataSource = typeof(AguaAraras.Balanco);
-            // 
-            // anoDataGridViewTextBoxColumn
-            // 
-            this.anoDataGridViewTextBoxColumn.DataPropertyName = "Ano";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.anoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
-            this.anoDataGridViewTextBoxColumn.HeaderText = "Ano";
-            this.anoDataGridViewTextBoxColumn.Name = "anoDataGridViewTextBoxColumn";
-            this.anoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.anoDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // positivoDataGridViewTextBoxColumn
-            // 
-            this.positivoDataGridViewTextBoxColumn.DataPropertyName = "Positivo";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N2";
-            this.positivoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle12;
-            this.positivoDataGridViewTextBoxColumn.HeaderText = "Positivo";
-            this.positivoDataGridViewTextBoxColumn.Name = "positivoDataGridViewTextBoxColumn";
-            this.positivoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.positivoDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // negativoDataGridViewTextBoxColumn
-            // 
-            this.negativoDataGridViewTextBoxColumn.DataPropertyName = "Negativo";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "N2";
-            this.negativoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle13;
-            this.negativoDataGridViewTextBoxColumn.HeaderText = "Negativo";
-            this.negativoDataGridViewTextBoxColumn.Name = "negativoDataGridViewTextBoxColumn";
-            this.negativoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.negativoDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // saldoDataGridViewTextBoxColumn
-            // 
-            this.saldoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.saldoDataGridViewTextBoxColumn.DataPropertyName = "Saldo";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N2";
-            this.saldoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle14;
-            this.saldoDataGridViewTextBoxColumn.HeaderText = "Saldo";
-            this.saldoDataGridViewTextBoxColumn.Name = "saldoDataGridViewTextBoxColumn";
-            this.saldoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bs_BalancoAno
-            // 
-            this.bs_BalancoAno.DataSource = typeof(AguaAraras.Balanco);
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "Ano";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewTextBoxColumn13.HeaderText = "Ano";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Periodo";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.Format = "00";
-            this.dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dataGridViewTextBoxColumn14.HeaderText = "Trim";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Width = 30;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "Positivo";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N2";
-            this.dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dataGridViewTextBoxColumn15.HeaderText = "Positivo";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Negativo";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N2";
-            this.dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle19;
-            this.dataGridViewTextBoxColumn16.HeaderText = "Negativo";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Saldo";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "N2";
-            this.dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle20;
-            this.dataGridViewTextBoxColumn17.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // bs_BalancoTrimestre
-            // 
-            this.bs_BalancoTrimestre.DataSource = typeof(AguaAraras.Balanco);
-            // 
-            // bs_xTabDataTrimRecibo
-            // 
-            this.bs_xTabDataTrimRecibo.DataSource = typeof(AguaAraras.XTabData);
-            // 
-            // bs_xTabDataTrimReal
-            // 
-            this.bs_xTabDataTrimReal.DataSource = typeof(AguaAraras.XTabData);
-            // 
-            // bs_xTabDataAnoRecibo
-            // 
-            this.bs_xTabDataAnoRecibo.DataSource = typeof(AguaAraras.XTabData);
-            // 
-            // bs_xTabDataAnoReal
-            // 
-            this.bs_xTabDataAnoReal.DataSource = typeof(AguaAraras.XTabData);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Periodo";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Periodo";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Cota";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Cota";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "Receita";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Outras Receitas";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Manutencao";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Manutencao";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "Coleta";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Coleta";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Material";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Material";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "MaoDeObra";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Mão Obra";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "Despesa";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Outras Despesas";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn32
-            // 
-            this.dataGridViewTextBoxColumn32.DataPropertyName = "Periodo";
-            this.dataGridViewTextBoxColumn32.HeaderText = "Periodo";
-            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
-            this.dataGridViewTextBoxColumn32.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn33
-            // 
-            this.dataGridViewTextBoxColumn33.DataPropertyName = "Cota";
-            this.dataGridViewTextBoxColumn33.HeaderText = "Cota";
-            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
-            this.dataGridViewTextBoxColumn33.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn39
-            // 
-            this.dataGridViewTextBoxColumn39.DataPropertyName = "Receita";
-            this.dataGridViewTextBoxColumn39.HeaderText = "Outras Receitas";
-            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
-            this.dataGridViewTextBoxColumn39.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn34
-            // 
-            this.dataGridViewTextBoxColumn34.DataPropertyName = "Manutencao";
-            this.dataGridViewTextBoxColumn34.HeaderText = "Manutencao";
-            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
-            this.dataGridViewTextBoxColumn34.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn37
-            // 
-            this.dataGridViewTextBoxColumn37.DataPropertyName = "Coleta";
-            this.dataGridViewTextBoxColumn37.HeaderText = "Coleta";
-            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
-            this.dataGridViewTextBoxColumn37.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn35
-            // 
-            this.dataGridViewTextBoxColumn35.DataPropertyName = "Material";
-            this.dataGridViewTextBoxColumn35.HeaderText = "Material";
-            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
-            this.dataGridViewTextBoxColumn35.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn36
-            // 
-            this.dataGridViewTextBoxColumn36.DataPropertyName = "MaoDeObra";
-            this.dataGridViewTextBoxColumn36.HeaderText = "Mão Obra";
-            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
-            this.dataGridViewTextBoxColumn36.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn38
-            // 
-            this.dataGridViewTextBoxColumn38.DataPropertyName = "Despesa";
-            this.dataGridViewTextBoxColumn38.HeaderText = "Outras Despesas";
-            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
-            this.dataGridViewTextBoxColumn38.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn40
-            // 
-            this.dataGridViewTextBoxColumn40.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn40.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
-            this.dataGridViewTextBoxColumn40.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "Periodo";
-            this.dataGridViewTextBoxColumn23.HeaderText = "Periodo";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "Cota";
-            this.dataGridViewTextBoxColumn24.HeaderText = "Cota";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn30
-            // 
-            this.dataGridViewTextBoxColumn30.DataPropertyName = "Receita";
-            this.dataGridViewTextBoxColumn30.HeaderText = "Outras Receitas";
-            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
-            this.dataGridViewTextBoxColumn30.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "Manutencao";
-            this.dataGridViewTextBoxColumn25.HeaderText = "Manutencao";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn28
-            // 
-            this.dataGridViewTextBoxColumn28.DataPropertyName = "Coleta";
-            this.dataGridViewTextBoxColumn28.HeaderText = "Coleta";
-            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
-            this.dataGridViewTextBoxColumn28.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "Material";
-            this.dataGridViewTextBoxColumn26.HeaderText = "Material";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.DataPropertyName = "MaoDeObra";
-            this.dataGridViewTextBoxColumn27.HeaderText = "Mão Obra";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn29
-            // 
-            this.dataGridViewTextBoxColumn29.DataPropertyName = "Despesa";
-            this.dataGridViewTextBoxColumn29.HeaderText = "Outras Despesas";
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn31
-            // 
-            this.dataGridViewTextBoxColumn31.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn31.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn41
             // 
@@ -1018,7 +700,325 @@
             this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
             this.dataGridViewTextBoxColumn49.ReadOnly = true;
             // 
-            // FrmBalanco
+            // bs_xTabDataTrimRecibo
+            // 
+            this.bs_xTabDataTrimRecibo.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            // 
+            // xTabDataDataGridView2
+            // 
+            this.xTabDataDataGridView2.AllowUserToAddRows = false;
+            this.xTabDataDataGridView2.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.xTabDataDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            this.xTabDataDataGridView2.AutoGenerateColumns = false;
+            this.xTabDataDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.xTabDataDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn32,
+            this.dataGridViewTextBoxColumn33,
+            this.dataGridViewTextBoxColumn39,
+            this.dataGridViewTextBoxColumn34,
+            this.dataGridViewTextBoxColumn37,
+            this.dataGridViewTextBoxColumn35,
+            this.dataGridViewTextBoxColumn36,
+            this.dataGridViewTextBoxColumn38,
+            this.dataGridViewTextBoxColumn40});
+            this.xTabDataDataGridView2.DataSource = this.bs_xTabDataTrimReal;
+            this.xTabDataDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xTabDataDataGridView2.Location = new System.Drawing.Point(3, 354);
+            this.xTabDataDataGridView2.Name = "xTabDataDataGridView2";
+            this.xTabDataDataGridView2.ReadOnly = true;
+            this.xTabDataDataGridView2.RowHeadersVisible = false;
+            this.xTabDataDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.xTabDataDataGridView2.Size = new System.Drawing.Size(664, 315);
+            this.xTabDataDataGridView2.TabIndex = 7;
+            this.xTabDataDataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.DataPropertyName = "Periodo";
+            this.dataGridViewTextBoxColumn32.HeaderText = "Periodo";
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            this.dataGridViewTextBoxColumn32.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.DataPropertyName = "Cota";
+            this.dataGridViewTextBoxColumn33.HeaderText = "Cota";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            this.dataGridViewTextBoxColumn33.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn39
+            // 
+            this.dataGridViewTextBoxColumn39.DataPropertyName = "Receita";
+            this.dataGridViewTextBoxColumn39.HeaderText = "Outras Receitas";
+            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
+            this.dataGridViewTextBoxColumn39.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.DataPropertyName = "Manutencao";
+            this.dataGridViewTextBoxColumn34.HeaderText = "Manutencao";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            this.dataGridViewTextBoxColumn34.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "Coleta";
+            this.dataGridViewTextBoxColumn37.HeaderText = "Coleta";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            this.dataGridViewTextBoxColumn37.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.DataPropertyName = "Material";
+            this.dataGridViewTextBoxColumn35.HeaderText = "Material";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            this.dataGridViewTextBoxColumn35.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "MaoDeObra";
+            this.dataGridViewTextBoxColumn36.HeaderText = "Mão Obra";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            this.dataGridViewTextBoxColumn36.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn38
+            // 
+            this.dataGridViewTextBoxColumn38.DataPropertyName = "Despesa";
+            this.dataGridViewTextBoxColumn38.HeaderText = "Outras Despesas";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            this.dataGridViewTextBoxColumn38.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn40
+            // 
+            this.dataGridViewTextBoxColumn40.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn40.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            this.dataGridViewTextBoxColumn40.ReadOnly = true;
+            // 
+            // bs_xTabDataTrimReal
+            // 
+            this.bs_xTabDataTrimReal.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            // 
+            // xTabDataDataGridView1
+            // 
+            this.xTabDataDataGridView1.AllowUserToAddRows = false;
+            this.xTabDataDataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.xTabDataDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            this.xTabDataDataGridView1.AutoGenerateColumns = false;
+            this.xTabDataDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.xTabDataDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewTextBoxColumn24,
+            this.dataGridViewTextBoxColumn30,
+            this.dataGridViewTextBoxColumn25,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn31});
+            this.xTabDataDataGridView1.DataSource = this.bs_xTabDataAnoRecibo;
+            this.xTabDataDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xTabDataDataGridView1.Location = new System.Drawing.Point(673, 33);
+            this.xTabDataDataGridView1.Name = "xTabDataDataGridView1";
+            this.xTabDataDataGridView1.ReadOnly = true;
+            this.xTabDataDataGridView1.RowHeadersVisible = false;
+            this.xTabDataDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.xTabDataDataGridView1.Size = new System.Drawing.Size(664, 315);
+            this.xTabDataDataGridView1.TabIndex = 7;
+            this.xTabDataDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "Periodo";
+            this.dataGridViewTextBoxColumn23.HeaderText = "Periodo";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "Cota";
+            this.dataGridViewTextBoxColumn24.HeaderText = "Cota";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.DataPropertyName = "Receita";
+            this.dataGridViewTextBoxColumn30.HeaderText = "Outras Receitas";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "Manutencao";
+            this.dataGridViewTextBoxColumn25.HeaderText = "Manutencao";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.DataPropertyName = "Coleta";
+            this.dataGridViewTextBoxColumn28.HeaderText = "Coleta";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "Material";
+            this.dataGridViewTextBoxColumn26.HeaderText = "Material";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.DataPropertyName = "MaoDeObra";
+            this.dataGridViewTextBoxColumn27.HeaderText = "Mão Obra";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.DataPropertyName = "Despesa";
+            this.dataGridViewTextBoxColumn29.HeaderText = "Outras Despesas";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn31.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            // 
+            // bs_xTabDataAnoRecibo
+            // 
+            this.bs_xTabDataAnoRecibo.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            // 
+            // xTabDataDataGridView
+            // 
+            this.xTabDataDataGridView.AllowUserToAddRows = false;
+            this.xTabDataDataGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.xTabDataDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.xTabDataDataGridView.AutoGenerateColumns = false;
+            this.xTabDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.xTabDataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn21,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn22});
+            this.xTabDataDataGridView.DataSource = this.bs_xTabDataAnoReal;
+            this.xTabDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xTabDataDataGridView.Location = new System.Drawing.Point(3, 33);
+            this.xTabDataDataGridView.Name = "xTabDataDataGridView";
+            this.xTabDataDataGridView.ReadOnly = true;
+            this.xTabDataDataGridView.RowHeadersVisible = false;
+            this.xTabDataDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.xTabDataDataGridView.Size = new System.Drawing.Size(664, 315);
+            this.xTabDataDataGridView.TabIndex = 7;
+            this.xTabDataDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Periodo";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Periodo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Cota";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Cota";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "Receita";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Outras Receitas";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Manutencao";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Manutencao";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Coleta";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Coleta";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Material";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Material";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "MaoDeObra";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Mão Obra";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Despesa";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Outras Despesas";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            // 
+            // bs_xTabDataAnoReal
+            // 
+            this.bs_xTabDataAnoReal.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(664, 30);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "PERÍODO REAL";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(673, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(664, 30);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "PERÍODO RECIBO";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // frmBalanco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1028,34 +1028,34 @@
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FrmBalanco";
+            this.Name = "frmBalanco";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Balanço e Extrato";
-            this.Load += new System.EventHandler(this.FrmBalanco_Load);
+            this.Load += new System.EventHandler(this.frmBalanco_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExtrato)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_Extratos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoMes)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAno)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoAno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrimestre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoTrimestre)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_Extratos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoMes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoAno)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoTrimestre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimRecibo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimReal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoRecibo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoReal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

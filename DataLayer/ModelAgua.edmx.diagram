@@ -6,13 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cef9e591281b43d18834f085b9b336e7" Name="Diagram1">
         <EntityTypeShape EntityType="AguaArarasModel.Endereco" Width="1.5" PointX="0.5" PointY="3.75" />
-        <EntityTypeShape EntityType="AguaArarasModel.Movimento" Width="1.5" PointX="7.875" PointY="5.25" />
-        <EntityTypeShape EntityType="AguaArarasModel.Pessoa" Width="1.5" PointX="3.125" PointY="1.875" />
-        <EntityTypeShape EntityType="AguaArarasModel.Recibo" Width="1.5" PointX="7.875" PointY="1.875" />
+        <EntityTypeShape EntityType="AguaArarasModel.Pessoa" Width="1.5" PointX="3.125" PointY="1.5" />
         <EntityTypeShape EntityType="AguaArarasModel.Telefone" Width="1.5" PointX="0.5" PointY="0.875" />
         <AssociationConnector Association="AguaArarasModel.FK_tblEnderecos_tblPessoas" />
         <AssociationConnector Association="AguaArarasModel.FK_tblTelefones_tblPessoas" />
         <EntityTypeShape EntityType="AguaArarasModel.vw_ReciboItens" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="AguaArarasModel.Cota" Width="1.5" PointX="5.625" PointY="2.375" />
+        <AssociationConnector Association="AguaArarasModel.PessoaCota" />
+        <EntityTypeShape EntityType="AguaArarasModel.Recibo" Width="1.5" PointX="8" PointY="2.125" />
+        <AssociationConnector Association="AguaArarasModel.FK_tblCotas_tblRecibos" />
+        <EntityTypeShape EntityType="AguaArarasModel.Movimento" Width="1.5" PointX="10.375" PointY="2.375" />
+        <AssociationConnector Association="AguaArarasModel.ReciboMovimento" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

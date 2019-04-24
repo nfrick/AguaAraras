@@ -1,278 +1,222 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmPessoas : Form {
-        public List<Pessoa> Pessoas;
 
-        private BindingSource _sourceEnderecos;
-        public List<Endereco> EnderecosAll;
-        public List<Endereco> Enderecos;
-        public List<Endereco> EnderecosDeleted = new List<Endereco>();
-
-        private BindingSource _sourceTelefones;
-        public List<Telefone> TelefonesAll;
-        public List<Telefone> Telefones;
-        public List<Telefone> TelefonesDeleted = new List<Telefone>();
-
-        private bool _loading = true;
         public frmPessoas() {
             InitializeComponent();
-            bindingSourceEnderecos.ListChanged +=
-                new ListChangedEventHandler(BindingSource_ListChanged);
-            bindingSourceTelefones.ListChanged +=
-                new ListChangedEventHandler(BindingSource_ListChanged);
-        }
 
-        #region FORM ------------------------------------------
-        private void frmPessoas_Load(object sender, EventArgs e) {
-            Pessoas = Database.PessoasGet();
-            foreach (var p in Pessoas) {
-                listBoxPessoas.Items.Add(p.Nome);
-            }
-
-            bindingSourcePessoas.DataSource = new BindingSource { DataSource = Pessoas };
-
-            EnderecosAll = Database.EnderecosGet();
-            _sourceEnderecos = new BindingSource { DataSource = Enderecos };
-            bindingSourceEnderecos.DataSource = _sourceEnderecos;
-
-            TelefonesAll = Database.TelefonesGet();
-            _sourceTelefones = new BindingSource { DataSource = TelefonesAll };
-            bindingSourceTelefones.DataSource = _sourceTelefones;
-
-            Tuple<byte, string>[] cobrancaTipos = { Tuple.Create((byte)0, "Nenhuma"),
-                Tuple.Create((byte)1, "Impressa"), Tuple.Create((byte)2, "E-Mail") };
+            Tuple<byte, string>[] cobrancaTipos = {
+                Tuple.Create((byte) 0, "Nenhuma"),
+                Tuple.Create((byte) 1, "Impressa"), Tuple.Create((byte) 2, "E-Mail")
+            };
             cobrancaComboBox.ValueMember = "Item1";
             cobrancaComboBox.DisplayMember = "Item2";
             cobrancaComboBox.DataSource = new BindingSource(cobrancaTipos, null);
 
-            Tuple<byte, string>[] telefoneTipos =
-                { Tuple.Create((byte)1, "Residência"), Tuple.Create((byte)2, "Araras"), Tuple.Create((byte)3, "Trabalho"), Tuple.Create((byte)4, "Celular")};
+            Tuple<byte, string>[] telefoneTipos = {
+                Tuple.Create((byte) 1, "Residência"),
+                Tuple.Create((byte) 2, "Araras"),
+                Tuple.Create((byte) 3, "Trabalho"),
+                Tuple.Create((byte) 4, "Celular")
+            };
 
-            var theColumn = (DataGridViewComboBoxColumn)this.dgvTelefones.Columns["dataGridViewTextBoxColumnTipo"];
-            theColumn.ValueMember = "Item1";
-            theColumn.DisplayMember = "Item2";
-            theColumn.DataSource = new BindingSource(telefoneTipos, null);
-
-            _loading = false;
-            SetChildren();
-            listBoxPessoas.SelectedIndex = bindingSourcePessoas.Position;
+            var col = (DataGridViewComboBoxColumn)this.dgvTelefones.Columns["colTipo"];
+            col.ValueMember = "Item1";
+            col.DisplayMember = "Item2";
+            col.DataSource = new BindingSource(telefoneTipos, null);
         }
 
+        #region FORM --------------------------
+        private void frmPessoas_Load(object sender, EventArgs e) {
+            dgvPessoas.Sort(dgvPessoas.Columns[1], ListSortDirection.Ascending);
+        }
         private void frmPessoas_FormClosing(object sender, FormClosingEventArgs e) {
-            if (!Pessoas.Any(p => p.Updated) && !EnderecosAll.Any(end => end.Updated) &&
-                !TelefonesAll.Any(t => t.Updated)) {
+            if (!entityDataSourcePessoas.DbContext.ChangeTracker.HasChanges()) {
                 return;
             }
-            switch (MessageBox.Show("Existem alterações pendentes. Deseja salvar?", "Pessoas",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
+
+            switch (MessageBox.Show("Salvar alterações?", "Pessoa", MessageBoxButtons.YesNoCancel)) {
+                case DialogResult.Yes:
+                    entityDataSourcePessoas.SaveChanges();
+                    break;
                 case DialogResult.Cancel:
                     e.Cancel = true;
                     break;
-                case DialogResult.Yes:
-                    SaveAll();
-                    break;
                 case DialogResult.No:
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            };
         }
-        #endregion --------------------------------------------
+        #endregion -----------------------------
 
-        #region BINDING SOURCE ------------------------------------------
-        private void BindingSource_ListChanged(object sender, ListChangedEventArgs e) {
-            toolStripButtonSave.Enabled |= e.ListChangedType == ListChangedType.ItemChanged;
-        }
-
-        private void bindingSourcePessoas_CurrentChanged(object sender, EventArgs e) {
-            if (!_loading) {
-                SetChildren();
-            }
-        }
-
-        #endregion ------------------------------------------------------
-
-        #region NAVIGATION ---------------------------------------
-        private void listBoxPessoas_SelectedIndexChanged(object sender, EventArgs e) {
-            var updated = ((Pessoa)bindingSourcePessoas.Current).Updated ||
-                          Enderecos.Any(end => end.Updated) || Telefones.Any(t => t.Updated);
-            if (updated && MessageBox.Show("Existem alterações pendentes. Salvar?", "Pessoas",
-                    MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes) {
-                SaveCurrent();
-            }
-            bindingSourcePessoas.Position = listBoxPessoas.SelectedIndex;
-            var pessoa = (Pessoa)bindingSourcePessoas.Current;
-            toolStripButtonSave.Enabled = pessoa.Updated ||
-                                          Enderecos.Any(end => end.Updated) || Telefones.Any(tel => tel.Updated);
-        }
-
-        private void bindingNavigatorMove_Click(object sender, EventArgs e) {
-            if (!_loading) {
-                listBoxPessoas.SelectedIndex = bindingSourcePessoas.Position;
-            }
-        }
+        #region TOOLSTRIP ---------------------
 
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            SaveCurrent();
+            entityDataSourcePessoas.SaveChanges();
+            EnableButtons();
         }
 
-        private void SaveCurrent() {
-            foreach (var bindingSource in this.components.Components.OfType<BindingSource>()) {
-                bindingSource.EndEdit();
-            }
+        private void toolStripButtonUndo_Click(object sender, EventArgs e) {
+            entityDataSourcePessoas.CancelChanges();
+            EnableButtons();
+        }
 
-            var pessoas = new List<Pessoa> { (Pessoa)bindingSourcePessoas.Current };
-            var endUpdated = Enderecos.Where(end => end.Updated);
-            var telUpdated = Telefones.Where(tel => tel.Updated);
-            if (Database.PessoaUpdate(pessoas, endUpdated, EnderecosDeleted, telUpdated, TelefonesDeleted)) {
-                foreach (var p in pessoas) {
-                    p.Updated = false;
-                }
+        private void EnableButtons() {
+            var enable = entityDataSourcePessoas.DbContext.ChangeTracker.HasChanges();
+            toolStripButtonSave.Enabled = enable;
+            toolStripButtonUndo.Enabled = enable;
+        }
 
-                foreach (var end in endUpdated) {
-                    end.Updated = false;
-                    if (EnderecosAll.All(endAll => endAll.ID != end.ID)) {
-                        EnderecosAll.Add(end);
+        #endregion ----------------------------
+
+        #region DATAGRIDVIEW ------------------
+
+        private void dgvPessoas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            var p = (DataLayer.Pessoa)dgvPessoas.Rows[e.RowIndex].DataBoundItem;
+            e.CellStyle.ForeColor = p.Ativo ? e.CellStyle.ForeColor : Color.Crimson;
+        }
+
+        private void dgvPessoas_SelectionChanged(object sender, EventArgs e) {
+            EnableButtons();
+            dgvPagamentos.Sort(dgvPagamentos.Columns[0], ListSortDirection.Descending);
+        }
+
+        private void dgvEnderecos_KeyDown(object sender, KeyEventArgs e) {
+            switch (e.KeyData) {
+                case Keys.Delete: {
+                        var x = ((DataLayer.Endereco)dgvEnderecos.CurrentRow.DataBoundItem);
+                        entityDataSourcePessoas.EntitySets["Enderecos"].List.Remove(x);
+                        entityDataSourcePessoas.SaveChanges();
+                        entityDataSourcePessoas.Refresh();
                     }
-                }
-                EnderecosDeleted.Clear();
-
-                foreach (var tel in telUpdated) {
-                    tel.Updated = false;
-                    if (TelefonesAll.All(telAll => telAll.ID != tel.ID)) {
-                        TelefonesAll.Add(tel);
+                    break;
+                case Keys.Insert: {
+                        var x = ((DataLayer.Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
+                        x.Enderecos.Add(new DataLayer.Endereco() {
+                            Bairro = " ",
+                            CEP = "00000000",
+                            Cidade = " ",
+                            Estado = " ",
+                            Logradouro = " "
+                        });
+                        entityDataSourcePessoas.Refresh();
+                        dgvEnderecos.CurrentCell = dgvEnderecos.Rows[dgvEnderecos.RowCount - 1].Cells[0];
+                        dgvEnderecos.BeginEdit(true);
                     }
-                }
-                TelefonesDeleted.Clear();
-            }
-
-            listBoxPessoas.Items[listBoxPessoas.SelectedIndex] = pessoas[0].Nome;
-            _sourceEnderecos.ResetBindings(false);
-            _sourceTelefones.ResetBindings(false);
-        }
-
-        private void SaveAll() {
-            foreach (var bindingSource in this.components.Components.OfType<BindingSource>()) {
-                bindingSource.EndEdit();
-            }
-
-            var pessoas = Pessoas.Where(p => p.Updated);
-            var endUpdated = EnderecosAll.Where(end => end.Updated);
-            var telUpdated = TelefonesAll.Where(tel => tel.Updated);
-            Database.PessoaUpdate(pessoas, endUpdated, EnderecosDeleted, telUpdated, TelefonesDeleted);
-        }
-
-        private void SetChildren() {
-            var pessoaID = ((Pessoa)bindingSourcePessoas.Current).ID;
-
-            Enderecos?.Clear();
-            Enderecos = EnderecosAll.Where(end => end.PessoaID == pessoaID).ToList();
-            _sourceEnderecos.DataSource = Enderecos;
-            dgvEnderecos.Columns[0].Visible = false;
-
-            Telefones?.Clear();
-            Telefones = TelefonesAll.Where(tel => tel.PessoaID == pessoaID).ToList();
-            _sourceTelefones.DataSource = Telefones;
-            dgvTelefones.Columns[0].Visible = false;
-        }
-        #endregion -----------------------------------------------
-
-        #region ENDEREÇOS
-        private void dataGridViewEnderecos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!Enderecos.Any() || Enderecos.Count <= e.RowIndex) {
-                return;
-            }
-            if (Enderecos[e.RowIndex].IsNew) {
-                e.CellStyle.BackColor = Color.Khaki;
-            }
-            else if (Enderecos[e.RowIndex].Updated) {
-                e.CellStyle.BackColor = Color.Bisque;
+                    break;
             }
         }
 
-        private void dataGridViewEnderecos_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex == -1) {
-                return;
-            }
-            Enderecos[e.RowIndex].PessoaID = ((Pessoa)bindingSourcePessoas.Current).ID;
-            Enderecos[e.RowIndex].Updated = true;
-            _sourceEnderecos.ResetBindings(false);
-        }
-
-        private void dataGridViewEnderecos_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            var row = e.Row.Index;
-            if (!Enderecos[row].IsNew) {
-                EnderecosDeleted.Add(Enderecos[row]);
-            }
-        }
-
-        private void dataGridViewEnderecos_UserDeletedRow(object sender, DataGridViewRowEventArgs e) {
-            _sourceEnderecos.ResetBindings(false);
-        }
-
-        private void dataGridViewEnderecos_DataError(object sender, DataGridViewDataErrorEventArgs e) {
-            MessageBox.Show($@"Endereço: Data error in row {e.RowIndex} column {e.ColumnIndex}");
-        }
-        #endregion
-
-        #region TELEFONES
-        private void dataGridViewTelefones_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (!Telefones.Any() || Telefones.Count <= e.RowIndex) {
+        private void dgvEnderecos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
+            if (e.ColumnIndex > 4) {
                 return;
             }
 
-            if (Telefones[e.RowIndex].IsNew) {
-                e.CellStyle.BackColor = Color.Khaki;
+            var txt = e.FormattedValue.ToString();
+            if (string.IsNullOrEmpty(txt)) {
+                e.Cancel = true;
+                dgvEnderecos.Rows[e.RowIndex].ErrorText = "Endereço não pode ter itens em branco.";
+                return;
             }
-            else if (Telefones[e.RowIndex].Updated) {
-                e.CellStyle.BackColor = Color.Bisque;
+            switch (e.ColumnIndex) {
+                case 3: // Estado
+                    dgvEnderecos.CurrentRow.Cells[3].Value = txt;
+                    const string pattern = @"[a-zA-Z][a-zA-Z]";
+                    if (Regex.IsMatch(txt.ToUpper(), pattern)) {
+                        return;
+                    }
+
+                    e.Cancel = true;
+                    dgvEnderecos.Rows[e.RowIndex].ErrorText = "Estado Inválido.";
+                    break;
+                case 4: // CEP
+                    const string pattern1 = @"[0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9][0-9]";
+                    const string pattern2 = @"[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]";
+                    if (Regex.IsMatch(txt, pattern1) || Regex.IsMatch(txt, pattern2)) {
+                        return;
+                    }
+
+                    e.Cancel = true;
+                    dgvEnderecos.Rows[e.RowIndex].ErrorText = "CEP Inválido.";
+                    break;
             }
         }
 
-        private void dataGridViewTelefones_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex == -1) {
+        private void dgvEnderecos_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            if (e.ColumnIndex > 4) {
                 return;
             }
 
-            Telefones[e.RowIndex].PessoaID = ((Pessoa)bindingSourcePessoas.Current).ID;
-            Telefones[e.RowIndex].Updated = true;
-            _sourceTelefones.ResetBindings(false);
+            var cell = dgvEnderecos.CurrentRow.Cells[e.ColumnIndex];
+            var txt = cell.Value.ToString().Trim();
+            cell.Value = e.ColumnIndex == 3 ? txt.ToUpper() : txt;
         }
 
-        private void dataGridViewTelefones_UserDeletedRow(object sender, DataGridViewRowEventArgs e) {
-            _sourceTelefones.ResetBindings(false);
-        }
-
-        private void dataGridViewTelefones_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            var row = e.Row.Index;
-            if (!Telefones[row].IsNew) {
-                TelefonesDeleted.Add(Telefones[row]);
+        private void dgvTelefones_KeyDown(object sender, KeyEventArgs e) {
+            switch (e.KeyData) {
+                case Keys.Delete: {
+                        var x = ((DataLayer.Telefone)dgvEnderecos.CurrentRow.DataBoundItem);
+                        entityDataSourcePessoas.EntitySets["Telefones"].List.Remove(x);
+                        entityDataSourcePessoas.SaveChanges();
+                        entityDataSourcePessoas.Refresh();
+                    }
+                    break;
+                case Keys.Insert: {
+                        var x = ((DataLayer.Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
+                        x.Telefones.Add(new DataLayer.Telefone() { Numero = " ", Tipo = 0 });
+                        entityDataSourcePessoas.Refresh();
+                        dgvEnderecos.CurrentCell = dgvTelefones.Rows[dgvEnderecos.RowCount - 1].Cells[0];
+                        dgvEnderecos.BeginEdit(true);
+                    }
+                    break;
             }
         }
 
-        private void dataGridViewTelefones_DataError(object sender, DataGridViewDataErrorEventArgs e) {
-            MessageBox.Show($@"Telefone: Data error in row {e.RowIndex} column {e.ColumnIndex}");
-        }
-        #endregion
+        private void dgvTelefones_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
+            if (e.ColumnIndex != 1) {
+                return;
+            }
 
-        #region VALIDATION --------------------------------------
-        private void eMailTextBox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
-            var arr = eMailTextBox.Text.Replace(Environment.NewLine, "#").Split('#')
-                .Where(i => !string.IsNullOrEmpty(i));
-            e.Cancel = arr.Any(i => !IsValidEmail(i));
+            var txt = e.FormattedValue.ToString();
+            if (!string.IsNullOrWhiteSpace(txt)) {
+                return;
+            }
+
+            e.Cancel = true;
+            dgvTelefones.Rows[e.RowIndex].ErrorText = "Telefone não pode ficar em branco.";
+        }
+
+        private void dgvTelefones_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            if (e.ColumnIndex > 1) {
+                return;
+            }
+
+            var cell = dgvTelefones.CurrentRow.Cells[e.ColumnIndex];
+            cell.Value = cell.Value.ToString().Trim();
+        }
+
+        #endregion-----------------------------
+
+        #region VALIDATION---------------------
+
+        private void textBoxEMail_Validating(object sender, CancelEventArgs e) {
+            var arr = textBoxEMail.Text.Replace(Environment.NewLine, "#").Split('#')
+                .Where(i => !string.IsNullOrEmpty(i)).Distinct();
+            var bad = arr.Where(i => !IsValidEmail(i));
+            e.Cancel = bad.Count() != 0;
             if (e.Cancel) {
-                errorProvider1.SetError(eMailTextBox, "E-mail inválido!");
+                errorProvider1.SetError(textBoxEMail, "E-mail inválido!\n\t" + string.Join("\n\t", bad));
             }
             else {
                 errorProvider1.Clear();
             }
-            eMailTextBox.Text = string.Join(Environment.NewLine, arr);
+            textBoxEMail.Text = string.Join(Environment.NewLine, arr);
         }
 
         private static bool IsValidEmail(string email) {
@@ -285,31 +229,12 @@ namespace AguaAraras {
             }
         }
 
-        private void pessoa_TextChanged(object sender, EventArgs e) {
-            if (!((TextBox)sender).Modified) {
-                return;
-            } ((Pessoa)bindingSourcePessoas.Current).Updated = true;
-            toolStripButtonSave.Enabled = true;
-        }
+        #endregion ---------------------------
 
-        private void ativoCheckBox_CheckedChanged(object sender, EventArgs e) {
-            var x = (CheckBox)sender;
-            var p = (Pessoa)bindingSourcePessoas.Current;
-            p.Ativo = x.Checked;
+        private void entityDataSourcePessoas_DataError(object sender, EFWinforms.DataErrorEventArgs e) {
+            MessageBox.Show("Error Detected:\r\n" + e.Exception.Message);
+            entityDataSourcePessoas.CancelChanges();
+            e.Handled = true;
         }
-
-        private void atualizarCheckBox_CheckedChanged(object sender, EventArgs e) {
-            var x = (CheckBox)sender;
-            var p = (Pessoa)bindingSourcePessoas.Current;
-            p.Atualizar = x.Checked;
-        }
-
-        private void reciboCheckBox_CheckedChanged(object sender, EventArgs e) {
-            var x = (CheckBox)sender;
-            var p = (Pessoa)bindingSourcePessoas.Current;
-            p.Recibo = x.Checked;
-        }
-        #endregion ----------------------------------------------
-
     }
 }
