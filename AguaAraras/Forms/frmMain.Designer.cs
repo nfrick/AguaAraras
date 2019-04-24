@@ -74,7 +74,7 @@
             // toolStripButtonMovimentos
             // 
             this.toolStripButtonMovimentos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonMovimentos.Image = global::AguaAraras.Properties.Resources.Mimetypes_x_office_spreadsheet_icon;
+            this.toolStripButtonMovimentos.Image = global::AguaAraras.Properties.Resources.File_spreadsheet_icon;
             this.toolStripButtonMovimentos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonMovimentos.Name = "toolStripButtonMovimentos";
             this.toolStripButtonMovimentos.Size = new System.Drawing.Size(40, 40);
@@ -85,7 +85,7 @@
             // toolStripButtonBalanco
             // 
             this.toolStripButtonBalanco.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonBalanco.Image = global::AguaAraras.Properties.Resources.Actions_games_difficult_icon;
+            this.toolStripButtonBalanco.Image = global::AguaAraras.Properties.Resources.Chart_icon;
             this.toolStripButtonBalanco.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonBalanco.Name = "toolStripButtonBalanco";
             this.toolStripButtonBalanco.Size = new System.Drawing.Size(40, 40);

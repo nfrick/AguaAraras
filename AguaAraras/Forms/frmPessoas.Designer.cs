@@ -599,7 +599,7 @@
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.Enabled = false;
-            this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Actions_document_save_icon;
+            this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Document_save_icon;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(63, 22);
@@ -609,7 +609,7 @@
             // toolStripButtonUndo
             // 
             this.toolStripButtonUndo.Enabled = false;
-            this.toolStripButtonUndo.Image = global::AguaAraras.Properties.Resources.Actions_edit_delete_icon;
+            this.toolStripButtonUndo.Image = global::AguaAraras.Properties.Resources.Edit_delete_icon;
             this.toolStripButtonUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUndo.Name = "toolStripButtonUndo";
             this.toolStripButtonUndo.Size = new System.Drawing.Size(79, 22);

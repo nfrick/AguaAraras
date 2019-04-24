@@ -63,9 +63,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_dialog_ok_icon {
+        internal static System.Drawing.Bitmap Apps_excel_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-dialog-ok-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Apps_excel_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_document_preview_archive_icon {
+        internal static System.Drawing.Bitmap Calculator_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-document-preview-archive-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Calculator_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_document_save_icon {
+        internal static System.Drawing.Bitmap Chart_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-document-save-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Chart_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_edit_delete_icon {
+        internal static System.Drawing.Bitmap Dialog_ok_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-edit-delete-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Dialog_ok_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_edit_find_icon {
+        internal static System.Drawing.Bitmap Document_preview_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-edit-find-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Document_preview_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_edit_find_user_icon {
+        internal static System.Drawing.Bitmap Document_save_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-edit-find-user-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Document_save_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_flag_green_icon {
+        internal static System.Drawing.Bitmap Edit_add_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions_flag_green_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Edit_add_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_flag_red_icon {
+        internal static System.Drawing.Bitmap Edit_delete_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions_flag_red_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Edit_delete_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_flag_yellow_icon {
+        internal static System.Drawing.Bitmap Edit_find_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions_flag_yellow_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Edit_find_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_games_difficult_icon {
+        internal static System.Drawing.Bitmap Edit_find_user_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-games-difficult-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Edit_find_user_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_go_first_view_icon {
+        internal static System.Drawing.Bitmap File_pdf_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-go-first-view-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("File_pdf_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_go_last_view_icon {
+        internal static System.Drawing.Bitmap File_spreadsheet_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-go-last-view-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("File_spreadsheet_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +183,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_go_next_view_icon {
+        internal static System.Drawing.Bitmap Flag_green_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-go-next-view-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Flag_green_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_go_previous_view_icon {
+        internal static System.Drawing.Bitmap Flag_red_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-go-previous-view-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Flag_red_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_list_add_icon {
+        internal static System.Drawing.Bitmap Flag_yellow_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-list-add-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Flag_yellow_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +213,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_mail_mark_task_icon {
+        internal static System.Drawing.Bitmap Go_first_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-mail-mark-task-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Go_first_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +223,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Actions_rating_icon {
+        internal static System.Drawing.Bitmap Go_last_icon {
             get {
-                object obj = ResourceManager.GetObject("Actions-rating-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Go_last_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +233,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Apps_accessories_calculator_icon {
+        internal static System.Drawing.Bitmap Go_next_icon {
             get {
-                object obj = ResourceManager.GetObject("Apps_accessories_calculator_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Go_next_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +243,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Apps_kmail_2_icon {
+        internal static System.Drawing.Bitmap Go_previous_icon {
             get {
-                object obj = ResourceManager.GetObject("Apps-kmail-2-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Go_previous_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +253,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Apps_kmymoney_icon {
+        internal static System.Drawing.Bitmap Mail_icon {
             get {
-                object obj = ResourceManager.GetObject("Apps_kmymoney_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Mail_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +263,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Apps_system_users_icon {
+        internal static System.Drawing.Bitmap Money_icon {
             get {
-                object obj = ResourceManager.GetObject("Apps_system_users_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Money_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +273,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Excel_icon {
+        internal static System.Drawing.Bitmap Multiple_documents_icon {
             get {
-                object obj = ResourceManager.GetObject("Excel_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Multiple_documents_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +283,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mimetypes_application_pdf_icon {
+        internal static System.Drawing.Bitmap Paper_icon {
             get {
-                object obj = ResourceManager.GetObject("Mimetypes-application-pdf-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Paper_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +293,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mimetypes_application_x_kplato_icon {
+        internal static System.Drawing.Bitmap Paper_pen_icon {
             get {
-                object obj = ResourceManager.GetObject("Mimetypes-application-x-kplato-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Paper_pen_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +303,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mimetypes_x_office_spreadsheet_icon {
+        internal static System.Drawing.Bitmap Star_icon {
             get {
-                object obj = ResourceManager.GetObject("Mimetypes-x-office-spreadsheet-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Star_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,9 +313,9 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Places_document_multiple_icon {
+        internal static System.Drawing.Bitmap Users_icon {
             get {
-                object obj = ResourceManager.GetObject("Places-document-multiple-icon", resourceCulture);
+                object obj = ResourceManager.GetObject("Users_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

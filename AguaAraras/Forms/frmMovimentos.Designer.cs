@@ -83,7 +83,7 @@
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Actions_document_save_icon;
+            this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Document_save_icon;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(28, 28);
@@ -93,7 +93,7 @@
             // toolStripButtonDelete
             // 
             this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDelete.Image = global::AguaAraras.Properties.Resources.Actions_edit_delete_icon;
+            this.toolStripButtonDelete.Image = global::AguaAraras.Properties.Resources.Edit_delete_icon;
             this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Size = new System.Drawing.Size(28, 28);
@@ -102,7 +102,7 @@
             // toolStripButtonNovo
             // 
             this.toolStripButtonNovo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNovo.Image = global::AguaAraras.Properties.Resources.Actions_list_add_icon;
+            this.toolStripButtonNovo.Image = global::AguaAraras.Properties.Resources.Edit_add_icon;
             this.toolStripButtonNovo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNovo.Name = "toolStripButtonNovo";
             this.toolStripButtonNovo.Size = new System.Drawing.Size(28, 28);
@@ -112,7 +112,7 @@
             // toolStripButtonManutencao
             // 
             this.toolStripButtonManutencao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonManutencao.Image = global::AguaAraras.Properties.Resources.Actions_rating_icon;
+            this.toolStripButtonManutencao.Image = global::AguaAraras.Properties.Resources.Star_icon;
             this.toolStripButtonManutencao.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonManutencao.Name = "toolStripButtonManutencao";
             this.toolStripButtonManutencao.Size = new System.Drawing.Size(28, 28);
@@ -122,7 +122,7 @@
             // toolStripButtonExcel
             // 
             this.toolStripButtonExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonExcel.Image = global::AguaAraras.Properties.Resources.Excel_icon;
+            this.toolStripButtonExcel.Image = global::AguaAraras.Properties.Resources.Apps_excel_icon;
             this.toolStripButtonExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExcel.Name = "toolStripButtonExcel";
             this.toolStripButtonExcel.Size = new System.Drawing.Size(28, 28);
@@ -190,7 +190,7 @@
             // toolStripButtonHistorico
             // 
             this.toolStripButtonHistorico.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHistorico.Image = global::AguaAraras.Properties.Resources.Actions_document_preview_archive_icon;
+            this.toolStripButtonHistorico.Image = global::AguaAraras.Properties.Resources.Document_preview_icon;
             this.toolStripButtonHistorico.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonHistorico.Name = "toolStripButtonHistorico";
             this.toolStripButtonHistorico.Size = new System.Drawing.Size(28, 28);

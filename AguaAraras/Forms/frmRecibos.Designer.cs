@@ -603,7 +603,7 @@
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Actions_document_save_icon;
+            this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Document_save_icon;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(28, 28);
@@ -613,7 +613,7 @@
             // toolStripButtonUndo
             // 
             this.toolStripButtonUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonUndo.Image = global::AguaAraras.Properties.Resources.Actions_edit_delete_icon;
+            this.toolStripButtonUndo.Image = global::AguaAraras.Properties.Resources.Edit_delete_icon;
             this.toolStripButtonUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonUndo.Name = "toolStripButtonUndo";
             this.toolStripButtonUndo.Size = new System.Drawing.Size(28, 28);
@@ -628,7 +628,7 @@
             // toolStripButtonNew
             // 
             this.toolStripButtonNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNew.Image = global::AguaAraras.Properties.Resources.Actions_list_add_icon;
+            this.toolStripButtonNew.Image = global::AguaAraras.Properties.Resources.Edit_add_icon;
             this.toolStripButtonNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonNew.Name = "toolStripButtonNew";
             this.toolStripButtonNew.Size = new System.Drawing.Size(28, 28);
@@ -642,7 +642,7 @@
             this.cobrançasToolStripMenuItem,
             this.recibosToolStripMenuItem,
             this.fichaConferênciaToolStripMenuItem});
-            this.toolStripDropDownButtonImpressos.Image = global::AguaAraras.Properties.Resources.Places_document_multiple_icon;
+            this.toolStripDropDownButtonImpressos.Image = global::AguaAraras.Properties.Resources.Multiple_documents_icon;
             this.toolStripDropDownButtonImpressos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonImpressos.Name = "toolStripDropDownButtonImpressos";
             this.toolStripDropDownButtonImpressos.Size = new System.Drawing.Size(37, 28);
@@ -660,7 +660,7 @@
             // 
             // cobrancasImpressasToolStripMenuItem
             // 
-            this.cobrancasImpressasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Mimetypes_application_pdf_icon;
+            this.cobrancasImpressasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.File_pdf_icon;
             this.cobrancasImpressasToolStripMenuItem.Name = "cobrancasImpressasToolStripMenuItem";
             this.cobrancasImpressasToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
             this.cobrancasImpressasToolStripMenuItem.Text = "Impressas";
@@ -668,7 +668,7 @@
             // 
             // cobrancasEMailToolStripMenuItem
             // 
-            this.cobrancasEMailToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Apps_kmail_2_icon;
+            this.cobrancasEMailToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Mail_icon;
             this.cobrancasEMailToolStripMenuItem.Name = "cobrancasEMailToolStripMenuItem";
             this.cobrancasEMailToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
             this.cobrancasEMailToolStripMenuItem.Text = "E-Mail";
@@ -676,7 +676,7 @@
             // 
             // selecionadasToolStripMenuItem
             // 
-            this.selecionadasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Actions_dialog_ok_icon;
+            this.selecionadasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Dialog_ok_icon;
             this.selecionadasToolStripMenuItem.Name = "selecionadasToolStripMenuItem";
             this.selecionadasToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
             this.selecionadasToolStripMenuItem.Text = "Selecionadas";
@@ -699,7 +699,7 @@
             // toolStripButtonFind
             // 
             this.toolStripButtonFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonFind.Image = global::AguaAraras.Properties.Resources.Actions_edit_find_icon;
+            this.toolStripButtonFind.Image = global::AguaAraras.Properties.Resources.Edit_find_icon;
             this.toolStripButtonFind.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonFind.Name = "toolStripButtonFind";
             this.toolStripButtonFind.Size = new System.Drawing.Size(28, 28);
@@ -709,7 +709,7 @@
             // toolStripButtonColect
             // 
             this.toolStripButtonColect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonColect.Image = global::AguaAraras.Properties.Resources.Actions_mail_mark_task_icon;
+            this.toolStripButtonColect.Image = global::AguaAraras.Properties.Resources.Paper_pen_icon;
             this.toolStripButtonColect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonColect.Name = "toolStripButtonColect";
             this.toolStripButtonColect.Size = new System.Drawing.Size(28, 28);
