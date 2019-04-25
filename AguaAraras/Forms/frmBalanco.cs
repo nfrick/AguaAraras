@@ -1,7 +1,10 @@
 ﻿using DataLayer;
+using OfficeOpenXml;
+using OfficeOpenXml.Table;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -11,12 +14,14 @@ namespace AguaAraras {
 
         public frmBalanco() {
             InitializeComponent();
+            SFD.DefaultExt = "xlsx";
+            SFD.Filter = @"Excel Files|*.xlsx";
         }
 
         private void frmBalanco_Load(object sender, EventArgs e) {
             using (var ctx = new AguaArarasEntities()) {
                 var extrato = ctx.sp_Extrato();
-                foreach (var item in extrato)
+                foreach (var item in extrato) {
                     _extratoList.Add(new sp_Extrato_Result() {
                         RID = item.RID,
                         Data = item.Data,
@@ -25,6 +30,14 @@ namespace AguaAraras {
                         Tipo = item.Tipo,
                         Saldo = (decimal)item.Saldo
                     });
+                }
+
+                var anos = _extratoList.Where(m => m.Data != null)
+                    .Select(m => ((DateTime)m.Data).ToString("yyyy")).Distinct().ToArray();
+                toolStripComboBoxInicio.Items.AddRange(anos);
+                toolStripComboBoxTermino.Items.AddRange(anos);
+                toolStripComboBoxInicio.SelectedIndex = 4;
+                toolStripComboBoxTermino.SelectedIndex = 0;
 
                 bs_BalancoAno.DataSource = new BindingSource { DataSource = ctx.sp_Balanco("YEAR") };
                 bs_BalancoTrimestre.DataSource = new BindingSource { DataSource = ctx.sp_Balanco("QUARTER") };
@@ -55,18 +68,18 @@ namespace AguaAraras {
             }
         }
 
-        //public IEnumerable<Control> GetAll(Control control, Type type) {
-        //    var controls = control.Controls.Cast<Control>();
+        public IEnumerable<Control> GetAllControls(Control control, Type type) {
+            var controls = control.Controls.Cast<Control>();
 
-        //    return controls.SelectMany(ctrl => GetAll(ctrl, type))
-        //        .Concat(controls)
-        //        .Where(c => c.GetType() == type);
-        //}
+            return controls.SelectMany(ctrl => GetAllControls(ctrl, type))
+                .Concat(controls)
+                .Where(c => c.GetType() == type);
+        }
 
         private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var dgv = (DataGridView)sender;
             if (dgv.Rows.Count == 0 || e.ColumnIndex < dgv.ColumnCount - 1) //(e.ColumnIndex < (int)dgv.Tag)) {
-{
+            {
                 return;
             }
 
@@ -75,10 +88,71 @@ namespace AguaAraras {
             }
         }
 
-        private void toolStripButtonExtrato_Click(object sender, EventArgs e) {       
+        private void toolStripButtonExtrato_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
-            frm.SetReport(_extratoList, rpt, "DataSetExtrato", "Extrato");
+            frm.SetReport(_extratoList
+                    .Where(m => ((DateTime)m.Data).Year >= _inicio &&
+                                ((DateTime)m.Data).Year <= _termino),
+                rpt, "DataSetExtrato", "Extrato");
+        }
+
+        private int _inicio;
+        private int _termino;
+
+        private void toolStripComboBoxInicio_SelectedIndexChanged(object sender, EventArgs e) {
+            _inicio = int.Parse((string)toolStripComboBoxInicio.SelectedItem);
+        }
+
+        private void toolStripComboBoxTermino_SelectedIndexChanged(object sender, EventArgs e) {
+            _termino = int.Parse((string)toolStripComboBoxTermino.SelectedItem);
+        }
+
+        private void toolStripButtonExcel_Click(object sender, EventArgs e) {
+            if (SFD.ShowDialog() == DialogResult.Cancel) {
+                return;
+            }
+
+            var pck = new ExcelPackage(new FileInfo(SFD.FileName));
+
+            foreach (DataGridView dgv in GetAllControls(this, typeof(DataGridView))) {
+                var ws = pck.Workbook.Worksheets.Add(dgv.Name.Substring(3));
+                ws.View.ShowGridLines = false;
+
+                foreach (DataGridViewColumn coluna in dgv.Columns) {
+                    ws.Cells[1, coluna.Index + 1].Value = coluna.HeaderText;
+                }
+
+                foreach (DataGridViewRow linha in dgv.Rows) {
+                    foreach (DataGridViewCell cell in linha.Cells) {
+                        ws.Cells[linha.Index + 2, cell.ColumnIndex + 1].Value = cell.Value;
+                    }
+                }
+
+                foreach (DataGridViewColumn coluna in dgv.Columns) {
+                    if (coluna.HeaderText == @"Data") {
+                        ws.Cells[2, coluna.Index + 1,
+                        dgv.RowCount + 1, coluna.Index + 1].Style.Numberformat.Format = "dd/MM/yyyy";
+                    }
+                    else if (coluna.DefaultCellStyle.Format == "N2") {
+                        ws.Cells[2, coluna.Index + 1,
+                            dgv.RowCount + 1, coluna.Index + 1].Style.Numberformat.Format = "#,##0.00";
+                    }
+                }
+
+                ws.Cells.AutoFitColumns(0);
+
+                var range = ws.Cells[1, 1, dgv.RowCount + 1, dgv.ColumnCount];
+                var table = ws.Tables.Add(range, dgv.Name.Substring(3));
+                table.ShowTotal = true;
+                table.TableStyle = TableStyles.Light1;
+
+                ws.View.FreezePanes(2, 1);
+                pck.Save();
+            }
+
+            MessageBox.Show(@"Balanço exportado.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
 }

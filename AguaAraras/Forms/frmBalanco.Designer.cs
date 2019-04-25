@@ -86,7 +86,7 @@
             this.bs_BalancoTrimestre = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.xTabDataDataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvxTabTrimestreRecibo = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,7 +97,7 @@
             this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_xTabDataTrimRecibo = new System.Windows.Forms.BindingSource(this.components);
-            this.xTabDataDataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgvxTabTrimestreReal = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,7 +108,7 @@
             this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_xTabDataTrimReal = new System.Windows.Forms.BindingSource(this.components);
-            this.xTabDataDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvxTabAnoRecibo = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,7 +119,7 @@
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bs_xTabDataAnoRecibo = new System.Windows.Forms.BindingSource(this.components);
-            this.xTabDataDataGridView = new System.Windows.Forms.DataGridView();
+            this.dgvxTabAnoReal = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,6 +132,12 @@
             this.bs_xTabDataAnoReal = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolStripComboBoxInicio = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripComboBoxTermino = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButtonExcel = new System.Windows.Forms.ToolStripButton();
+            this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -147,56 +153,64 @@
             ((System.ComponentModel.ISupportInitialize)(this.bs_BalancoTrimestre)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabTrimestreRecibo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimRecibo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabTrimestreReal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimReal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabAnoRecibo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoRecibo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabAnoReal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoReal)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonExtratoCronologico,
             this.toolStripButtonExtratoCategorizado,
-            this.toolStripButtonExtratoConsolidado});
+            this.toolStripButtonExtratoConsolidado,
+            this.toolStripButtonExcel,
+            this.toolStripLabel1,
+            this.toolStripComboBoxInicio,
+            this.toolStripLabel2,
+            this.toolStripComboBoxTermino});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1354, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1354, 27);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButtonExtratoCronologico
             // 
+            this.toolStripButtonExtratoCronologico.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.toolStripButtonExtratoCronologico.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButtonExtratoCronologico.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExtratoCronologico.Image")));
             this.toolStripButtonExtratoCronologico.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExtratoCronologico.Name = "toolStripButtonExtratoCronologico";
-            this.toolStripButtonExtratoCronologico.Size = new System.Drawing.Size(116, 22);
+            this.toolStripButtonExtratoCronologico.Size = new System.Drawing.Size(116, 24);
             this.toolStripButtonExtratoCronologico.Text = "Extrato Cronológico";
             this.toolStripButtonExtratoCronologico.Click += new System.EventHandler(this.toolStripButtonExtrato_Click);
             // 
             // toolStripButtonExtratoCategorizado
             // 
+            this.toolStripButtonExtratoCategorizado.BackColor = System.Drawing.Color.PeachPuff;
             this.toolStripButtonExtratoCategorizado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButtonExtratoCategorizado.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExtratoCategorizado.Image")));
             this.toolStripButtonExtratoCategorizado.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExtratoCategorizado.Name = "toolStripButtonExtratoCategorizado";
-            this.toolStripButtonExtratoCategorizado.Size = new System.Drawing.Size(120, 22);
+            this.toolStripButtonExtratoCategorizado.Size = new System.Drawing.Size(120, 24);
             this.toolStripButtonExtratoCategorizado.Text = "Extrato Categorizado";
             this.toolStripButtonExtratoCategorizado.Click += new System.EventHandler(this.toolStripButtonExtrato_Click);
             // 
             // toolStripButtonExtratoConsolidado
             // 
+            this.toolStripButtonExtratoConsolidado.BackColor = System.Drawing.Color.LightGreen;
             this.toolStripButtonExtratoConsolidado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButtonExtratoConsolidado.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonExtratoConsolidado.Image")));
             this.toolStripButtonExtratoConsolidado.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonExtratoConsolidado.Name = "toolStripButtonExtratoConsolidado";
-            this.toolStripButtonExtratoConsolidado.Size = new System.Drawing.Size(117, 22);
+            this.toolStripButtonExtratoConsolidado.Size = new System.Drawing.Size(117, 24);
             this.toolStripButtonExtratoConsolidado.Text = "Extrato Consolidado";
             this.toolStripButtonExtratoConsolidado.Click += new System.EventHandler(this.toolStripButtonExtrato_Click);
             // 
@@ -205,10 +219,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
+            this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1354, 708);
+            this.tabControl1.Size = new System.Drawing.Size(1354, 706);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -217,7 +231,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1346, 678);
+            this.tabPage1.Size = new System.Drawing.Size(1346, 676);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Extrato";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -236,7 +250,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1340, 672);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1340, 670);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // dgvExtrato
@@ -262,7 +276,7 @@
             this.dgvExtrato.RowHeadersVisible = false;
             this.dgvExtrato.RowHeadersWidth = 25;
             this.dgvExtrato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExtrato.Size = new System.Drawing.Size(566, 666);
+            this.dgvExtrato.Size = new System.Drawing.Size(566, 664);
             this.dgvExtrato.TabIndex = 3;
             this.dgvExtrato.Tag = "1";
             this.dgvExtrato.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
@@ -339,7 +353,7 @@
             this.dgvMes.RowHeadersVisible = false;
             this.dgvMes.RowHeadersWidth = 25;
             this.dgvMes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMes.Size = new System.Drawing.Size(378, 666);
+            this.dgvMes.Size = new System.Drawing.Size(378, 664);
             this.dgvMes.TabIndex = 2;
             this.dgvMes.Tag = "1";
             this.dgvMes.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
@@ -416,7 +430,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(384, 672);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(384, 670);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // dgvAno
@@ -439,7 +453,7 @@
             this.dgvAno.ReadOnly = true;
             this.dgvAno.RowHeadersVisible = false;
             this.dgvAno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAno.Size = new System.Drawing.Size(378, 330);
+            this.dgvAno.Size = new System.Drawing.Size(378, 329);
             this.dgvAno.TabIndex = 0;
             this.dgvAno.Tag = "";
             this.dgvAno.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
@@ -507,12 +521,12 @@
             this.dataGridViewTextBoxColumn17});
             this.dgvTrimestre.DataSource = this.bs_BalancoTrimestre;
             this.dgvTrimestre.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTrimestre.Location = new System.Drawing.Point(3, 339);
+            this.dgvTrimestre.Location = new System.Drawing.Point(3, 338);
             this.dgvTrimestre.Name = "dgvTrimestre";
             this.dgvTrimestre.ReadOnly = true;
             this.dgvTrimestre.RowHeadersVisible = false;
             this.dgvTrimestre.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrimestre.Size = new System.Drawing.Size(378, 330);
+            this.dgvTrimestre.Size = new System.Drawing.Size(378, 329);
             this.dgvTrimestre.TabIndex = 1;
             this.dgvTrimestre.Tag = "1";
             this.dgvTrimestre.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
@@ -581,7 +595,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1346, 678);
+            this.tabPage2.Size = new System.Drawing.Size(1346, 676);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "X Tab";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -591,10 +605,10 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.xTabDataDataGridView3, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.xTabDataDataGridView2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.xTabDataDataGridView1, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.xTabDataDataGridView, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.dgvxTabTrimestreRecibo, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.dgvxTabTrimestreReal, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.dgvxTabAnoRecibo, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.dgvxTabAnoReal, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -605,18 +619,18 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1340, 672);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1340, 670);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // xTabDataDataGridView3
+            // dgvxTabTrimestreRecibo
             // 
-            this.xTabDataDataGridView3.AllowUserToAddRows = false;
-            this.xTabDataDataGridView3.AllowUserToDeleteRows = false;
+            this.dgvxTabTrimestreRecibo.AllowUserToAddRows = false;
+            this.dgvxTabTrimestreRecibo.AllowUserToDeleteRows = false;
             dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.xTabDataDataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
-            this.xTabDataDataGridView3.AutoGenerateColumns = false;
-            this.xTabDataDataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvxTabTrimestreRecibo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgvxTabTrimestreRecibo.AutoGenerateColumns = false;
+            this.dgvxTabTrimestreRecibo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvxTabTrimestreRecibo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn41,
             this.dataGridViewTextBoxColumn42,
             this.dataGridViewTextBoxColumn48,
@@ -626,16 +640,16 @@
             this.dataGridViewTextBoxColumn45,
             this.dataGridViewTextBoxColumn47,
             this.dataGridViewTextBoxColumn49});
-            this.xTabDataDataGridView3.DataSource = this.bs_xTabDataTrimRecibo;
-            this.xTabDataDataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView3.Location = new System.Drawing.Point(673, 354);
-            this.xTabDataDataGridView3.Name = "xTabDataDataGridView3";
-            this.xTabDataDataGridView3.ReadOnly = true;
-            this.xTabDataDataGridView3.RowHeadersVisible = false;
-            this.xTabDataDataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView3.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView3.TabIndex = 7;
-            this.xTabDataDataGridView3.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            this.dgvxTabTrimestreRecibo.DataSource = this.bs_xTabDataTrimRecibo;
+            this.dgvxTabTrimestreRecibo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvxTabTrimestreRecibo.Location = new System.Drawing.Point(673, 353);
+            this.dgvxTabTrimestreRecibo.Name = "dgvxTabTrimestreRecibo";
+            this.dgvxTabTrimestreRecibo.ReadOnly = true;
+            this.dgvxTabTrimestreRecibo.RowHeadersVisible = false;
+            this.dgvxTabTrimestreRecibo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvxTabTrimestreRecibo.Size = new System.Drawing.Size(664, 314);
+            this.dgvxTabTrimestreRecibo.TabIndex = 7;
+            this.dgvxTabTrimestreRecibo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
             // dataGridViewTextBoxColumn41
             // 
@@ -704,15 +718,15 @@
             // 
             this.bs_xTabDataTrimRecibo.DataSource = typeof(DataLayer.sp_Xtab_Result);
             // 
-            // xTabDataDataGridView2
+            // dgvxTabTrimestreReal
             // 
-            this.xTabDataDataGridView2.AllowUserToAddRows = false;
-            this.xTabDataDataGridView2.AllowUserToDeleteRows = false;
+            this.dgvxTabTrimestreReal.AllowUserToAddRows = false;
+            this.dgvxTabTrimestreReal.AllowUserToDeleteRows = false;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.xTabDataDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
-            this.xTabDataDataGridView2.AutoGenerateColumns = false;
-            this.xTabDataDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvxTabTrimestreReal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
+            this.dgvxTabTrimestreReal.AutoGenerateColumns = false;
+            this.dgvxTabTrimestreReal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvxTabTrimestreReal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn32,
             this.dataGridViewTextBoxColumn33,
             this.dataGridViewTextBoxColumn39,
@@ -722,16 +736,16 @@
             this.dataGridViewTextBoxColumn36,
             this.dataGridViewTextBoxColumn38,
             this.dataGridViewTextBoxColumn40});
-            this.xTabDataDataGridView2.DataSource = this.bs_xTabDataTrimReal;
-            this.xTabDataDataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView2.Location = new System.Drawing.Point(3, 354);
-            this.xTabDataDataGridView2.Name = "xTabDataDataGridView2";
-            this.xTabDataDataGridView2.ReadOnly = true;
-            this.xTabDataDataGridView2.RowHeadersVisible = false;
-            this.xTabDataDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView2.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView2.TabIndex = 7;
-            this.xTabDataDataGridView2.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            this.dgvxTabTrimestreReal.DataSource = this.bs_xTabDataTrimReal;
+            this.dgvxTabTrimestreReal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvxTabTrimestreReal.Location = new System.Drawing.Point(3, 353);
+            this.dgvxTabTrimestreReal.Name = "dgvxTabTrimestreReal";
+            this.dgvxTabTrimestreReal.ReadOnly = true;
+            this.dgvxTabTrimestreReal.RowHeadersVisible = false;
+            this.dgvxTabTrimestreReal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvxTabTrimestreReal.Size = new System.Drawing.Size(664, 314);
+            this.dgvxTabTrimestreReal.TabIndex = 7;
+            this.dgvxTabTrimestreReal.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
             // dataGridViewTextBoxColumn32
             // 
@@ -800,15 +814,15 @@
             // 
             this.bs_xTabDataTrimReal.DataSource = typeof(DataLayer.sp_Xtab_Result);
             // 
-            // xTabDataDataGridView1
+            // dgvxTabAnoRecibo
             // 
-            this.xTabDataDataGridView1.AllowUserToAddRows = false;
-            this.xTabDataDataGridView1.AllowUserToDeleteRows = false;
+            this.dgvxTabAnoRecibo.AllowUserToAddRows = false;
+            this.dgvxTabAnoRecibo.AllowUserToDeleteRows = false;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.xTabDataDataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
-            this.xTabDataDataGridView1.AutoGenerateColumns = false;
-            this.xTabDataDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvxTabAnoRecibo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvxTabAnoRecibo.AutoGenerateColumns = false;
+            this.dgvxTabAnoRecibo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvxTabAnoRecibo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn23,
             this.dataGridViewTextBoxColumn24,
             this.dataGridViewTextBoxColumn30,
@@ -818,16 +832,16 @@
             this.dataGridViewTextBoxColumn27,
             this.dataGridViewTextBoxColumn29,
             this.dataGridViewTextBoxColumn31});
-            this.xTabDataDataGridView1.DataSource = this.bs_xTabDataAnoRecibo;
-            this.xTabDataDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView1.Location = new System.Drawing.Point(673, 33);
-            this.xTabDataDataGridView1.Name = "xTabDataDataGridView1";
-            this.xTabDataDataGridView1.ReadOnly = true;
-            this.xTabDataDataGridView1.RowHeadersVisible = false;
-            this.xTabDataDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView1.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView1.TabIndex = 7;
-            this.xTabDataDataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            this.dgvxTabAnoRecibo.DataSource = this.bs_xTabDataAnoRecibo;
+            this.dgvxTabAnoRecibo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvxTabAnoRecibo.Location = new System.Drawing.Point(673, 33);
+            this.dgvxTabAnoRecibo.Name = "dgvxTabAnoRecibo";
+            this.dgvxTabAnoRecibo.ReadOnly = true;
+            this.dgvxTabAnoRecibo.RowHeadersVisible = false;
+            this.dgvxTabAnoRecibo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvxTabAnoRecibo.Size = new System.Drawing.Size(664, 314);
+            this.dgvxTabAnoRecibo.TabIndex = 7;
+            this.dgvxTabAnoRecibo.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
             // dataGridViewTextBoxColumn23
             // 
@@ -896,15 +910,15 @@
             // 
             this.bs_xTabDataAnoRecibo.DataSource = typeof(DataLayer.sp_Xtab_Result);
             // 
-            // xTabDataDataGridView
+            // dgvxTabAnoReal
             // 
-            this.xTabDataDataGridView.AllowUserToAddRows = false;
-            this.xTabDataDataGridView.AllowUserToDeleteRows = false;
+            this.dgvxTabAnoReal.AllowUserToAddRows = false;
+            this.dgvxTabAnoReal.AllowUserToDeleteRows = false;
             dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.xTabDataDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.xTabDataDataGridView.AutoGenerateColumns = false;
-            this.xTabDataDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.xTabDataDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvxTabAnoReal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.dgvxTabAnoReal.AutoGenerateColumns = false;
+            this.dgvxTabAnoReal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvxTabAnoReal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn21,
@@ -914,16 +928,16 @@
             this.dataGridViewTextBoxColumn18,
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn22});
-            this.xTabDataDataGridView.DataSource = this.bs_xTabDataAnoReal;
-            this.xTabDataDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xTabDataDataGridView.Location = new System.Drawing.Point(3, 33);
-            this.xTabDataDataGridView.Name = "xTabDataDataGridView";
-            this.xTabDataDataGridView.ReadOnly = true;
-            this.xTabDataDataGridView.RowHeadersVisible = false;
-            this.xTabDataDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.xTabDataDataGridView.Size = new System.Drawing.Size(664, 315);
-            this.xTabDataDataGridView.TabIndex = 7;
-            this.xTabDataDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
+            this.dgvxTabAnoReal.DataSource = this.bs_xTabDataAnoReal;
+            this.dgvxTabAnoReal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvxTabAnoReal.Location = new System.Drawing.Point(3, 33);
+            this.dgvxTabAnoReal.Name = "dgvxTabAnoReal";
+            this.dgvxTabAnoReal.ReadOnly = true;
+            this.dgvxTabAnoReal.RowHeadersVisible = false;
+            this.dgvxTabAnoReal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvxTabAnoReal.Size = new System.Drawing.Size(664, 314);
+            this.dgvxTabAnoReal.TabIndex = 7;
+            this.dgvxTabAnoReal.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -1018,6 +1032,40 @@
             this.label2.Text = "PERÍODO RECIBO";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // toolStripComboBoxInicio
+            // 
+            this.toolStripComboBoxInicio.Name = "toolStripComboBoxInicio";
+            this.toolStripComboBoxInicio.Size = new System.Drawing.Size(75, 27);
+            this.toolStripComboBoxInicio.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxInicio_SelectedIndexChanged);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(39, 24);
+            this.toolStripLabel1.Text = "Início:";
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(54, 24);
+            this.toolStripLabel2.Text = "Término:";
+            // 
+            // toolStripComboBoxTermino
+            // 
+            this.toolStripComboBoxTermino.Name = "toolStripComboBoxTermino";
+            this.toolStripComboBoxTermino.Size = new System.Drawing.Size(75, 27);
+            this.toolStripComboBoxTermino.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxTermino_SelectedIndexChanged);
+            // 
+            // toolStripButtonExcel
+            // 
+            this.toolStripButtonExcel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonExcel.Image = global::AguaAraras.Properties.Resources.Apps_excel_icon;
+            this.toolStripButtonExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonExcel.Name = "toolStripButtonExcel";
+            this.toolStripButtonExcel.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButtonExcel.Text = "Exportar para Excel";
+            this.toolStripButtonExcel.Click += new System.EventHandler(this.toolStripButtonExcel_Click);
+            // 
             // frmBalanco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1049,13 +1097,13 @@
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabTrimestreRecibo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimRecibo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabTrimestreReal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataTrimReal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabAnoRecibo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoRecibo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xTabDataDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvxTabAnoReal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bs_xTabDataAnoReal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1103,11 +1151,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn saldoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView xTabDataDataGridView;
+        private System.Windows.Forms.DataGridView dgvxTabAnoReal;
         private System.Windows.Forms.BindingSource bs_xTabDataAnoReal;
-        private System.Windows.Forms.DataGridView xTabDataDataGridView3;
-        private System.Windows.Forms.DataGridView xTabDataDataGridView2;
-        private System.Windows.Forms.DataGridView xTabDataDataGridView1;
+        private System.Windows.Forms.DataGridView dgvxTabTrimestreRecibo;
+        private System.Windows.Forms.DataGridView dgvxTabTrimestreReal;
+        private System.Windows.Forms.DataGridView dgvxTabAnoRecibo;
         private System.Windows.Forms.BindingSource bs_xTabDataAnoRecibo;
         private System.Windows.Forms.BindingSource bs_xTabDataTrimReal;
         private System.Windows.Forms.BindingSource bs_xTabDataTrimRecibo;
@@ -1147,5 +1195,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxInicio;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxTermino;
+        private System.Windows.Forms.ToolStripButton toolStripButtonExcel;
+        private System.Windows.Forms.SaveFileDialog SFD;
     }
 }

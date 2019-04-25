@@ -18,7 +18,7 @@ namespace AguaAraras {
             SFD.Filter = @"Excel Files|*.xlsx";
 
             var tipos =
-                (from DataLayer.Movimento m in entityDataSourceMovimentos.EntitySets["Movimentos"]
+                (from Movimento m in entityDataSourceMovimentos.EntitySets["Movimentos"]
                  group m by m.Tipo into g
                  select g.Key).OrderBy(t => t).ToArray();
 
@@ -96,7 +96,7 @@ namespace AguaAraras {
                 ws.View.FreezePanes(2, 1);
                 pck.Save();
 
-                MessageBox.Show(@"Data exported.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Movimentos exportados.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -32,12 +32,14 @@
             System.Windows.Forms.Label descricaoLabel;
             System.Windows.Forms.Label numeroLabel;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvRecibos = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entityDataSourceRecibos = new EFWinforms.EntityDataSource(this.components);
             this.tlpRecibo = new System.Windows.Forms.TableLayoutPanel();
             this.numeroNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.observacoesTextBox = new System.Windows.Forms.TextBox();
@@ -46,7 +48,7 @@
             this.mesesNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.descricaoTextBox = new System.Windows.Forms.TextBox();
             this.extraCheckBox = new System.Windows.Forms.CheckBox();
-            this.iDLabel1 = new System.Windows.Forms.Label();
+            this.IDLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelPendente = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,6 +62,9 @@
             this.dgvCotas = new System.Windows.Forms.DataGridView();
             this.PessoaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cobranca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -77,11 +82,6 @@
             this.fichaConferênciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonColect = new System.Windows.Forms.ToolStripButton();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.entityDataSourceRecibos = new EFWinforms.EntityDataSource(this.components);
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             observacoesLabel = new System.Windows.Forms.Label();
             emissaoLabel = new System.Windows.Forms.Label();
             vencimentoLabel = new System.Windows.Forms.Label();
@@ -204,6 +204,20 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "AnoNumero";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.numeroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // entityDataSourceRecibos
+            // 
+            this.entityDataSourceRecibos.DbContextType = typeof(DataLayer.AguaArarasEntities);
+            // 
             // tlpRecibo
             // 
             this.tlpRecibo.ColumnCount = 2;
@@ -223,7 +237,7 @@
             this.tlpRecibo.Controls.Add(descricaoLabel, 0, 3);
             this.tlpRecibo.Controls.Add(numeroLabel, 0, 1);
             this.tlpRecibo.Controls.Add(this.extraCheckBox, 1, 0);
-            this.tlpRecibo.Controls.Add(this.iDLabel1, 0, 0);
+            this.tlpRecibo.Controls.Add(this.IDLabel, 0, 0);
             this.tlpRecibo.Controls.Add(this.tableLayoutPanel3, 1, 9);
             this.tlpRecibo.Controls.Add(this.panel1, 1, 4);
             this.tlpRecibo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -339,18 +353,19 @@
             this.extraCheckBox.Text = "Extra";
             this.extraCheckBox.UseVisualStyleBackColor = true;
             // 
-            // iDLabel1
+            // IDLabel
             // 
-            this.iDLabel1.BackColor = System.Drawing.Color.Black;
-            this.iDLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iDLabel1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iDLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.iDLabel1.Location = new System.Drawing.Point(3, 0);
-            this.iDLabel1.Name = "iDLabel1";
-            this.iDLabel1.Size = new System.Drawing.Size(103, 36);
-            this.iDLabel1.TabIndex = 10;
-            this.iDLabel1.Text = "ID";
-            this.iDLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.IDLabel.BackColor = System.Drawing.Color.Black;
+            this.IDLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.ID", true));
+            this.IDLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IDLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.IDLabel.Location = new System.Drawing.Point(3, 0);
+            this.IDLabel.Name = "IDLabel";
+            this.IDLabel.Size = new System.Drawing.Size(103, 36);
+            this.IDLabel.TabIndex = 10;
+            this.IDLabel.Text = "ID";
+            this.IDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel3
             // 
@@ -537,6 +552,29 @@
             this.Nome.ReadOnly = true;
             this.Nome.Width = 120;
             // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // observacoesDataGridViewTextBoxColumn
+            // 
+            this.observacoesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
+            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
+            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
+            // 
             // Cobranca
             // 
             this.Cobranca.DataPropertyName = "Cobranca";
@@ -597,7 +635,7 @@
             this.toolStripButtonColect});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(226, 31);
+            this.toolStripMenu.Size = new System.Drawing.Size(195, 31);
             this.toolStripMenu.TabIndex = 0;
             // 
             // toolStripButtonSave
@@ -655,7 +693,7 @@
             this.cobrancasEMailToolStripMenuItem,
             this.selecionadasToolStripMenuItem});
             this.cobrançasToolStripMenuItem.Name = "cobrançasToolStripMenuItem";
-            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.cobrançasToolStripMenuItem.Text = "Cobranças";
             // 
             // cobrancasImpressasToolStripMenuItem
@@ -685,14 +723,14 @@
             // recibosToolStripMenuItem
             // 
             this.recibosToolStripMenuItem.Name = "recibosToolStripMenuItem";
-            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.recibosToolStripMenuItem.Text = "Recibos";
             this.recibosToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRecibos_Click);
             // 
             // fichaConferênciaToolStripMenuItem
             // 
             this.fichaConferênciaToolStripMenuItem.Name = "fichaConferênciaToolStripMenuItem";
-            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.fichaConferênciaToolStripMenuItem.Text = "Ficha conferência";
             this.fichaConferênciaToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonFichaConferência_Click);
             // 
@@ -715,43 +753,6 @@
             this.toolStripButtonColect.Size = new System.Drawing.Size(28, 28);
             this.toolStripButtonColect.Text = "Criar pagamento de distribuição e coleta";
             this.toolStripButtonColect.Click += new System.EventHandler(this.toolStripButtonColect_Click);
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "AnoNumero";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.numeroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // entityDataSourceRecibos
-            // 
-            this.entityDataSourceRecibos.DbContextType = typeof(DataLayer.AguaArarasEntities);
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            // 
-            // valorDataGridViewTextBoxColumn
-            // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // observacoesDataGridViewTextBoxColumn
-            // 
-            this.observacoesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
             // 
             // frmRecibos
             // 
@@ -800,7 +801,7 @@
         private System.Windows.Forms.NumericUpDown mesesNumericUpDown;
         private System.Windows.Forms.TextBox descricaoTextBox;
         private System.Windows.Forms.CheckBox extraCheckBox;
-        private System.Windows.Forms.Label iDLabel1;
+        private System.Windows.Forms.Label IDLabel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label labelPendente;
         private System.Windows.Forms.Label label5;
