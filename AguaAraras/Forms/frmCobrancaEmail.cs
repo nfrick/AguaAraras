@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using RadioButton = System.Windows.Forms.RadioButton;
 
 namespace AguaAraras {
     public partial class frmCobrancaEmail : Form {
@@ -18,7 +19,7 @@ namespace AguaAraras {
         private readonly string _bodyTextPath = AppDomain.CurrentDomain.BaseDirectory + @"\Body.txt";
         private readonly int _ReciboID;
 
-        private DataLayer.Cota[] _Cobrancas;
+        private Cota[] _cobrancas;
         private string _textoOriginal;
 
         public frmCobrancaEmail(Form parent, int ReciboID) {
@@ -29,29 +30,23 @@ namespace AguaAraras {
 
         private void GetData() {
             using (var ctx = new AguaArarasEntities()) {
-                if (checkBoxIncluirCobrancasAnteriores.Checked) {
-                    _Cobrancas =
-                        ctx.Cotas.Where(c => c.Data == null && c.Pessoa.Cobranca == 2)
-                            .OrderBy(c => c.Pessoa.Nome)
-                            .ThenByDescending(c => c.Recibo.Vencimento.Year)
-                            .ThenByDescending(c => c.Recibo.Numero).ToArray();
-                }
-                else {
-                    _Cobrancas =
-                        ctx.Cotas.Where(c => c.ReciboID == _ReciboID && c.Pessoa.Cobranca == 2)
-                            .OrderBy(c => c.Pessoa.Nome)
-                            .ThenByDescending(c => c.Recibo.Vencimento.Year)
-                            .ThenByDescending(c => c.Recibo.Numero).ToArray();
-                }
+                var x = checkBoxIncluirCobrancasAnteriores.Checked ?
+                    ctx.Cotas.Where(c => c.Data == null && c.Pessoa.Cobranca == 2) :
+                    ctx.Cotas.Where(c => c.ReciboID == _ReciboID && c.Pessoa.Cobranca == 2);
+
+                _cobrancas = x.OrderBy(c => c.Pessoa.Nome)
+                    .ThenByDescending(c => c.Recibo.Vencimento.Year)
+                    .ThenByDescending(c => c.Recibo.Numero).ToArray();
+
                 listBoxNomes.Items.Clear();
-                listBoxNomes.Items.AddRange(_Cobrancas);
+                listBoxNomes.Items.AddRange(_cobrancas);
             }
         }
 
         private void frmCobrancaEmail_Load(object sender, EventArgs e) {
             GetData();
             labelFolder.Text = _desktopFolder;
-            textBoxAssunto.Text = $@"Água Araras {_Cobrancas[0].ReciboNumeroAno}";
+            textBoxAssunto.Text = $@"Água Araras {_cobrancas[0].ReciboNumeroAno}";
 
             if (File.Exists(_bodyTextPath)) {
                 _textoOriginal = File.ReadAllText(_bodyTextPath);
@@ -68,8 +63,8 @@ namespace AguaAraras {
 
         private void buttonGerar_Click(object sender, EventArgs e) {
             var itemsToSend = radioButtonTodos.Checked
-                ? _Cobrancas
-                : listBoxNomes.SelectedItems.Cast<DataLayer.Cota>().ToArray();
+                ? _cobrancas
+                : listBoxNomes.SelectedItems.Cast<Cota>().ToArray();
 
             var ItemsByEMail = from p in itemsToSend
                                group p by p.EMail
@@ -81,10 +76,12 @@ namespace AguaAraras {
                 if (radioButtonSalvar.Checked) {
                     continue;
                 }
-
-                email.Send(textBoxAssunto.Text, textBoxBody.Text);
+                if (email.Send(textBoxAssunto.Text, textBoxBody.Text)) continue;
+                if (MessageBox.Show($"Erro ao enviar e-mail para:\n{email.EMail}\n\nContinuar envio?",
+                        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    break;
             }
-            MessageBox.Show("Cobranças geradas.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(@"Cobranças geradas.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (!radioButtonEnviarDeletar.Checked) {
                 return;
@@ -147,13 +144,23 @@ namespace AguaAraras {
     }
 
     public class EMailDeCobranca {
+        private static readonly SmtpClient _smtp = new SmtpClient("smtp.gmail.com") {
+            Port = 587,
+            UseDefaultCredentials = true,
+            Credentials = new System.Net.NetworkCredential("ararasrede78@gmail.com", "qmlyswxmpfvlvwta"),
+            EnableSsl = true,
+            DeliveryMethod = SmtpDeliveryMethod.Network,
+            Timeout = 20000
+        };
         public string EMail { get; set; }
         public string PdfName { get; set; }
-        public List<DataLayer.Cota> Cobrancas { get; set; }
+        public List<Cota> Cobrancas { get; set; }
         public int Count => Cobrancas.Count;
         // public string[] EMailArray => EMail.Replace("\r\n", "#").Split('#');
         public string EMailCSV => EMail.Replace("\r\n", ",");
+
         public string[] Recibos => Cobrancas.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
+
         public string Descricao => Recibos.Length == 1
             ? "ao trimestre " + Recibos[0]
             : "aos trimestres " + Recibos.Take(Recibos.Length - 1)
@@ -161,12 +168,12 @@ namespace AguaAraras {
               " e " + Recibos.Last();
 
         public string[] Valores => Cobrancas.Select(i => i.Valor.ToString("C")).Distinct().ToArray();
+
         public string ValoresExtenso => Valores.Length == 1
         ? Valores[0]
         : Valores.Take(Valores.Length - 1)
         .Aggregate((current, next) => $@"{current}, {next}") +
         " e " + Valores.Last();
-
 
         private void SetPDFName(string tmpPath) {
             var nomes = Cobrancas.Select(i => i.Nome).Distinct().ToArray();
@@ -242,18 +249,8 @@ namespace AguaAraras {
                 };
                 //mail.To.Add("nfrick@gmail.com");
                 mail.To.Add(EMailCSV);
-
                 mail.Attachments.Add(new Attachment(PdfName));
-
-                var smtp = new SmtpClient("smtp.gmail.com") {
-                    Port = 587,
-                    UseDefaultCredentials = true,
-                    Credentials = new System.Net.NetworkCredential("ararasrede78@gmail.com", "qmlyswxmpfvlvwta"),
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Timeout = 20000
-                };
-                smtp.Send(mail);
+                _smtp.Send(mail);
                 return true;
             }
             catch (Exception) {
