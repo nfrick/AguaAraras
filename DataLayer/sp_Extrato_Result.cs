@@ -14,7 +14,7 @@ namespace DataLayer
     public partial class sp_Extrato_Result
     {
         public string Tipo { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
+        public System.DateTime Data { get; set; }
         public string Descricao { get; set; }
         public Nullable<decimal> Valor { get; set; }
         public Nullable<decimal> Saldo { get; set; }

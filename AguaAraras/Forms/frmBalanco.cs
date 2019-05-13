@@ -3,6 +3,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -11,6 +12,10 @@ using System.Windows.Forms;
 namespace AguaAraras {
     public partial class frmBalanco : Form {
         private readonly List<sp_Extrato_Result> _extrato = new List<sp_Extrato_Result>();
+
+        // Anos de início e término para relatórios
+        private int _inicio;
+        private int _termino;
 
         public frmBalanco() {
             InitializeComponent();
@@ -81,14 +86,12 @@ namespace AguaAraras {
         private void toolStripButtonExtrato_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
+
             frm.SetReport(_extrato
-                    .Where(m => ((DateTime)m.Data).Year >= _inicio &&
-                                ((DateTime)m.Data).Year <= _termino),
+                    .SkipWhile(m => m.Data.Year > _termino)
+                    .TakeWhile(m => m.Data.Year >= _inicio),
                 rpt, "DataSetExtrato", "Extrato");
         }
-
-        private int _inicio;
-        private int _termino;
 
         private void toolStripComboBoxInicio_SelectedIndexChanged(object sender, EventArgs e) {
             _inicio = int.Parse((string)toolStripComboBoxInicio.SelectedItem);
@@ -144,5 +147,4 @@ namespace AguaAraras {
             MessageBox.Show(@"Balanço exportado.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
-
 }

@@ -366,7 +366,7 @@
         </ComplexType>
         <ComplexType Name="sp_Extrato_Result">
           <Property Type="String" Name="Tipo" Nullable="true" MaxLength="15" />
-          <Property Type="DateTime" Name="Data" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="Data" Nullable="false" Precision="16" />
           <Property Type="String" Name="Descricao" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Valor" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="19" />
