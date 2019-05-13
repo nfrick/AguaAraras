@@ -140,5 +140,9 @@ namespace AguaAraras {
             selecionadasToolStripMenuItem.Enabled = dgvCotas.SelectedRows.Count > 0;
         }
         #endregion ----------------------------------------------------------------
+
+        private void toolStripMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
+
+        }
     }
 }

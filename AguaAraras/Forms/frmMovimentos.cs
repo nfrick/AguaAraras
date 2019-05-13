@@ -30,7 +30,6 @@ namespace AguaAraras {
 
             toolStripComboBoxErros.ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             toolStripComboBoxErros.SelectedIndex = 0;
-
         }
 
         private void frmMovimentos_Load(object sender, EventArgs e) {
@@ -132,7 +131,7 @@ namespace AguaAraras {
             }
             else {
                 var q =
-                    from DataLayer.Movimento m in entityDataSourceMovimentos.EntitySets["Movimentos"]
+                    from Movimento m in entityDataSourceMovimentos.EntitySets["Movimentos"]
                     where m.Tipo == toolStripComboBoxTipo.Text
                     orderby m.Data descending
                     select m;

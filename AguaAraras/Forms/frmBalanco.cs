@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmBalanco : Form {
-        private readonly List<sp_Extrato_Result> _extratoList = new List<sp_Extrato_Result>();
+        private readonly List<sp_Extrato_Result> _extrato = new List<sp_Extrato_Result>();
 
         public frmBalanco() {
             InitializeComponent();
@@ -20,19 +20,11 @@ namespace AguaAraras {
 
         private void frmBalanco_Load(object sender, EventArgs e) {
             using (var ctx = new AguaArarasEntities()) {
-                var extrato = ctx.sp_Extrato();
-                foreach (var item in extrato) {
-                    _extratoList.Add(new sp_Extrato_Result() {
-                        RID = item.RID,
-                        Data = item.Data,
-                        Valor = (decimal)item.Valor,
-                        Descricao = item.Descricao,
-                        Tipo = item.Tipo,
-                        Saldo = (decimal)item.Saldo
-                    });
+                foreach (var item in ctx.sp_Extrato()) {
+                    _extrato.Add(new sp_Extrato_Result(item));
                 }
 
-                var anos = _extratoList.Where(m => m.Data != null)
+                var anos = _extrato.Where(m => m.Data != null)
                     .Select(m => ((DateTime)m.Data).ToString("yyyy")).Distinct().ToArray();
                 toolStripComboBoxInicio.Items.AddRange(anos);
                 toolStripComboBoxTermino.Items.AddRange(anos);
@@ -42,9 +34,7 @@ namespace AguaAraras {
                 bs_BalancoAno.DataSource = new BindingSource { DataSource = ctx.sp_Balanco("YEAR") };
                 bs_BalancoTrimestre.DataSource = new BindingSource { DataSource = ctx.sp_Balanco("QUARTER") };
                 bs_BalancoMes.DataSource = new BindingSource { DataSource = ctx.sp_Balanco("MONTH") };
-
-                extrato = ctx.sp_Extrato();
-                bs_Extratos.DataSource = new BindingSource { DataSource = extrato };
+                bs_Extratos.DataSource = new BindingSource { DataSource = _extrato };
 
                 bs_xTabDataAnoReal.DataSource = new BindingSource { DataSource = ctx.sp_Xtab("ANO REAL") };
                 bs_xTabDataAnoRecibo.DataSource = new BindingSource { DataSource = ctx.sp_Xtab("ANO RECIBO") };
@@ -91,7 +81,7 @@ namespace AguaAraras {
         private void toolStripButtonExtrato_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
-            frm.SetReport(_extratoList
+            frm.SetReport(_extrato
                     .Where(m => ((DateTime)m.Data).Year >= _inicio &&
                                 ((DateTime)m.Data).Year <= _termino),
                 rpt, "DataSetExtrato", "Extrato");

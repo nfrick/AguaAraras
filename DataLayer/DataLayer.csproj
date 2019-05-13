@@ -50,13 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsCota.cs" />
-    <Compile Include="clsEndereco.cs" />
-    <Compile Include="clsExtenso.cs" />
-    <Compile Include="clsMovimento.cs" />
-    <Compile Include="clsPessoa.cs" />
-    <Compile Include="clsRecibo.cs" />
-    <Compile Include="clsXtab.cs" />
+    <Compile Include="Classes\clsCota.cs" />
+    <Compile Include="Classes\clsEndereco.cs" />
+    <Compile Include="Classes\clsExtenso.cs" />
+    <Compile Include="Classes\clsMovimento.cs" />
+    <Compile Include="Classes\clsPessoa.cs" />
+    <Compile Include="Classes\clsRecibo.cs" />
+    <Compile Include="Classes\clsXtab.cs" />
+    <Compile Include="cls_sp_Extrato_Result.cs" />
     <Compile Include="Cota.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>

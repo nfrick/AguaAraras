@@ -635,8 +635,9 @@
             this.toolStripButtonColect});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(195, 31);
+            this.toolStripMenu.Size = new System.Drawing.Size(226, 31);
             this.toolStripMenu.TabIndex = 0;
+            this.toolStripMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenu_ItemClicked);
             // 
             // toolStripButtonSave
             // 

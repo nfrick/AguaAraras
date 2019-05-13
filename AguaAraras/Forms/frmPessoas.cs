@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Data.Entity;
+using DataLayer;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -90,15 +90,15 @@ namespace AguaAraras {
         private void dgvEnderecos_KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyData) {
                 case Keys.Delete: {
-                        var x = ((DataLayer.Endereco)dgvEnderecos.CurrentRow.DataBoundItem);
+                        var x = ((Endereco)dgvEnderecos.CurrentRow.DataBoundItem);
                         entityDataSourcePessoas.EntitySets["Enderecos"].List.Remove(x);
                         entityDataSourcePessoas.SaveChanges();
                         entityDataSourcePessoas.Refresh();
                     }
                     break;
                 case Keys.Insert: {
-                        var x = ((DataLayer.Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
-                        x.Enderecos.Add(new DataLayer.Endereco() {
+                        var x = ((Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
+                        x.Enderecos.Add(new Endereco() {
                             Bairro = " ",
                             CEP = "00000000",
                             Cidade = " ",
@@ -121,7 +121,8 @@ namespace AguaAraras {
             var txt = e.FormattedValue.ToString();
             if (string.IsNullOrEmpty(txt)) {
                 e.Cancel = true;
-                dgvEnderecos.Rows[e.RowIndex].ErrorText = "Endereço não pode ter itens em branco.";
+                dgvEnderecos.Rows[e.RowIndex].ErrorText = 
+                    $"{dgvEnderecos.Columns[e.ColumnIndex].HeaderText} não pode ficar em branco.";
                 return;
             }
             switch (e.ColumnIndex) {
@@ -131,7 +132,6 @@ namespace AguaAraras {
                     if (Regex.IsMatch(txt.ToUpper(), pattern)) {
                         return;
                     }
-
                     e.Cancel = true;
                     dgvEnderecos.Rows[e.RowIndex].ErrorText = "Estado Inválido.";
                     break;
@@ -141,7 +141,6 @@ namespace AguaAraras {
                     if (Regex.IsMatch(txt, pattern1) || Regex.IsMatch(txt, pattern2)) {
                         return;
                     }
-
                     e.Cancel = true;
                     dgvEnderecos.Rows[e.RowIndex].ErrorText = "CEP Inválido.";
                     break;
@@ -152,7 +151,6 @@ namespace AguaAraras {
             if (e.ColumnIndex > 4) {
                 return;
             }
-
             var cell = dgvEnderecos.CurrentRow.Cells[e.ColumnIndex];
             var txt = cell.Value.ToString().Trim();
             cell.Value = e.ColumnIndex == 3 ? txt.ToUpper() : txt;
@@ -161,15 +159,15 @@ namespace AguaAraras {
         private void dgvTelefones_KeyDown(object sender, KeyEventArgs e) {
             switch (e.KeyData) {
                 case Keys.Delete: {
-                        var x = ((DataLayer.Telefone)dgvEnderecos.CurrentRow.DataBoundItem);
+                        var x = ((Telefone)dgvEnderecos.CurrentRow.DataBoundItem);
                         entityDataSourcePessoas.EntitySets["Telefones"].List.Remove(x);
                         entityDataSourcePessoas.SaveChanges();
                         entityDataSourcePessoas.Refresh();
                     }
                     break;
                 case Keys.Insert: {
-                        var x = ((DataLayer.Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
-                        x.Telefones.Add(new DataLayer.Telefone() { Numero = " ", Tipo = 0 });
+                        var x = ((Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
+                        x.Telefones.Add(new Telefone() { Numero = " ", Tipo = 0 });
                         entityDataSourcePessoas.Refresh();
                         dgvEnderecos.CurrentCell = dgvTelefones.Rows[dgvEnderecos.RowCount - 1].Cells[0];
                         dgvEnderecos.BeginEdit(true);
@@ -187,7 +185,6 @@ namespace AguaAraras {
             if (!string.IsNullOrWhiteSpace(txt)) {
                 return;
             }
-
             e.Cancel = true;
             dgvTelefones.Rows[e.RowIndex].ErrorText = "Telefone não pode ficar em branco.";
         }
@@ -196,7 +193,6 @@ namespace AguaAraras {
             if (e.ColumnIndex > 1) {
                 return;
             }
-
             var cell = dgvTelefones.CurrentRow.Cells[e.ColumnIndex];
             cell.Value = cell.Value.ToString().Trim();
         }
