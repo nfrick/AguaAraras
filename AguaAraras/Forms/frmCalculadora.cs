@@ -6,35 +6,32 @@ using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmCalculadora : Form {
-        public static decimal Constante { get; } = 0.059414991m;
+        private decimal Fator;
 
         public frmCalculadora() {
             InitializeComponent();
         }
 
         private void frmCalculadora_Load(object sender, EventArgs e) {
-            numericUpDownSalario.Value = GetLastManutencao();
-            numericUpDownTomadas.Value = GetTomadas();
+            nupSalario.Value = GetLastManutencao();
+            nupTomadas.Value = GetTomadas();
             labelAtual.Text = GetAtual().ToString("C2");
             CalcularMensalidade();
         }
 
-        private void numericUpDownSalario_ValueChanged(object sender, EventArgs e) {
+        private void CalcularMensalidade_Changed(object sender, EventArgs e) {
             CalcularMensalidade();
         }
 
-        private void radioButtonCalculado_CheckedChanged(object sender, EventArgs e) {
-            CalcularDetalhes();
-        }
-
-        private void numericUpDownMensalidade_ValueChanged(object sender, EventArgs e) {
+        private void CalcularDetalhes_Changed(object sender, EventArgs e) {
             CalcularDetalhes();
         }
 
         private void CalcularMensalidade() {
-            var mensalidade = Constante * numericUpDownSalario.Value;
+            Fator = 13 / ((10.8m * nupTomadas.Value - 8));
+            var mensalidade = Fator * nupSalario.Value;
             labelCalculado.Text = $@"{mensalidade:C2}";
-            numericUpDownMensalidade.Value = Math.Ceiling(mensalidade / 5) * 5;
+            nupMensalidade.Value = Math.Ceiling(mensalidade / 5) * 5;
             CalcularDetalhes();
         }
 
@@ -42,21 +39,21 @@ namespace AguaAraras {
             decimal mensalidade;
 
             if (radioButtonCalculado.Checked)
-                mensalidade = Constante * numericUpDownSalario.Value;
+                mensalidade = Fator * nupSalario.Value;
             else if (radioButtonAtual.Checked)
                 mensalidade = GetAtual();
-            else {
-                mensalidade = numericUpDownMensalidade.Value;
+            else {  // Usar valor calculado e arredondado para múltiplo de 5
+                mensalidade = nupMensalidade.Value;
             }
 
-            var arrecadacao = 12 * numericUpDownTomadas.Value * mensalidade;
-            var vergilio = 13 * numericUpDownSalario.Value;
+            var arrecadacao = 12 * nupTomadas.Value * mensalidade;
+            var vergilio = 13 * nupSalario.Value;
             var cobranca = 8 * mensalidade;
             var reserva = arrecadacao - (vergilio + cobranca);
-            labelTotalDesc.Text = $@"12 * {numericUpDownTomadas.Value} * {mensalidade:C2} =";
+            labelTotalDesc.Text = $@"12 * {nupTomadas.Value} * {mensalidade:C2} =";
             labelTotalValor.Text = $@"{arrecadacao:C2}";
 
-            labelVergilioDesc.Text = $@"13 * {numericUpDownSalario.Value:C2} =";
+            labelVergilioDesc.Text = $@"13 * {nupSalario.Value:C2} =";
             labelVergilioValor.Text = $@"{vergilio:C2}";
 
             labelCobrancaDesc.Text = $@"4 * 2/3 * 3 * {mensalidade:C2} =";
@@ -77,14 +74,17 @@ namespace AguaAraras {
             }
         }
 
+        #region RESET DE VALORES NA TELA
         private void labelTomadas_DoubleClick(object sender, EventArgs e) {
-            numericUpDownTomadas.Value = GetTomadas();
+            nupTomadas.Value = GetTomadas();
         }
 
         private void labelSalario_Click(object sender, EventArgs e) {
-            numericUpDownSalario.Value = GetLastManutencao();
+            nupSalario.Value = GetLastManutencao();
         }
+        #endregion RESET DE VALORES NA TELA
 
+        #region OBTER DADOS ATUAIS
         private decimal GetLastManutencao() {
             using (var ctx = new AguaArarasEntities()) {
                 return Math.Abs(ctx.Movimentos.Where(m => m.Tipo == "vergilio")
@@ -105,5 +105,6 @@ namespace AguaAraras {
                 .OrderByDescending(r => r.Vencimento).FirstOrDefault()?.Cota ?? 0);
             }
         }
+        #endregion
     }
 }
