@@ -87,7 +87,7 @@ namespace AguaAraras {
         #region OBTER DADOS ATUAIS
         private decimal GetLastManutencao() {
             using (var ctx = new AguaArarasEntities()) {
-                return Math.Abs(ctx.Movimentos.Where(m => m.Tipo == "vergilio")
+                return Math.Abs(ctx.Movimentos.Where(m => m.Tipo == "manutenção")
                     .OrderByDescending(m => m.Data).FirstOrDefault()?.Valor ?? 0);
             }
         }

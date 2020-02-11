@@ -30,6 +30,7 @@
             this.toolStripButtonMovimentos = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBalanco = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCalculadora = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonConfig = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,8 @@
             this.toolStripButtonRecibos,
             this.toolStripButtonMovimentos,
             this.toolStripButtonBalanco,
-            this.toolStripButtonCalculadora});
+            this.toolStripButtonCalculadora,
+            this.toolStripButtonConfig});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1164, 43);
@@ -104,9 +106,19 @@
             this.toolStripButtonCalculadora.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonCalculadora.Click += new System.EventHandler(this.toolStripButtonCalculadora_Click);
             // 
+            // toolStripButtonConfig
+            // 
+            this.toolStripButtonConfig.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonConfig.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonConfig.Image")));
+            this.toolStripButtonConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonConfig.Name = "toolStripButtonConfig";
+            this.toolStripButtonConfig.Size = new System.Drawing.Size(40, 40);
+            this.toolStripButtonConfig.Text = "Configuração";
+            this.toolStripButtonConfig.Click += new System.EventHandler(this.toolStripButtonConfig_Click);
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1164, 681);
@@ -134,6 +146,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonMovimentos;
         private System.Windows.Forms.ToolStripButton toolStripButtonBalanco;
         private System.Windows.Forms.ToolStripButton toolStripButtonCalculadora;
+        private System.Windows.Forms.ToolStripButton toolStripButtonConfig;
     }
 }
 

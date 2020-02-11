@@ -137,7 +137,7 @@
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(48, 28);
+            this.toolStripLabel2.Size = new System.Drawing.Size(60, 28);
             this.toolStripLabel2.Text = "Mostrar";
             // 
             // toolStripComboBoxErros
@@ -151,7 +151,7 @@
             "Carlos duplicado (Trimestre)",
             "Carlos duplicado (Histórico)"});
             this.toolStripComboBoxErros.Name = "toolStripComboBoxErros";
-            this.toolStripComboBoxErros.Size = new System.Drawing.Size(121, 31);
+            this.toolStripComboBoxErros.Size = new System.Drawing.Size(180, 31);
             this.toolStripComboBoxErros.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxErros_SelectedIndexChanged);
             // 
             // toolStripSeparator2
@@ -162,7 +162,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(31, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(39, 28);
             this.toolStripLabel1.Text = "Tipo";
             // 
             // toolStripComboBoxTipo
@@ -179,7 +179,7 @@
             // toolStripLabel3
             // 
             this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(52, 28);
+            this.toolStripLabel3.Size = new System.Drawing.Size(64, 28);
             this.toolStripLabel3.Text = "Procurar";
             // 
             // toolStripTextBoxProcurar
@@ -275,7 +275,7 @@
             // 
             // frmMovimentos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 692);
             this.Controls.Add(this.dgvMovimentos);
@@ -284,7 +284,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "frmMovimentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMovimentos";
+            this.Text = "Movimentos";
             this.Load += new System.EventHandler(this.frmMovimentos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

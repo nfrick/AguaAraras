@@ -16,16 +16,32 @@ namespace AguaAraras {
         private readonly string _desktopFolder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         private readonly string _rptPath =
             AppDomain.CurrentDomain.BaseDirectory + @"Reports\rptCobrancaAttachment.rdlc";
-        private readonly string _bodyTextPath = AppDomain.CurrentDomain.BaseDirectory + @"\Body.txt";
+        //private readonly string _bodyTextPath = AppDomain.CurrentDomain.BaseDirectory + @"\Body.txt";
+        private readonly string _EMail_Main_Path = AppDomain.CurrentDomain.BaseDirectory + @"\EMail_Main.html";
         private readonly int _ReciboID;
 
         private Cota[] _cobrancas;
         private string _textoOriginal;
 
+        private readonly List<sp_Extrato_Result> _extrato = new List<sp_Extrato_Result>();
+
         public frmCobrancaEmail(Form parent, int ReciboID) {
             MdiParent = parent;
             _ReciboID = ReciboID;
             InitializeComponent();
+            using (var ctx = new AguaArarasEntities()) {
+                var B = ctx.Recibos.ToList();
+                B.Reverse();
+                var reciboAnterior = B.SkipWhile(x => x.ID >= _ReciboID).FirstOrDefault();
+                var inicio = new DateTime(reciboAnterior.Ano, (reciboAnterior.Numero - 1) * 3 + 1, 1);
+                var termino = inicio.AddDays(95);
+                termino = termino.AddDays(-1 * termino.Day);
+
+                _extrato = ctx.sp_Extrato()
+                        .SkipWhile(m => m.Data > termino)
+                        .TakeWhile(m => m.Data >= inicio)
+                        .Select(m => new sp_Extrato_Result(m)).ToList();
+            }
         }
 
         private void GetData() {
@@ -48,8 +64,8 @@ namespace AguaAraras {
             labelFolder.Text = _desktopFolder;
             textBoxAssunto.Text = $@"Água Araras {_cobrancas[0].ReciboNumeroAno}";
 
-            if (File.Exists(_bodyTextPath)) {
-                _textoOriginal = File.ReadAllText(_bodyTextPath);
+            if (File.Exists(_EMail_Main_Path)) {
+                _textoOriginal = File.ReadAllText(_EMail_Main_Path);
                 textBoxBody.Text = _textoOriginal;
             }
 
@@ -69,17 +85,21 @@ namespace AguaAraras {
             var ItemsByEMail = from p in itemsToSend
                                group p by p.EMail
                 into g
-                               select new EMailDeCobranca { EMail = g.Key, Cobrancas = g.ToList() };
+                               select new EMailDeCobranca { EMail = g.Key, Extrato = _extrato, Cobrancas = g.ToList() };
 
             foreach (var email in ItemsByEMail) {
                 email.CreatePDF(labelFolder.Text, _rptPath);
                 if (radioButtonSalvar.Checked) {
                     continue;
                 }
-                if (email.Send(textBoxAssunto.Text, textBoxBody.Text)) continue;
+                if (email.Send(textBoxAssunto.Text, textBoxBody.Text)) {
+                    continue;
+                }
+
                 if (MessageBox.Show($"Erro ao enviar e-mail para:\n{email.EMail}\n\nContinuar envio?",
-                        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) {
                     break;
+                }
             }
             MessageBox.Show(@"Cobranças geradas.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -125,7 +145,7 @@ namespace AguaAraras {
             switch (MessageBox.Show(@"Texto base foi alterado. Salvar?", this.Text, MessageBoxButtons.YesNoCancel,
                 MessageBoxIcon.Question)) {
                 case DialogResult.Yes:
-                    File.WriteAllText(_bodyTextPath, textBoxBody.Text);
+                    File.WriteAllText(_EMail_Main_Path, textBoxBody.Text);
                     break;
                 case DialogResult.No: break;
                 case DialogResult.Cancel:
@@ -152,6 +172,7 @@ namespace AguaAraras {
             DeliveryMethod = SmtpDeliveryMethod.Network,
             Timeout = 20000
         };
+        public List<sp_Extrato_Result> Extrato { get; set; }
         public string EMail { get; set; }
         public string PdfName { get; set; }
         public List<Cota> Cobrancas { get; set; }
@@ -210,6 +231,7 @@ namespace AguaAraras {
                 }
             }
             PdfName = filename.ToString();
+            File.Delete(PdfName);
         }
 
         public void CreatePDF(string tmpPath, string rptPath) {
@@ -218,15 +240,21 @@ namespace AguaAraras {
             var rptViewer = new ReportViewer();
             var reportEngine = rptViewer.LocalReport;
             reportEngine.ReportPath = rptPath;
+            reportEngine.SubreportProcessing += ProcessSubreport;
 
             reportEngine.DataSources.Clear();
             reportEngine.DataSources.Add(new ReportDataSource("DataSetReciboItens", Cobrancas));
             var byteViewer = rptViewer.LocalReport.Render("PDF", null, out string v_mimetype, out string v_encoding,
                 out string v_filename_extension, out string[] v_streamids, out Warning[] warnings);
 
-            var newFile = new FileStream(PdfName, FileMode.Create);
-            newFile.Write(byteViewer, 0, byteViewer.Length);
-            newFile.Close();
+            using (var newFile = new FileStream(PdfName, FileMode.Create)) {
+                newFile.Write(byteViewer, 0, byteViewer.Length);
+                newFile.Close();
+            }
+        }
+
+        private void ProcessSubreport(object sender, SubreportProcessingEventArgs e) {
+            e.DataSources.Add(new ReportDataSource("DataSetExtrato", Extrato));
         }
 
         public bool Send(string subject, string bodyText) {
@@ -234,18 +262,37 @@ namespace AguaAraras {
                 // https://www.codeproject.com/Articles/298519/Fast-Token-Replacement-in-Csharp
                 var fastRep = new FastReplacer("[", "]");
                 fastRep.Append(bodyText);
+                fastRep.Replace("[Trimestre]", Cobrancas.First().ReciboNumero.ToString());
                 fastRep.Replace("[Saudacao]",
                     DateTime.Now.Hour < 12 ? "Bom dia" : (DateTime.Now.Hour < 18 ? "Boa tarde" : "Boa noite"));
+                fastRep.Replace("[Nome]", Cobrancas.First().Nome);
                 fastRep.Replace("[Descricao]", Descricao);
                 fastRep.Replace("[s]", Count == 1 ? "" : "s");
-                fastRep.Replace("[Nome]", Cobrancas.First().Nome);
                 fastRep.Replace("[Valor]", ValoresExtenso);
+
+                var txt = new StringBuilder();
+                var body = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\EMail_Body.html");
+                foreach (var cobranca in Cobrancas) {
+                    var frBody = new FastReplacer("[", "]");
+                    frBody.Append(body);
+                    frBody.Replace("[Endereco]", cobranca.EnderecoAraras);
+                    frBody.Replace("[MesesExtenso]", cobranca.ReciboDescricao);
+                    frBody.Replace("[Vencimento]", cobranca.ReciboVencimento.ToString("dd/MM/yyyy"));
+                    frBody.Replace("[Tomadas]", cobranca.Tomadas.ToString());
+                    frBody.Replace("[Meses]", cobranca.ReciboMeses.ToString());
+                    frBody.Replace("[Cota]", cobranca.ReciboCotaValor.ToString("C2"));
+                    frBody.Replace("[Total]", cobranca.Valor.ToString("C2"));
+                    frBody.Replace("[DepositoIdentificado]", cobranca.DepositoIdentificado);
+                    txt.Append(frBody);
+                }
+
+                fastRep.Replace("[Corpo]", txt.ToString());
 
                 var mail = new MailMessage {
                     From = new MailAddress("ararasrede78@gmail.com", "Rede de 78"),
                     Subject = subject,
                     Body = fastRep.ToString(),
-                    IsBodyHtml = false
+                    IsBodyHtml = true
                 };
                 //mail.To.Add("nfrick@gmail.com");
                 mail.To.Add(EMailCSV);

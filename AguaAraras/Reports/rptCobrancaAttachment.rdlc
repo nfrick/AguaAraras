@@ -454,19 +454,19 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>1.67811cm</Height>
+                  <Height>2.36603cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Rectangle Name="Rectangle3">
                           <ReportItems>
-                            <Textbox Name="ReciboDescricao">
+                            <Textbox Name="EnderecoAraras">
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!ReciboDescricao.Value</Value>
+                                      <Value>=Fields!EnderecoAraras.Value</Value>
                                       <Style>
                                         <FontFamily>Tahoma</FontFamily>
                                         <FontSize>12pt</FontSize>
@@ -476,7 +476,7 @@
                                   <Style />
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>ReciboDescricao</rd:DefaultName>
+                              <rd:DefaultName>EnderecoAraras</rd:DefaultName>
                               <Top>0.16906cm</Top>
                               <Left>3.55671cm</Left>
                               <Height>0.63527cm</Height>
@@ -492,14 +492,14 @@
                                 <PaddingBottom>0cm</PaddingBottom>
                               </Style>
                             </Textbox>
-                            <Textbox Name="ValorDescricao">
+                            <Textbox Name="ReciboDescricao1">
                               <CanGrow>true</CanGrow>
                               <KeepTogether>true</KeepTogether>
                               <Paragraphs>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>=Fields!ValorDescricao.Value</Value>
+                                      <Value>=Fields!ReciboDescricao.Value</Value>
                                       <Style>
                                         <FontFamily>Tahoma</FontFamily>
                                         <FontSize>12pt</FontSize>
@@ -511,7 +511,7 @@
                                   </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <rd:DefaultName>ValorDescricao</rd:DefaultName>
+                              <rd:DefaultName>ReciboDescricao1</rd:DefaultName>
                               <Top>0.82197cm</Top>
                               <Left>3.55671cm</Left>
                               <Height>0.64234cm</Height>
@@ -535,7 +535,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>Valor:</Value>
+                                      <Value>Referência:</Value>
                                       <Style>
                                         <FontFamily>Tahoma</FontFamily>
                                         <FontSize>12pt</FontSize>
@@ -565,7 +565,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value EvaluationMode="Constant">Referência:</Value>
+                                      <Value>Endereço:</Value>
                                       <Style>
                                         <FontFamily>Tahoma</FontFamily>
                                         <FontSize>12pt</FontSize>
@@ -601,6 +601,72 @@
                                 </Border>
                               </Style>
                             </Line>
+                            <Textbox Name="Textbox9">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Valor:</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>12pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox1</rd:DefaultName>
+                              <Top>1.51017cm</Top>
+                              <Left>1.11852cm</Left>
+                              <Height>0.64234cm</Height>
+                              <Width>2.29709cm</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Bottom</VerticalAlign>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="ValorDescricao2">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!ValorDescricao.Value</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>12pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>ValorDescricao</rd:DefaultName>
+                              <Top>1.51017cm</Top>
+                              <Left>3.55672cm</Left>
+                              <Height>0.64234cm</Height>
+                              <Width>10.4718cm</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <VerticalAlign>Bottom</VerticalAlign>
+                                <PaddingLeft>0cm</PaddingLeft>
+                                <PaddingRight>0cm</PaddingRight>
+                                <PaddingTop>0cm</PaddingTop>
+                                <PaddingBottom>0cm</PaddingBottom>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Style>
@@ -858,7 +924,7 @@ Fields!PessoaID.Value/100, "0.00")</Value>
             </TablixRowHierarchy>
             <DataSetName>DataSetReciboItens</DataSetName>
             <Left>0.00169cm</Left>
-            <Height>7.73254cm</Height>
+            <Height>8.42046cm</Height>
             <Width>15.14524cm</Width>
             <Style>
               <Border>
@@ -887,14 +953,33 @@ Fields!PessoaID.Value/100, "0.00")</Value>
               </RightBorder>
             </Style>
           </Tablix>
+          <Subreport Name="Subreport1">
+            <ReportName>rptExtratoCobranca</ReportName>
+            <Top>8.56157cm</Top>
+            <Left>0.27214cm</Left>
+            <Height>0.9325cm</Height>
+            <Width>17.68996cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Subreport>
         </ReportItems>
-        <Height>3.85928in</Height>
-        <Style />
+        <Height>6.47213in</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
       </Body>
-      <Width>6.11262in</Width>
+      <Width>7.17928in</Width>
       <Page>
-        <PageHeight>21cm</PageHeight>
-        <PageWidth>29.7cm</PageWidth>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <InteractiveHeight>29.7cm</InteractiveHeight>
+        <InteractiveWidth>21cm</InteractiveWidth>
         <LeftMargin>1cm</LeftMargin>
         <RightMargin>0.5cm</RightMargin>
         <TopMargin>1cm</TopMargin>

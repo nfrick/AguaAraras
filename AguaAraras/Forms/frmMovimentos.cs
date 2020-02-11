@@ -148,7 +148,7 @@ namespace AguaAraras {
         private void toolStripComboBoxErros_SelectedIndexChanged(object sender, EventArgs e) {
             var positivos = new[] { "cota", "receita" };
             IQueryable<DataLayer.Movimento> q;
-            var es = entityDataSourceMovimentos.EntitySets["Movimentos"];
+            var Movimentos = entityDataSourceMovimentos.EntitySets["Movimentos"];
             switch (toolStripComboBoxErros.SelectedIndex) {
                 case 0:
                     dgvMovimentos.DataSource = entityDataSourceMovimentos;
@@ -156,38 +156,38 @@ namespace AguaAraras {
                     toolStripButtonNovo.Enabled = true;
                     return;
                 case 1: // Receitas negativas
-                    q = from DataLayer.Movimento m in es
+                    q = from DataLayer.Movimento m in Movimentos
                         where positivos.Contains(m.Tipo) && m.Valor < 0
                         orderby m.Data descending
                         select m;
                     break;
                 case 2: // Despesas positivas
-                    q = from DataLayer.Movimento m in es
+                    q = from DataLayer.Movimento m in Movimentos
                         where !positivos.Contains(m.Tipo) && m.Valor > 0
                         orderby m.Data descending
                         select m;
                     break;
-                case 3:
-                    q = (from DataLayer.Movimento m in es
+                case 3:  // Vergilio duplicado (mês)
+                    q = (from DataLayer.Movimento m in Movimentos
                          where m.Tipo == "vergilio" && m.Data != null && m.Historico.StartsWith("salário")
                          select m)
                         .GroupBy(m => new { Y = ((DateTime)m.Data).Year, M = ((DateTime)m.Data).Month }, m => m)
                         .Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
-                case 4:
-                    q = (from DataLayer.Movimento m in es
+                case 4:  // Vergilio duplicado (histórico)
+                    q = (from DataLayer.Movimento m in Movimentos
                          where m.Tipo == "vergilio"
                          orderby m.Data descending
                          select m).GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
-                case 5:
-                    q = (from DataLayer.Movimento m in es
+                case 5:  // Carlos duplicado (trimestre)
+                    q = (from DataLayer.Movimento m in Movimentos
                          where m.Tipo == "carlos"
                          orderby m.Data descending
                          select m).GroupBy(m => m.Recibo, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
-                case 6:
-                    q = (from DataLayer.Movimento m in es
+                case 6:  // Carlos duplicado (histórico)
+                    q = (from DataLayer.Movimento m in Movimentos
                          where m.Tipo == "carlos"
                          orderby m.Data descending
                          select m).GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
@@ -207,6 +207,14 @@ namespace AguaAraras {
             dgvMovimentos.DataSource = bindingList;
             toolStripButtonNovo.Enabled = false;
         }
+
+        private void toolStripButtonManutencao_Click(object sender, EventArgs e) {
+            using (var ctx = new AguaArarasEntities()) {
+                ctx.sp_ManutencaoAdd();
+            }
+            entityDataSourceMovimentos.Refresh();
+        }
+
         #endregion --------------------------------------------
 
         private void dgvMovimentos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -217,11 +225,5 @@ namespace AguaAraras {
             e.CellStyle.ForeColor = Color.Red;
         }
 
-        private void toolStripButtonManutencao_Click(object sender, EventArgs e) {
-            using (var ctx = new AguaArarasEntities()) {
-                ctx.sp_ManutencaoAdd();
-            }
-            entityDataSourceMovimentos.Refresh();
-        }
     }
 }

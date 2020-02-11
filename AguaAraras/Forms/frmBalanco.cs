@@ -3,7 +3,6 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmBalanco : Form {
-        private readonly List<sp_Extrato_Result> _extrato = new List<sp_Extrato_Result>();
+        private List<sp_Extrato_Result> _extrato; // = new List<sp_Extrato_Result>();
 
         // Anos de início e término para relatórios
         private int _inicio;
@@ -24,10 +23,9 @@ namespace AguaAraras {
         }
 
         private void frmBalanco_Load(object sender, EventArgs e) {
-            using (var ctx = new AguaArarasEntities()) {
-                foreach (var item in ctx.sp_Extrato()) {
-                    _extrato.Add(new sp_Extrato_Result(item));
-                }
+            using (var ctx = new AguaArarasEntities())
+            {
+                _extrato = ctx.sp_Extrato().Select(x => new sp_Extrato_Result(x)).ToList();
 
                 var anos = _extrato.Where(m => m.Data != null)
                     .Select(m => ((DateTime)m.Data).ToString("yyyy")).Distinct().ToArray();

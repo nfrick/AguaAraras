@@ -60,7 +60,7 @@
             this.labelSalario.Location = new System.Drawing.Point(15, 15);
             this.labelSalario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSalario.Name = "labelSalario";
-            this.labelSalario.Size = new System.Drawing.Size(74, 25);
+            this.labelSalario.Size = new System.Drawing.Size(91, 32);
             this.labelSalario.TabIndex = 0;
             this.labelSalario.Text = "Salário:";
             this.labelSalario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -74,9 +74,9 @@
             this.labelVergilio.Location = new System.Drawing.Point(5, 40);
             this.labelVergilio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVergilio.Name = "labelVergilio";
-            this.labelVergilio.Size = new System.Drawing.Size(102, 38);
+            this.labelVergilio.Size = new System.Drawing.Size(125, 38);
             this.labelVergilio.TabIndex = 4;
-            this.labelVergilio.Text = "Vergilio";
+            this.labelVergilio.Text = "Manutenção";
             this.labelVergilio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelVergilioValor
@@ -84,10 +84,10 @@
             this.labelVergilioValor.AutoSize = true;
             this.labelVergilioValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelVergilioValor.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelVergilioValor.Location = new System.Drawing.Point(337, 40);
+            this.labelVergilioValor.Location = new System.Drawing.Point(358, 40);
             this.labelVergilioValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVergilioValor.Name = "labelVergilioValor";
-            this.labelVergilioValor.Size = new System.Drawing.Size(178, 38);
+            this.labelVergilioValor.Size = new System.Drawing.Size(158, 38);
             this.labelVergilioValor.TabIndex = 5;
             this.labelVergilioValor.Text = "VergilioValor";
             this.labelVergilioValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -100,7 +100,7 @@
             this.labelCobranca.Location = new System.Drawing.Point(5, 79);
             this.labelCobranca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCobranca.Name = "labelCobranca";
-            this.labelCobranca.Size = new System.Drawing.Size(102, 38);
+            this.labelCobranca.Size = new System.Drawing.Size(125, 38);
             this.labelCobranca.TabIndex = 6;
             this.labelCobranca.Text = "Cobrança";
             this.labelCobranca.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -110,10 +110,10 @@
             this.labelCobrancaValor.AutoSize = true;
             this.labelCobrancaValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCobrancaValor.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelCobrancaValor.Location = new System.Drawing.Point(337, 79);
+            this.labelCobrancaValor.Location = new System.Drawing.Point(358, 79);
             this.labelCobrancaValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCobrancaValor.Name = "labelCobrancaValor";
-            this.labelCobrancaValor.Size = new System.Drawing.Size(178, 38);
+            this.labelCobrancaValor.Size = new System.Drawing.Size(158, 38);
             this.labelCobrancaValor.TabIndex = 7;
             this.labelCobrancaValor.Text = "CobrancaValor";
             this.labelCobrancaValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -126,7 +126,7 @@
             this.labelTotal.Location = new System.Drawing.Point(5, 1);
             this.labelTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(102, 38);
+            this.labelTotal.Size = new System.Drawing.Size(125, 38);
             this.labelTotal.TabIndex = 8;
             this.labelTotal.Text = "Total";
             this.labelTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,10 +136,10 @@
             this.labelTotalValor.AutoSize = true;
             this.labelTotalValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotalValor.ForeColor = System.Drawing.Color.LawnGreen;
-            this.labelTotalValor.Location = new System.Drawing.Point(337, 1);
+            this.labelTotalValor.Location = new System.Drawing.Point(358, 1);
             this.labelTotalValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTotalValor.Name = "labelTotalValor";
-            this.labelTotalValor.Size = new System.Drawing.Size(178, 38);
+            this.labelTotalValor.Size = new System.Drawing.Size(158, 38);
             this.labelTotalValor.TabIndex = 9;
             this.labelTotalValor.Text = "TotalValor";
             this.labelTotalValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -152,7 +152,7 @@
             this.labelReserva.Location = new System.Drawing.Point(5, 118);
             this.labelReserva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelReserva.Name = "labelReserva";
-            this.labelReserva.Size = new System.Drawing.Size(102, 39);
+            this.labelReserva.Size = new System.Drawing.Size(125, 39);
             this.labelReserva.TabIndex = 10;
             this.labelReserva.Text = "Reserva";
             this.labelReserva.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -163,10 +163,10 @@
             this.labelReservaValor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelReservaValor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelReservaValor.ForeColor = System.Drawing.Color.White;
-            this.labelReservaValor.Location = new System.Drawing.Point(337, 118);
+            this.labelReservaValor.Location = new System.Drawing.Point(358, 118);
             this.labelReservaValor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelReservaValor.Name = "labelReservaValor";
-            this.labelReservaValor.Size = new System.Drawing.Size(178, 39);
+            this.labelReservaValor.Size = new System.Drawing.Size(158, 39);
             this.labelReservaValor.TabIndex = 11;
             this.labelReservaValor.Text = "ReservaValor";
             this.labelReservaValor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -182,14 +182,14 @@
             0,
             0});
             this.nupMensalidade.Location = new System.Drawing.Point(174, 70);
-            this.nupMensalidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nupMensalidade.Margin = new System.Windows.Forms.Padding(4);
             this.nupMensalidade.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.nupMensalidade.Name = "nupMensalidade";
-            this.nupMensalidade.Size = new System.Drawing.Size(99, 33);
+            this.nupMensalidade.Size = new System.Drawing.Size(99, 39);
             this.nupMensalidade.TabIndex = 12;
             this.nupMensalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nupMensalidade.ValueChanged += new System.EventHandler(this.CalcularDetalhes_Changed);
@@ -199,9 +199,9 @@
             this.radioButtonCalculado.AutoSize = true;
             this.radioButtonCalculado.ForeColor = System.Drawing.Color.LightGray;
             this.radioButtonCalculado.Location = new System.Drawing.Point(20, 33);
-            this.radioButtonCalculado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonCalculado.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonCalculado.Name = "radioButtonCalculado";
-            this.radioButtonCalculado.Size = new System.Drawing.Size(114, 29);
+            this.radioButtonCalculado.Size = new System.Drawing.Size(140, 36);
             this.radioButtonCalculado.TabIndex = 13;
             this.radioButtonCalculado.Text = "Calculado";
             this.radioButtonCalculado.UseVisualStyleBackColor = true;
@@ -213,9 +213,9 @@
             this.radioButtonArredondado.Checked = true;
             this.radioButtonArredondado.ForeColor = System.Drawing.Color.LightGray;
             this.radioButtonArredondado.Location = new System.Drawing.Point(20, 70);
-            this.radioButtonArredondado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonArredondado.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonArredondado.Name = "radioButtonArredondado";
-            this.radioButtonArredondado.Size = new System.Drawing.Size(142, 29);
+            this.radioButtonArredondado.Size = new System.Drawing.Size(176, 36);
             this.radioButtonArredondado.TabIndex = 14;
             this.radioButtonArredondado.TabStop = true;
             this.radioButtonArredondado.Text = "Arredondado";
@@ -227,9 +227,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableLayoutPanel1.Controls.Add(this.labelCobrancaDesc, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelVergilioDesc, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelTotalDesc, 1, 0);
@@ -258,10 +258,10 @@
             this.labelCobrancaDesc.AutoSize = true;
             this.labelCobrancaDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelCobrancaDesc.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelCobrancaDesc.Location = new System.Drawing.Point(116, 79);
+            this.labelCobrancaDesc.Location = new System.Drawing.Point(139, 79);
             this.labelCobrancaDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCobrancaDesc.Name = "labelCobrancaDesc";
-            this.labelCobrancaDesc.Size = new System.Drawing.Size(212, 38);
+            this.labelCobrancaDesc.Size = new System.Drawing.Size(210, 38);
             this.labelCobrancaDesc.TabIndex = 14;
             this.labelCobrancaDesc.Text = "Cobrança";
             this.labelCobrancaDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -271,10 +271,10 @@
             this.labelVergilioDesc.AutoSize = true;
             this.labelVergilioDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelVergilioDesc.ForeColor = System.Drawing.Color.LightCoral;
-            this.labelVergilioDesc.Location = new System.Drawing.Point(116, 40);
+            this.labelVergilioDesc.Location = new System.Drawing.Point(139, 40);
             this.labelVergilioDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVergilioDesc.Name = "labelVergilioDesc";
-            this.labelVergilioDesc.Size = new System.Drawing.Size(212, 38);
+            this.labelVergilioDesc.Size = new System.Drawing.Size(210, 38);
             this.labelVergilioDesc.TabIndex = 13;
             this.labelVergilioDesc.Text = "Vergilio";
             this.labelVergilioDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -284,10 +284,10 @@
             this.labelTotalDesc.AutoSize = true;
             this.labelTotalDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotalDesc.ForeColor = System.Drawing.Color.White;
-            this.labelTotalDesc.Location = new System.Drawing.Point(116, 1);
+            this.labelTotalDesc.Location = new System.Drawing.Point(139, 1);
             this.labelTotalDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTotalDesc.Name = "labelTotalDesc";
-            this.labelTotalDesc.Size = new System.Drawing.Size(212, 38);
+            this.labelTotalDesc.Size = new System.Drawing.Size(210, 38);
             this.labelTotalDesc.TabIndex = 12;
             this.labelTotalDesc.Text = "Total";
             this.labelTotalDesc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -303,14 +303,14 @@
             0,
             0});
             this.nupSalario.Location = new System.Drawing.Point(112, 13);
-            this.nupSalario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nupSalario.Margin = new System.Windows.Forms.Padding(4);
             this.nupSalario.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nupSalario.Name = "nupSalario";
-            this.nupSalario.Size = new System.Drawing.Size(103, 33);
+            this.nupSalario.Size = new System.Drawing.Size(103, 39);
             this.nupSalario.TabIndex = 16;
             this.nupSalario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nupSalario.ValueChanged += new System.EventHandler(this.CalcularMensalidade_Changed);
@@ -335,9 +335,9 @@
             this.groupBox1.Controls.Add(this.nupMensalidade);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(22, 106);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(297, 148);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -358,9 +358,9 @@
             this.radioButtonAtual.AutoSize = true;
             this.radioButtonAtual.ForeColor = System.Drawing.Color.LightGray;
             this.radioButtonAtual.Location = new System.Drawing.Point(20, 107);
-            this.radioButtonAtual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonAtual.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonAtual.Name = "radioButtonAtual";
-            this.radioButtonAtual.Size = new System.Drawing.Size(74, 29);
+            this.radioButtonAtual.Size = new System.Drawing.Size(91, 36);
             this.radioButtonAtual.TabIndex = 15;
             this.radioButtonAtual.Text = "Atual";
             this.radioButtonAtual.UseVisualStyleBackColor = true;
@@ -371,7 +371,7 @@
             this.nupTomadas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nupTomadas.ForeColor = System.Drawing.Color.White;
             this.nupTomadas.Location = new System.Drawing.Point(112, 55);
-            this.nupTomadas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nupTomadas.Margin = new System.Windows.Forms.Padding(4);
             this.nupTomadas.Maximum = new decimal(new int[] {
             21,
             0,
@@ -383,7 +383,7 @@
             0,
             0});
             this.nupTomadas.Name = "nupTomadas";
-            this.nupTomadas.Size = new System.Drawing.Size(103, 33);
+            this.nupTomadas.Size = new System.Drawing.Size(103, 39);
             this.nupTomadas.TabIndex = 19;
             this.nupTomadas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nupTomadas.Value = new decimal(new int[] {
@@ -400,7 +400,7 @@
             this.labelTomadas.Location = new System.Drawing.Point(15, 57);
             this.labelTomadas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTomadas.Name = "labelTomadas";
-            this.labelTomadas.Size = new System.Drawing.Size(90, 25);
+            this.labelTomadas.Size = new System.Drawing.Size(114, 32);
             this.labelTomadas.TabIndex = 18;
             this.labelTomadas.Text = "Tomadas:";
             this.labelTomadas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -408,10 +408,10 @@
             // 
             // frmCalculadora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(883, 267);
+            this.ClientSize = new System.Drawing.Size(879, 267);
             this.Controls.Add(this.nupTomadas);
             this.Controls.Add(this.labelTomadas);
             this.Controls.Add(this.groupBox1);

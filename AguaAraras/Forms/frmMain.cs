@@ -36,5 +36,10 @@ namespace AguaAraras {
         private void frmMain_Load(object sender, EventArgs e) {
             Controls.OfType<MdiClient>().First().BackColor = this.BackColor;
         }
+
+        private void toolStripButtonConfig_Click(object sender, EventArgs e) {
+            var frm = new frmConfig { MdiParent = this };
+            frm.Show();
+        }
     }
 }

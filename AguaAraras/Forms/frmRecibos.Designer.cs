@@ -108,9 +108,9 @@
             // 
             observacoesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             observacoesLabel.AutoSize = true;
-            observacoesLabel.Location = new System.Drawing.Point(3, 259);
+            observacoesLabel.Location = new System.Drawing.Point(3, 252);
             observacoesLabel.Name = "observacoesLabel";
-            observacoesLabel.Size = new System.Drawing.Size(102, 21);
+            observacoesLabel.Size = new System.Drawing.Size(93, 36);
             observacoesLabel.TabIndex = 17;
             observacoesLabel.Text = "Observações:";
             // 
@@ -118,9 +118,9 @@
             // 
             emissaoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             emissaoLabel.AutoSize = true;
-            emissaoLabel.Location = new System.Drawing.Point(3, 187);
+            emissaoLabel.Location = new System.Drawing.Point(3, 184);
             emissaoLabel.Name = "emissaoLabel";
-            emissaoLabel.Size = new System.Drawing.Size(70, 21);
+            emissaoLabel.Size = new System.Drawing.Size(86, 28);
             emissaoLabel.TabIndex = 5;
             emissaoLabel.Text = "Emissão:";
             // 
@@ -128,9 +128,9 @@
             // 
             vencimentoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             vencimentoLabel.AutoSize = true;
-            vencimentoLabel.Location = new System.Drawing.Point(3, 223);
+            vencimentoLabel.Location = new System.Drawing.Point(3, 216);
             vencimentoLabel.Name = "vencimentoLabel";
-            vencimentoLabel.Size = new System.Drawing.Size(95, 21);
+            vencimentoLabel.Size = new System.Drawing.Size(103, 36);
             vencimentoLabel.TabIndex = 21;
             vencimentoLabel.Text = "Vencimento:";
             // 
@@ -138,9 +138,9 @@
             // 
             cotaLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             cotaLabel.AutoSize = true;
-            cotaLabel.Location = new System.Drawing.Point(3, 151);
+            cotaLabel.Location = new System.Drawing.Point(3, 148);
             cotaLabel.Name = "cotaLabel";
-            cotaLabel.Size = new System.Drawing.Size(45, 21);
+            cotaLabel.Size = new System.Drawing.Size(57, 28);
             cotaLabel.TabIndex = 1;
             cotaLabel.Text = "Cota:";
             // 
@@ -148,9 +148,9 @@
             // 
             mesesLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             mesesLabel.AutoSize = true;
-            mesesLabel.Location = new System.Drawing.Point(3, 79);
+            mesesLabel.Location = new System.Drawing.Point(3, 76);
             mesesLabel.Name = "mesesLabel";
-            mesesLabel.Size = new System.Drawing.Size(57, 21);
+            mesesLabel.Size = new System.Drawing.Size(70, 28);
             mesesLabel.TabIndex = 23;
             mesesLabel.Text = "Meses:";
             // 
@@ -158,9 +158,9 @@
             // 
             descricaoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             descricaoLabel.AutoSize = true;
-            descricaoLabel.Location = new System.Drawing.Point(3, 115);
+            descricaoLabel.Location = new System.Drawing.Point(3, 112);
             descricaoLabel.Name = "descricaoLabel";
-            descricaoLabel.Size = new System.Drawing.Size(80, 21);
+            descricaoLabel.Size = new System.Drawing.Size(100, 28);
             descricaoLabel.TabIndex = 3;
             descricaoLabel.Text = "Descrição:";
             // 
@@ -168,9 +168,9 @@
             // 
             numeroLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             numeroLabel.AutoSize = true;
-            numeroLabel.Location = new System.Drawing.Point(3, 43);
+            numeroLabel.Location = new System.Drawing.Point(3, 40);
             numeroLabel.Name = "numeroLabel";
-            numeroLabel.Size = new System.Drawing.Size(71, 21);
+            numeroLabel.Size = new System.Drawing.Size(88, 28);
             numeroLabel.TabIndex = 24;
             numeroLabel.Text = "Número:";
             // 
@@ -272,7 +272,7 @@
             0,
             0});
             this.numeroNumericUpDown.Name = "numeroNumericUpDown";
-            this.numeroNumericUpDown.Size = new System.Drawing.Size(46, 29);
+            this.numeroNumericUpDown.Size = new System.Drawing.Size(46, 34);
             this.numeroNumericUpDown.TabIndex = 25;
             this.numeroNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numeroNumericUpDown.Value = new decimal(new int[] {
@@ -298,7 +298,7 @@
             this.emissaoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.emissaoDateTimePicker.Location = new System.Drawing.Point(112, 183);
             this.emissaoDateTimePicker.Name = "emissaoDateTimePicker";
-            this.emissaoDateTimePicker.Size = new System.Drawing.Size(121, 29);
+            this.emissaoDateTimePicker.Size = new System.Drawing.Size(121, 34);
             this.emissaoDateTimePicker.TabIndex = 6;
             // 
             // vencimentoDateTimePicker
@@ -307,7 +307,7 @@
             this.vencimentoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.vencimentoDateTimePicker.Location = new System.Drawing.Point(112, 219);
             this.vencimentoDateTimePicker.Name = "vencimentoDateTimePicker";
-            this.vencimentoDateTimePicker.Size = new System.Drawing.Size(121, 29);
+            this.vencimentoDateTimePicker.Size = new System.Drawing.Size(121, 34);
             this.vencimentoDateTimePicker.TabIndex = 22;
             // 
             // mesesNumericUpDown
@@ -325,7 +325,7 @@
             0,
             0});
             this.mesesNumericUpDown.Name = "mesesNumericUpDown";
-            this.mesesNumericUpDown.Size = new System.Drawing.Size(46, 29);
+            this.mesesNumericUpDown.Size = new System.Drawing.Size(46, 34);
             this.mesesNumericUpDown.TabIndex = 24;
             this.mesesNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mesesNumericUpDown.Value = new decimal(new int[] {
@@ -340,7 +340,7 @@
             this.descricaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.Descricao", true));
             this.descricaoTextBox.Location = new System.Drawing.Point(112, 111);
             this.descricaoTextBox.Name = "descricaoTextBox";
-            this.descricaoTextBox.Size = new System.Drawing.Size(370, 29);
+            this.descricaoTextBox.Size = new System.Drawing.Size(370, 34);
             this.descricaoTextBox.TabIndex = 4;
             // 
             // extraCheckBox
@@ -504,7 +504,7 @@
             0});
             this.cotanumericUpDown.Location = new System.Drawing.Point(0, 3);
             this.cotanumericUpDown.Name = "cotanumericUpDown";
-            this.cotanumericUpDown.Size = new System.Drawing.Size(78, 29);
+            this.cotanumericUpDown.Size = new System.Drawing.Size(78, 34);
             this.cotanumericUpDown.TabIndex = 23;
             this.cotanumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -635,7 +635,7 @@
             this.toolStripButtonColect});
             this.toolStripMenu.Location = new System.Drawing.Point(3, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(226, 31);
+            this.toolStripMenu.Size = new System.Drawing.Size(196, 31);
             this.toolStripMenu.TabIndex = 0;
             this.toolStripMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenu_ItemClicked);
             // 
@@ -684,7 +684,7 @@
             this.toolStripDropDownButtonImpressos.Image = global::AguaAraras.Properties.Resources.Multiple_documents_icon;
             this.toolStripDropDownButtonImpressos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonImpressos.Name = "toolStripDropDownButtonImpressos";
-            this.toolStripDropDownButtonImpressos.Size = new System.Drawing.Size(37, 28);
+            this.toolStripDropDownButtonImpressos.Size = new System.Drawing.Size(38, 28);
             this.toolStripDropDownButtonImpressos.Text = "Impressos";
             // 
             // cobrançasToolStripMenuItem
@@ -694,14 +694,14 @@
             this.cobrancasEMailToolStripMenuItem,
             this.selecionadasToolStripMenuItem});
             this.cobrançasToolStripMenuItem.Name = "cobrançasToolStripMenuItem";
-            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.cobrançasToolStripMenuItem.Text = "Cobranças";
             // 
             // cobrancasImpressasToolStripMenuItem
             // 
             this.cobrancasImpressasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.File_pdf_icon;
             this.cobrancasImpressasToolStripMenuItem.Name = "cobrancasImpressasToolStripMenuItem";
-            this.cobrancasImpressasToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
+            this.cobrancasImpressasToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
             this.cobrancasImpressasToolStripMenuItem.Text = "Impressas";
             this.cobrancasImpressasToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonCobrancasImpressas_Click);
             // 
@@ -709,7 +709,7 @@
             // 
             this.cobrancasEMailToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Mail_icon;
             this.cobrancasEMailToolStripMenuItem.Name = "cobrancasEMailToolStripMenuItem";
-            this.cobrancasEMailToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
+            this.cobrancasEMailToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
             this.cobrancasEMailToolStripMenuItem.Text = "E-Mail";
             this.cobrancasEMailToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonCobrancasEMail_Click);
             // 
@@ -717,21 +717,21 @@
             // 
             this.selecionadasToolStripMenuItem.Image = global::AguaAraras.Properties.Resources.Dialog_ok_icon;
             this.selecionadasToolStripMenuItem.Name = "selecionadasToolStripMenuItem";
-            this.selecionadasToolStripMenuItem.Size = new System.Drawing.Size(150, 30);
+            this.selecionadasToolStripMenuItem.Size = new System.Drawing.Size(175, 30);
             this.selecionadasToolStripMenuItem.Text = "Selecionadas";
             this.selecionadasToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonCobrancasSelecionadas_Click);
             // 
             // recibosToolStripMenuItem
             // 
             this.recibosToolStripMenuItem.Name = "recibosToolStripMenuItem";
-            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.recibosToolStripMenuItem.Text = "Recibos";
             this.recibosToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRecibos_Click);
             // 
             // fichaConferênciaToolStripMenuItem
             // 
             this.fichaConferênciaToolStripMenuItem.Name = "fichaConferênciaToolStripMenuItem";
-            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.fichaConferênciaToolStripMenuItem.Text = "Ficha conferência";
             this.fichaConferênciaToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonFichaConferência_Click);
             // 
@@ -757,7 +757,7 @@
             // 
             // frmRecibos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1255, 534);
             this.Controls.Add(this.toolStripContainer1);

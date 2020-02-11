@@ -28,7 +28,7 @@ namespace DataLayer {
         public string PendenteAsString => Pendente.ToString("N2");
 
         public Recibo(Recibo last, IEnumerable<Pessoa> ativos) {
-            var hoje = DateTime.Now;
+            var hoje = DateTime.Today;
             if (last == null) {
                 Numero = 1;
                 Cota = 0;
