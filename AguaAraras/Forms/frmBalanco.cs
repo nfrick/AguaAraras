@@ -3,6 +3,7 @@ using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Mapping;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,12 +24,11 @@ namespace AguaAraras {
         }
 
         private void frmBalanco_Load(object sender, EventArgs e) {
-            using (var ctx = new AguaArarasEntities())
-            {
-                _extrato = ctx.sp_Extrato().Select(x => new sp_Extrato_Result(x)).ToList();
+            using (var ctx = new AguaArarasEntities()) {
+                _extrato = ctx.sp_Extrato(null, null).Select(x => new sp_Extrato_Result(x)).ToList();
 
                 var anos = _extrato.Where(m => m.Data != null)
-                    .Select(m => ((DateTime)m.Data).ToString("yyyy")).Distinct().ToArray();
+                    .Select(m => m.Data.ToString("yyyy")).Distinct().ToArray();
                 toolStripComboBoxInicio.Items.AddRange(anos);
                 toolStripComboBoxTermino.Items.AddRange(anos);
                 toolStripComboBoxInicio.SelectedIndex = 4;
@@ -85,10 +85,10 @@ namespace AguaAraras {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
 
-            frm.SetReport(_extrato
-                    .SkipWhile(m => m.Data.Year > _termino)
-                    .TakeWhile(m => m.Data.Year >= _inicio),
-                rpt, "DataSetExtrato", "Extrato");
+            frm.SetReport(rpt, "Extrato", "DataSetExtrato", _extrato
+                .SkipWhile(m => m.Data.Year > _termino)
+                .TakeWhile(m => m.Data.Year >= _inicio));
+            frm.Show();
         }
 
         private void toolStripComboBoxInicio_SelectedIndexChanged(object sender, EventArgs e) {

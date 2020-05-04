@@ -1,0 +1,2 @@
+https://stackoverflow.com/questions/25901188/using-inotifypropertychanged-with-entity-framework-6-dbcontext-generator
+Fody add-in for injecting INotifyPropertyChanged code into properties.

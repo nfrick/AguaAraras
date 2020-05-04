@@ -109,7 +109,7 @@
             // toolStripButtonConfig
             // 
             this.toolStripButtonConfig.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonConfig.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonConfig.Image")));
+            this.toolStripButtonConfig.Image = global::AguaAraras.Properties.Resources.Tools_icon;
             this.toolStripButtonConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonConfig.Name = "toolStripButtonConfig";
             this.toolStripButtonConfig.Size = new System.Drawing.Size(40, 40);

@@ -8,7 +8,7 @@ namespace DataLayer {
         public int Ano => Emissao.Year;
         public string AnoNumero => $"{Ano:0000}-{Numero:0}";
 
-        public string DescricaoShort => Numero > 5 ? $"Extra {Ano:0000}" : 
+        public string DescricaoShort => Numero > 5 ? $"Extra {Ano:0000}" :
             $@"{MonthNameShort(3 * (Numero - 1) + 1)}-{MonthNameShort(3 * (Numero - 1) + 2)}-{MonthNameShort(3 * (Numero - 1) + 3)}/{Ano:0000}";
 
         private string MonthName(int mes) {
@@ -27,6 +27,12 @@ namespace DataLayer {
         public string RecebidoAsString => Recebido.ToString("N2");
         public string PendenteAsString => Pendente.ToString("N2");
 
+        public void RecalcCotas() {
+            foreach (var cota in Cotas) {
+                cota.Valor = Math.Round(Meses * Cota * cota.Pessoa.Tomadas, 0);
+            }
+        }
+
         public Recibo(Recibo last, IEnumerable<Pessoa> ativos) {
             var hoje = DateTime.Today;
             if (last == null) {
@@ -42,10 +48,10 @@ namespace DataLayer {
             var Ano = hoje.Year + (Numero == 1 ? 1 : 0);
             Vencimento = new DateTime(Ano, 3 * (Numero - 1) + 2, 10);
             Meses = 3;
-            Descricao = Numero > 5 ? "Extra {Ano}" : 
+            Descricao = Numero > 5 ? "Extra {Ano}" :
                 $@"{MonthName(3 * (Numero - 1) + 1)}, {MonthName(3 * (Numero - 1) + 2)} e {MonthName(3 * (Numero - 1) + 3)} de {Ano}";
             Observacoes = string.Empty;
-            Cotas = new HashSet<Cota>();
+            Cotas = new ObservableListSource<Cota>();
 
             foreach (var p in ativos) {
                 Cotas.Add(new Cota {

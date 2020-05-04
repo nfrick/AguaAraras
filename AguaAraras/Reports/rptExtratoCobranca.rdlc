@@ -415,6 +415,7 @@
                             <PaddingLeft>14pt</PaddingLeft>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1193,7 +1194,7 @@
                               <Value>=Fields!Data.Value</Value>
                             </SortExpression>
                             <SortExpression>
-                              <Value>=Fields!RID.Value</Value>
+                              <Value>=Fields!Descricao.Value</Value>
                             </SortExpression>
                           </SortExpressions>
                         </TablixMember>

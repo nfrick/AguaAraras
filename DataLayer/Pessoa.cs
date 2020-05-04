@@ -17,9 +17,9 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pessoa()
         {
-            this.Enderecos = new HashSet<Endereco>();
-            this.Telefones = new HashSet<Telefone>();
-            this.Cotas = new HashSet<Cota>();
+            this.Enderecos = new ObservableListSource<Endereco>();
+            this.Telefones = new ObservableListSource<Telefone>();
+            this.Cotas = new ObservableListSource<Cota>();
         }
     
         public int ID { get; set; }
@@ -37,10 +37,10 @@ namespace DataLayer
         public string Observacoes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Endereco> Enderecos { get; set; }
+        public virtual ObservableListSource<Endereco> Enderecos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Telefone> Telefones { get; set; }
+        public virtual ObservableListSource<Telefone> Telefones { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cota> Cotas { get; set; }
+        public virtual ObservableListSource<Cota> Cotas { get; set; }
     }
 }

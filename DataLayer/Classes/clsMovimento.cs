@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace DataLayer {
-    public partial class Movimento {
+    public partial class Movimento : INotifyPropertyChanged {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public string ReciboAnoNumero => Recibo?.AnoNumero;
     }
 }

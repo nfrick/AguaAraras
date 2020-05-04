@@ -35,11 +35,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvRecibos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.entityDataSourceRecibos = new EFWinforms.EntityDataSource(this.components);
+            this.anoNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsRecibos = new System.Windows.Forms.BindingSource(this.components);
             this.tlpRecibo = new System.Windows.Forms.TableLayoutPanel();
             this.numeroNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.observacoesTextBox = new System.Windows.Forms.TextBox();
@@ -60,12 +58,12 @@
             this.buttonRecalc = new System.Windows.Forms.Button();
             this.cotanumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.dgvCotas = new System.Windows.Forms.DataGridView();
-            this.PessoaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pessoaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cobranca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsCotas = new System.Windows.Forms.BindingSource(this.components);
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
@@ -90,6 +88,7 @@
             descricaoLabel = new System.Windows.Forms.Label();
             numeroLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRecibos)).BeginInit();
             this.tlpRecibo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mesesNumericUpDown)).BeginInit();
@@ -97,6 +96,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cotanumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCotas)).BeginInit();
             this.tlpMain.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -183,10 +183,8 @@
             this.dgvRecibos.AutoGenerateColumns = false;
             this.dgvRecibos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecibos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.numeroDataGridViewTextBoxColumn});
-            this.dgvRecibos.DataMember = "Recibos";
-            this.dgvRecibos.DataSource = this.entityDataSourceRecibos;
+            this.anoNumeroDataGridViewTextBoxColumn});
+            this.dgvRecibos.DataSource = this.bsRecibos;
             this.dgvRecibos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecibos.Location = new System.Drawing.Point(3, 3);
             this.dgvRecibos.Name = "dgvRecibos";
@@ -197,26 +195,17 @@
             this.dgvRecibos.TabIndex = 1;
             this.dgvRecibos.SelectionChanged += new System.EventHandler(this.dgvRecibos_SelectionChanged);
             // 
-            // Column1
+            // anoNumeroDataGridViewTextBoxColumn
             // 
-            this.Column1.DataPropertyName = "ID";
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.anoNumeroDataGridViewTextBoxColumn.DataPropertyName = "AnoNumero";
+            this.anoNumeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
+            this.anoNumeroDataGridViewTextBoxColumn.Name = "anoNumeroDataGridViewTextBoxColumn";
+            this.anoNumeroDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // numeroDataGridViewTextBoxColumn
+            // bsRecibos
             // 
-            this.numeroDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "AnoNumero";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.numeroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            this.numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // entityDataSourceRecibos
-            // 
-            this.entityDataSourceRecibos.DbContextType = typeof(DataLayer.AguaArarasEntities);
+            this.bsRecibos.DataSource = typeof(DataLayer.Recibo);
+            this.bsRecibos.CurrentChanged += new System.EventHandler(this.bsRecibos_CurrentChanged);
             // 
             // tlpRecibo
             // 
@@ -259,7 +248,7 @@
             // 
             // numeroNumericUpDown
             // 
-            this.numeroNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entityDataSourceRecibos, "Recibos.Numero", true));
+            this.numeroNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRecibos, "Numero", true));
             this.numeroNumericUpDown.Location = new System.Drawing.Point(112, 39);
             this.numeroNumericUpDown.Maximum = new decimal(new int[] {
             10,
@@ -283,7 +272,7 @@
             // 
             // observacoesTextBox
             // 
-            this.observacoesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.Observacoes", true));
+            this.observacoesTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRecibos, "Observacoes", true));
             this.observacoesTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.observacoesTextBox.Location = new System.Drawing.Point(112, 255);
             this.observacoesTextBox.Multiline = true;
@@ -294,7 +283,7 @@
             // 
             // emissaoDateTimePicker
             // 
-            this.emissaoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entityDataSourceRecibos, "Recibos.Emissao", true));
+            this.emissaoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRecibos, "Emissao", true));
             this.emissaoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.emissaoDateTimePicker.Location = new System.Drawing.Point(112, 183);
             this.emissaoDateTimePicker.Name = "emissaoDateTimePicker";
@@ -303,7 +292,7 @@
             // 
             // vencimentoDateTimePicker
             // 
-            this.vencimentoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entityDataSourceRecibos, "Recibos.Vencimento", true));
+            this.vencimentoDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRecibos, "Vencimento", true));
             this.vencimentoDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.vencimentoDateTimePicker.Location = new System.Drawing.Point(112, 219);
             this.vencimentoDateTimePicker.Name = "vencimentoDateTimePicker";
@@ -312,7 +301,7 @@
             // 
             // mesesNumericUpDown
             // 
-            this.mesesNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entityDataSourceRecibos, "Recibos.Meses", true));
+            this.mesesNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRecibos, "Meses", true));
             this.mesesNumericUpDown.Location = new System.Drawing.Point(112, 75);
             this.mesesNumericUpDown.Maximum = new decimal(new int[] {
             6,
@@ -337,7 +326,7 @@
             // descricaoTextBox
             // 
             this.descricaoTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.descricaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.Descricao", true));
+            this.descricaoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRecibos, "Descricao", true));
             this.descricaoTextBox.Location = new System.Drawing.Point(112, 111);
             this.descricaoTextBox.Name = "descricaoTextBox";
             this.descricaoTextBox.Size = new System.Drawing.Size(370, 34);
@@ -345,7 +334,7 @@
             // 
             // extraCheckBox
             // 
-            this.extraCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.entityDataSourceRecibos, "Recibos.Extra", true));
+            this.extraCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bsRecibos, "Extra", true));
             this.extraCheckBox.Location = new System.Drawing.Point(112, 3);
             this.extraCheckBox.Name = "extraCheckBox";
             this.extraCheckBox.Size = new System.Drawing.Size(64, 24);
@@ -356,7 +345,7 @@
             // IDLabel
             // 
             this.IDLabel.BackColor = System.Drawing.Color.Black;
-            this.IDLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.ID", true));
+            this.IDLabel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRecibos, "ID", true));
             this.IDLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IDLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -393,7 +382,7 @@
             // labelPendente
             // 
             this.labelPendente.AutoSize = true;
-            this.labelPendente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.PendenteAsString", true));
+            this.labelPendente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRecibos, "PendenteAsString", true));
             this.labelPendente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelPendente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPendente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -420,7 +409,7 @@
             // labelRecebido
             // 
             this.labelRecebido.AutoSize = true;
-            this.labelRecebido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.RecebidoAsString", true));
+            this.labelRecebido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRecibos, "RecebidoAsString", true));
             this.labelRecebido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelRecebido.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRecebido.ForeColor = System.Drawing.Color.Green;
@@ -447,7 +436,7 @@
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.entityDataSourceRecibos, "Recibos.TotalAsString", true));
+            this.labelTotal.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bsRecibos, "TotalAsString", true));
             this.labelTotal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.Color.Blue;
@@ -483,9 +472,12 @@
             // 
             // buttonRecalc
             // 
-            this.buttonRecalc.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.buttonRecalc.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonRecalc.FlatAppearance.BorderSize = 0;
+            this.buttonRecalc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRecalc.Font = new System.Drawing.Font("Webdings", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.buttonRecalc.Location = new System.Drawing.Point(78, 2);
+            this.buttonRecalc.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonRecalc.Location = new System.Drawing.Point(81, 2);
             this.buttonRecalc.Name = "buttonRecalc";
             this.buttonRecalc.Size = new System.Drawing.Size(26, 28);
             this.buttonRecalc.TabIndex = 28;
@@ -495,7 +487,7 @@
             // 
             // cotanumericUpDown
             // 
-            this.cotanumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.entityDataSourceRecibos, "Recibos.Cota", true));
+            this.cotanumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bsRecibos, "Cota", true));
             this.cotanumericUpDown.DecimalPlaces = 2;
             this.cotanumericUpDown.Increment = new decimal(new int[] {
             5,
@@ -512,19 +504,17 @@
             // 
             this.dgvCotas.AllowUserToAddRows = false;
             this.dgvCotas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgvCotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgvCotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCotas.AutoGenerateColumns = false;
             this.dgvCotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PessoaID,
+            this.pessoaIDDataGridViewTextBoxColumn,
             this.Nome,
             this.dataDataGridViewTextBoxColumn,
             this.valorDataGridViewTextBoxColumn,
-            this.observacoesDataGridViewTextBoxColumn,
-            this.Cobranca});
-            this.dgvCotas.DataMember = "Recibos.Cotas";
-            this.dgvCotas.DataSource = this.entityDataSourceRecibos;
+            this.observacoesDataGridViewTextBoxColumn});
+            this.dgvCotas.DataSource = this.bsCotas;
             this.dgvCotas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCotas.Location = new System.Drawing.Point(601, 3);
             this.dgvCotas.Name = "dgvCotas";
@@ -532,41 +522,48 @@
             this.dgvCotas.RowTemplate.Height = 28;
             this.dgvCotas.Size = new System.Drawing.Size(651, 497);
             this.dgvCotas.TabIndex = 28;
+            this.dgvCotas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCotas_CellEndEdit);
             this.dgvCotas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCotas_CellFormatting);
             this.dgvCotas.SelectionChanged += new System.EventHandler(this.dgvCotas_SelectionChanged);
             // 
-            // PessoaID
+            // pessoaIDDataGridViewTextBoxColumn
             // 
-            this.PessoaID.DataPropertyName = "PessoaID";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.PessoaID.DefaultCellStyle = dataGridViewCellStyle4;
-            this.PessoaID.HeaderText = "ID";
-            this.PessoaID.Name = "PessoaID";
-            this.PessoaID.Width = 30;
+            this.pessoaIDDataGridViewTextBoxColumn.DataPropertyName = "PessoaID";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.pessoaIDDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.pessoaIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.pessoaIDDataGridViewTextBoxColumn.Name = "pessoaIDDataGridViewTextBoxColumn";
+            this.pessoaIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pessoaIDDataGridViewTextBoxColumn.Width = 50;
             // 
             // Nome
             // 
+            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Nome.DataPropertyName = "Nome";
             this.Nome.HeaderText = "Nome";
             this.Nome.Name = "Nome";
             this.Nome.ReadOnly = true;
-            this.Nome.Width = 120;
+            this.Nome.Width = 95;
             // 
             // dataDataGridViewTextBoxColumn
             // 
+            this.dataDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
             this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.Width = 82;
             // 
             // valorDataGridViewTextBoxColumn
             // 
+            this.valorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.Width = 80;
+            this.valorDataGridViewTextBoxColumn.Width = 86;
             // 
             // observacoesDataGridViewTextBoxColumn
             // 
@@ -575,13 +572,10 @@
             this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
             this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
             // 
-            // Cobranca
+            // bsCotas
             // 
-            this.Cobranca.DataPropertyName = "Cobranca";
-            this.Cobranca.HeaderText = "Cobranca";
-            this.Cobranca.Name = "Cobranca";
-            this.Cobranca.ReadOnly = true;
-            this.Cobranca.Visible = false;
+            this.bsCotas.DataMember = "Cotas";
+            this.bsCotas.DataSource = this.bsRecibos;
             // 
             // tlpMain
             // 
@@ -637,7 +631,6 @@
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(196, 31);
             this.toolStripMenu.TabIndex = 0;
-            this.toolStripMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripMenu_ItemClicked);
             // 
             // toolStripButtonSave
             // 
@@ -768,6 +761,7 @@
             this.Text = "Recibos";
             this.Load += new System.EventHandler(this.frmRecibos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRecibos)).EndInit();
             this.tlpRecibo.ResumeLayout(false);
             this.tlpRecibo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).EndInit();
@@ -777,6 +771,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cotanumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCotas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCotas)).EndInit();
             this.tlpMain.ResumeLayout(false);
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
@@ -790,8 +785,6 @@
         }
 
         #endregion
-
-        private EFWinforms.EntityDataSource entityDataSourceRecibos;
         private System.Windows.Forms.DataGridView dgvRecibos;
         private System.Windows.Forms.TableLayoutPanel tlpRecibo;
         private System.Windows.Forms.NumericUpDown numeroNumericUpDown;
@@ -812,8 +805,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvCotas;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.ToolStripButton toolStripButtonSave;
@@ -831,11 +822,13 @@
         private System.Windows.Forms.ToolStripMenuItem fichaConferênciaToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonRecalc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PessoaID;
+        private System.Windows.Forms.BindingSource bsRecibos;
+        private System.Windows.Forms.BindingSource bsCotas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anoNumeroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pessoaIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cobranca;
     }
 }

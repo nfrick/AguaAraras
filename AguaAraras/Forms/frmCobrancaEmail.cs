@@ -18,45 +18,41 @@ namespace AguaAraras {
             AppDomain.CurrentDomain.BaseDirectory + @"Reports\rptCobrancaAttachment.rdlc";
         //private readonly string _bodyTextPath = AppDomain.CurrentDomain.BaseDirectory + @"\Body.txt";
         private readonly string _EMail_Main_Path = AppDomain.CurrentDomain.BaseDirectory + @"\EMail_Main.html";
-        private readonly int _ReciboID;
+        private readonly Recibo _ReciboAtual;
 
         private Cota[] _cobrancas;
         private string _textoOriginal;
 
         private readonly List<sp_Extrato_Result> _extrato = new List<sp_Extrato_Result>();
 
-        public frmCobrancaEmail(Form parent, int ReciboID) {
+        public frmCobrancaEmail(Form parent, Recibo recibo) {
             MdiParent = parent;
-            _ReciboID = ReciboID;
+            _ReciboAtual = recibo;
             InitializeComponent();
-            using (var ctx = new AguaArarasEntities()) {
-                var B = ctx.Recibos.ToList();
-                B.Reverse();
-                var reciboAnterior = B.SkipWhile(x => x.ID >= _ReciboID).FirstOrDefault();
-                var inicio = new DateTime(reciboAnterior.Ano, (reciboAnterior.Numero - 1) * 3 + 1, 1);
-                var termino = inicio.AddDays(95);
-                termino = termino.AddDays(-1 * termino.Day);
 
-                _extrato = ctx.sp_Extrato()
-                        .SkipWhile(m => m.Data > termino)
-                        .TakeWhile(m => m.Data >= inicio)
-                        .Select(m => new sp_Extrato_Result(m)).ToList();
+            var numAnterior = _ReciboAtual.Numero == 1 ? 3 : _ReciboAtual.Numero - 2;  // 0-based quarter
+            var anoAnterior = _ReciboAtual.Ano - (numAnterior == 4 ? 1 : 0);
+
+            var inicio = new DateTime(anoAnterior, numAnterior * 3 + 1, 1);
+            var termino = inicio.AddMonths(3).AddDays(-1);
+
+            using (var ctx = new AguaArarasEntities()) {
+                _extrato = ctx.sp_Extrato(inicio, termino).ToList();
             }
         }
 
         private void GetData() {
             using (var ctx = new AguaArarasEntities()) {
-                var x = checkBoxIncluirCobrancasAnteriores.Checked ?
+                _cobrancas = (checkBoxIncluirCobrancasAnteriores.Checked ?
                     ctx.Cotas.Where(c => c.Data == null && c.Pessoa.Cobranca == 2) :
-                    ctx.Cotas.Where(c => c.ReciboID == _ReciboID && c.Pessoa.Cobranca == 2);
-
-                _cobrancas = x.OrderBy(c => c.Pessoa.Nome)
+                    _ReciboAtual.Cotas.Where(c => c.Pessoa.Cobranca == 2))
+                    .OrderBy(c => c.Pessoa.Nome)
                     .ThenByDescending(c => c.Recibo.Vencimento.Year)
                     .ThenByDescending(c => c.Recibo.Numero).ToArray();
-
-                listBoxNomes.Items.Clear();
-                listBoxNomes.Items.AddRange(_cobrancas);
             }
+
+            listBoxNomes.Items.Clear();
+            listBoxNomes.Items.AddRange(_cobrancas);
         }
 
         private void frmCobrancaEmail_Load(object sender, EventArgs e) {

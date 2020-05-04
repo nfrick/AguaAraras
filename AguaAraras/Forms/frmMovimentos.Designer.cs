@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
@@ -43,16 +43,17 @@
             this.toolStripTextBoxProcurar = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButtonHistorico = new System.Windows.Forms.ToolStripButton();
             this.dgvMovimentos = new System.Windows.Forms.DataGridView();
+            this.bsMovimentos = new System.Windows.Forms.BindingSource(this.components);
+            this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumnTipo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.historicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.entityDataSourceMovimentos = new EFWinforms.EntityDataSource(this.components);
-            this.SFD = new System.Windows.Forms.SaveFileDialog();
+            this.reciboAnoNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -83,6 +84,7 @@
             // toolStripButtonSave
             // 
             this.toolStripButtonSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSave.Enabled = false;
             this.toolStripButtonSave.Image = global::AguaAraras.Properties.Resources.Document_save_icon;
             this.toolStripButtonSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSave.Name = "toolStripButtonSave";
@@ -199,8 +201,8 @@
             // 
             // dgvMovimentos
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgvMovimentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgvMovimentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMovimentos.AutoGenerateColumns = false;
             this.dgvMovimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMovimentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -209,9 +211,8 @@
             this.historicoDataGridViewTextBoxColumn,
             this.valorDataGridViewTextBoxColumn,
             this.observacoesDataGridViewTextBoxColumn,
-            this.reciboIDDataGridViewTextBoxColumn});
-            this.dgvMovimentos.DataMember = "Movimentos";
-            this.dgvMovimentos.DataSource = this.entityDataSourceMovimentos;
+            this.reciboAnoNumeroDataGridViewTextBoxColumn});
+            this.dgvMovimentos.DataSource = this.bsMovimentos;
             this.dgvMovimentos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMovimentos.Location = new System.Drawing.Point(0, 31);
             this.dgvMovimentos.Name = "dgvMovimentos";
@@ -219,14 +220,19 @@
             this.dgvMovimentos.RowTemplate.Height = 26;
             this.dgvMovimentos.Size = new System.Drawing.Size(1066, 661);
             this.dgvMovimentos.TabIndex = 1;
+            this.dgvMovimentos.DataSourceChanged += new System.EventHandler(this.dgvMovimentos_DataSourceChanged);
+            this.dgvMovimentos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMovimentos_CellEndEdit);
             this.dgvMovimentos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMovimentos_CellFormatting);
+            // 
+            // bsMovimentos
+            // 
+            this.bsMovimentos.DataSource = typeof(DataLayer.Movimento);
             // 
             // dataDataGridViewTextBoxColumn
             // 
             this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
             this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
             this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.Width = 90;
             // 
             // dataGridViewComboBoxColumnTipo
             // 
@@ -235,7 +241,7 @@
             this.dataGridViewComboBoxColumnTipo.Name = "dataGridViewComboBoxColumnTipo";
             this.dataGridViewComboBoxColumnTipo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewComboBoxColumnTipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewComboBoxColumnTipo.Width = 120;
+            this.dataGridViewComboBoxColumnTipo.Width = 140;
             // 
             // historicoDataGridViewTextBoxColumn
             // 
@@ -247,12 +253,13 @@
             // valorDataGridViewTextBoxColumn
             // 
             this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.Width = 80;
+            this.valorDataGridViewTextBoxColumn.Width = 70;
             // 
             // observacoesDataGridViewTextBoxColumn
             // 
@@ -261,17 +268,13 @@
             this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
             this.observacoesDataGridViewTextBoxColumn.Width = 300;
             // 
-            // reciboIDDataGridViewTextBoxColumn
+            // reciboAnoNumeroDataGridViewTextBoxColumn
             // 
-            this.reciboIDDataGridViewTextBoxColumn.DataPropertyName = "ReciboAnoNumero";
-            this.reciboIDDataGridViewTextBoxColumn.HeaderText = "Recibo";
-            this.reciboIDDataGridViewTextBoxColumn.Name = "reciboIDDataGridViewTextBoxColumn";
-            this.reciboIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.reciboIDDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // entityDataSourceMovimentos
-            // 
-            this.entityDataSourceMovimentos.DbContextType = typeof(DataLayer.AguaArarasEntities);
+            this.reciboAnoNumeroDataGridViewTextBoxColumn.DataPropertyName = "ReciboAnoNumero";
+            this.reciboAnoNumeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
+            this.reciboAnoNumeroDataGridViewTextBoxColumn.Name = "reciboAnoNumeroDataGridViewTextBoxColumn";
+            this.reciboAnoNumeroDataGridViewTextBoxColumn.ReadOnly = true;
+            this.reciboAnoNumeroDataGridViewTextBoxColumn.Width = 70;
             // 
             // frmMovimentos
             // 
@@ -289,6 +292,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,14 +301,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private EFWinforms.EntityDataSource entityDataSourceMovimentos;
         private System.Windows.Forms.DataGridView dgvMovimentos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumnTipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn historicoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton toolStripButtonSave;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.ToolStripButton toolStripButtonNovo;
@@ -321,5 +318,12 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxProcurar;
         private System.Windows.Forms.ToolStripButton toolStripButtonHistorico;
         private System.Windows.Forms.SaveFileDialog SFD;
+        private System.Windows.Forms.BindingSource bsMovimentos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewComboBoxColumnTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn historicoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reciboAnoNumeroDataGridViewTextBoxColumn;
     }
 }

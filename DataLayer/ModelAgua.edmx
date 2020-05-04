@@ -139,8 +139,12 @@
           <Parameter Name="ReciboID" Type="int" Mode="In" />
           <Parameter Name="Data" Type="smalldatetime" Mode="In" />
         </Function>
-        <Function Name="sp_Extrato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Extrato" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Inicio" Type="smalldatetime" Mode="In" />
+          <Parameter Name="Termino" Type="smalldatetime" Mode="In" />
+        </Function>
         <Function Name="sp_ManutencaoAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_TiposMovimento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Xtab" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="part" Type="varchar" Mode="In" />
         </Function>
@@ -205,13 +209,17 @@
           <FunctionImport Name="sp_Xtab" ReturnType="Collection(AguaArarasModel.sp_Xtab_Result)">
           <Parameter Name="part" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_Extrato" ReturnType="Collection(AguaArarasModel.sp_Extrato_Result)" />
+          <FunctionImport Name="sp_Extrato" ReturnType="Collection(AguaArarasModel.sp_Extrato_Result)" >
+            <Parameter Name="Inicio" Mode="In" Type="DateTime" />
+            <Parameter Name="Termino" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="sp_ManutencaoAdd" />
           <EntitySet Name="Movimentos" EntityType="AguaArarasModel.Movimento" />
           <AssociationSet Name="ReciboMovimento" Association="AguaArarasModel.ReciboMovimento">
             <End Role="Recibo" EntitySet="Recibos" />
             <End Role="Movimento" EntitySet="Movimentos" />
           </AssociationSet>
+          <FunctionImport Name="sp_TiposMovimento" ReturnType="Collection(String)" />
         </EntityContainer>
         <EntityType Name="Endereco">
           <Key>
@@ -525,6 +533,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_TiposMovimento" FunctionName="AguaArarasModel.Store.sp_TiposMovimento" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

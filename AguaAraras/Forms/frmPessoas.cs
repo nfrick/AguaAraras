@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DataLayer;
+using DbContextExtensions;
+using System;
 using System.ComponentModel;
-using DataLayer;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -8,9 +10,12 @@ using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmPessoas : Form {
+        private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
 
         public frmPessoas() {
             InitializeComponent();
+            _ctx.Pessoas.Load();
+            bsPessoas.DataSource = _ctx.Pessoas.Local.ToBindingList();
 
             Tuple<byte, string>[] cobrancaTipos = {
                 Tuple.Create((byte) 0, "Nenhuma"),
@@ -26,8 +31,7 @@ namespace AguaAraras {
                 Tuple.Create((byte) 3, "Trabalho"),
                 Tuple.Create((byte) 4, "Celular")
             };
-
-            var col = (DataGridViewComboBoxColumn)this.dgvTelefones.Columns["colTipo"];
+            var col = (DataGridViewComboBoxColumn)dgvTelefones.Columns["colTipo"];
             col.ValueMember = "Item1";
             col.DisplayMember = "Item2";
             col.DataSource = new BindingSource(telefoneTipos, null);
@@ -37,14 +41,16 @@ namespace AguaAraras {
         private void frmPessoas_Load(object sender, EventArgs e) {
             dgvPessoas.Sort(dgvPessoas.Columns[1], ListSortDirection.Ascending);
         }
+
         private void frmPessoas_FormClosing(object sender, FormClosingEventArgs e) {
-            if (!entityDataSourcePessoas.DbContext.ChangeTracker.HasChanges()) {
+            if (!_ctx.ChangeTracker.HasChanges()) {
                 return;
             }
 
-            switch (MessageBox.Show("Salvar alterações?", "Pessoa", MessageBoxButtons.YesNoCancel)) {
+            switch (MessageBox.Show(_ctx.TextoSalvar(),
+                "Pessoa", MessageBoxButtons.YesNoCancel)) {
                 case DialogResult.Yes:
-                    entityDataSourcePessoas.SaveChanges();
+                    _ctx.SaveChanges();
                     break;
                 case DialogResult.Cancel:
                     e.Cancel = true;
@@ -58,17 +64,19 @@ namespace AguaAraras {
         #region TOOLSTRIP ---------------------
 
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            entityDataSourcePessoas.SaveChanges();
+            if (!_ctx.SaveChanges(out var message)) {
+                MessageBox.Show(message, "Pessoas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             EnableButtons();
         }
 
         private void toolStripButtonUndo_Click(object sender, EventArgs e) {
-            entityDataSourcePessoas.CancelChanges();
+            _ctx.RevertChanges();
             EnableButtons();
         }
 
         private void EnableButtons() {
-            var enable = entityDataSourcePessoas.DbContext.ChangeTracker.HasChanges();
+            var enable = _ctx.ChangeTracker.HasChanges();
             toolStripButtonSave.Enabled = enable;
             toolStripButtonUndo.Enabled = enable;
         }
@@ -76,41 +84,14 @@ namespace AguaAraras {
         #endregion ----------------------------
 
         #region DATAGRIDVIEW ------------------
-
         private void dgvPessoas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            var p = (DataLayer.Pessoa)dgvPessoas.Rows[e.RowIndex].DataBoundItem;
+            var p = (Pessoa)dgvPessoas.Rows[e.RowIndex].DataBoundItem;
             e.CellStyle.ForeColor = p.Ativo ? e.CellStyle.ForeColor : Color.Crimson;
         }
 
         private void dgvPessoas_SelectionChanged(object sender, EventArgs e) {
             EnableButtons();
             dgvPagamentos.Sort(dgvPagamentos.Columns[0], ListSortDirection.Descending);
-        }
-
-        private void dgvEnderecos_KeyDown(object sender, KeyEventArgs e) {
-            switch (e.KeyData) {
-                case Keys.Delete: {
-                        var x = ((Endereco)dgvEnderecos.CurrentRow.DataBoundItem);
-                        entityDataSourcePessoas.EntitySets["Enderecos"].List.Remove(x);
-                        entityDataSourcePessoas.SaveChanges();
-                        entityDataSourcePessoas.Refresh();
-                    }
-                    break;
-                case Keys.Insert: {
-                        var x = ((Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
-                        x.Enderecos.Add(new Endereco() {
-                            Bairro = " ",
-                            CEP = "00000000",
-                            Cidade = " ",
-                            Estado = " ",
-                            Logradouro = " "
-                        });
-                        entityDataSourcePessoas.Refresh();
-                        dgvEnderecos.CurrentCell = dgvEnderecos.Rows[dgvEnderecos.RowCount - 1].Cells[0];
-                        dgvEnderecos.BeginEdit(true);
-                    }
-                    break;
-            }
         }
 
         private void dgvEnderecos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
@@ -121,7 +102,7 @@ namespace AguaAraras {
             var txt = e.FormattedValue.ToString();
             if (string.IsNullOrEmpty(txt)) {
                 e.Cancel = true;
-                dgvEnderecos.Rows[e.RowIndex].ErrorText = 
+                dgvEnderecos.Rows[e.RowIndex].ErrorText =
                     $"{dgvEnderecos.Columns[e.ColumnIndex].HeaderText} não pode ficar em branco.";
                 return;
             }
@@ -133,7 +114,7 @@ namespace AguaAraras {
                         return;
                     }
                     e.Cancel = true;
-                    dgvEnderecos.Rows[e.RowIndex].ErrorText = "Estado Inválido.";
+                    dgvEnderecos.Rows[e.RowIndex].ErrorText = "Estado inválido.";
                     break;
                 case 4: // CEP
                     const string pattern1 = @"[0-9][0-9].[0-9][0-9][0-9]-[0-9][0-9][0-9]";
@@ -142,7 +123,7 @@ namespace AguaAraras {
                         return;
                     }
                     e.Cancel = true;
-                    dgvEnderecos.Rows[e.RowIndex].ErrorText = "CEP Inválido.";
+                    dgvEnderecos.Rows[e.RowIndex].ErrorText = "CEP inválido.";
                     break;
             }
         }
@@ -154,26 +135,6 @@ namespace AguaAraras {
             var cell = dgvEnderecos.CurrentRow.Cells[e.ColumnIndex];
             var txt = cell.Value.ToString().Trim();
             cell.Value = e.ColumnIndex == 3 ? txt.ToUpper() : txt;
-        }
-
-        private void dgvTelefones_KeyDown(object sender, KeyEventArgs e) {
-            switch (e.KeyData) {
-                case Keys.Delete: {
-                        var x = ((Telefone)dgvEnderecos.CurrentRow.DataBoundItem);
-                        entityDataSourcePessoas.EntitySets["Telefones"].List.Remove(x);
-                        entityDataSourcePessoas.SaveChanges();
-                        entityDataSourcePessoas.Refresh();
-                    }
-                    break;
-                case Keys.Insert: {
-                        var x = ((Pessoa)dgvPessoas.CurrentRow.DataBoundItem);
-                        x.Telefones.Add(new Telefone() { Numero = " ", Tipo = 0 });
-                        entityDataSourcePessoas.Refresh();
-                        dgvEnderecos.CurrentCell = dgvTelefones.Rows[dgvEnderecos.RowCount - 1].Cells[0];
-                        dgvEnderecos.BeginEdit(true);
-                    }
-                    break;
-            }
         }
 
         private void dgvTelefones_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
@@ -197,6 +158,9 @@ namespace AguaAraras {
             cell.Value = cell.Value.ToString().Trim();
         }
 
+        private void dgvTelefones_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            // Necessário para erro de Tipo = null em novo telefone.
+        }
         #endregion-----------------------------
 
         #region VALIDATION---------------------
@@ -227,10 +191,5 @@ namespace AguaAraras {
 
         #endregion ---------------------------
 
-        private void entityDataSourcePessoas_DataError(object sender, EFWinforms.DataErrorEventArgs e) {
-            MessageBox.Show("Error Detected:\r\n" + e.Exception.Message);
-            entityDataSourcePessoas.CancelChanges();
-            e.Handled = true;
         }
-    }
 }

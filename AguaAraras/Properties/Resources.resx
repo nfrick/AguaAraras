@@ -121,20 +121,71 @@
   <data name="Edit_find_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Actions-edit-find-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Flag_yellow_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-flag-yellow-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Go_previous_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-go-previous-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Dialog_ok_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-dialog-ok-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Money_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Apps-kmymoney-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Calculator_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Apps-accessories-calculator-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Users_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Apps-system-users-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Paper_pen_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Actions-mail-mark-task-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Flag_red_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-flag-red-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paper_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Mimetypes-application-x-kplato-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Document_save_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-document-save-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Go_last_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-go-last-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Multiple_documents_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Places-document-multiple-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Calculator_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Apps-accessories-calculator-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit_delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-edit-delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Go_first_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-go-first-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Star_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-rating-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Go_next_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-go-next-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flag_green_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-flag-green-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Edit_add_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-list-add-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Document_preview_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Actions-document-preview-archive-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chart_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-games-difficult-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="File_pdf_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Mimetypes-application-pdf-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Apps_excel_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Excel-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mail_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Apps-kmail-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flag_yellow_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-flag-yellow-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="File_spreadsheet_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Mimetypes-x-office-spreadsheet-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,58 +193,10 @@
   <data name="Edit_find_user_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Actions-edit-find-user-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Document_save_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-document-save-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Dialog_ok_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Actions-dialog-ok-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Multiple_documents_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Places-document-multiple-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chart_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-games-difficult-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Go_previous_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-go-previous-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Money_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Apps-kmymoney-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flag_red_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-flag-red-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Users_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Apps-system-users-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Go_first_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-go-first-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Edit_add_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-list-add-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="File_pdf_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Mimetypes-application-pdf-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Flag_green_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-flag-green-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Go_last_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-go-last-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Go_next_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-go-next-view-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Edit_delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-edit-delete-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Paper_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Mimetypes-application-x-kplato-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mail_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Apps-kmail-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Star_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Actions-rating-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Apps_excel_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\Excel-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tools-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tools-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

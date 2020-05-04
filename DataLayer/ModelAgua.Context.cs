@@ -70,14 +70,27 @@ namespace DataLayer
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Xtab_Result>("sp_Xtab", partParameter);
         }
     
-        public virtual ObjectResult<sp_Extrato_Result> sp_Extrato()
+        public virtual ObjectResult<sp_Extrato_Result> sp_Extrato(Nullable<System.DateTime> inicio, Nullable<System.DateTime> termino)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Extrato_Result>("sp_Extrato");
+            var inicioParameter = inicio.HasValue ?
+                new ObjectParameter("Inicio", inicio) :
+                new ObjectParameter("Inicio", typeof(System.DateTime));
+    
+            var terminoParameter = termino.HasValue ?
+                new ObjectParameter("Termino", termino) :
+                new ObjectParameter("Termino", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Extrato_Result>("sp_Extrato", inicioParameter, terminoParameter);
         }
     
         public virtual int sp_ManutencaoAdd()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ManutencaoAdd");
+        }
+    
+        public virtual ObjectResult<string> sp_TiposMovimento()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_TiposMovimento");
         }
     }
 }

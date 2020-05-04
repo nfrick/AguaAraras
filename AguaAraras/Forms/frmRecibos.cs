@@ -2,60 +2,63 @@
 using DataLayer;
 using System;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using DbContextExtensions;
 
 namespace AguaAraras {
     public partial class frmRecibos : Form {
 
-        private DataLayer.Recibo ReciboAtual =>
-            (DataLayer.Recibo) dgvRecibos.CurrentRow?.DataBoundItem;
+        private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
+
+        private Recibo ReciboAtual => (Recibo)bsRecibos.Current;
+        //(Recibo)dgvRecibos.CurrentRow?.DataBoundItem;
 
         public frmRecibos() {
             InitializeComponent();
+            _ctx.Recibos.Load();
+            bsRecibos.DataSource = _ctx.Recibos.Local.ToBindingList();
         }
 
         private void frmRecibos_Load(object sender, EventArgs e) {
-            dgvRecibos.Columns[0].Visible = false;
-            dgvRecibos.Sort(dgvRecibos.Columns[1], ListSortDirection.Descending);
+            dgvRecibos.Sort(dgvRecibos.Columns[0], ListSortDirection.Descending);
         }
 
         private void buttonRecalc_Click(object sender, EventArgs e) {
-            foreach (var cota in ReciboAtual.Cotas) {
-                cota.Valor = Math.Round(ReciboAtual.Meses * ReciboAtual
-                                            .Cota * cota.Pessoa.Tomadas, 0);
-            }
+            ReciboAtual.RecalcCotas();
             dgvCotas.Refresh();
         }
 
         #region TOOLSRIP ----------------------------------------------------------
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            entityDataSourceRecibos.SaveChanges();
+            //entityDataSourceRecibos.SaveChanges();
+            _ctx.SaveChanges();
         }
 
         private void toolStripButtonUndo_Click(object sender, EventArgs e) {
-            entityDataSourceRecibos.CancelChanges();
+            //entityDataSourceRecibos.CancelChanges();
+            _ctx.RevertChanges();
         }
 
         private void toolStripButtonNew_Click(object sender, EventArgs e) {
-            using (var ctx = new AguaArarasEntities()) {
-                var last = ctx.Recibos.OrderByDescending(r => r.Vencimento.Year).ThenByDescending(r => r.Numero).First();
-                var ativos = ctx.Pessoas.Where(p => p.Ativo);
-                var novo = new Recibo(last, ativos);
-                ctx.Recibos.Add(novo);
-                ctx.SaveChanges();
-                entityDataSourceRecibos.Refresh();
-            }
+            var last = _ctx.Recibos.OrderByDescending(r => r.Vencimento.Year).ThenByDescending(r => r.Numero).First();
+            var ativos = _ctx.Pessoas.Where(p => p.Ativo);
+            var novo = new Recibo(last, ativos);
+            _ctx.Recibos.Local.Add(novo);
+            //_ctx.SaveChanges();
         }
-        
+
         private void toolStripButtonCobrancasImpressas_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport(ReciboAtual.Cotas.Where(i => i.Cobranca == 1).ToList(), "rptCobranca", "DataSetReciboItens", "Cobranças");
+            frm.SetReport("rptCobranca", "Cobranças", "DataSetReciboItens",
+                ReciboAtual.Cotas.Where(i => i.Cobranca == 1));
+            frm.Show();
         }
 
         private void toolStripButtonCobrancasEMail_Click(object sender, EventArgs e) {
-            var frm = new frmCobrancaEmail(this.ParentForm, ReciboAtual.ID);
+            var frm = new frmCobrancaEmail(this.ParentForm, ReciboAtual);
             frm.Show();
         }
 
@@ -66,32 +69,43 @@ namespace AguaAraras {
             }
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var selecionados = (from DataGridViewRow n in dgvCotas.SelectedRows
-                select (DataLayer.Cota)n.DataBoundItem).OrderBy(c => c.Pessoa.Nome).ToList();
-            frm.SetReport(selecionados, "rptCobranca", "DataSetReciboItens", "Cobranças");
+                                select (Cota)n.DataBoundItem).OrderBy(c => c.Pessoa.Nome);
+            frm.SetReport("rptCobranca", "DataSetReciboItens", "Cobranças", selecionados);
+            frm.Show();
         }
 
         private void toolStripButtonRecibos_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport(ReciboAtual.Cotas.Where(c => c.GerarRecibo).ToList(),
-                "rptRecibo", "DataSetReciboItens", "Recibos");
+            frm.SetReport("rptRecibo", "Recibos", "DataSetReciboItens", ReciboAtual.Cotas.Where(c => c.GerarRecibo));
+            frm.Show();
         }
 
         private void toolStripButtonFichaConferência_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport(ReciboAtual.Cotas.Where(c => c.GerarRecibo).ToList(),
-                "rptFichaConferencia", "DataSetReciboItens", "Ficha Conferência");
+            frm.SetReport("rptFichaConferencia", "Ficha Conferência", "DataSetReciboItens",
+                ReciboAtual.Cotas.Where(c => c.GerarRecibo));
+            frm.Show();
         }
 
         private void toolStripButtonFind_Click(object sender, EventArgs e) {
             var counter = 0;
             using (var ctx = new MoneyBinEntities()) {
                 var itens = ctx.BalanceItemsAgua(ReciboAtual.ID).ToList();
-                if (!itens.Any()) return;
+                if (!itens.Any()) {
+                    return;
+                }
+
                 foreach (DataGridViewRow row in dgvCotas.Rows) {
-                    if (row.Cells[2].Value != null) continue;
+                    if (row.Cells[2].Value != null) {
+                        continue;
+                    }
+
                     var item = itens.FirstOrDefault(i => i.Centavos == (int)row.Cells[0].Value ||
                                                          i.Nome == (string)row.Cells[1].Value);
-                    if (item == null) continue;
+                    if (item == null) {
+                        continue;
+                    }
+
                     row.Cells[2].Value = item.Data;
                     counter++;
                 }
@@ -101,48 +115,54 @@ namespace AguaAraras {
         }
 
         private void toolStripButtonColect_Click(object sender, EventArgs e) {
-            using (var ctx = new AguaArarasEntities()) {
-                if (ctx.Movimentos.Any(m => m.ReciboID == ReciboAtual.ID && m.Tipo == "carlos")) {
-                    MessageBox.Show("Movimento já foi criado.", "Recibos", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-                    return;
-                }
-                var data = DateTime.Now;
-                if (clsPromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) return;
-
-                ctx.Movimentos.Add(new DataLayer.Movimento() {
-                    Tipo = "carlos",
-                    Data = data,
-                    ReciboID = ReciboAtual.ID,
-                    Historico = ReciboAtual.DescricaoShort,
-                    Valor = (ReciboAtual.Cota * ReciboAtual.Meses * -2) / 3
-                });
-                ctx.SaveChanges();
-                MessageBox.Show("Movimento criado.", "Recibos", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+            var data = DateTime.Today;
+            if (clsPromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) {
+                return;
             }
+
+            ReciboAtual.Movimentos.Add(new Movimento() {
+                Tipo = "Cobrança",
+                Data = data,
+                ReciboID = ReciboAtual.ID,
+                Historico = $"distribuição/coleta de cotas {ReciboAtual.DescricaoShort}",
+                Valor = (ReciboAtual.Cota * ReciboAtual.Meses * -2) / 3
+            });
+            _ctx.SaveChanges();
+            MessageBox.Show("Movimento criado.", "Recibos", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
         #endregion ----------------------------------------------------------------
 
         #region DATAGRIDVIEW ------------------------------------------------------
-        private void dgvCotas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if ((byte)dgvCotas.Rows[e.RowIndex].Cells[5].Value == 2) {
-                e.CellStyle.ForeColor = Color.DarkGreen;
+        private void dgvRecibos_SelectionChanged(object sender, EventArgs e) {
+            if (dgvCotas.RowCount == 0) {
+                return;
             }
+
+            dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
         }
 
-        private void dgvRecibos_SelectionChanged(object sender, EventArgs e) {
-            if (dgvCotas.RowCount == 0) return;
-            dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
+        private void dgvCotas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            var cota = (Cota)dgvCotas.Rows[e.RowIndex].DataBoundItem;
+            if (cota.Cobranca == 2) {
+                e.CellStyle.ForeColor = Color.DarkGreen;
+            }
         }
 
         private void dgvCotas_SelectionChanged(object sender, EventArgs e) {
             selecionadasToolStripMenuItem.Enabled = dgvCotas.SelectedRows.Count > 0;
         }
+
+        private void dgvCotas_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            if (e.ColumnIndex < 2 || e.ColumnIndex > 3) {
+                return;
+            }
+            bsRecibos.ResetBindings(false);
+        }
         #endregion ----------------------------------------------------------------
 
-        private void toolStripMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
-
+        private void bsRecibos_CurrentChanged(object sender, EventArgs e) {
+            toolStripButtonColect.Enabled = !ReciboAtual.Movimentos.Any();
         }
     }
 }

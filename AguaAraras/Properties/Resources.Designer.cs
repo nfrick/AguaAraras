@@ -313,6 +313,16 @@ namespace AguaAraras.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tools_icon {
+            get {
+                object obj = ResourceManager.GetObject("Tools-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Users_icon {
             get {
                 object obj = ResourceManager.GetObject("Users_icon", resourceCulture);

@@ -64,9 +64,6 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EFWinforms">
-      <HintPath>..\..\EF6Winforms\EF6WinForms\bin\Debug\EFWinforms.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -85,9 +82,15 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="NFExtensions">
+      <HintPath>..\..\Libraries\Extensions\NFExtensions\bin\Debug\NFExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="Rhetos.Utilities">
       <HintPath>..\..\FastReplacer\Rhetos.Utilities\bin\Debug\Rhetos.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperReport">
+      <HintPath>..\..\Libraries\SuperReportSolution\SuperReport\bin\Debug\SuperReport.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -161,6 +164,7 @@
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserFileAccessRights.cs" />
     <Content Include="Reports\rptExtratoCategorizado.rdlc" />
+    <None Include="Resources\Tools-icon.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -183,10 +187,15 @@
     <Content Include="Images\water_droplet_icon3.ico" />
     <Content Include="Images\water_droplet_iconX.ico" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataLayer.Cota.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Endereco.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Movimento.datasource" />
     <None Include="Properties\DataSources\DataLayer.Pessoa.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Recibo.datasource" />
     <None Include="Properties\DataSources\DataLayer.sp_Balanco_Result.datasource" />
     <None Include="Properties\DataSources\DataLayer.sp_Extrato_Result.datasource" />
     <None Include="Properties\DataSources\DataLayer.sp_Xtab_Result.datasource" />
+    <None Include="Properties\DataSources\DataLayer.Telefone.datasource" />
     <None Include="Properties\DataSources\XTabData.datasource" />
     <None Include="Resources\FlagGreeen.png" />
     <None Include="Images\Actions-flag-green-icon.png" />
@@ -259,14 +268,8 @@
     <Content Include="Reports\rptExtratoCobranca.rdlc" />
     <EmbeddedResource Include="Reports\rptRecibo.rdlc" />
     <None Include="Properties\DataSources\Balanco.datasource" />
-    <None Include="Properties\DataSources\Cota.datasource" />
-    <None Include="Properties\DataSources\Endereco.datasource" />
     <None Include="Properties\DataSources\Extrato.datasource" />
-    <None Include="Properties\DataSources\Movimento.datasource" />
-    <None Include="Properties\DataSources\Pessoa.datasource" />
-    <None Include="Properties\DataSources\Recibo.datasource" />
     <None Include="Properties\DataSources\ReciboItem.datasource" />
-    <None Include="Properties\DataSources\Telefone.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

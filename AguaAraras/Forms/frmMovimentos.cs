@@ -1,9 +1,12 @@
 ﻿using DataLayer;
+using DbContextExtensions;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -11,17 +14,18 @@ using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmMovimentos : Form {
+
+        private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
+
         public frmMovimentos() {
             InitializeComponent();
+
+            _ctx.Movimentos.Load();
 
             SFD.DefaultExt = "xlsx";
             SFD.Filter = @"Excel Files|*.xlsx";
 
-            var tipos =
-                (from Movimento m in entityDataSourceMovimentos.EntitySets["Movimentos"]
-                 group m by m.Tipo into g
-                 select g.Key).OrderBy(t => t).ToArray();
-
+            var tipos = _ctx.sp_TiposMovimento().ToArray();
             dataGridViewComboBoxColumnTipo.Items.AddRange(tipos);
 
             toolStripComboBoxTipo.Items.Add("Todos");
@@ -30,7 +34,14 @@ namespace AguaAraras {
 
             toolStripComboBoxErros.ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             toolStripComboBoxErros.SelectedIndex = 0;
+
+            //https://stackoverflow.com/questions/4588359/implementing-collectionchanged
+            //_ctx.Movimentos.Local.CollectionChanged += LocalOnCollectionChanged;
         }
+
+        //private void LocalOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
+        //    toolStripButtonSave.Enabled = true;
+        //}
 
         private void frmMovimentos_Load(object sender, EventArgs e) {
             dgvMovimentos.Sort(dgvMovimentos.Columns[0], ListSortDirection.Descending);
@@ -38,7 +49,11 @@ namespace AguaAraras {
 
         #region TOLLSTRIP -------------------------------------
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            entityDataSourceMovimentos.SaveChanges();
+            dgvMovimentos.EndEdit();
+            if (!_ctx.SaveChanges(out var message)) {
+                MessageBox.Show(message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            toolStripButtonSave.Enabled = false;
         }
 
         private void toolStripButtonNovo_Click(object sender, EventArgs e) {
@@ -52,51 +67,49 @@ namespace AguaAraras {
                 return;
             }
 
-            using (var ctx = new AguaArarasEntities()) {
-                var movimentos = ctx.sp_Movimentos();
+            var movimentos = _ctx.sp_Movimentos();
 
-                var pck = new ExcelPackage(new FileInfo(SFD.FileName));
-                var ws = pck.Workbook.Worksheets.Add("Movimentos");
-                ws.View.ShowGridLines = false;
+            var pck = new ExcelPackage(new FileInfo(SFD.FileName));
+            var ws = pck.Workbook.Worksheets.Add("Movimentos");
+            ws.View.ShowGridLines = false;
 
-                var col = 1;
-                ws.Cells[1, col++].Value = "ID";
-                ws.Cells[1, col++].Value = "Tipo";
-                ws.Cells[1, col++].Value = "Data";
-                ws.Cells[1, col++].Value = "Recibo";
-                ws.Cells[1, col++].Value = "Nome";
-                ws.Cells[1, col++].Value = "Histórico";
-                ws.Cells[1, col++].Value = "Valor";
-                ws.Cells[1, col++].Value = "Observações";
+            var col = 1;
+            ws.Cells[1, col++].Value = "ID";
+            ws.Cells[1, col++].Value = "Tipo";
+            ws.Cells[1, col++].Value = "Data";
+            ws.Cells[1, col++].Value = "Recibo";
+            ws.Cells[1, col++].Value = "Nome";
+            ws.Cells[1, col++].Value = "Histórico";
+            ws.Cells[1, col++].Value = "Valor";
+            ws.Cells[1, col++].Value = "Observações";
 
-                var row = 2;
-                foreach (var item in movimentos) {
-                    col = 1;
-                    ws.Cells[row, col++].Value = item.ID;
-                    ws.Cells[row, col++].Value = item.Tipo;
-                    ws.Cells[row, col++].Value = item.Data;
-                    ws.Cells[row, col++].Value = item.Recibo;
-                    ws.Cells[row, col++].Value = item.Nome;
-                    ws.Cells[row, col++].Value = item.Historico;
-                    ws.Cells[row, col++].Value = item.Valor;
-                    ws.Cells[row++, col].Value = item.Observacoes;
-                }
-
-                row--;
-                ws.Cells[$"C2:C{row}"].Style.Numberformat.Format = "dd-MM-yyyy";
-                ws.Cells[$"G2:G{row}"].Style.Numberformat.Format = "#,##0.00";
-                ws.Cells.AutoFitColumns(0);
-
-                var range = ws.Cells[1, 1, row, col];
-                var table = ws.Tables.Add(range, "table1");
-                table.ShowTotal = true;
-                table.TableStyle = TableStyles.Light1;
-
-                ws.View.FreezePanes(2, 1);
-                pck.Save();
-
-                MessageBox.Show(@"Movimentos exportados.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var row = 2;
+            foreach (var item in movimentos) {
+                col = 1;
+                ws.Cells[row, col++].Value = item.ID;
+                ws.Cells[row, col++].Value = item.Tipo;
+                ws.Cells[row, col++].Value = item.Data;
+                ws.Cells[row, col++].Value = item.Recibo;
+                ws.Cells[row, col++].Value = item.Nome;
+                ws.Cells[row, col++].Value = item.Historico;
+                ws.Cells[row, col++].Value = item.Valor;
+                ws.Cells[row++, col].Value = item.Observacoes;
             }
+
+            row--;
+            ws.Cells[$"C2:C{row}"].Style.Numberformat.Format = "dd-MM-yyyy";
+            ws.Cells[$"G2:G{row}"].Style.Numberformat.Format = "#,##0.00";
+            ws.Cells.AutoFitColumns(0);
+
+            var range = ws.Cells[1, 1, row, col];
+            var table = ws.Tables.Add(range, "table1");
+            table.ShowTotal = true;
+            table.TableStyle = TableStyles.Light1;
+
+            ws.View.FreezePanes(2, 1);
+            pck.Save();
+
+            MessageBox.Show(@"Movimentos exportados.", @"Export", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void toolStripButtonProcurar_Click(object sender, EventArgs e) {
@@ -125,94 +138,73 @@ namespace AguaAraras {
 
         private void toolStripComboBoxTipo_SelectedIndexChanged(object sender, EventArgs e) {
             if (toolStripComboBoxTipo.Text == @"Todos") {
-                dgvMovimentos.DataSource = entityDataSourceMovimentos;
-                dgvMovimentos.DataMember = "Movimentos";
-                toolStripButtonNovo.Enabled = true;
+                bsMovimentos.DataSource = _ctx.Movimentos.Local.ToBindingList();
             }
             else {
-                var q =
-                    from Movimento m in entityDataSourceMovimentos.EntitySets["Movimentos"]
-                    where m.Tipo == toolStripComboBoxTipo.Text
-                    orderby m.Data descending
-                    select m;
-
-                // create BindingList (sortable/filterable)
-                var bindingList = entityDataSourceMovimentos.CreateView(q);
-
-                // assign BindingList to grid
-                dgvMovimentos.DataSource = bindingList;
-                toolStripButtonNovo.Enabled = false;
+                SetBindingSource(_ctx.Movimentos.Local
+                    .Where(m => m.Tipo == toolStripComboBoxTipo.Text));
             }
         }
 
+        private void SetBindingSource(IEnumerable<Movimento> source) {
+            //foreach (var item in source) {
+            //    item.PropertyChanged += OnItemPropertyChanged;
+            //}
+            dgvMovimentos.DataSource = null;
+            bsMovimentos.DataSource = new ObservableListSource<Movimento>(source).ToBindingList();
+            dgvMovimentos.DataSource = bsMovimentos;
+        }
+
+        //private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs e) {
+        //    toolStripButtonSave.Enabled = true;
+        //}
+
         private void toolStripComboBoxErros_SelectedIndexChanged(object sender, EventArgs e) {
-            var positivos = new[] { "cota", "receita" };
-            IQueryable<DataLayer.Movimento> q;
-            var Movimentos = entityDataSourceMovimentos.EntitySets["Movimentos"];
+            var positivos = new[] { "Cota", "Receita" };
+            IEnumerable<Movimento> q;
+            var Movimentos = _ctx.Movimentos.Local;
             switch (toolStripComboBoxErros.SelectedIndex) {
                 case 0:
-                    dgvMovimentos.DataSource = entityDataSourceMovimentos;
-                    dgvMovimentos.DataMember = "Movimentos";
-                    toolStripButtonNovo.Enabled = true;
+                    bsMovimentos.DataSource = Movimentos.ToBindingList();
                     return;
                 case 1: // Receitas negativas
-                    q = from DataLayer.Movimento m in Movimentos
-                        where positivos.Contains(m.Tipo) && m.Valor < 0
-                        orderby m.Data descending
-                        select m;
+                    q = Movimentos.Where(m => positivos.Contains(m.Tipo) && m.Valor < 0);
                     break;
                 case 2: // Despesas positivas
-                    q = from DataLayer.Movimento m in Movimentos
-                        where !positivos.Contains(m.Tipo) && m.Valor > 0
-                        orderby m.Data descending
-                        select m;
+                    q = Movimentos.Where(m => !positivos.Contains(m.Tipo) && m.Valor > 0);
                     break;
-                case 3:  // Vergilio duplicado (mês)
-                    q = (from DataLayer.Movimento m in Movimentos
-                         where m.Tipo == "vergilio" && m.Data != null && m.Historico.StartsWith("salário")
-                         select m)
-                        .GroupBy(m => new { Y = ((DateTime)m.Data).Year, M = ((DateTime)m.Data).Month }, m => m)
-                        .Where(v => v.Count() != 1).SelectMany(v => v);
+                case 3:  // Manutenção duplicado (mês)
+                    q = Movimentos.Where(m => m.Tipo == "Manutenção" && m.Data != null && m.Historico.StartsWith("pagamento"))
+                            .GroupBy(m => new { Y = ((DateTime)m.Data).Year, M = ((DateTime)m.Data).Month }, m => m)
+                            .Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
-                case 4:  // Vergilio duplicado (histórico)
-                    q = (from DataLayer.Movimento m in Movimentos
-                         where m.Tipo == "vergilio"
-                         orderby m.Data descending
-                         select m).GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
+                case 4:  // Manutenção duplicado (histórico)
+                    q = Movimentos.Where(m => m.Tipo == "Manutenção")
+                            .GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
-                case 5:  // Carlos duplicado (trimestre)
-                    q = (from DataLayer.Movimento m in Movimentos
-                         where m.Tipo == "carlos"
-                         orderby m.Data descending
-                         select m).GroupBy(m => m.Recibo, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
+                case 5:  // Cobrança duplicado (trimestre)
+                    q = Movimentos.Where(m => m.Tipo == "Cobrança")
+                         .GroupBy(m => m.Recibo, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
-                case 6:  // Carlos duplicado (histórico)
-                    q = (from DataLayer.Movimento m in Movimentos
-                         where m.Tipo == "carlos"
-                         orderby m.Data descending
-                         select m).GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
+                case 6:  // Cobrança duplicado (histórico)
+                    q = Movimentos.Where(m => m.Tipo == "Cobrança")
+                         .GroupBy(m => m.Historico, m => m).Where(v => v.Count() != 1).SelectMany(v => v);
                     break;
                 default:
                     return;
             }
 
+            SetBindingSource(q);
+
             if (!q.Any()) {
                 MessageBox.Show("Nenhum registro com erro foi encontrado.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
             }
-            // create BindingList (sortable/filterable)
-            var bindingList = entityDataSourceMovimentos.CreateView(q);
-
-            // assign BindingList to grid
-            dgvMovimentos.DataSource = bindingList;
-            toolStripButtonNovo.Enabled = false;
         }
 
         private void toolStripButtonManutencao_Click(object sender, EventArgs e) {
-            using (var ctx = new AguaArarasEntities()) {
-                ctx.sp_ManutencaoAdd();
-            }
-            entityDataSourceMovimentos.Refresh();
+            _ctx.sp_ManutencaoAdd();
+            _ctx.Movimentos.Load();
+            bsMovimentos.DataSource = _ctx.Movimentos.Local.ToBindingList();
         }
 
         #endregion --------------------------------------------
@@ -225,5 +217,14 @@ namespace AguaAraras {
             e.CellStyle.ForeColor = Color.Red;
         }
 
+        private void dgvMovimentos_DataSourceChanged(object sender, EventArgs e) {
+            if (dgvMovimentos.DataSource != null) {
+                dgvMovimentos.Sort(dgvMovimentos.Columns[0], ListSortDirection.Descending);
+            }
+        }
+
+        private void dgvMovimentos_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            toolStripButtonSave.Enabled = _ctx.ChangeTracker.HasChanges();
+        }
     }
 }

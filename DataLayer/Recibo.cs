@@ -17,8 +17,8 @@ namespace DataLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Recibo()
         {
-            this.Cotas = new HashSet<Cota>();
-            this.Movimentos = new HashSet<Movimento>();
+            this.Cotas = new ObservableListSource<Cota>();
+            this.Movimentos = new ObservableListSource<Movimento>();
         }
     
         public int ID { get; set; }
@@ -32,8 +32,8 @@ namespace DataLayer
         public string Observacoes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cota> Cotas { get; set; }
+        public virtual ObservableListSource<Cota> Cotas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movimento> Movimentos { get; set; }
+        public virtual ObservableListSource<Movimento> Movimentos { get; set; }
     }
 }
