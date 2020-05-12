@@ -11,7 +11,7 @@ namespace DataLayer
 {
     using System;
     
-    public partial class sp_BalanceItemsAgua_Result
+    public partial class BalanceItem
     {
         public System.DateTime Data { get; set; }
         public decimal Valor { get; set; }

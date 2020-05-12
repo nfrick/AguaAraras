@@ -28,13 +28,13 @@ namespace DataLayer
         }
     
     
-        public virtual ObjectResult<sp_BalanceItemsAgua_Result> BalanceItemsAgua(Nullable<int> iD)
+        public virtual ObjectResult<BalanceItem> BalanceItemsAgua(Nullable<int> iD)
         {
             var iDParameter = iD.HasValue ?
                 new ObjectParameter("ID", iD) :
                 new ObjectParameter("ID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_BalanceItemsAgua_Result>("BalanceItemsAgua", iDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceItem>("BalanceItemsAgua", iDParameter);
         }
     }
 }

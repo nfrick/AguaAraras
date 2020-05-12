@@ -31,13 +31,11 @@
             System.Windows.Forms.Label mesesLabel;
             System.Windows.Forms.Label descricaoLabel;
             System.Windows.Forms.Label numeroLabel;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvRecibos = new System.Windows.Forms.DataGridView();
-            this.anoNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsRecibos = new System.Windows.Forms.BindingSource(this.components);
             this.tlpRecibo = new System.Windows.Forms.TableLayoutPanel();
             this.numeroNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.observacoesTextBox = new System.Windows.Forms.TextBox();
@@ -58,11 +56,7 @@
             this.buttonRecalc = new System.Windows.Forms.Button();
             this.cotanumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.dgvCotas = new System.Windows.Forms.DataGridView();
-            this.pessoaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsCotas = new System.Windows.Forms.BindingSource(this.components);
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -80,6 +74,14 @@
             this.fichaConferênciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonFind = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonColect = new System.Windows.Forms.ToolStripButton();
+            this.anoNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsRecibos = new System.Windows.Forms.BindingSource(this.components);
+            this.pessoaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.normaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selecionadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             observacoesLabel = new System.Windows.Forms.Label();
             emissaoLabel = new System.Windows.Forms.Label();
             vencimentoLabel = new System.Windows.Forms.Label();
@@ -88,7 +90,6 @@
             descricaoLabel = new System.Windows.Forms.Label();
             numeroLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRecibos)).BeginInit();
             this.tlpRecibo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mesesNumericUpDown)).BeginInit();
@@ -102,6 +103,7 @@
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStripMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRecibos)).BeginInit();
             this.SuspendLayout();
             // 
             // observacoesLabel
@@ -178,8 +180,8 @@
             // 
             this.dgvRecibos.AllowUserToAddRows = false;
             this.dgvRecibos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgvRecibos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgvRecibos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvRecibos.AutoGenerateColumns = false;
             this.dgvRecibos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecibos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -193,19 +195,6 @@
             this.dgvRecibos.RowTemplate.Height = 26;
             this.dgvRecibos.Size = new System.Drawing.Size(101, 497);
             this.dgvRecibos.TabIndex = 1;
-            this.dgvRecibos.SelectionChanged += new System.EventHandler(this.dgvRecibos_SelectionChanged);
-            // 
-            // anoNumeroDataGridViewTextBoxColumn
-            // 
-            this.anoNumeroDataGridViewTextBoxColumn.DataPropertyName = "AnoNumero";
-            this.anoNumeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
-            this.anoNumeroDataGridViewTextBoxColumn.Name = "anoNumeroDataGridViewTextBoxColumn";
-            this.anoNumeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bsRecibos
-            // 
-            this.bsRecibos.DataSource = typeof(DataLayer.Recibo);
-            this.bsRecibos.CurrentChanged += new System.EventHandler(this.bsRecibos_CurrentChanged);
             // 
             // tlpRecibo
             // 
@@ -504,8 +493,8 @@
             // 
             this.dgvCotas.AllowUserToAddRows = false;
             this.dgvCotas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgvCotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgvCotas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCotas.AutoGenerateColumns = false;
             this.dgvCotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCotas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -526,16 +515,6 @@
             this.dgvCotas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCotas_CellFormatting);
             this.dgvCotas.SelectionChanged += new System.EventHandler(this.dgvCotas_SelectionChanged);
             // 
-            // pessoaIDDataGridViewTextBoxColumn
-            // 
-            this.pessoaIDDataGridViewTextBoxColumn.DataPropertyName = "PessoaID";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.pessoaIDDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.pessoaIDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.pessoaIDDataGridViewTextBoxColumn.Name = "pessoaIDDataGridViewTextBoxColumn";
-            this.pessoaIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.pessoaIDDataGridViewTextBoxColumn.Width = 50;
-            // 
             // Nome
             // 
             this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -544,33 +523,6 @@
             this.Nome.Name = "Nome";
             this.Nome.ReadOnly = true;
             this.Nome.Width = 95;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.Width = 82;
-            // 
-            // valorDataGridViewTextBoxColumn
-            // 
-            this.valorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.Width = 86;
-            // 
-            // observacoesDataGridViewTextBoxColumn
-            // 
-            this.observacoesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
             // 
             // bsCotas
             // 
@@ -687,7 +639,7 @@
             this.cobrancasEMailToolStripMenuItem,
             this.selecionadasToolStripMenuItem});
             this.cobrançasToolStripMenuItem.Name = "cobrançasToolStripMenuItem";
-            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.cobrançasToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.cobrançasToolStripMenuItem.Text = "Cobranças";
             // 
             // cobrancasImpressasToolStripMenuItem
@@ -716,15 +668,17 @@
             // 
             // recibosToolStripMenuItem
             // 
+            this.recibosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.normaisToolStripMenuItem,
+            this.selecionadosToolStripMenuItem});
             this.recibosToolStripMenuItem.Name = "recibosToolStripMenuItem";
-            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.recibosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.recibosToolStripMenuItem.Text = "Recibos";
-            this.recibosToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRecibos_Click);
             // 
             // fichaConferênciaToolStripMenuItem
             // 
             this.fichaConferênciaToolStripMenuItem.Name = "fichaConferênciaToolStripMenuItem";
-            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.fichaConferênciaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.fichaConferênciaToolStripMenuItem.Text = "Ficha conferência";
             this.fichaConferênciaToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonFichaConferência_Click);
             // 
@@ -748,6 +702,69 @@
             this.toolStripButtonColect.Text = "Criar pagamento de distribuição e coleta";
             this.toolStripButtonColect.Click += new System.EventHandler(this.toolStripButtonColect_Click);
             // 
+            // anoNumeroDataGridViewTextBoxColumn
+            // 
+            this.anoNumeroDataGridViewTextBoxColumn.DataPropertyName = "AnoNumero";
+            this.anoNumeroDataGridViewTextBoxColumn.HeaderText = "Recibo";
+            this.anoNumeroDataGridViewTextBoxColumn.Name = "anoNumeroDataGridViewTextBoxColumn";
+            this.anoNumeroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bsRecibos
+            // 
+            this.bsRecibos.DataSource = typeof(DataLayer.Recibo);
+            this.bsRecibos.CurrentChanged += new System.EventHandler(this.bsRecibos_CurrentChanged);
+            // 
+            // pessoaIDDataGridViewTextBoxColumn
+            // 
+            this.pessoaIDDataGridViewTextBoxColumn.DataPropertyName = "PessoaID";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.pessoaIDDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.pessoaIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.pessoaIDDataGridViewTextBoxColumn.Name = "pessoaIDDataGridViewTextBoxColumn";
+            this.pessoaIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.pessoaIDDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            this.dataDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            this.dataDataGridViewTextBoxColumn.Width = 82;
+            // 
+            // valorDataGridViewTextBoxColumn
+            // 
+            this.valorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
+            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
+            this.valorDataGridViewTextBoxColumn.Width = 86;
+            // 
+            // observacoesDataGridViewTextBoxColumn
+            // 
+            this.observacoesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
+            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observações";
+            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
+            // 
+            // normaisToolStripMenuItem
+            // 
+            this.normaisToolStripMenuItem.Name = "normaisToolStripMenuItem";
+            this.normaisToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.normaisToolStripMenuItem.Text = "Normais";
+            this.normaisToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRecibos_Click);
+            // 
+            // selecionadosToolStripMenuItem
+            // 
+            this.selecionadosToolStripMenuItem.Name = "selecionadosToolStripMenuItem";
+            this.selecionadosToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.selecionadosToolStripMenuItem.Text = "Selecionados";
+            this.selecionadosToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonRecibosSelecionados_Click);
+            // 
             // frmRecibos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -759,9 +776,9 @@
             this.Name = "frmRecibos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recibos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRecibos_FormClosing);
             this.Load += new System.EventHandler(this.frmRecibos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecibos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsRecibos)).EndInit();
             this.tlpRecibo.ResumeLayout(false);
             this.tlpRecibo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numeroNumericUpDown)).EndInit();
@@ -780,6 +797,7 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsRecibos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -830,5 +848,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem normaisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selecionadosToolStripMenuItem;
     }
 }

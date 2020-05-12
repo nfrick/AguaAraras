@@ -85,7 +85,7 @@ namespace AguaAraras {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var rpt = "rptExtrato" + ((ToolStripButton)sender).Name.Substring(22);
 
-            frm.SetReport(rpt, "Extrato", "DataSetExtrato", _extrato
+            frm.SetLocalReport(rpt, "Extrato", "DataSetExtrato", _extrato
                 .SkipWhile(m => m.Data.Year > _termino)
                 .TakeWhile(m => m.Data.Year >= _inicio));
             frm.Show();

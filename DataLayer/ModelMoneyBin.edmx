@@ -14,11 +14,11 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MoneyBinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MoneyBinEntities" annotation:LazyLoadingEnabled="true">
-          <FunctionImport Name="BalanceItemsAgua" ReturnType="Collection(MoneyBinModel.sp_BalanceItemsAgua_Result)">
+          <FunctionImport Name="BalanceItemsAgua" ReturnType="Collection(MoneyBinModel.BalanceItem)">
             <Parameter Name="ID" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_BalanceItemsAgua_Result">
+        <ComplexType Name="BalanceItem">
           <Property Type="DateTime" Name="Data" Nullable="false" />
           <Property Type="Decimal" Name="Valor" Nullable="false" Precision="19" />
           <Property Type="Int32" Name="Centavos" Nullable="true" />
@@ -32,7 +32,7 @@
         <EntityContainerMapping StorageEntityContainer="MoneyBinModelStoreContainer" CdmEntityContainer="MoneyBinEntities">
           <FunctionImportMapping FunctionImportName="BalanceItemsAgua" FunctionName="MoneyBinModel.Store.sp_BalanceItemsAgua">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="MoneyBinModel.sp_BalanceItemsAgua_Result">
+              <ComplexTypeMapping TypeName="MoneyBinModel.BalanceItem">
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Centavos" ColumnName="Centavos" />

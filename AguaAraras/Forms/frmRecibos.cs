@@ -1,12 +1,12 @@
 ﻿using AguaAraras.Classes;
 using DataLayer;
+using DbContextExtensions;
 using System;
 using System.ComponentModel;
 using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using DbContextExtensions;
 
 namespace AguaAraras {
     public partial class frmRecibos : Form {
@@ -14,7 +14,6 @@ namespace AguaAraras {
         private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
 
         private Recibo ReciboAtual => (Recibo)bsRecibos.Current;
-        //(Recibo)dgvRecibos.CurrentRow?.DataBoundItem;
 
         public frmRecibos() {
             InitializeComponent();
@@ -26,19 +25,43 @@ namespace AguaAraras {
             dgvRecibos.Sort(dgvRecibos.Columns[0], ListSortDirection.Descending);
         }
 
+        private void frmRecibos_FormClosing(object sender, FormClosingEventArgs e) {
+            if (!_ctx.ChangeTracker.HasChanges()) {
+                return;
+            }
+            switch (MessageBox.Show(_ctx.TextoSalvar(), Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+                case DialogResult.Yes:
+                    if (!_ctx.SaveChanges(out var message)) {
+                        MessageBox.Show(message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        e.Cancel = true;
+                    }
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+        }
+
         private void buttonRecalc_Click(object sender, EventArgs e) {
             ReciboAtual.RecalcCotas();
             dgvCotas.Refresh();
         }
 
+        private void bsRecibos_CurrentChanged(object sender, EventArgs e) {
+            toolStripButtonColect.Enabled = !ReciboAtual.Movimentos.Any();
+            if (dgvCotas.RowCount != 0) {
+                dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
+            }
+        }
+
         #region TOOLSRIP ----------------------------------------------------------
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            //entityDataSourceRecibos.SaveChanges();
             _ctx.SaveChanges();
         }
 
         private void toolStripButtonUndo_Click(object sender, EventArgs e) {
-            //entityDataSourceRecibos.CancelChanges();
             _ctx.RevertChanges();
         }
 
@@ -47,12 +70,11 @@ namespace AguaAraras {
             var ativos = _ctx.Pessoas.Where(p => p.Ativo);
             var novo = new Recibo(last, ativos);
             _ctx.Recibos.Local.Add(novo);
-            //_ctx.SaveChanges();
         }
 
         private void toolStripButtonCobrancasImpressas_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport("rptCobranca", "Cobranças", "DataSetReciboItens",
+            frm.SetLocalReport("rptCobranca", "Cobranças", "DataSetReciboItens",
                 ReciboAtual.Cotas.Where(i => i.Cobranca == 1));
             frm.Show();
         }
@@ -63,6 +85,10 @@ namespace AguaAraras {
         }
 
         private void toolStripButtonCobrancasSelecionadas_Click(object sender, EventArgs e) {
+            EmitirSelecionados("rptCobranca", "Cobranças");
+        }
+
+        private void EmitirSelecionados(string rptName, string dspName) {
             if (dgvCotas.SelectedRows.Count == 0) {
                 MessageBox.Show(@"Nenhum nome foi selecionado.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -70,46 +96,51 @@ namespace AguaAraras {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
             var selecionados = (from DataGridViewRow n in dgvCotas.SelectedRows
                                 select (Cota)n.DataBoundItem).OrderBy(c => c.Pessoa.Nome);
-            frm.SetReport("rptCobranca", "DataSetReciboItens", "Cobranças", selecionados);
+            frm.SetLocalReport(rptName, dspName, "DataSetReciboItens", selecionados);
             frm.Show();
         }
 
         private void toolStripButtonRecibos_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport("rptRecibo", "Recibos", "DataSetReciboItens", ReciboAtual.Cotas.Where(c => c.GerarRecibo));
+            frm.SetLocalReport("rptRecibo", "Recibos", "DataSetReciboItens",
+                ReciboAtual.Cotas.Where(c => c.GerarRecibo));
             frm.Show();
+        }
+
+        private void toolStripButtonRecibosSelecionados_Click(object sender, EventArgs e) {
+            EmitirSelecionados("rptRecibo", "Recibos");
         }
 
         private void toolStripButtonFichaConferência_Click(object sender, EventArgs e) {
             var frm = new frmRelatorio { MdiParent = this.ParentForm };
-            frm.SetReport("rptFichaConferencia", "Ficha Conferência", "DataSetReciboItens",
+            frm.SetLocalReport("rptFichaConferencia", "Ficha Conferência", "DataSetReciboItens",
                 ReciboAtual.Cotas.Where(c => c.GerarRecibo));
             frm.Show();
         }
 
         private void toolStripButtonFind_Click(object sender, EventArgs e) {
             var counter = 0;
+
             using (var ctx = new MoneyBinEntities()) {
-                var itens = ctx.BalanceItemsAgua(ReciboAtual.ID).ToList();
-                if (!itens.Any()) {
+                var balanco = ctx.BalanceItemsAgua(ReciboAtual.ID).ToList();
+                if (!balanco.Any()) {
                     return;
                 }
 
-                foreach (DataGridViewRow row in dgvCotas.Rows) {
-                    if (row.Cells[2].Value != null) {
-                        continue;
-                    }
-
-                    var item = itens.FirstOrDefault(i => i.Centavos == (int)row.Cells[0].Value ||
-                                                         i.Nome == (string)row.Cells[1].Value);
+                foreach (var cota in ReciboAtual.Cotas.Where(c => c.Data == null)) {
+                    var item = balanco.FirstOrDefault(i => i.Centavos == cota.PessoaID ||
+                                                           i.Nome == cota.Nome ||
+                                                           i.Nome == cota.Sobrenome);
                     if (item == null) {
                         continue;
                     }
 
-                    row.Cells[2].Value = item.Data;
+                    cota.Data = item.Data;
                     counter++;
                 }
             }
+            bsRecibos.ResetBindings(false);
+            dgvCotas.Refresh();
             MessageBox.Show($@"{counter} atualizações.", @"Pagamentos",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -134,13 +165,6 @@ namespace AguaAraras {
         #endregion ----------------------------------------------------------------
 
         #region DATAGRIDVIEW ------------------------------------------------------
-        private void dgvRecibos_SelectionChanged(object sender, EventArgs e) {
-            if (dgvCotas.RowCount == 0) {
-                return;
-            }
-
-            dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
-        }
 
         private void dgvCotas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var cota = (Cota)dgvCotas.Rows[e.RowIndex].DataBoundItem;
@@ -161,8 +185,5 @@ namespace AguaAraras {
         }
         #endregion ----------------------------------------------------------------
 
-        private void bsRecibos_CurrentChanged(object sender, EventArgs e) {
-            toolStripButtonColect.Enabled = !ReciboAtual.Movimentos.Any();
-        }
     }
 }
