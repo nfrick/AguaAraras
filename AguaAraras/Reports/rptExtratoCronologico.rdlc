@@ -9,10 +9,10 @@
               <Width>0.86019cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.75639cm</Width>
+              <Width>2.01039cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>9.09297cm</Width>
+              <Width>8.83897cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.34706cm</Width>
@@ -220,7 +220,6 @@
                         <VerticalAlign>Middle</VerticalAlign>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

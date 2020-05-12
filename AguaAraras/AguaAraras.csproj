@@ -163,7 +163,9 @@
     <Compile Include="Settings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UserFileAccessRights.cs" />
-    <Content Include="Reports\rptExtratoCategorizado.rdlc" />
+    <Content Include="Reports\rptExtratoCategorizado.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Tools-icon.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
@@ -180,7 +182,9 @@
     </Content>
     <None Include="Images\Excel-icon.png" />
     <Content Include="Images\favicon.ico" />
-    <Content Include="Reports\rptExtratoCronologico.rdlc" />
+    <Content Include="Reports\rptExtratoCronologico.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\water_droplet.ico" />
     <Content Include="Images\water_droplet_icon.ico" />
     <Content Include="Images\water_droplet_icon2.ico" />
@@ -261,12 +265,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Content Include="Reports\rptFichaConferencia.rdlc" />
-    <Content Include="Reports\rptExtratoConsolidado.rdlc" />
-    <Content Include="Reports\rptCobrancaAttachment.rdlc" />
-    <Content Include="Reports\rptCobranca.rdlc" />
-    <Content Include="Reports\rptExtratoCobranca.rdlc" />
-    <EmbeddedResource Include="Reports\rptRecibo.rdlc" />
+    <Content Include="Reports\rptFichaConferencia.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptExtratoConsolidado.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptCobrancaAttachment.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptCobranca.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptExtratoCobranca.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\rptRecibo.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\DataSources\Balanco.datasource" />
     <None Include="Properties\DataSources\Extrato.datasource" />
     <None Include="Properties\DataSources\ReciboItem.datasource" />

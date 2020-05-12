@@ -393,6 +393,7 @@
                                   <PaddingLeft>10pt</PaddingLeft>
                                 </Style>
                               </Textbox>
+                              <rd:Selected>true</rd:Selected>
                             </CellContents>
                           </TablixHeader>
                           <TablixMembers>
