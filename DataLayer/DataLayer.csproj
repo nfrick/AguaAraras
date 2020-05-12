@@ -50,6 +50,9 @@
     <Compile Include="BalanceItem.cs">
       <DependentUpon>ModelMoneyBin.tt</DependentUpon>
     </Compile>
+    <Compile Include="BalancoItem.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classes\clsBalanceItem.cs" />
     <Compile Include="Classes\clsCota.cs" />
     <Compile Include="Classes\clsEndereco.cs" />
@@ -63,6 +66,9 @@
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>
     <Compile Include="Endereco.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExtratoItem.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelAgua.Context.cs">
@@ -98,6 +104,9 @@
     <Compile Include="Movimento.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>
+    <Compile Include="MovimentoItem.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pessoa.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>
@@ -105,19 +114,10 @@
     <Compile Include="Recibo.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_Balanco_Result.cs">
-      <DependentUpon>ModelAgua.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_Extrato_Result.cs">
-      <DependentUpon>ModelAgua.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_Movimentos_Result.cs">
-      <DependentUpon>ModelAgua.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_Xtab_Result.cs">
-      <DependentUpon>ModelAgua.tt</DependentUpon>
-    </Compile>
     <Compile Include="Telefone.cs">
+      <DependentUpon>ModelAgua.tt</DependentUpon>
+    </Compile>
+    <Compile Include="XtabItem.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>
   </ItemGroup>

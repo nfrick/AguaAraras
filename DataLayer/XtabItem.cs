@@ -11,7 +11,7 @@ namespace DataLayer
 {
     using System;
     
-    public partial class sp_Xtab_Result
+    public partial class XtabItem
     {
         public string Periodo { get; set; }
         public decimal Cota { get; set; }

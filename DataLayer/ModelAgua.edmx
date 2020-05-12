@@ -202,14 +202,14 @@
             <Parameter Name="ReciboID" Mode="In" Type="Int32" />
             <Parameter Name="Data" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="sp_Movimentos" ReturnType="Collection(AguaArarasModel.sp_Movimentos_Result)" />
-          <FunctionImport Name="sp_Balanco" ReturnType="Collection(AguaArarasModel.sp_Balanco_Result)">
+          <FunctionImport Name="sp_Movimentos" ReturnType="Collection(AguaArarasModel.MovimentoItem)" />
+          <FunctionImport Name="sp_Balanco" ReturnType="Collection(AguaArarasModel.BalancoItem)">
           <Parameter Name="part" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_Xtab" ReturnType="Collection(AguaArarasModel.sp_Xtab_Result)">
+          <FunctionImport Name="sp_Xtab" ReturnType="Collection(AguaArarasModel.XtabItem)">
           <Parameter Name="part" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_Extrato" ReturnType="Collection(AguaArarasModel.sp_Extrato_Result)" >
+          <FunctionImport Name="sp_Extrato" ReturnType="Collection(AguaArarasModel.ExtratoItem)" >
             <Parameter Name="Inicio" Mode="In" Type="DateTime" />
             <Parameter Name="Termino" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -345,7 +345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="sp_Movimentos_Result">
+        <ComplexType Name="MovimentoItem">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Tipo" Nullable="false" MaxLength="15" />
           <Property Type="DateTime" Name="Data" Nullable="true" Precision="16" />
@@ -355,14 +355,14 @@
           <Property Type="String" Name="Nome" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="Recibo" Nullable="true" MaxLength="6" />
         </ComplexType>
-        <ComplexType Name="sp_Balanco_Result">
+        <ComplexType Name="BalancoItem">
           <Property Type="Int32" Name="Ano" Nullable="true" />
           <Property Type="Int32" Name="Periodo" Nullable="true" />
           <Property Type="Decimal" Name="Positivo" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="Negativo" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="19" />
         </ComplexType>
-        <ComplexType Name="sp_Xtab_Result">
+        <ComplexType Name="XtabItem">
           <Property Type="String" Name="Periodo" Nullable="true" MaxLength="6" />
           <Property Type="Decimal" Name="Cota" Nullable="false" Precision="19" />
           <Property Type="Decimal" Name="Manutencao" Nullable="false" Precision="19" />
@@ -372,7 +372,7 @@
           <Property Type="Decimal" Name="Despesa" Nullable="false" Precision="19" />
           <Property Type="Decimal" Name="Receita" Nullable="false" Precision="19" />
         </ComplexType>
-        <ComplexType Name="sp_Extrato_Result">
+        <ComplexType Name="ExtratoItem">
           <Property Type="String" Name="Tipo" Nullable="true" MaxLength="15" />
           <Property Type="DateTime" Name="Data" Nullable="false" Precision="16" />
           <Property Type="String" Name="Descricao" Nullable="true" MaxLength="50" />
@@ -486,7 +486,7 @@
           <FunctionImportMapping FunctionImportName="sp_ColetaAdd" FunctionName="AguaArarasModel.Store.sp_ColetaAdd" />
           <FunctionImportMapping FunctionImportName="sp_Balanco" FunctionName="AguaArarasModel.Store.sp_Balanco">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="AguaArarasModel.sp_Balanco_Result">
+              <ComplexTypeMapping TypeName="AguaArarasModel.BalancoItem">
                 <ScalarProperty Name="Ano" ColumnName="Ano" />
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="Positivo" ColumnName="Positivo" />
@@ -496,7 +496,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_Xtab" FunctionName="AguaArarasModel.Store.sp_Xtab">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="AguaArarasModel.sp_Xtab_Result">
+              <ComplexTypeMapping TypeName="AguaArarasModel.XtabItem">
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
                 <ScalarProperty Name="Cota" ColumnName="Cota" />
                 <ScalarProperty Name="Manutencao" ColumnName="Manutencao" />
@@ -510,7 +510,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_Extrato" FunctionName="AguaArarasModel.Store.sp_Extrato">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="AguaArarasModel.sp_Extrato_Result">
+              <ComplexTypeMapping TypeName="AguaArarasModel.ExtratoItem">
                 <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />

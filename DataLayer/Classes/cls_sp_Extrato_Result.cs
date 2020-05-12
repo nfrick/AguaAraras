@@ -1,17 +1,21 @@
-﻿namespace DataLayer {
-    public partial class sp_Extrato_Result {
+﻿using System;
 
-        public sp_Extrato_Result() {
-            
+namespace DataLayer {
+    public partial class ExtratoItem : ICloneable {
+
+        public ExtratoItem() {
+
         }
 
-        public sp_Extrato_Result(sp_Extrato_Result item) {
-            RID = item.RID;
-            Data = item.Data;
-            Valor = item.Valor;
-            Descricao = item.Descricao;
-            Tipo = item.Tipo;
-            Saldo = item.Saldo;
+        public object Clone() {
+            return new ExtratoItem {
+                RID = this.RID,
+                Data = this.Data,
+                Valor = this.Valor,
+                Descricao = this.Descricao,
+                Tipo = this.Tipo,
+                Saldo = this.Saldo
+            };
         }
     }
 }

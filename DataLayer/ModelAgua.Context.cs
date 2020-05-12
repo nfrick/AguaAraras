@@ -47,30 +47,30 @@ namespace DataLayer
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_ColetaAdd", reciboIDParameter, dataParameter);
         }
     
-        public virtual ObjectResult<sp_Movimentos_Result> sp_Movimentos()
+        public virtual ObjectResult<MovimentoItem> sp_Movimentos()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Movimentos_Result>("sp_Movimentos");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MovimentoItem>("sp_Movimentos");
         }
     
-        public virtual ObjectResult<sp_Balanco_Result> sp_Balanco(string part)
-        {
-            var partParameter = part != null ?
-                new ObjectParameter("part", part) :
-                new ObjectParameter("part", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Balanco_Result>("sp_Balanco", partParameter);
-        }
-    
-        public virtual ObjectResult<sp_Xtab_Result> sp_Xtab(string part)
+        public virtual ObjectResult<BalancoItem> sp_Balanco(string part)
         {
             var partParameter = part != null ?
                 new ObjectParameter("part", part) :
                 new ObjectParameter("part", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Xtab_Result>("sp_Xtab", partParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalancoItem>("sp_Balanco", partParameter);
         }
     
-        public virtual ObjectResult<sp_Extrato_Result> sp_Extrato(Nullable<System.DateTime> inicio, Nullable<System.DateTime> termino)
+        public virtual ObjectResult<XtabItem> sp_Xtab(string part)
+        {
+            var partParameter = part != null ?
+                new ObjectParameter("part", part) :
+                new ObjectParameter("part", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<XtabItem>("sp_Xtab", partParameter);
+        }
+    
+        public virtual ObjectResult<ExtratoItem> sp_Extrato(Nullable<System.DateTime> inicio, Nullable<System.DateTime> termino)
         {
             var inicioParameter = inicio.HasValue ?
                 new ObjectParameter("Inicio", inicio) :
@@ -80,7 +80,7 @@ namespace DataLayer
                 new ObjectParameter("Termino", termino) :
                 new ObjectParameter("Termino", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Extrato_Result>("sp_Extrato", inicioParameter, terminoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ExtratoItem>("sp_Extrato", inicioParameter, terminoParameter);
         }
     
         public virtual int sp_ManutencaoAdd()

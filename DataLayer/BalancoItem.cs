@@ -11,7 +11,7 @@ namespace DataLayer
 {
     using System;
     
-    public partial class sp_Balanco_Result
+    public partial class BalancoItem
     {
         public Nullable<int> Ano { get; set; }
         public Nullable<int> Periodo { get; set; }

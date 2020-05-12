@@ -363,7 +363,7 @@
             // bs_Extratos
             // 
             this.bs_Extratos.AllowNew = false;
-            this.bs_Extratos.DataSource = typeof(DataLayer.sp_Extrato_Result);
+            this.bs_Extratos.DataSource = typeof(DataLayer.ExtratoItem);
             // 
             // dgvMes
             // 
@@ -449,7 +449,7 @@
             // 
             // bs_BalancoMes
             // 
-            this.bs_BalancoMes.DataSource = typeof(DataLayer.sp_Balanco_Result);
+            this.bs_BalancoMes.DataSource = typeof(DataLayer.BalancoItem);
             // 
             // tableLayoutPanel2
             // 
@@ -537,7 +537,7 @@
             // 
             // bs_BalancoAno
             // 
-            this.bs_BalancoAno.DataSource = typeof(DataLayer.sp_Balanco_Result);
+            this.bs_BalancoAno.DataSource = typeof(DataLayer.BalancoItem);
             // 
             // dgvTrimestre
             // 
@@ -621,7 +621,7 @@
             // 
             // bs_BalancoTrimestre
             // 
-            this.bs_BalancoTrimestre.DataSource = typeof(DataLayer.sp_Balanco_Result);
+            this.bs_BalancoTrimestre.DataSource = typeof(DataLayer.BalancoItem);
             // 
             // tabPage2
             // 
@@ -687,7 +687,7 @@
             // 
             // bs_xTabDataTrimRecibo
             // 
-            this.bs_xTabDataTrimRecibo.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            this.bs_xTabDataTrimRecibo.DataSource = typeof(DataLayer.XtabItem);
             // 
             // dgvxTabTrimestreReal
             // 
@@ -720,7 +720,7 @@
             // 
             // bs_xTabDataTrimReal
             // 
-            this.bs_xTabDataTrimReal.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            this.bs_xTabDataTrimReal.DataSource = typeof(DataLayer.XtabItem);
             // 
             // dgvxTabAnoRecibo
             // 
@@ -753,7 +753,7 @@
             // 
             // bs_xTabDataAnoRecibo
             // 
-            this.bs_xTabDataAnoRecibo.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            this.bs_xTabDataAnoRecibo.DataSource = typeof(DataLayer.XtabItem);
             // 
             // dgvxTabAnoReal
             // 
@@ -786,7 +786,7 @@
             // 
             // bs_xTabDataAnoReal
             // 
-            this.bs_xTabDataAnoReal.DataSource = typeof(DataLayer.sp_Xtab_Result);
+            this.bs_xTabDataAnoReal.DataSource = typeof(DataLayer.XtabItem);
             // 
             // label1
             // 

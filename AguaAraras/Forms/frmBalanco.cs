@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace AguaAraras {
     public partial class frmBalanco : Form {
-        private List<sp_Extrato_Result> _extrato; // = new List<sp_Extrato_Result>();
+        private List<ExtratoItem> _extrato; // = new List<sp_Extrato_Result>();
 
         // Anos de início e término para relatórios
         private int _inicio;
@@ -25,7 +25,7 @@ namespace AguaAraras {
 
         private void frmBalanco_Load(object sender, EventArgs e) {
             using (var ctx = new AguaArarasEntities()) {
-                _extrato = ctx.sp_Extrato(null, null).Select(x => new sp_Extrato_Result(x)).ToList();
+                _extrato = ctx.sp_Extrato(null, null).Select(x => (ExtratoItem)x.Clone()).ToList();
 
                 var anos = _extrato.Where(m => m.Data != null)
                     .Select(m => m.Data.ToString("yyyy")).Distinct().ToArray();

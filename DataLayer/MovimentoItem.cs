@@ -11,13 +11,15 @@ namespace DataLayer
 {
     using System;
     
-    public partial class sp_Extrato_Result
+    public partial class MovimentoItem
     {
+        public int ID { get; set; }
         public string Tipo { get; set; }
-        public System.DateTime Data { get; set; }
-        public string Descricao { get; set; }
-        public Nullable<decimal> Valor { get; set; }
-        public Nullable<decimal> Saldo { get; set; }
-        public int RID { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
+        public string Historico { get; set; }
+        public decimal Valor { get; set; }
+        public string Observacoes { get; set; }
+        public string Nome { get; set; }
+        public string Recibo { get; set; }
     }
 }

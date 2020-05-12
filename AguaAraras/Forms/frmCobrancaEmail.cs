@@ -23,7 +23,7 @@ namespace AguaAraras {
         private Cota[] _cobrancas;
         private string _textoOriginal;
 
-        private readonly List<sp_Extrato_Result> _extrato = new List<sp_Extrato_Result>();
+        private readonly List<ExtratoItem> _extrato = new List<ExtratoItem>();
 
         public frmCobrancaEmail(Form parent, Recibo recibo) {
             MdiParent = parent;
@@ -168,7 +168,7 @@ namespace AguaAraras {
             DeliveryMethod = SmtpDeliveryMethod.Network,
             Timeout = 20000
         };
-        public List<sp_Extrato_Result> Extrato { get; set; }
+        public List<ExtratoItem> Extrato { get; set; }
         public string EMail { get; set; }
         public string PdfName { get; set; }
         public List<Cota> Cobrancas { get; set; }
