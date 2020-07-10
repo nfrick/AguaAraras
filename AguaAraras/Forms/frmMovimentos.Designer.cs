@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
@@ -43,14 +43,14 @@
             this.toolStripTextBoxProcurar = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButtonHistorico = new System.Windows.Forms.ToolStripButton();
             this.dgvMovimentos = new System.Windows.Forms.DataGridView();
-            this.bsMovimentos = new System.Windows.Forms.BindingSource(this.components);
-            this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumnTipo = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.historicoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reciboAnoNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsMovimentos = new System.Windows.Forms.BindingSource(this.components);
+            this.SFD = new System.Windows.Forms.SaveFileDialog();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMovimentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsMovimentos)).BeginInit();
@@ -201,8 +201,8 @@
             // 
             // dgvMovimentos
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dgvMovimentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dgvMovimentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMovimentos.AutoGenerateColumns = false;
             this.dgvMovimentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMovimentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -223,10 +223,6 @@
             this.dgvMovimentos.DataSourceChanged += new System.EventHandler(this.dgvMovimentos_DataSourceChanged);
             this.dgvMovimentos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMovimentos_CellEndEdit);
             this.dgvMovimentos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMovimentos_CellFormatting);
-            // 
-            // bsMovimentos
-            // 
-            this.bsMovimentos.DataSource = typeof(DataLayer.Movimento);
             // 
             // dataDataGridViewTextBoxColumn
             // 
@@ -253,10 +249,10 @@
             // valorDataGridViewTextBoxColumn
             // 
             this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.valorDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
             this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
             this.valorDataGridViewTextBoxColumn.Width = 70;
@@ -276,6 +272,10 @@
             this.reciboAnoNumeroDataGridViewTextBoxColumn.ReadOnly = true;
             this.reciboAnoNumeroDataGridViewTextBoxColumn.Width = 70;
             // 
+            // bsMovimentos
+            // 
+            this.bsMovimentos.DataSource = typeof(DataLayer.Movimento);
+            // 
             // frmMovimentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -288,6 +288,7 @@
             this.Name = "frmMovimentos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimentos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMovimentos_FormClosing);
             this.Load += new System.EventHandler(this.frmMovimentos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

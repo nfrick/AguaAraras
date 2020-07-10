@@ -1,5 +1,4 @@
 ﻿using DataLayer;
-using DbContextExtensions;
 using OfficeOpenXml;
 using OfficeOpenXml.Table;
 using System;
@@ -17,9 +16,12 @@ namespace AguaAraras {
 
         private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
 
+        private readonly SaveTools savetools;
+
         public frmMovimentos() {
             InitializeComponent();
 
+            savetools = new SaveTools(_ctx, Text);
             _ctx.Movimentos.Load();
 
             SFD.DefaultExt = "xlsx";
@@ -47,13 +49,14 @@ namespace AguaAraras {
             dgvMovimentos.Sort(dgvMovimentos.Columns[0], ListSortDirection.Descending);
         }
 
+        private void frmMovimentos_FormClosing(object sender, FormClosingEventArgs e) {
+            savetools.FormClosing(sender, e);
+        }
+
         #region TOLLSTRIP -------------------------------------
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
             dgvMovimentos.EndEdit();
-            if (!_ctx.SaveChanges(out var message)) {
-                MessageBox.Show(message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            toolStripButtonSave.Enabled = false;
+            toolStripButtonSave.Enabled = savetools.SalvarAlteracoes();
         }
 
         private void toolStripButtonNovo_Click(object sender, EventArgs e) {

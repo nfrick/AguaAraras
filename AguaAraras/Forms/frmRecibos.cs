@@ -1,6 +1,6 @@
-﻿using AguaAraras.Classes;
-using DataLayer;
+﻿using DataLayer;
 using DbContextExtensions;
+using SuperPrompt;
 using System;
 using System.ComponentModel;
 using System.Data.Entity;
@@ -13,35 +13,24 @@ namespace AguaAraras {
 
         private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
 
+        private readonly SaveTools _savetools;
+
         private Recibo ReciboAtual => (Recibo)bsRecibos.Current;
 
         public frmRecibos() {
             InitializeComponent();
+            _savetools = new SaveTools(_ctx, Text);
             _ctx.Recibos.Load();
             bsRecibos.DataSource = _ctx.Recibos.Local.ToBindingList();
         }
 
         private void frmRecibos_Load(object sender, EventArgs e) {
             dgvRecibos.Sort(dgvRecibos.Columns[0], ListSortDirection.Descending);
+            dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
         }
 
         private void frmRecibos_FormClosing(object sender, FormClosingEventArgs e) {
-            if (!_ctx.ChangeTracker.HasChanges()) {
-                return;
-            }
-            switch (MessageBox.Show(_ctx.TextoSalvar(), Text, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)) {
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-                case DialogResult.Yes:
-                    if (!_ctx.SaveChanges(out var message)) {
-                        MessageBox.Show(message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        e.Cancel = true;
-                    }
-                    break;
-                case DialogResult.No:
-                    break;
-            }
+            _savetools.FormClosing(sender, e);
         }
 
         private void buttonRecalc_Click(object sender, EventArgs e) {
@@ -58,7 +47,7 @@ namespace AguaAraras {
 
         #region TOOLSRIP ----------------------------------------------------------
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            _ctx.SaveChanges();
+            _savetools.SalvarAlteracoes();
         }
 
         private void toolStripButtonUndo_Click(object sender, EventArgs e) {
@@ -147,7 +136,7 @@ namespace AguaAraras {
 
         private void toolStripButtonColect_Click(object sender, EventArgs e) {
             var data = DateTime.Today;
-            if (clsPromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) {
+            if (PromptDialog.InputDate("Pagamento de Distribuição e coleta", "Data", ref data) != DialogResult.OK) {
                 return;
             }
 

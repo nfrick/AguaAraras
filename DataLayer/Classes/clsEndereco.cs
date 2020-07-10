@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataLayer {
+﻿namespace DataLayer {
     public partial class Endereco {
         public string CEPformatted {
             get => string.IsNullOrEmpty(CEP) ? string.Empty : CEP.Insert(2, ".").Insert(6, "-");

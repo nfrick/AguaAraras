@@ -12,8 +12,11 @@ namespace AguaAraras {
     public partial class frmPessoas : Form {
         private readonly AguaArarasEntities _ctx = new AguaArarasEntities();
 
+        private readonly SaveTools savetools;
+
         public frmPessoas() {
             InitializeComponent();
+            savetools = new SaveTools(_ctx, Text);
             _ctx.Pessoas.Load();
             bsPessoas.DataSource = _ctx.Pessoas.Local.ToBindingList();
 
@@ -43,31 +46,16 @@ namespace AguaAraras {
         }
 
         private void frmPessoas_FormClosing(object sender, FormClosingEventArgs e) {
-            if (!_ctx.ChangeTracker.HasChanges()) {
-                return;
-            }
-
-            switch (MessageBox.Show(_ctx.TextoSalvar(),
-                "Pessoa", MessageBoxButtons.YesNoCancel)) {
-                case DialogResult.Yes:
-                    _ctx.SaveChanges();
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-                case DialogResult.No:
-                    break;
-            };
+            savetools.FormClosing(sender, e);
         }
         #endregion -----------------------------
 
         #region TOOLSTRIP ---------------------
 
         private void toolStripButtonSave_Click(object sender, EventArgs e) {
-            if (!_ctx.SaveChanges(out var message)) {
-                MessageBox.Show(message, "Pessoas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (savetools.SalvarAlteracoes()) {
+                EnableButtons();
             }
-            EnableButtons();
         }
 
         private void toolStripButtonUndo_Click(object sender, EventArgs e) {
@@ -191,5 +179,5 @@ namespace AguaAraras {
 
         #endregion ---------------------------
 
-        }
+    }
 }

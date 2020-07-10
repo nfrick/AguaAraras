@@ -5,7 +5,7 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MoneyBinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <Function Name="sp_BalanceItemsAgua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="spBalanceItemsAgua" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Extrato">
           <Parameter Name="ID" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="MoneyBinModelStoreContainer" />
@@ -30,7 +30,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MoneyBinModelStoreContainer" CdmEntityContainer="MoneyBinEntities">
-          <FunctionImportMapping FunctionImportName="BalanceItemsAgua" FunctionName="MoneyBinModel.Store.sp_BalanceItemsAgua">
+        <FunctionImportMapping FunctionImportName="BalanceItemsAgua" FunctionName="MoneyBinModel.Store.spBalanceItemsAgua">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MoneyBinModel.BalanceItem">
                 <ScalarProperty Name="Data" ColumnName="Data" />
