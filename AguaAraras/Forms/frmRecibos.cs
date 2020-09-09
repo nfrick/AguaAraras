@@ -25,6 +25,9 @@ namespace AguaAraras {
         }
 
         private void frmRecibos_Load(object sender, EventArgs e) {
+            dgvCotas.FormatColumn("ID", dgvCotas.StyleInteger, 40);
+            dgvCotas.FormatColumn("Data", dgvCotas.StyleDateShort, 80);
+            dgvCotas.FormatColumn("Valor", dgvCotas.StyleCurrency, 60);
             dgvRecibos.Sort(dgvRecibos.Columns[0], ListSortDirection.Descending);
             dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
         }
@@ -140,7 +143,8 @@ namespace AguaAraras {
                 return;
             }
 
-            ReciboAtual.Movimentos.Add(new Movimento() {
+            ReciboAtual.Movimentos.Add(new Movimento()
+            {
                 Tipo = "Cobrança",
                 Data = data,
                 ReciboID = ReciboAtual.ID,
@@ -157,8 +161,11 @@ namespace AguaAraras {
 
         private void dgvCotas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             var cota = (Cota)dgvCotas.Rows[e.RowIndex].DataBoundItem;
-            if (cota.Cobranca == 2) {
-                e.CellStyle.ForeColor = Color.DarkGreen;
+            //if (cota.Cobranca == 2) {
+            //    e.CellStyle.ForeColor = Color.Yellow;
+            //}
+            if (e.ColumnIndex == 2 && cota.Cobranca == 2) {
+                e.CellStyle.BackColor = Color.Khaki;
             }
         }
 
@@ -172,7 +179,10 @@ namespace AguaAraras {
             }
             bsRecibos.ResetBindings(false);
         }
-        #endregion ----------------------------------------------------------------
 
+        private void dgvRecibos_SelectionChanged(object sender, EventArgs e) {
+            dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
+        }
+        #endregion ----------------------------------------------------------------
     }
 }
