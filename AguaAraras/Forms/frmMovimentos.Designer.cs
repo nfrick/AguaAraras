@@ -196,7 +196,7 @@
             this.toolStripButtonHistorico.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonHistorico.Name = "toolStripButtonHistorico";
             this.toolStripButtonHistorico.Size = new System.Drawing.Size(28, 28);
-            this.toolStripButtonHistorico.Text = "toolStripButton1";
+            this.toolStripButtonHistorico.Text = "Procurar";
             this.toolStripButtonHistorico.Click += new System.EventHandler(this.toolStripButtonProcurar_Click);
             // 
             // dgvMovimentos

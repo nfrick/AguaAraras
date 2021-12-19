@@ -39,8 +39,9 @@
             this.textBoxAssunto = new System.Windows.Forms.TextBox();
             this.textBoxBody = new System.Windows.Forms.TextBox();
             this.labelTexto = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelSubstituicoes1 = new System.Windows.Forms.Label();
             this.checkBoxIncluirCobrancasAnteriores = new System.Windows.Forms.CheckBox();
+            this.labelSubstituicoes2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,12 +50,12 @@
             this.listBoxNomes.Enabled = false;
             this.listBoxNomes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBoxNomes.FormattingEnabled = true;
-            this.listBoxNomes.ItemHeight = 21;
+            this.listBoxNomes.ItemHeight = 28;
             this.listBoxNomes.Location = new System.Drawing.Point(18, 49);
             this.listBoxNomes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBoxNomes.Name = "listBoxNomes";
             this.listBoxNomes.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxNomes.Size = new System.Drawing.Size(182, 193);
+            this.listBoxNomes.Size = new System.Drawing.Size(182, 172);
             this.listBoxNomes.TabIndex = 0;
             // 
             // radioButtonTodos
@@ -65,7 +66,7 @@
             this.radioButtonTodos.Location = new System.Drawing.Point(18, 14);
             this.radioButtonTodos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioButtonTodos.Name = "radioButtonTodos";
-            this.radioButtonTodos.Size = new System.Drawing.Size(68, 25);
+            this.radioButtonTodos.Size = new System.Drawing.Size(85, 32);
             this.radioButtonTodos.TabIndex = 1;
             this.radioButtonTodos.TabStop = true;
             this.radioButtonTodos.Text = "Todos";
@@ -79,7 +80,7 @@
             this.radioButtonSelecionados.Location = new System.Drawing.Point(100, 14);
             this.radioButtonSelecionados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioButtonSelecionados.Name = "radioButtonSelecionados";
-            this.radioButtonSelecionados.Size = new System.Drawing.Size(100, 25);
+            this.radioButtonSelecionados.Size = new System.Drawing.Size(123, 32);
             this.radioButtonSelecionados.TabIndex = 2;
             this.radioButtonSelecionados.Text = "Selecionar";
             this.radioButtonSelecionados.UseVisualStyleBackColor = true;
@@ -137,7 +138,7 @@
             this.radioButtonSalvar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonSalvar.Location = new System.Drawing.Point(18, 75);
             this.radioButtonSalvar.Name = "radioButtonSalvar";
-            this.radioButtonSalvar.Size = new System.Drawing.Size(71, 25);
+            this.radioButtonSalvar.Size = new System.Drawing.Size(86, 32);
             this.radioButtonSalvar.TabIndex = 2;
             this.radioButtonSalvar.TabStop = true;
             this.radioButtonSalvar.Text = "Salvar";
@@ -149,7 +150,7 @@
             this.radioButtonEnviar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonEnviar.Location = new System.Drawing.Point(18, 50);
             this.radioButtonEnviar.Name = "radioButtonEnviar";
-            this.radioButtonEnviar.Size = new System.Drawing.Size(71, 25);
+            this.radioButtonEnviar.Size = new System.Drawing.Size(86, 32);
             this.radioButtonEnviar.TabIndex = 1;
             this.radioButtonEnviar.TabStop = true;
             this.radioButtonEnviar.Text = "Enviar";
@@ -162,7 +163,7 @@
             this.radioButtonEnviarDeletar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonEnviarDeletar.Location = new System.Drawing.Point(18, 25);
             this.radioButtonEnviarDeletar.Name = "radioButtonEnviarDeletar";
-            this.radioButtonEnviarDeletar.Size = new System.Drawing.Size(135, 25);
+            this.radioButtonEnviarDeletar.Size = new System.Drawing.Size(167, 32);
             this.radioButtonEnviarDeletar.TabIndex = 0;
             this.radioButtonEnviarDeletar.TabStop = true;
             this.radioButtonEnviarDeletar.Text = "Enviar e deletar";
@@ -174,7 +175,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(213, 160);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 21);
+            this.label1.Size = new System.Drawing.Size(101, 28);
             this.label1.TabIndex = 8;
             this.label1.Text = "Salvar em:";
             // 
@@ -184,7 +185,7 @@
             this.labelAssunto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAssunto.Location = new System.Drawing.Point(213, 227);
             this.labelAssunto.Name = "labelAssunto";
-            this.labelAssunto.Size = new System.Drawing.Size(69, 21);
+            this.labelAssunto.Size = new System.Drawing.Size(86, 28);
             this.labelAssunto.TabIndex = 9;
             this.labelAssunto.Text = "Assunto:";
             // 
@@ -193,7 +194,7 @@
             this.textBoxAssunto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAssunto.Location = new System.Drawing.Point(217, 248);
             this.textBoxAssunto.Name = "textBoxAssunto";
-            this.textBoxAssunto.Size = new System.Drawing.Size(457, 29);
+            this.textBoxAssunto.Size = new System.Drawing.Size(457, 34);
             this.textBoxAssunto.TabIndex = 10;
             this.textBoxAssunto.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAssunto_Validating);
             // 
@@ -215,20 +216,19 @@
             this.labelTexto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTexto.Location = new System.Drawing.Point(14, 273);
             this.labelTexto.Name = "labelTexto";
-            this.labelTexto.Size = new System.Drawing.Size(48, 21);
+            this.labelTexto.Size = new System.Drawing.Size(62, 28);
             this.labelTexto.TabIndex = 13;
             this.labelTexto.Text = "Texto:";
             // 
-            // label2
+            // labelSubstituicoes1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 465);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(528, 17);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "[Saudacao]     [Descricao]     [Nome]      [Valor]     [s]   - plural qdo mais de" +
-    " 1 recibo";
+            this.labelSubstituicoes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubstituicoes1.Location = new System.Drawing.Point(19, 465);
+            this.labelSubstituicoes1.Name = "labelSubstituicoes1";
+            this.labelSubstituicoes1.Size = new System.Drawing.Size(655, 23);
+            this.labelSubstituicoes1.TabIndex = 14;
+            this.labelSubstituicoes1.Text = "[Trimestre]    [Ano]    [Saudacao]    [Descricao]";
+            this.labelSubstituicoes1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // checkBoxIncluirCobrancasAnteriores
             // 
@@ -236,19 +236,30 @@
             this.checkBoxIncluirCobrancasAnteriores.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxIncluirCobrancasAnteriores.Location = new System.Drawing.Point(225, 14);
             this.checkBoxIncluirCobrancasAnteriores.Name = "checkBoxIncluirCobrancasAnteriores";
-            this.checkBoxIncluirCobrancasAnteriores.Size = new System.Drawing.Size(220, 25);
+            this.checkBoxIncluirCobrancasAnteriores.Size = new System.Drawing.Size(272, 32);
             this.checkBoxIncluirCobrancasAnteriores.TabIndex = 15;
             this.checkBoxIncluirCobrancasAnteriores.Text = "Incluir cobranças anteriores";
             this.checkBoxIncluirCobrancasAnteriores.UseVisualStyleBackColor = true;
             this.checkBoxIncluirCobrancasAnteriores.CheckedChanged += new System.EventHandler(this.checkBoxIncluirCobrancasAnteriores_CheckedChanged);
             // 
+            // labelSubstituicoes2
+            // 
+            this.labelSubstituicoes2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubstituicoes2.Location = new System.Drawing.Point(19, 496);
+            this.labelSubstituicoes2.Name = "labelSubstituicoes2";
+            this.labelSubstituicoes2.Size = new System.Drawing.Size(655, 23);
+            this.labelSubstituicoes2.TabIndex = 16;
+            this.labelSubstituicoes2.Text = "[Nome]    [Valor]    [s] - plural qdo mais de 1 recibo";
+            this.labelSubstituicoes2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmCobrancaEmail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 505);
+            this.ClientSize = new System.Drawing.Size(693, 529);
+            this.Controls.Add(this.labelSubstituicoes2);
             this.Controls.Add(this.checkBoxIncluirCobrancasAnteriores);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelSubstituicoes1);
             this.Controls.Add(this.labelTexto);
             this.Controls.Add(this.textBoxBody);
             this.Controls.Add(this.textBoxAssunto);
@@ -295,7 +306,8 @@
         private System.Windows.Forms.TextBox textBoxAssunto;
         private System.Windows.Forms.TextBox textBoxBody;
         private System.Windows.Forms.Label labelTexto;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelSubstituicoes1;
         private System.Windows.Forms.CheckBox checkBoxIncluirCobrancasAnteriores;
+        private System.Windows.Forms.Label labelSubstituicoes2;
     }
 }

@@ -253,6 +253,7 @@
                                       <Style>
                                         <FontFamily>Arial Black</FontFamily>
                                         <FontSize>18pt</FontSize>
+                                        <Color>White</Color>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -269,7 +270,7 @@
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>Silver</BackgroundColor>
+                                <BackgroundColor>#0063b1</BackgroundColor>
                                 <VerticalAlign>Top</VerticalAlign>
                               </Style>
                             </Textbox>
@@ -284,6 +285,7 @@
                                       <Style>
                                         <FontFamily>Tahoma</FontFamily>
                                         <FontSize>14pt</FontSize>
+                                        <Color>White</Color>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -316,6 +318,7 @@
                                         <FontSize>14pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
                                         <Format>dd/MM/yyyy</Format>
+                                        <Color>White</Color>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -698,6 +701,7 @@ Fields!PessoaID.Value/100, "0.00")</Value>
                                     <FontSize>12pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>'R$' #,0.00;('R$' #,0.00)</Format>
+                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -726,7 +730,7 @@ Fields!PessoaID.Value/100, "0.00")</Value>
                             <RightBorder>
                               <Width>20pt</Width>
                             </RightBorder>
-                            <BackgroundColor>Silver</BackgroundColor>
+                            <BackgroundColor>#0063b1</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -801,6 +805,7 @@ Fields!PessoaID.Value/100, "0.00")</Value>
                                         <FontStyle>Italic</FontStyle>
                                         <FontFamily>tahoma</FontFamily>
                                         <FontSize>11pt</FontSize>
+                                        <Color>White</Color>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -823,7 +828,7 @@ Fields!PessoaID.Value/100, "0.00")</Value>
                                   <Style>Solid</Style>
                                   <Width>0.5pt</Width>
                                 </TopBorder>
-                                <BackgroundColor>LightGrey</BackgroundColor>
+                                <BackgroundColor>#0063b1</BackgroundColor>
                                 <PaddingTop>2pt</PaddingTop>
                               </Style>
                             </Textbox>
@@ -834,11 +839,12 @@ Fields!PessoaID.Value/100, "0.00")</Value>
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>admin: Nelson Frick     (24) 2225-1117     ararasrede78@gmail.com</Value>
+                                      <Value>admin: Nelson Frick       (24) 2231-6694       PIX: ararasrede78@gmail.com</Value>
                                       <Style>
                                         <FontFamily>tahoma</FontFamily>
                                         <FontSize>11pt</FontSize>
                                         <FontWeight>Bold</FontWeight>
+                                        <Color>White</Color>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -857,7 +863,7 @@ Fields!PessoaID.Value/100, "0.00")</Value>
                                 <Border>
                                   <Style>None</Style>
                                 </Border>
-                                <BackgroundColor>LightGrey</BackgroundColor>
+                                <BackgroundColor>#0063b1</BackgroundColor>
                                 <PaddingLeft>0cm</PaddingLeft>
                                 <PaddingRight>0cm</PaddingRight>
                                 <PaddingTop>0cm</PaddingTop>

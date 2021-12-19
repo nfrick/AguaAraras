@@ -31,7 +31,7 @@ namespace AguaAraras {
             InitializeComponent();
 
             var numAnterior = _ReciboAtual.Numero == 1 ? 3 : _ReciboAtual.Numero - 2;  // 0-based quarter
-            var anoAnterior = _ReciboAtual.Ano - (numAnterior == 4 ? 1 : 0);
+            var anoAnterior = _ReciboAtual.Ano - (numAnterior == 3 ? 1 : 0);
 
             var inicio = new DateTime(anoAnterior, numAnterior * 3 + 1, 1);
             var termino = inicio.AddMonths(3).AddDays(-1);
@@ -160,13 +160,16 @@ namespace AguaAraras {
     }
 
     public class EMailDeCobranca {
-        private static readonly SmtpClient _smtp = new SmtpClient("smtp.gmail.com") {
-            Port = 587,
+        private static Properties.Settings settings = Properties.Settings.Default;
+        //private static readonly SmtpClient _smtp = new SmtpClient("smtp.gmail.com") {
+        private static readonly SmtpClient _smtp = new SmtpClient(settings.smtp) {
+            Port = settings.port,   // 587,
             UseDefaultCredentials = true,
-            Credentials = new System.Net.NetworkCredential("ararasrede78@gmail.com", "qmlyswxmpfvlvwta"),
+            //Credentials = new System.Net.NetworkCredential("ararasrede78@gmail.com", "hdgizwtwaakcdhwu"),
+            Credentials = new System.Net.NetworkCredential(settings.email, settings.password),
             EnableSsl = true,
             DeliveryMethod = SmtpDeliveryMethod.Network,
-            Timeout = 20000
+            Timeout = settings.timeout  //20000
         };
         public List<ExtratoItem> Extrato { get; set; }
         public string EMail { get; set; }
@@ -259,6 +262,7 @@ namespace AguaAraras {
                 var fastRep = new FastReplacer("[", "]");
                 fastRep.Append(bodyText);
                 fastRep.Replace("[Trimestre]", Cobrancas.First().ReciboNumero.ToString());
+                fastRep.Replace("[Ano]", Cobrancas.First().ReciboAno);
                 fastRep.Replace("[Saudacao]",
                     DateTime.Now.Hour < 12 ? "Bom dia" : (DateTime.Now.Hour < 18 ? "Boa tarde" : "Boa noite"));
                 fastRep.Replace("[Nome]", Cobrancas.First().Nome);

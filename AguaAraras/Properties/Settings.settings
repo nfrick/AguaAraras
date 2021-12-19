@@ -12,7 +12,7 @@
       <Value Profile="(Default)">587</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">qmlyswxmpfvlvwta</Value>
+      <Value Profile="(Default)">hdgizwtwaakcdhwu</Value>
     </Setting>
     <Setting Name="timeout" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">20000</Value>

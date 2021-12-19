@@ -1,2 +1,2 @@
-copy *.rdlc "D:\Users\Nelson Frick\Documents\Visual Studio 2017\Projects\AguaAraras\AguaAraras\bin\Debug\Reports"
+copy *.rdlc "D:\Users\Nelson Frick\Documents\Projects\Visual Studio\AguaAraras\AguaAraras\bin\Debug\Reports"
 pause

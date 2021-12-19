@@ -108,7 +108,7 @@
                             <LeftBorder>
                               <Style>Solid</Style>
                             </LeftBorder>
-                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
+                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightSteelBlue", "Pink")</BackgroundColor>
                             <PaddingLeft>4pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>6pt</PaddingTop>
@@ -146,7 +146,7 @@
                             <TopBorder>
                               <Style>Solid</Style>
                             </TopBorder>
-                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
+                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightSteelBlue", "Pink")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -187,7 +187,7 @@
                             <TopBorder>
                               <Style>Solid</Style>
                             </TopBorder>
-                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
+                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightSteelBlue", "Pink")</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                           </Style>
@@ -225,7 +225,7 @@
                             <TopBorder>
                               <Style>Solid</Style>
                             </TopBorder>
-                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightBlue", "Pink")</BackgroundColor>
+                            <BackgroundColor>=iif(Sum(Sum(Fields!Valor.Value)) &gt; 0, "LightSteelBlue", "Pink")</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>

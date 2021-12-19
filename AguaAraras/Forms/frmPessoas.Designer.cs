@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.bsPessoas = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxSobrenome = new System.Windows.Forms.TextBox();
@@ -67,10 +67,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.labelPendenteValor = new System.Windows.Forms.Label();
             this.dgvPagamentos = new System.Windows.Forms.DataGridView();
-            this.ReciboAnoNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsCotas = new System.Windows.Forms.BindingSource(this.components);
             this.enderecoArarasLabel1 = new System.Windows.Forms.Label();
             this.nomeCompletoLabel1 = new System.Windows.Forms.Label();
@@ -82,37 +78,10 @@
             this.toolStripButtonSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonUndo = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.valorDescricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorExtensoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cobrancaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tratamentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sobrenomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeCompletoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tomadasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tomadasExtensoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.enderecoArarasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gerarReciboDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.depositoIdentificadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboNumeroAnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboAnoNumeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboEmissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboVencimentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboCotaValorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboMesesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboMesesExtensoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboDescricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboObservacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pessoaIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacoesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pessoaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reciboDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReciboAnoNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             lablTomadas = new System.Windows.Forms.Label();
             labelObservacoes = new System.Windows.Forms.Label();
             labelNome = new System.Windows.Forms.Label();
@@ -535,38 +504,7 @@
             this.ReciboAnoNumero,
             this.Data,
             this.Valor,
-            this.Observacoes,
-            this.valorDescricaoDataGridViewTextBoxColumn,
-            this.valorExtensoDataGridViewTextBoxColumn,
-            this.cobrancaDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn1,
-            this.tratamentoDataGridViewTextBoxColumn,
-            this.sobrenomeDataGridViewTextBoxColumn,
-            this.nomeCompletoDataGridViewTextBoxColumn,
-            this.eMailDataGridViewTextBoxColumn,
-            this.tomadasDataGridViewTextBoxColumn,
-            this.tomadasExtensoDataGridViewTextBoxColumn,
-            this.enderecoArarasDataGridViewTextBoxColumn,
-            this.gerarReciboDataGridViewCheckBoxColumn,
-            this.depositoIdentificadoDataGridViewTextBoxColumn,
-            this.reciboNumeroDataGridViewTextBoxColumn,
-            this.reciboNumeroAnoDataGridViewTextBoxColumn,
-            this.reciboAnoNumeroDataGridViewTextBoxColumn,
-            this.reciboEmissaoDataGridViewTextBoxColumn,
-            this.reciboVencimentoDataGridViewTextBoxColumn,
-            this.reciboCotaValorDataGridViewTextBoxColumn,
-            this.reciboMesesDataGridViewTextBoxColumn,
-            this.reciboMesesExtensoDataGridViewTextBoxColumn,
-            this.reciboDescricaoDataGridViewTextBoxColumn,
-            this.reciboObservacoesDataGridViewTextBoxColumn,
-            this.iDDataGridViewTextBoxColumn1,
-            this.reciboIDDataGridViewTextBoxColumn,
-            this.pessoaIDDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn,
-            this.valorDataGridViewTextBoxColumn,
-            this.observacoesDataGridViewTextBoxColumn,
-            this.pessoaDataGridViewTextBoxColumn,
-            this.reciboDataGridViewTextBoxColumn});
+            this.Observacoes});
             this.dgvPagamentos.DataSource = this.bsCotas;
             this.dgvPagamentos.Location = new System.Drawing.Point(10, 17);
             this.dgvPagamentos.Name = "dgvPagamentos";
@@ -575,40 +513,6 @@
             this.dgvPagamentos.RowTemplate.Height = 26;
             this.dgvPagamentos.Size = new System.Drawing.Size(565, 209);
             this.dgvPagamentos.TabIndex = 0;
-            // 
-            // ReciboAnoNumero
-            // 
-            this.ReciboAnoNumero.DataPropertyName = "ReciboAnoNumero";
-            this.ReciboAnoNumero.HeaderText = "Recibo";
-            this.ReciboAnoNumero.Name = "ReciboAnoNumero";
-            this.ReciboAnoNumero.ReadOnly = true;
-            this.ReciboAnoNumero.Width = 80;
-            // 
-            // Data
-            // 
-            this.Data.DataPropertyName = "Data";
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            // 
-            // Observacoes
-            // 
-            this.Observacoes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Observacoes.DataPropertyName = "Observacoes";
-            this.Observacoes.HeaderText = "Observações";
-            this.Observacoes.Name = "Observacoes";
-            this.Observacoes.ReadOnly = true;
             // 
             // bsCotas
             // 
@@ -734,222 +638,39 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // valorDescricaoDataGridViewTextBoxColumn
+            // ReciboAnoNumero
             // 
-            this.valorDescricaoDataGridViewTextBoxColumn.DataPropertyName = "ValorDescricao";
-            this.valorDescricaoDataGridViewTextBoxColumn.HeaderText = "ValorDescricao";
-            this.valorDescricaoDataGridViewTextBoxColumn.Name = "valorDescricaoDataGridViewTextBoxColumn";
-            this.valorDescricaoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ReciboAnoNumero.DataPropertyName = "ReciboAnoNumero";
+            this.ReciboAnoNumero.HeaderText = "Recibo";
+            this.ReciboAnoNumero.Name = "ReciboAnoNumero";
+            this.ReciboAnoNumero.ReadOnly = true;
+            this.ReciboAnoNumero.Width = 80;
             // 
-            // valorExtensoDataGridViewTextBoxColumn
+            // Data
             // 
-            this.valorExtensoDataGridViewTextBoxColumn.DataPropertyName = "ValorExtenso";
-            this.valorExtensoDataGridViewTextBoxColumn.HeaderText = "ValorExtenso";
-            this.valorExtensoDataGridViewTextBoxColumn.Name = "valorExtensoDataGridViewTextBoxColumn";
-            this.valorExtensoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Data.DataPropertyName = "Data";
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
             // 
-            // cobrancaDataGridViewTextBoxColumn
+            // Valor
             // 
-            this.cobrancaDataGridViewTextBoxColumn.DataPropertyName = "Cobranca";
-            this.cobrancaDataGridViewTextBoxColumn.HeaderText = "Cobranca";
-            this.cobrancaDataGridViewTextBoxColumn.Name = "cobrancaDataGridViewTextBoxColumn";
-            this.cobrancaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Valor.DataPropertyName = "Valor";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Valor.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
             // 
-            // nomeDataGridViewTextBoxColumn1
+            // Observacoes
             // 
-            this.nomeDataGridViewTextBoxColumn1.DataPropertyName = "Nome";
-            this.nomeDataGridViewTextBoxColumn1.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn1.Name = "nomeDataGridViewTextBoxColumn1";
-            this.nomeDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // tratamentoDataGridViewTextBoxColumn
-            // 
-            this.tratamentoDataGridViewTextBoxColumn.DataPropertyName = "Tratamento";
-            this.tratamentoDataGridViewTextBoxColumn.HeaderText = "Tratamento";
-            this.tratamentoDataGridViewTextBoxColumn.Name = "tratamentoDataGridViewTextBoxColumn";
-            this.tratamentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sobrenomeDataGridViewTextBoxColumn
-            // 
-            this.sobrenomeDataGridViewTextBoxColumn.DataPropertyName = "Sobrenome";
-            this.sobrenomeDataGridViewTextBoxColumn.HeaderText = "Sobrenome";
-            this.sobrenomeDataGridViewTextBoxColumn.Name = "sobrenomeDataGridViewTextBoxColumn";
-            this.sobrenomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeCompletoDataGridViewTextBoxColumn
-            // 
-            this.nomeCompletoDataGridViewTextBoxColumn.DataPropertyName = "NomeCompleto";
-            this.nomeCompletoDataGridViewTextBoxColumn.HeaderText = "NomeCompleto";
-            this.nomeCompletoDataGridViewTextBoxColumn.Name = "nomeCompletoDataGridViewTextBoxColumn";
-            this.nomeCompletoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // eMailDataGridViewTextBoxColumn
-            // 
-            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "EMail";
-            this.eMailDataGridViewTextBoxColumn.HeaderText = "EMail";
-            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
-            this.eMailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tomadasDataGridViewTextBoxColumn
-            // 
-            this.tomadasDataGridViewTextBoxColumn.DataPropertyName = "Tomadas";
-            this.tomadasDataGridViewTextBoxColumn.HeaderText = "Tomadas";
-            this.tomadasDataGridViewTextBoxColumn.Name = "tomadasDataGridViewTextBoxColumn";
-            this.tomadasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tomadasExtensoDataGridViewTextBoxColumn
-            // 
-            this.tomadasExtensoDataGridViewTextBoxColumn.DataPropertyName = "TomadasExtenso";
-            this.tomadasExtensoDataGridViewTextBoxColumn.HeaderText = "TomadasExtenso";
-            this.tomadasExtensoDataGridViewTextBoxColumn.Name = "tomadasExtensoDataGridViewTextBoxColumn";
-            this.tomadasExtensoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // enderecoArarasDataGridViewTextBoxColumn
-            // 
-            this.enderecoArarasDataGridViewTextBoxColumn.DataPropertyName = "EnderecoAraras";
-            this.enderecoArarasDataGridViewTextBoxColumn.HeaderText = "EnderecoAraras";
-            this.enderecoArarasDataGridViewTextBoxColumn.Name = "enderecoArarasDataGridViewTextBoxColumn";
-            this.enderecoArarasDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // gerarReciboDataGridViewCheckBoxColumn
-            // 
-            this.gerarReciboDataGridViewCheckBoxColumn.DataPropertyName = "GerarRecibo";
-            this.gerarReciboDataGridViewCheckBoxColumn.HeaderText = "GerarRecibo";
-            this.gerarReciboDataGridViewCheckBoxColumn.Name = "gerarReciboDataGridViewCheckBoxColumn";
-            this.gerarReciboDataGridViewCheckBoxColumn.ReadOnly = true;
-            // 
-            // depositoIdentificadoDataGridViewTextBoxColumn
-            // 
-            this.depositoIdentificadoDataGridViewTextBoxColumn.DataPropertyName = "DepositoIdentificado";
-            this.depositoIdentificadoDataGridViewTextBoxColumn.HeaderText = "DepositoIdentificado";
-            this.depositoIdentificadoDataGridViewTextBoxColumn.Name = "depositoIdentificadoDataGridViewTextBoxColumn";
-            this.depositoIdentificadoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboNumeroDataGridViewTextBoxColumn
-            // 
-            this.reciboNumeroDataGridViewTextBoxColumn.DataPropertyName = "ReciboNumero";
-            this.reciboNumeroDataGridViewTextBoxColumn.HeaderText = "ReciboNumero";
-            this.reciboNumeroDataGridViewTextBoxColumn.Name = "reciboNumeroDataGridViewTextBoxColumn";
-            this.reciboNumeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboNumeroAnoDataGridViewTextBoxColumn
-            // 
-            this.reciboNumeroAnoDataGridViewTextBoxColumn.DataPropertyName = "ReciboNumeroAno";
-            this.reciboNumeroAnoDataGridViewTextBoxColumn.HeaderText = "ReciboNumeroAno";
-            this.reciboNumeroAnoDataGridViewTextBoxColumn.Name = "reciboNumeroAnoDataGridViewTextBoxColumn";
-            this.reciboNumeroAnoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboAnoNumeroDataGridViewTextBoxColumn
-            // 
-            this.reciboAnoNumeroDataGridViewTextBoxColumn.DataPropertyName = "ReciboAnoNumero";
-            this.reciboAnoNumeroDataGridViewTextBoxColumn.HeaderText = "ReciboAnoNumero";
-            this.reciboAnoNumeroDataGridViewTextBoxColumn.Name = "reciboAnoNumeroDataGridViewTextBoxColumn";
-            this.reciboAnoNumeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboEmissaoDataGridViewTextBoxColumn
-            // 
-            this.reciboEmissaoDataGridViewTextBoxColumn.DataPropertyName = "ReciboEmissao";
-            this.reciboEmissaoDataGridViewTextBoxColumn.HeaderText = "ReciboEmissao";
-            this.reciboEmissaoDataGridViewTextBoxColumn.Name = "reciboEmissaoDataGridViewTextBoxColumn";
-            this.reciboEmissaoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboVencimentoDataGridViewTextBoxColumn
-            // 
-            this.reciboVencimentoDataGridViewTextBoxColumn.DataPropertyName = "ReciboVencimento";
-            this.reciboVencimentoDataGridViewTextBoxColumn.HeaderText = "ReciboVencimento";
-            this.reciboVencimentoDataGridViewTextBoxColumn.Name = "reciboVencimentoDataGridViewTextBoxColumn";
-            this.reciboVencimentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboCotaValorDataGridViewTextBoxColumn
-            // 
-            this.reciboCotaValorDataGridViewTextBoxColumn.DataPropertyName = "ReciboCotaValor";
-            this.reciboCotaValorDataGridViewTextBoxColumn.HeaderText = "ReciboCotaValor";
-            this.reciboCotaValorDataGridViewTextBoxColumn.Name = "reciboCotaValorDataGridViewTextBoxColumn";
-            this.reciboCotaValorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboMesesDataGridViewTextBoxColumn
-            // 
-            this.reciboMesesDataGridViewTextBoxColumn.DataPropertyName = "ReciboMeses";
-            this.reciboMesesDataGridViewTextBoxColumn.HeaderText = "ReciboMeses";
-            this.reciboMesesDataGridViewTextBoxColumn.Name = "reciboMesesDataGridViewTextBoxColumn";
-            this.reciboMesesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboMesesExtensoDataGridViewTextBoxColumn
-            // 
-            this.reciboMesesExtensoDataGridViewTextBoxColumn.DataPropertyName = "ReciboMesesExtenso";
-            this.reciboMesesExtensoDataGridViewTextBoxColumn.HeaderText = "ReciboMesesExtenso";
-            this.reciboMesesExtensoDataGridViewTextBoxColumn.Name = "reciboMesesExtensoDataGridViewTextBoxColumn";
-            this.reciboMesesExtensoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboDescricaoDataGridViewTextBoxColumn
-            // 
-            this.reciboDescricaoDataGridViewTextBoxColumn.DataPropertyName = "ReciboDescricao";
-            this.reciboDescricaoDataGridViewTextBoxColumn.HeaderText = "ReciboDescricao";
-            this.reciboDescricaoDataGridViewTextBoxColumn.Name = "reciboDescricaoDataGridViewTextBoxColumn";
-            this.reciboDescricaoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboObservacoesDataGridViewTextBoxColumn
-            // 
-            this.reciboObservacoesDataGridViewTextBoxColumn.DataPropertyName = "ReciboObservacoes";
-            this.reciboObservacoesDataGridViewTextBoxColumn.HeaderText = "ReciboObservacoes";
-            this.reciboObservacoesDataGridViewTextBoxColumn.Name = "reciboObservacoesDataGridViewTextBoxColumn";
-            this.reciboObservacoesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // iDDataGridViewTextBoxColumn1
-            // 
-            this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn1.Name = "iDDataGridViewTextBoxColumn1";
-            this.iDDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // reciboIDDataGridViewTextBoxColumn
-            // 
-            this.reciboIDDataGridViewTextBoxColumn.DataPropertyName = "ReciboID";
-            this.reciboIDDataGridViewTextBoxColumn.HeaderText = "ReciboID";
-            this.reciboIDDataGridViewTextBoxColumn.Name = "reciboIDDataGridViewTextBoxColumn";
-            this.reciboIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pessoaIDDataGridViewTextBoxColumn
-            // 
-            this.pessoaIDDataGridViewTextBoxColumn.DataPropertyName = "PessoaID";
-            this.pessoaIDDataGridViewTextBoxColumn.HeaderText = "PessoaID";
-            this.pessoaIDDataGridViewTextBoxColumn.Name = "pessoaIDDataGridViewTextBoxColumn";
-            this.pessoaIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn
-            // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "Valor";
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // observacoesDataGridViewTextBoxColumn
-            // 
-            this.observacoesDataGridViewTextBoxColumn.DataPropertyName = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.HeaderText = "Observacoes";
-            this.observacoesDataGridViewTextBoxColumn.Name = "observacoesDataGridViewTextBoxColumn";
-            this.observacoesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pessoaDataGridViewTextBoxColumn
-            // 
-            this.pessoaDataGridViewTextBoxColumn.DataPropertyName = "Pessoa";
-            this.pessoaDataGridViewTextBoxColumn.HeaderText = "Pessoa";
-            this.pessoaDataGridViewTextBoxColumn.Name = "pessoaDataGridViewTextBoxColumn";
-            this.pessoaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // reciboDataGridViewTextBoxColumn
-            // 
-            this.reciboDataGridViewTextBoxColumn.DataPropertyName = "Recibo";
-            this.reciboDataGridViewTextBoxColumn.HeaderText = "Recibo";
-            this.reciboDataGridViewTextBoxColumn.Name = "reciboDataGridViewTextBoxColumn";
-            this.reciboDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Observacoes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Observacoes.DataPropertyName = "Observacoes";
+            this.Observacoes.HeaderText = "Observações";
+            this.Observacoes.Name = "Observacoes";
+            this.Observacoes.ReadOnly = true;
             // 
             // frmPessoas
             // 
@@ -1038,36 +759,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDescricaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorExtensoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cobrancaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tratamentoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sobrenomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeCompletoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tomadasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tomadasExtensoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn enderecoArarasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn gerarReciboDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn depositoIdentificadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboNumeroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboNumeroAnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboAnoNumeroDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboEmissaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboVencimentoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboCotaValorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboMesesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboMesesExtensoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboDescricaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboObservacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pessoaIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn observacoesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pessoaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reciboDataGridViewTextBoxColumn;
     }
 }

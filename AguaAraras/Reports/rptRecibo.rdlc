@@ -95,9 +95,9 @@
                                     <TextRun>
                                       <Value>=Fields!ReciboNumero.Value</Value>
                                       <Style>
-                                        <FontFamily>Berlin Sans FB Demi</FontFamily>
+                                        <FontFamily>Liberty Hollow</FontFamily>
                                         <FontSize>72pt</FontSize>
-                                        <Color>Silver</Color>
+                                        <Color>Gray</Color>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -186,7 +186,7 @@
                         <Rectangle Name="Rectangle7">
                           <ReportItems>
                             <Line Name="Line2">
-                              <Top>0.88168cm</Top>
+                              <Top>0.84993cm</Top>
                               <Left>0.3661cm</Left>
                               <Height>0cm</Height>
                               <Width>8.52174cm</Width>
@@ -235,7 +235,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox1</rd:DefaultName>
-                              <Top>0.16127cm</Top>
+                              <Top>0.12952cm</Top>
                               <Left>0.3661cm</Left>
                               <Height>0.64985cm</Height>
                               <Width>2.32833cm</Width>
@@ -268,7 +268,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Tratamento</rd:DefaultName>
-                              <Top>1.35188cm</Top>
+                              <Top>1.12963cm</Top>
                               <Left>0.35519cm</Left>
                               <Height>0.46771cm</Height>
                               <Width>2.06195cm</Width>
@@ -298,7 +298,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>NomeCompleto</rd:DefaultName>
-                              <Top>1.35188cm</Top>
+                              <Top>1.12963cm</Top>
                               <Left>2.52297cm</Left>
                               <Height>0.46771cm</Height>
                               <Width>6.02051cm</Width>
@@ -327,7 +327,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox9</rd:DefaultName>
-                              <Top>3.75709cm</Top>
+                              <Top>4.04284cm</Top>
                               <Left>0.35519cm</Left>
                               <Height>0.42478cm</Height>
                               <Width>3.34106cm</Width>
@@ -356,8 +356,8 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>Textbox9</rd:DefaultName>
-                              <Top>4.32955cm</Top>
-                              <Left>6.46592cm</Left>
+                              <Top>4.58216cm</Top>
+                              <Left>6.3028cm</Left>
                               <Height>0.42478cm</Height>
                               <Width>1.81664cm</Width>
                               <ZIndex>5</ZIndex>
@@ -388,7 +388,7 @@
                                 </Paragraph>
                               </Paragraphs>
                               <rd:DefaultName>ValorExtenso</rd:DefaultName>
-                              <Top>1.99598cm</Top>
+                              <Top>1.77373cm</Top>
                               <Left>0.39256cm</Left>
                               <Height>1.38465cm</Height>
                               <Width>9.6897cm</Width>
@@ -403,7 +403,7 @@
                               <Source>Embedded</Source>
                               <Value>Logo</Value>
                               <Sizing>Fit</Sizing>
-                              <Top>0.34783cm</Top>
+                              <Top>0.31608cm</Top>
                               <Left>8.88226cm</Left>
                               <Height>1.2cm</Height>
                               <Width>1.2cm</Width>
@@ -414,6 +414,132 @@
                                 </Border>
                               </Style>
                             </Image>
+                            <Rectangle Name="Rectangle1">
+                              <KeepTogether>true</KeepTogether>
+                              <Top>3.33525cm</Top>
+                              <Left>0.40532cm</Left>
+                              <Height>0.3cm</Height>
+                              <Width>0.3cm</Width>
+                              <ZIndex>8</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                            <Rectangle Name="Rectangle2">
+                              <KeepTogether>true</KeepTogether>
+                              <Top>3.33525cm</Top>
+                              <Left>3.83432cm</Left>
+                              <Height>0.3cm</Height>
+                              <Width>0.3cm</Width>
+                              <ZIndex>9</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                            <Rectangle Name="Rectangle4">
+                              <KeepTogether>true</KeepTogether>
+                              <Top>3.33525cm</Top>
+                              <Left>7.26332cm</Left>
+                              <Height>0.3cm</Height>
+                              <Width>0.3cm</Width>
+                              <ZIndex>10</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                            <Textbox Name="Textbox11">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Cheque</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox9</rd:DefaultName>
+                              <Top>3.29875cm</Top>
+                              <Left>4.24015cm</Left>
+                              <Height>0.42478cm</Height>
+                              <Width>1.48655cm</Width>
+                              <ZIndex>11</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox12">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Dinheiro</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox9</rd:DefaultName>
+                              <Top>3.29875cm</Top>
+                              <Left>0.81115cm</Left>
+                              <Height>0.42478cm</Height>
+                              <Width>1.60599cm</Width>
+                              <ZIndex>12</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Textbox13">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Depósito</Value>
+                                      <Style>
+                                        <FontFamily>Tahoma</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Textbox9</rd:DefaultName>
+                              <Top>3.29875cm</Top>
+                              <Left>7.66915cm</Left>
+                              <Height>0.42478cm</Height>
+                              <Width>1.5448cm</Width>
+                              <ZIndex>13</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
                           </ReportItems>
                           <KeepTogether>true</KeepTogether>
                           <Top>0.26059cm</Top>

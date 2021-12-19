@@ -46,12 +46,11 @@
             this.buttonSave.Enabled = false;
             this.buttonSave.ForeColor = System.Drawing.Color.Black;
             this.buttonSave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonSave.Location = new System.Drawing.Point(3, 502);
+            this.buttonSave.Location = new System.Drawing.Point(3, 484);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(137, 54);
             this.buttonSave.TabIndex = 3;
             this.buttonSave.Text = "Salvar";
-            this.buttonSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -74,13 +73,15 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(947, 559);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(947, 541);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // textBoxString
             // 
+            this.textBoxString.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.textBoxString.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxString.Location = new System.Drawing.Point(146, 502);
+            this.textBoxString.ForeColor = System.Drawing.Color.White;
+            this.textBoxString.Location = new System.Drawing.Point(146, 484);
             this.textBoxString.Multiline = true;
             this.textBoxString.Name = "textBoxString";
             this.textBoxString.ReadOnly = true;
@@ -89,12 +90,18 @@
             // 
             // propertyGridConn
             // 
+            this.propertyGridConn.CategoryForeColor = System.Drawing.Color.Black;
+            this.propertyGridConn.DisabledItemForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.propertyGridConn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridConn.HelpBackColor = System.Drawing.Color.Black;
+            this.propertyGridConn.HelpForeColor = System.Drawing.Color.White;
             this.propertyGridConn.LineColor = System.Drawing.SystemColors.ControlDark;
             this.propertyGridConn.Location = new System.Drawing.Point(146, 43);
             this.propertyGridConn.Name = "propertyGridConn";
-            this.propertyGridConn.Size = new System.Drawing.Size(798, 453);
+            this.propertyGridConn.Size = new System.Drawing.Size(798, 435);
             this.propertyGridConn.TabIndex = 10;
+            this.propertyGridConn.ViewBackColor = System.Drawing.Color.Black;
+            this.propertyGridConn.ViewForeColor = System.Drawing.Color.White;
             this.propertyGridConn.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propertyGridConn_PropertyValueChanged);
             // 
             // tableLayoutPanel2
@@ -135,6 +142,8 @@
             // 
             // comboBoxStrings
             // 
+            this.comboBoxStrings.BackColor = System.Drawing.Color.Black;
+            this.comboBoxStrings.ForeColor = System.Drawing.Color.White;
             this.comboBoxStrings.FormattingEnabled = true;
             this.comboBoxStrings.Location = new System.Drawing.Point(3, 23);
             this.comboBoxStrings.Name = "comboBoxStrings";
@@ -146,7 +155,7 @@
             // 
             this.labelConexoes.AutoSize = true;
             this.labelConexoes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelConexoes.ForeColor = System.Drawing.Color.Black;
+            this.labelConexoes.ForeColor = System.Drawing.Color.White;
             this.labelConexoes.Location = new System.Drawing.Point(3, 0);
             this.labelConexoes.Name = "labelConexoes";
             this.labelConexoes.Size = new System.Drawing.Size(131, 20);
@@ -157,7 +166,7 @@
             // 
             this.labelSQLServers.AutoSize = true;
             this.labelSQLServers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSQLServers.ForeColor = System.Drawing.Color.Black;
+            this.labelSQLServers.ForeColor = System.Drawing.Color.White;
             this.labelSQLServers.Location = new System.Drawing.Point(3, 110);
             this.labelSQLServers.Name = "labelSQLServers";
             this.labelSQLServers.Size = new System.Drawing.Size(131, 20);
@@ -166,7 +175,9 @@
             // 
             // listBoxSQLServers
             // 
+            this.listBoxSQLServers.BackColor = System.Drawing.Color.Black;
             this.listBoxSQLServers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxSQLServers.ForeColor = System.Drawing.Color.White;
             this.listBoxSQLServers.FormattingEnabled = true;
             this.listBoxSQLServers.ItemHeight = 28;
             this.listBoxSQLServers.Location = new System.Drawing.Point(3, 133);
@@ -194,7 +205,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 559);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(947, 541);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

@@ -23,6 +23,7 @@ namespace DataLayer {
         public string DepositoIdentificado => $@"Depósito identificado: {Valor + ((decimal)PessoaID) / 100:C}";
 
         // RECIBO
+        public string ReciboAno => Recibo.Ano.ToString();
         public byte ReciboNumero => Recibo.Numero;
         public string ReciboNumeroAno => $@"{ReciboNumero:00}-{ReciboEmissao:yyyy}";
         public string ReciboAnoNumero => Recibo.AnoNumero;
