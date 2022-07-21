@@ -63,6 +63,7 @@
     <Compile Include="Classes\clsRecibo.cs" />
     <Compile Include="Classes\clsXtab.cs" />
     <Compile Include="Classes\clsExtratoItem.cs" />
+    <Compile Include="Classes\Extensions.cs" />
     <Compile Include="Cota.cs">
       <DependentUpon>ModelAgua.tt</DependentUpon>
     </Compile>

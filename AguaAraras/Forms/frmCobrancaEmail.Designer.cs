@@ -35,8 +35,6 @@
             this.radioButtonEnviar = new System.Windows.Forms.RadioButton();
             this.radioButtonEnviarDeletar = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelAssunto = new System.Windows.Forms.Label();
-            this.textBoxAssunto = new System.Windows.Forms.TextBox();
             this.textBoxBody = new System.Windows.Forms.TextBox();
             this.labelTexto = new System.Windows.Forms.Label();
             this.labelSubstituicoes1 = new System.Windows.Forms.Label();
@@ -47,8 +45,10 @@
             // 
             // listBoxNomes
             // 
+            this.listBoxNomes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.listBoxNomes.Enabled = false;
             this.listBoxNomes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxNomes.ForeColor = System.Drawing.Color.White;
             this.listBoxNomes.FormattingEnabled = true;
             this.listBoxNomes.ItemHeight = 28;
             this.listBoxNomes.Location = new System.Drawing.Point(18, 49);
@@ -63,6 +63,7 @@
             this.radioButtonTodos.AutoSize = true;
             this.radioButtonTodos.Checked = true;
             this.radioButtonTodos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonTodos.ForeColor = System.Drawing.Color.White;
             this.radioButtonTodos.Location = new System.Drawing.Point(18, 14);
             this.radioButtonTodos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioButtonTodos.Name = "radioButtonTodos";
@@ -77,6 +78,7 @@
             // 
             this.radioButtonSelecionados.AutoSize = true;
             this.radioButtonSelecionados.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSelecionados.ForeColor = System.Drawing.Color.White;
             this.radioButtonSelecionados.Location = new System.Drawing.Point(100, 14);
             this.radioButtonSelecionados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.radioButtonSelecionados.Name = "radioButtonSelecionados";
@@ -102,6 +104,7 @@
             // 
             this.labelFolder.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelFolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFolder.ForeColor = System.Drawing.Color.White;
             this.labelFolder.Location = new System.Drawing.Point(217, 181);
             this.labelFolder.Name = "labelFolder";
             this.labelFolder.Size = new System.Drawing.Size(419, 28);
@@ -111,7 +114,7 @@
             // buttonFolder
             // 
             this.buttonFolder.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFolder.Location = new System.Drawing.Point(642, 204);
+            this.buttonFolder.Location = new System.Drawing.Point(642, 181);
             this.buttonFolder.Name = "buttonFolder";
             this.buttonFolder.Size = new System.Drawing.Size(35, 28);
             this.buttonFolder.TabIndex = 6;
@@ -125,6 +128,7 @@
             this.groupBox1.Controls.Add(this.radioButtonEnviar);
             this.groupBox1.Controls.Add(this.radioButtonEnviarDeletar);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(207, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(168, 105);
@@ -136,6 +140,7 @@
             // 
             this.radioButtonSalvar.AutoSize = true;
             this.radioButtonSalvar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonSalvar.ForeColor = System.Drawing.Color.White;
             this.radioButtonSalvar.Location = new System.Drawing.Point(18, 75);
             this.radioButtonSalvar.Name = "radioButtonSalvar";
             this.radioButtonSalvar.Size = new System.Drawing.Size(86, 32);
@@ -148,6 +153,7 @@
             // 
             this.radioButtonEnviar.AutoSize = true;
             this.radioButtonEnviar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonEnviar.ForeColor = System.Drawing.Color.White;
             this.radioButtonEnviar.Location = new System.Drawing.Point(18, 50);
             this.radioButtonEnviar.Name = "radioButtonEnviar";
             this.radioButtonEnviar.Size = new System.Drawing.Size(86, 32);
@@ -161,6 +167,7 @@
             this.radioButtonEnviarDeletar.AutoSize = true;
             this.radioButtonEnviarDeletar.Checked = true;
             this.radioButtonEnviarDeletar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonEnviarDeletar.ForeColor = System.Drawing.Color.White;
             this.radioButtonEnviarDeletar.Location = new System.Drawing.Point(18, 25);
             this.radioButtonEnviarDeletar.Name = "radioButtonEnviarDeletar";
             this.radioButtonEnviarDeletar.Size = new System.Drawing.Size(167, 32);
@@ -173,48 +180,33 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(213, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 28);
             this.label1.TabIndex = 8;
             this.label1.Text = "Salvar em:";
             // 
-            // labelAssunto
-            // 
-            this.labelAssunto.AutoSize = true;
-            this.labelAssunto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAssunto.Location = new System.Drawing.Point(213, 227);
-            this.labelAssunto.Name = "labelAssunto";
-            this.labelAssunto.Size = new System.Drawing.Size(86, 28);
-            this.labelAssunto.TabIndex = 9;
-            this.labelAssunto.Text = "Assunto:";
-            // 
-            // textBoxAssunto
-            // 
-            this.textBoxAssunto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAssunto.Location = new System.Drawing.Point(217, 248);
-            this.textBoxAssunto.Name = "textBoxAssunto";
-            this.textBoxAssunto.Size = new System.Drawing.Size(457, 34);
-            this.textBoxAssunto.TabIndex = 10;
-            this.textBoxAssunto.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxAssunto_Validating);
-            // 
             // textBoxBody
             // 
             this.textBoxBody.AcceptsReturn = true;
             this.textBoxBody.AcceptsTab = true;
+            this.textBoxBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.textBoxBody.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBody.Location = new System.Drawing.Point(18, 294);
+            this.textBoxBody.ForeColor = System.Drawing.Color.White;
+            this.textBoxBody.Location = new System.Drawing.Point(18, 267);
             this.textBoxBody.Multiline = true;
             this.textBoxBody.Name = "textBoxBody";
             this.textBoxBody.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBody.Size = new System.Drawing.Size(656, 164);
+            this.textBoxBody.Size = new System.Drawing.Size(656, 191);
             this.textBoxBody.TabIndex = 12;
             // 
             // labelTexto
             // 
             this.labelTexto.AutoSize = true;
             this.labelTexto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTexto.Location = new System.Drawing.Point(14, 273);
+            this.labelTexto.ForeColor = System.Drawing.Color.White;
+            this.labelTexto.Location = new System.Drawing.Point(14, 236);
             this.labelTexto.Name = "labelTexto";
             this.labelTexto.Size = new System.Drawing.Size(62, 28);
             this.labelTexto.TabIndex = 13;
@@ -223,6 +215,7 @@
             // labelSubstituicoes1
             // 
             this.labelSubstituicoes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubstituicoes1.ForeColor = System.Drawing.Color.White;
             this.labelSubstituicoes1.Location = new System.Drawing.Point(19, 465);
             this.labelSubstituicoes1.Name = "labelSubstituicoes1";
             this.labelSubstituicoes1.Size = new System.Drawing.Size(655, 23);
@@ -234,6 +227,7 @@
             // 
             this.checkBoxIncluirCobrancasAnteriores.AutoSize = true;
             this.checkBoxIncluirCobrancasAnteriores.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxIncluirCobrancasAnteriores.ForeColor = System.Drawing.Color.White;
             this.checkBoxIncluirCobrancasAnteriores.Location = new System.Drawing.Point(225, 14);
             this.checkBoxIncluirCobrancasAnteriores.Name = "checkBoxIncluirCobrancasAnteriores";
             this.checkBoxIncluirCobrancasAnteriores.Size = new System.Drawing.Size(272, 32);
@@ -245,6 +239,7 @@
             // labelSubstituicoes2
             // 
             this.labelSubstituicoes2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSubstituicoes2.ForeColor = System.Drawing.Color.White;
             this.labelSubstituicoes2.Location = new System.Drawing.Point(19, 496);
             this.labelSubstituicoes2.Name = "labelSubstituicoes2";
             this.labelSubstituicoes2.Size = new System.Drawing.Size(655, 23);
@@ -256,14 +251,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(693, 529);
             this.Controls.Add(this.labelSubstituicoes2);
             this.Controls.Add(this.checkBoxIncluirCobrancasAnteriores);
             this.Controls.Add(this.labelSubstituicoes1);
             this.Controls.Add(this.labelTexto);
             this.Controls.Add(this.textBoxBody);
-            this.Controls.Add(this.textBoxAssunto);
-            this.Controls.Add(this.labelAssunto);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonFolder);
@@ -302,8 +296,6 @@
         private System.Windows.Forms.RadioButton radioButtonEnviar;
         private System.Windows.Forms.RadioButton radioButtonEnviarDeletar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelAssunto;
-        private System.Windows.Forms.TextBox textBoxAssunto;
         private System.Windows.Forms.TextBox textBoxBody;
         private System.Windows.Forms.Label labelTexto;
         private System.Windows.Forms.Label labelSubstituicoes1;

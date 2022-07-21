@@ -15,6 +15,13 @@ namespace DataLayer {
             return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mes);
         }
 
+        private string MesesLista() {
+            var meses = new List<string>();
+            for (int i = 1; i < 4; i++)
+                meses.Add(MonthName(3 * (Numero - 1) + 1));
+            return meses.ToConcatenatedString();
+        }
+
         private string MonthNameShort(int mes) {
             return MonthName(mes).Substring(0, 3);
         }
@@ -45,11 +52,10 @@ namespace DataLayer {
             }
             Extra = false;
             Emissao = hoje;
-            var Ano = hoje.Year + (Numero == 1 ? 1 : 0);
+            var Ano = hoje.Year;
             Vencimento = new DateTime(Ano, 3 * (Numero - 1) + 2, 10);
             Meses = 3;
-            Descricao = Numero > 5 ? "Extra {Ano}" :
-                $@"{MonthName(3 * (Numero - 1) + 1)}, {MonthName(3 * (Numero - 1) + 2)} e {MonthName(3 * (Numero - 1) + 3)} de {Ano}";
+            Descricao = Numero > 4 ? $"Extra {Ano}" : $"{MesesLista()} de {Ano}";
             Observacoes = string.Empty;
             Cotas = new ObservableListSource<Cota>();
 

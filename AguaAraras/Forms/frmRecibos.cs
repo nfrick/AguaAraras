@@ -25,9 +25,9 @@ namespace AguaAraras {
         }
 
         private void frmRecibos_Load(object sender, EventArgs e) {
-            dgvCotas.FormatColumn("ID", dgvCotas.StyleInteger, 40);
-            dgvCotas.FormatColumn("Data", dgvCotas.StyleDateShort, 80);
-            dgvCotas.FormatColumn("Valor", dgvCotas.StyleCurrency, 60);
+            dgvCotas.FormatColumnByHeader("ID", dgvCotas.StyleInteger, 40);
+            dgvCotas.FormatColumnByHeader("Data", dgvCotas.StyleDateShort, 80);
+            dgvCotas.FormatColumnByHeader("Valor", dgvCotas.StyleCurrency, 60);
             dgvRecibos.Sort(dgvRecibos.Columns[0], ListSortDirection.Descending);
             //dgvCotas.Sort(dgvCotas.Columns[1], ListSortDirection.Ascending);
             toolTip1.SetToolTip(buttonRecalc, "Recalcular cotas");

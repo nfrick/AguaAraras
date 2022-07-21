@@ -58,7 +58,7 @@ namespace AguaAraras {
         private void frmCobrancaEmail_Load(object sender, EventArgs e) {
             GetData();
             labelFolder.Text = _desktopFolder;
-            textBoxAssunto.Text = $@"Água Araras {_cobrancas[0].ReciboNumeroAno}";
+            var cobrancas = _cobrancas.Select(c=>c.ReciboNumeroAno).Distinct().ToConcatenatedString();
 
             if (File.Exists(_EMail_Main_Path)) {
                 _textoOriginal = File.ReadAllText(_EMail_Main_Path);
@@ -74,6 +74,7 @@ namespace AguaAraras {
         }
 
         private void buttonGerar_Click(object sender, EventArgs e) {
+            EMailDeCobranca.BodyText = textBoxBody.Text;
             var itemsToSend = radioButtonTodos.Checked
                 ? _cobrancas
                 : listBoxNomes.SelectedItems.Cast<Cota>().ToArray();
@@ -88,7 +89,7 @@ namespace AguaAraras {
                 if (radioButtonSalvar.Checked) {
                     continue;
                 }
-                if (email.Send(textBoxAssunto.Text, textBoxBody.Text)) {
+                if (email.Send()) {
                     continue;
                 }
 
@@ -150,16 +151,13 @@ namespace AguaAraras {
             }
         }
 
-        private void textBoxAssunto_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
-            textBoxAssunto.Text = textBoxAssunto.Text.Trim();
-        }
-
         private void checkBoxIncluirCobrancasAnteriores_CheckedChanged(object sender, EventArgs e) {
             GetData();
         }
     }
 
     public class EMailDeCobranca {
+        public static string BodyText;
         private static Properties.Settings settings = Properties.Settings.Default;
         //private static readonly SmtpClient _smtp = new SmtpClient("smtp.gmail.com") {
         private static readonly SmtpClient _smtp = new SmtpClient(settings.smtp) {
@@ -181,11 +179,12 @@ namespace AguaAraras {
 
         public string[] Recibos => Cobrancas.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
 
+        public string Subject => $@"Água Araras {_trimestre} {Recibos.ToConcatenatedString()}";
+
+        private string _trimestre => Recibos.Length == 1 ? "trimestre" : "trimestres";
+
         public string Descricao => Recibos.Length == 1
-            ? "ao trimestre " + Recibos[0]
-            : "aos trimestres " + Recibos.Take(Recibos.Length - 1)
-                  .Aggregate((current, next) => $@"{current}, {next}") +
-              " e " + Recibos.Last();
+            ? "ao " : "aos " + $"{_trimestre} {Recibos.ToConcatenatedString()}";
 
         public string[] Valores => Cobrancas.Select(i => i.Valor.ToString("C")).Distinct().ToArray();
 
@@ -256,11 +255,11 @@ namespace AguaAraras {
             e.DataSources.Add(new ReportDataSource("DataSetExtrato", Extrato));
         }
 
-        public bool Send(string subject, string bodyText) {
+        public bool Send() {
             try {
                 // https://www.codeproject.com/Articles/298519/Fast-Token-Replacement-in-Csharp
                 var fastRep = new FastReplacer("[", "]");
-                fastRep.Append(bodyText);
+                fastRep.Append(BodyText);
                 fastRep.Replace("[Trimestre]", Cobrancas.First().ReciboNumero.ToString());
                 fastRep.Replace("[Ano]", Cobrancas.First().ReciboAno);
                 fastRep.Replace("[Saudacao]",
@@ -290,7 +289,7 @@ namespace AguaAraras {
 
                 var mail = new MailMessage {
                     From = new MailAddress("ararasrede78@gmail.com", "Rede de 78"),
-                    Subject = subject,
+                    Subject = Subject,
                     Body = fastRep.ToString(),
                     IsBodyHtml = true
                 };

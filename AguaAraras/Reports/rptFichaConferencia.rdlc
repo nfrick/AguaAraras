@@ -391,10 +391,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>RECIBOS - Conferência</Value>
+                <Value EvaluationMode="Constant">RECIBOS - Conferencia</Value>
                 <Style>
-                  <FontFamily>Arial Black</FontFamily>
-                  <FontSize>18pt</FontSize>
+                  <FontFamily>Tubular Hollow</FontFamily>
+                  <FontSize>22pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -421,8 +421,8 @@
               <TextRun>
                 <Value>=First(Fields!ReciboNumeroAno.Value, "DataSetReciboItens")</Value>
                 <Style>
-                  <FontFamily>Arial Black</FontFamily>
-                  <FontSize>18pt</FontSize>
+                  <FontFamily>Tubular Hollow</FontFamily>
+                  <FontSize>22pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>

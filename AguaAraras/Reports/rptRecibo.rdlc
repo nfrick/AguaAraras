@@ -95,7 +95,7 @@
                                     <TextRun>
                                       <Value>=Fields!ReciboNumero.Value</Value>
                                       <Style>
-                                        <FontFamily>Liberty Hollow</FontFamily>
+                                        <FontFamily>Tubular Hollow</FontFamily>
                                         <FontSize>72pt</FontSize>
                                         <Color>Gray</Color>
                                       </Style>
