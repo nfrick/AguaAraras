@@ -179,12 +179,13 @@ namespace AguaAraras {
 
         public string[] Recibos => Cobrancas.Select(i => i.ReciboNumeroAno).Distinct().ToArray();
 
-        public string Subject => $@"Água Araras {_trimestre} {Recibos.ToConcatenatedString()}";
-
         private string _trimestre => Recibos.Length == 1 ? "trimestre" : "trimestres";
 
-        public string Descricao => Recibos.Length == 1
-            ? "ao " : "aos " + $"{_trimestre} {Recibos.ToConcatenatedString()}";
+        private string _trimestreERecibos => $"{_trimestre} {Recibos.ToConcatenatedString()}";
+
+        public string Subject => $@"Água Araras {_trimestreERecibos}";
+
+        public string Descricao => "ao" + (Recibos.Length == 1 ? "" : "s") + $" {_trimestreERecibos}";
 
         public string[] Valores => Cobrancas.Select(i => i.Valor.ToString("C")).Distinct().ToArray();
 

@@ -18,7 +18,7 @@ namespace DataLayer {
         private string MesesLista() {
             var meses = new List<string>();
             for (int i = 1; i < 4; i++)
-                meses.Add(MonthName(3 * (Numero - 1) + 1));
+                meses.Add(MonthName(3 * (Numero - 1) + i));
             return meses.ToConcatenatedString();
         }
 
